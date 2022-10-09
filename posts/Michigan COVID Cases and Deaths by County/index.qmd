@@ -7,7 +7,7 @@ description: "A quick, interactive COVID map."
 execute:
   warning: false
 ---
-```{r, width = 700, height = 600}
+```{r}
 # Load packages -----------------------------------------------------------
 library(tidyverse)
 library(ggmap)
@@ -79,7 +79,8 @@ g <- cases_and_county %>%
   geom_polygon(data = cases_and_county, colour = "black", aes(fill = Category))+
   theme_void() +
   scale_fill_manual(values = p) 
-
+```
+```{r, dpi=300, fig.height=7.2, fig.width=3.6}
 ggplotly(g, tooltip = c("text"), width = 700, height = 600) %>%
   layout(xaxis = noax,
          yaxis = noax) %>%
