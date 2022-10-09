@@ -1,12 +1,22 @@
 ---
-title: "Welcome To My Blog"
-author: "Tristan O'Malley"
-date: "2022-10-06"
-categories: [news]
+title: "Welcome to my Blog (-:"
+author: "Brenden Smith"
+date: "2022-10-09"
+categories: [personal]
+description: "A brief introduction"
+image: thumbnail.jpg
 ---
 
-This is the first post in a Quarto blog. Welcome!
+## Hi hello!
 
-![](thumbnail.jpg)
+This is hard for me to do! I've been wanting to start blogging for some time now. This blog is only possible because of the wonderful blog posts by [Bea Milz](https://beamilz.com/posts/2022-06-05-creating-a-blog-with-quarto/en/) and [Alber Rapp](https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html#create-your-first-blog-post). A huge huge thank you to you both. 
 
-Since this post doesn't specify an explicit `image`, the first image in the post will be used in the listing page of posts.
+Inspired by their words, there is no better time to start logging practice. 
+
+## Who Am I?
+
+
+
+## What will I post?
+
+## Stay in Touch

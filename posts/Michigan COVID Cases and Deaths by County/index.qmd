@@ -1,0 +1,88 @@
+---
+title: "Michigan COVID Cases and Deaths by County"
+author: "Brenden Smith"
+date: "2022-10-09"
+categories: [R, maps]
+description: "A quick, interactive COVID map."
+execute:
+  warning: false
+---
+```{r, width = 700, height = 600}
+# Load packages -----------------------------------------------------------
+library(tidyverse)
+library(ggmap)
+library(maps)
+library(mapdata)
+library(openxlsx)
+library(plotly)
+library(RColorBrewer)
+
+# Make the base state map -------------------------------------------------
+counties <- map_data("county")
+mi_county <- subset(counties, region == "michigan")
+
+
+# Data prep ---------------------------------------------------------------
+
+dataset <- read.xlsx("Cases and Deaths by County 2022-10-04.xlsx")
+dataset <- mutate(dataset, subregion = tolower(COUNTY))
+
+cases_and_county <- inner_join(mi_county, dataset, by = "subregion")
+cases_and_county <- cases_and_county %>%
+  rename(county = COUNTY)
+
+
+
+cases_and_county<- cases_and_county %>%
+  mutate(Category = case_when(Cases < 1000 ~ '0-999', 
+                              Cases < 5000 ~ '1000-4999',
+                              Cases <15000 ~ '5000-14999',
+                              Cases < 30000 ~ '15000-29999',
+                              Cases < 100000~ '30000-99999',
+                              Cases < 1000000 ~ '100000+',
+                              TRUE ~ 'NA'))
+
+cases_and_county$Category <- as.factor(cases_and_county$Category)
+
+lvls <- c('0-999', 
+          '1000-4999',
+          '5000-14999',
+          '15000-29999',
+          '30000-99999',
+          '100000+')
+
+cases_and_county$Category <- fct_relevel(cases_and_county$Category, lvls)
+
+# Making the map ----------------------------------------------------------
+
+p <- c("#ACD1E7", "#82BADC", "#59A1CF", "#236893","#174562", "#122548")
+
+label <- list(
+  bgcolor = "#EEEEEE",
+  font = list(color = "black")
+)
+
+noax <- list(
+  title = "",
+  zeroline = FALSE,
+  showline = FALSE,
+  showticklabels = FALSE,
+  showgrid = FALSE
+)
+
+g <- cases_and_county %>%
+  ggplot(aes(long, lat, 
+                group = group,
+                text = paste('</br>County:', county, '</br>Category:', Category,
+                             '</br>Cases:', Cases)))+
+  geom_polygon(colour = alpha("black", 1/2), fill = NA) +
+  geom_polygon(data = cases_and_county, colour = "black", aes(fill = Category))+
+  theme_void() +
+  scale_fill_manual(values = p) 
+
+ggplotly(g, tooltip = c("text"), width = 700, height = 600) %>%
+  layout(xaxis = noax,
+         yaxis = noax) %>%
+  style(hoverlabel = label) %>%
+  config(displayModeBar = FALSE)
+```

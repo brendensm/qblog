@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Blog",
+    "title": "Brenden Smith",
     "section": "",
-    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nOct 9, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nOct 6, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Hello! I am a student of public health with interests in health equity, harm reduction, and community engagement. I am an aspiring data analyst, community researcher, and, at this point, R enthusiast."
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -16,9 +16,9 @@
   {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
+    "title": "Welcome to my Blog (-:",
     "section": "",
-    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+    "text": "This is hard for me to do! I’ve been wanting to start blogging for some time now. This blog is only possible because of the wonderful blog posts by Bea Milz and Alber Rapp. A huge huge thank you to you both.\nInspired by their words, there is no better time to start logging practice."
   },
   {
     "objectID": "about.html",
@@ -26,5 +26,54 @@
     "title": "About",
     "section": "",
     "text": "About this blog"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "personal\n\n\n\n\nA brief introduction\n\n\n\n\n\n\nOct 9, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR\n\n\nmaps\n\n\n\n\nA quick, interactive COVID map.\n\n\n\n\n\n\nOct 9, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/welcome/index.html#header-two",
+    "href": "posts/welcome/index.html#header-two",
+    "title": "Welcome",
+    "section": "Header two",
+    "text": "Header two\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/test post/index.html",
+    "href": "posts/test post/index.html",
+    "title": "test post",
+    "section": "",
+    "text": "This is my test."
+  },
+  {
+    "objectID": "posts/welcome/index.html#who-am-i",
+    "href": "posts/welcome/index.html#who-am-i",
+    "title": "Welcome to my Blog (-:",
+    "section": "Who Am I?",
+    "text": "Who Am I?"
+  },
+  {
+    "objectID": "posts/welcome/index.html#what-will-i-post",
+    "href": "posts/welcome/index.html#what-will-i-post",
+    "title": "Welcome to my Blog (-:",
+    "section": "What will I post?",
+    "text": "What will I post?"
+  },
+  {
+    "objectID": "posts/welcome/index.html#stay-in-touch",
+    "href": "posts/welcome/index.html#stay-in-touch",
+    "title": "Welcome to my Blog (-:",
+    "section": "Stay in Touch",
+    "text": "Stay in Touch"
+  },
+  {
+    "objectID": "posts/Michigan COVID Cases and Deaths by County/index.html",
+    "href": "posts/Michigan COVID Cases and Deaths by County/index.html",
+    "title": "Michigan COVID Cases and Deaths by County",
+    "section": "",
+    "text": "# Load packages -----------------------------------------------------------\nlibrary(tidyverse)\nlibrary(ggmap)\nlibrary(maps)\nlibrary(mapdata)\nlibrary(openxlsx)\nlibrary(plotly)\nlibrary(RColorBrewer)\n\n# Make the base state map -------------------------------------------------\ncounties <- map_data(\"county\")\nmi_county <- subset(counties, region == \"michigan\")\n\n\n# Data prep ---------------------------------------------------------------\n\ndataset <- read.xlsx(\"Cases and Deaths by County 2022-10-04.xlsx\")\ndataset <- mutate(dataset, subregion = tolower(COUNTY))\n\ncases_and_county <- inner_join(mi_county, dataset, by = \"subregion\")\ncases_and_county <- cases_and_county %>%\n  rename(county = COUNTY)\n\n\n\ncases_and_county<- cases_and_county %>%\n  mutate(Category = case_when(Cases < 1000 ~ '0-999', \n                              Cases < 5000 ~ '1000-4999',\n                              Cases <15000 ~ '5000-14999',\n                              Cases < 30000 ~ '15000-29999',\n                              Cases < 100000~ '30000-99999',\n                              Cases < 1000000 ~ '100000+',\n                              TRUE ~ 'NA'))\n\ncases_and_county$Category <- as.factor(cases_and_county$Category)\n\nlvls <- c('0-999', \n          '1000-4999',\n          '5000-14999',\n          '15000-29999',\n          '30000-99999',\n          '100000+')\n\ncases_and_county$Category <- fct_relevel(cases_and_county$Category, lvls)\n\n# Making the map ----------------------------------------------------------\n\np <- c(\"#ACD1E7\", \"#82BADC\", \"#59A1CF\", \"#236893\",\"#174562\", \"#122548\")\n\nlabel <- list(\n  bgcolor = \"#EEEEEE\",\n  font = list(color = \"black\")\n)\n\nnoax <- list(\n  title = \"\",\n  zeroline = FALSE,\n  showline = FALSE,\n  showticklabels = FALSE,\n  showgrid = FALSE\n)\n\ng <- cases_and_county %>%\n  ggplot(aes(long, lat, \n                group = group,\n                text = paste('</br>County:', county, '</br>Category:', Category,\n                             '</br>Cases:', Cases)))+\n  geom_polygon(colour = alpha(\"black\", 1/2), fill = NA) +\n  geom_polygon(data = cases_and_county, colour = \"black\", aes(fill = Category))+\n  theme_void() +\n  scale_fill_manual(values = p) \n\nggplotly(g, tooltip = c(\"text\"), width = 700, height = 600) %>%\n  layout(xaxis = noax,\n         yaxis = noax) %>%\n  style(hoverlabel = label) %>%\n  config(displayModeBar = FALSE)"
   }
 ]

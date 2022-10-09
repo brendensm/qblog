@@ -1,12 +1,19 @@
 ---
-title: "Blog"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: true
+title: "Brenden Smith"
+subtitle: "MPH Student, Research Assistant @ Michigan State University - Institute for Health Policy"
+image: transme.png
+about:
+  template: solana
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/brendenmsmith
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com
+    - icon: github
+      text: Github
+      href: https://github.com/brendensm
 ---
+
+Hello! I am a student of public health with interests in health equity, harm reduction, and community engagement. I am an aspiring data analyst, community researcher, and, at this point, R enthusiast.

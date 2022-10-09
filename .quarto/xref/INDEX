@@ -10,5 +10,17 @@
   },
   "about.qmd": {
     "about.html": "88400a7a"
+  },
+  "blog.qmd": {
+    "blog.html": "6074c773"
+  },
+  "posts/opioid plotting practice/index.qmd": {
+    "index.html": "e5cdffcc"
+  },
+  "posts/test post/index.qmd": {
+    "index.html": "77228e0b"
+  },
+  "posts/Michigan COVID Cases and Deaths by County/index.qmd": {
+    "index.html": "93119a40"
   }
 }

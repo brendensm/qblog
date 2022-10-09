@@ -5,14 +5,14 @@ website:
   title: "Brenden Smith"
   navbar:
     right:
-      - about.qmd
+      - blog.qmd
       - icon: github
         href: https://github.com/brendensm
       - icon: twitter
         href: https://twitter.com/brendenmsmith
 format:
   html:
-    theme: cosmo
+    theme: morph
     css: styles.css
 
 editor: visual
