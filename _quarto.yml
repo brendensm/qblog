@@ -1,0 +1,19 @@
+project:
+  type: website
+
+website:
+  title: "Brenden Smith"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/brendensm
+      - icon: twitter
+        href: https://twitter.com/brendenmsmith
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+editor: visual
+
