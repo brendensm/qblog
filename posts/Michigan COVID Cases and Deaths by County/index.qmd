@@ -80,7 +80,8 @@ g <- cases_and_county %>%
   theme_void() +
   scale_fill_manual(values = p) 
 ```
-```{r, dpi=300, fig.height=7.2, fig.width=3.6}
+
+```{r}
 ggplotly(g, tooltip = c("text"), width = 700, height = 600) %>%
   layout(xaxis = noax,
          yaxis = noax) %>%
