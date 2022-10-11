@@ -1,12 +1,17 @@
 ---
 title: "Michigan COVID Cases and Deaths by County"
 author: "Brenden Smith"
-date: "2022-10-09"
+date: "2022-10-11"
 categories: [R, maps]
 description: "A quick, interactive COVID map."
 execute:
   warning: false
+image: image.png
 ---
+
+## Introduction
+
+## Ggplot2 map
 
 ```{r}
 # Load packages -----------------------------------------------------------
@@ -148,3 +153,5 @@ leaflet() %>%
     position = "bottomright") 
               
 ```
+
+## Conclusion

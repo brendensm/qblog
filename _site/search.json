@@ -18,7 +18,7 @@
     "href": "posts/welcome/index.html",
     "title": "Welcome to my Blog (-:",
     "section": "",
-    "text": "This is hard for me to do! I’ve been wanting to start blogging for some time now. This blog is only possible because of the wonderful blog posts by Bea Milz and Alber Rapp. A huge huge thank you to you both.\nInspired by their words, there is no better time to start logging practice."
+    "text": "This is hard for me to do! I’ve been wanting to start blogging for some time now. This whole website is only possible because of the wonderful blog posts by Bea Milz and Alber Rapp. A huge huge thank you to them both. Their posts demonstrate how easy it is to get up and running with a Quarto blog!\nInspired by their words, there is no better time to start writing. So consider this a first introduction. I am setting the intention to post monthly to this blog."
   },
   {
     "objectID": "about.html",
@@ -32,7 +32,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "personal\n\n\n\n\nA brief introduction\n\n\n\n\n\n\nOct 9, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR\n\n\nmaps\n\n\n\n\nA quick, interactive COVID map.\n\n\n\n\n\n\nOct 9, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\nNo matching items"
+    "text": "R\n\n\nmaps\n\n\n\n\nA quick, interactive COVID map.\n\n\n\n\n\n\nOct 11, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\npersonal\n\n\n\n\nA brief introduction\n\n\n\n\n\n\nOct 9, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/welcome/index.html#header-two",
@@ -52,22 +52,22 @@
     "objectID": "posts/welcome/index.html#who-am-i",
     "href": "posts/welcome/index.html#who-am-i",
     "title": "Welcome to my Blog (-:",
-    "section": "Who Am I?",
-    "text": "Who Am I?"
+    "section": "Who am I?",
+    "text": "Who am I?\nMy name is Brenden Smith. At this point, I am a little over a year into my graduate studies. I attend Michigan State University and I am working towards my Master in Public Health."
   },
   {
     "objectID": "posts/welcome/index.html#what-will-i-post",
     "href": "posts/welcome/index.html#what-will-i-post",
     "title": "Welcome to my Blog (-:",
     "section": "What will I post?",
-    "text": "What will I post?"
+    "text": "What will I post?\nTo start, I think I will document certain projects I’ve taken on that relate to data analysis and visualization. I consider myself a beginning to intermediate level R user. To help me retain the information I’m learning, I will try to blog everything that seems worth sharing. I hope that these help you, if you are trying to learn more about R like I am.\nI don’t want my posts to be exclusive to R. Like any tool, the language has its strengths and weaknesses. I will likely include some content on PowerBI and perhaps its integration with R. I also want to document notably takeaways from my experiences in graduate school and other projects I am involved with in my professional work."
   },
   {
     "objectID": "posts/welcome/index.html#stay-in-touch",
     "href": "posts/welcome/index.html#stay-in-touch",
     "title": "Welcome to my Blog (-:",
-    "section": "Stay in Touch",
-    "text": "Stay in Touch"
+    "section": "Stay in touch",
+    "text": "Stay in touch\nIf this description interests you, please follow along with my journey. If you are interested in hearing more about my work or would like to share resources, let me know! I have included links to my GitHub, Twitter, and LinkedIn. Feel free to reach out to my on any of those platforms (or comment here on my blog)."
   },
   {
     "objectID": "posts/Michigan COVID Cases and Deaths by County/index.html",
@@ -88,6 +88,13 @@
     "href": "posts/Michigan COVID Cases and Deaths by County/index.html#using-leaflet",
     "title": "Michigan COVID Cases and Deaths by County",
     "section": "Using Leaflet",
-    "text": "Using Leaflet\n\nlibrary(sp)\nlibrary(raster)\nlibrary(rgdal)\nlibrary(leaflet)\n\nmiCounties <- readOGR(\"Counties_(v17a)\", \"Counties_(v17a)\")\n\nOGR data source with driver: ESRI Shapefile \nSource: \"/Users/brendensmith/Desktop/R/qblog/posts/Michigan COVID Cases and Deaths by County/Counties_(v17a)\", layer: \"Counties_(v17a)\"\nwith 83 features\nIt has 15 fields\n\nmicovid <- micovid %>%\n  mutate(NAME = case_when(\n    COUNTY == \"St Clair\" ~ \"St. Clair\",\n    COUNTY == \"St Joseph\" ~ \"St. Joseph\",\n    TRUE ~ COUNTY\n  ))\n\ncombined <- merge(miCounties, micovid)\n\nbins <- c(0, 1000, 5000, 15000, 30000, 100000, Inf)\npal <- colorBin(\"YlOrRd\", domain = combined$total_cases, bins = bins)\n\nlabels <- sprintf(\n  \"<strong>%s</strong><br/>%g\",\n  combined$NAME, combined$total_cases\n) %>% lapply(htmltools::HTML)\n\nleaflet() %>%\n  addTiles() %>%\n  addPolygons(data = combined,\n              fillColor = ~pal(total_cases),\n              weight = 2,\n              opacity = 1,\n              color = \"white\",\n              dashArray = \"3\",\n              fillOpacity = 0.7,\n              highlightOptions = highlightOptions(\n                weight = 5,\n                color = \"#666\",\n                dashArray = \"\",\n                fillOpacity = 0.7,\n                bringToFront = TRUE),\n              label = labels,\n              labelOptions = labelOptions(\n                style = list(\"font-weight\" = \"normal\", padding = \"3px 8px\"),\n                textsize = \"15px\",\n                direction = \"auto\")) %>%\n  addLegend(data = combined, \n            pal = pal, values = ~total_cases, opacity = 0.7, title = NULL,\n    position = \"bottomright\")"
+    "text": "Using Leaflet\n\nlibrary(sp)\nlibrary(raster)\nlibrary(rgdal)\nlibrary(leaflet)\n\nmiCounties <- readOGR(\"Counties_(v17a)\", \"Counties_(v17a)\")\n\nOGR data source with driver: ESRI Shapefile \nSource: \"/Users/brendensmith/Desktop/R/qblog/posts/Michigan COVID Cases and Deaths by County/Counties_(v17a)\", layer: \"Counties_(v17a)\"\nwith 83 features\nIt has 15 fields\n\nmicovid <- micovid %>%\n  mutate(NAME = case_when(\n    COUNTY == \"St Clair\" ~ \"St. Clair\",\n    COUNTY == \"St Joseph\" ~ \"St. Joseph\",\n    TRUE ~ COUNTY\n  ))\n\ncombined <- merge(miCounties, micovid)\n\nbins <- c(0, 1000, 5000, 15000, 30000, 100000, Inf)\npal <- colorBin(\"YlOrRd\", domain = combined$total_cases, bins = bins)\n\nlabels <- sprintf(\n  \"<strong>%s</strong><br/>%g\",\n  combined$NAME, combined$total_cases\n) %>% lapply(htmltools::HTML)\n\n\nleaflet() %>%\n  addTiles() %>%\n  addPolygons(data = combined,\n              fillColor = ~pal(total_cases),\n              weight = 2,\n              opacity = 1,\n              color = \"white\",\n              dashArray = \"3\",\n              fillOpacity = 0.7,\n              highlightOptions = highlightOptions(\n                weight = 5,\n                color = \"#666\",\n                dashArray = \"\",\n                fillOpacity = 0.7,\n                bringToFront = TRUE),\n              label = labels,\n              labelOptions = labelOptions(\n                style = list(\"font-weight\" = \"normal\", padding = \"3px 8px\"),\n                textsize = \"15px\",\n                direction = \"auto\")) %>%\n  addLegend(data = combined, \n            pal = pal, values = ~total_cases, opacity = 0.7, title = NULL,\n    position = \"bottomright\")"
+  },
+  {
+    "objectID": "posts/welcome/index.html#so-who-am-i",
+    "href": "posts/welcome/index.html#so-who-am-i",
+    "title": "Welcome to my Blog (-:",
+    "section": "So who am I?",
+    "text": "So who am I?\nMy name is Brenden Smith. At this point, I am a little over a year into my graduate studies. I attend Michigan State University and I am working towards my Master in Public Health. I am most interested in data analysis, visualization, community-engaged research, and health disparities.\nPublic health as a field can be very broad. By its very nature, the field is multidisciplinary and covers a wide array of topics. I come from primarily a policy background. I received my Bachelor of Arts in social relations and policy from James Madison College (also here at MSU). My senior seminar was focused on US health care and policy and pretty much ever since I’ve been interested in a career in PH.\nDuring my undergrad I was also introduced to R for the first time in a quantitative methods course. That introduction began my interest in the programming language. More recently I have discovered the tidyverse and shiny packages. It is so exciting to be a part of the open-source community. I hope to contribute to it as I have most definitely benefited from the wealth of knowledge already available on the internet."
   }
 ]
