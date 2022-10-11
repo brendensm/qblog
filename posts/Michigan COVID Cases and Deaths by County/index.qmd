@@ -7,6 +7,7 @@ description: "A quick, interactive COVID map."
 execute:
   warning: false
 ---
+
 ```{r}
 # Load packages -----------------------------------------------------------
 library(tidyverse)
@@ -24,22 +25,28 @@ mi_county <- subset(counties, region == "michigan")
 
 # Data prep ---------------------------------------------------------------
 
-dataset <- read.xlsx("Cases and Deaths by County 2022-10-04.xlsx")
-dataset <- mutate(dataset, subregion = tolower(COUNTY))
+micovid <- read.xlsx("Cases and Deaths by County 2022-10-04.xlsx")
 
-cases_and_county <- inner_join(mi_county, dataset, by = "subregion")
+micovid <- micovid %>%
+  group_by(COUNTY) %>%
+  summarise(total_cases = sum(Cases),
+            total_deaths = sum(Deaths)) %>%
+  ungroup() %>%
+  mutate(subregion = tolower(COUNTY))
+
+cases_and_county <- inner_join(mi_county, micovid, by = "subregion")
 cases_and_county <- cases_and_county %>%
   rename(county = COUNTY)
 
 
 
 cases_and_county<- cases_and_county %>%
-  mutate(Category = case_when(Cases < 1000 ~ '0-999', 
-                              Cases < 5000 ~ '1000-4999',
-                              Cases <15000 ~ '5000-14999',
-                              Cases < 30000 ~ '15000-29999',
-                              Cases < 100000~ '30000-99999',
-                              Cases < 1000000 ~ '100000+',
+  mutate(Category = case_when(total_cases < 1000 ~ '0-999', 
+                              total_cases < 5000 ~ '1000-4999',
+                              total_cases <15000 ~ '5000-14999',
+                              total_cases < 30000 ~ '15000-29999',
+                              total_cases < 100000~ '30000-99999',
+                              total_cases < 1000000 ~ '100000+',
                               TRUE ~ 'NA'))
 
 cases_and_county$Category <- as.factor(cases_and_county$Category)
@@ -74,7 +81,7 @@ g <- cases_and_county %>%
   ggplot(aes(long, lat, 
                 group = group,
                 text = paste('</br>County:', county, '</br>Category:', Category,
-                             '</br>Cases:', Cases)))+
+                             '</br>Cases:', total_cases)))+
   geom_polygon(colour = alpha("black", 1/2), fill = NA) +
   geom_polygon(data = cases_and_county, colour = "black", aes(fill = Category))+
   theme_void() +
@@ -87,4 +94,57 @@ ggplotly(g, tooltip = c("text"), width = 700, height = 600) %>%
          yaxis = noax) %>%
   style(hoverlabel = label) %>%
   config(displayModeBar = FALSE)
+```
+
+## Using Leaflet
+
+```{r}
+library(sp)
+library(raster)
+library(rgdal)
+library(leaflet)
+
+miCounties <- readOGR("Counties_(v17a)", "Counties_(v17a)")
+micovid <- micovid %>%
+  mutate(NAME = case_when(
+    COUNTY == "St Clair" ~ "St. Clair",
+    COUNTY == "St Joseph" ~ "St. Joseph",
+    TRUE ~ COUNTY
+  ))
+
+combined <- merge(miCounties, micovid)
+
+bins <- c(0, 1000, 5000, 15000, 30000, 100000, Inf)
+pal <- colorBin("YlOrRd", domain = combined$total_cases, bins = bins)
+
+labels <- sprintf(
+  "<strong>%s</strong><br/>%g",
+  combined$NAME, combined$total_cases
+) %>% lapply(htmltools::HTML)
+
+
+leaflet() %>%
+  addTiles() %>%
+  addPolygons(data = combined,
+              fillColor = ~pal(total_cases),
+              weight = 2,
+              opacity = 1,
+              color = "white",
+              dashArray = "3",
+              fillOpacity = 0.7,
+              highlightOptions = highlightOptions(
+                weight = 5,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE),
+              label = labels,
+              labelOptions = labelOptions(
+                style = list("font-weight" = "normal", padding = "3px 8px"),
+                textsize = "15px",
+                direction = "auto")) %>%
+  addLegend(data = combined, 
+            pal = pal, values = ~total_cases, opacity = 0.7, title = NULL,
+    position = "bottomright") 
+              
 ```
