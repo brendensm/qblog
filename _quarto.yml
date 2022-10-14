@@ -11,6 +11,8 @@ website:
         href: https://github.com/brendensm
       - icon: twitter
         href: https://twitter.com/brendenmsmith
+      - icon: linkedin
+        href: https://linkedin.com
 format:
   html:
     theme: morph

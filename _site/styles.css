@@ -16,9 +16,14 @@ div.sourceCode {
     font-weight: bold;
 }
 
+/* nav menu */
+
+
 .navbar-dark .navbar-toggler-icon:hover {
     background-image: url('hamburger.png');
 }
+
+/* homepage */
 
 #quarto-content .subtitle {
     color: #475687;
