@@ -1,1 +1,58 @@
 /* css styles */
+
+div.sourceCode {
+    background-color: #F4F4F4;
+    border: 1px solid #000000;
+    border-radius: 0.25rem;
+}
+
+
+.navbar-dark .navbar-brand {
+    color: #475687;
+}
+
+.navbar-dark .navbar-brand:hover {
+    color: #475687;
+    font-weight: bold;
+}
+
+.navbar-dark .navbar-toggler-icon:hover {
+    background-image: url('hamburger.png');
+}
+
+#quarto-content .subtitle {
+    color: #475687;
+    padding-top: 14px;
+}
+
+div.quarto-about-solana .about-entity .about-link {
+    color: #475687;
+    font-size: 1.1em;
+    padding: 0.5em 0.5em;
+    text-align: center;
+    border-radius: 175px;
+    margin-right: 10px;
+}
+
+div.quarto-about-solana .about-entity .about-link:hover {
+    color: #7B8AB9;
+    font-size: 1.1em;
+    padding: 0.5em 0.5em;
+    text-align: center;
+    font-weight: bold;
+    border-width: 2px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #475687;
+}
+
+
+/* for the blog section */
+
+
+
+
+

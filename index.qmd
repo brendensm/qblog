@@ -16,4 +16,4 @@ about:
       href: https://github.com/brendensm
 ---
 
-Hello! I am a student of public health with interests in health equity, harm reduction, and community engagement. I am an aspiring data analyst, community researcher, and, at this point, R enthusiast.
+Hello! I am a student of public health with interests in health equity, harm reduction, and community engagement. I am an aspiring data analyst, community researcher, and R enthusiast.

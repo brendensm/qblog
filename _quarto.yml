@@ -3,6 +3,7 @@ project:
 
 website:
   title: "Brenden Smith"
+  favicon: cat96.png
   navbar:
     right:
       - blog.qmd
