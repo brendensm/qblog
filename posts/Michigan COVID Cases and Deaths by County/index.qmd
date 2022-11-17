@@ -149,8 +149,9 @@ leaflet() %>%
                 textsize = "15px",
                 direction = "auto")) %>%
   addLegend(data = combined, 
-            pal = pal, values = ~total_cases, opacity = 0.7, title = NULL,
-    position = "bottomright") 
+            pal = pal, values = ~total_cases, opacity = 0.7,
+    position = "bottomright",
+    title = "Number of Cases") 
               
 ```
 

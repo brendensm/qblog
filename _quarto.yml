@@ -4,15 +4,11 @@ project:
 website:
   title: "Brenden Smith"
   favicon: cat96.png
+  search: false
   navbar:
     right:
       - blog.qmd
-      - icon: github
-        href: https://github.com/brendensm
-      - icon: twitter
-        href: https://twitter.com/brendenmsmith
-      - icon: linkedin
-        href: https://linkedin.com
+     
 format:
   html:
     theme: morph

@@ -6,21 +6,45 @@ div.sourceCode {
     border-radius: 0.25rem;
 }
 
+.navbar-dark {
+  background-color: #475687;
+
+}
 
 .navbar-dark .navbar-brand {
-    color: #475687;
+    color:#D9E3F1
 }
 
 .navbar-dark .navbar-brand:hover {
-    color: #475687;
+    color:#D9E3F1;
     font-weight: bold;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color:#D9E3F1;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+  color:#D9E3F1;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color:#D9E3F1;
+  font-weight: bold;
 }
 
 /* nav menu */
 
 
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url('nav.png');
+    color: rgba(0,0,0,0);
+    border-color: rgba(0,0,0,0);
+}
+
 .navbar-dark .navbar-toggler-icon:hover {
-    background-image: url('hamburger.png');
+    background-image: url('nav-hover.png');
 }
 
 /* homepage */
@@ -40,12 +64,11 @@ div.quarto-about-solana .about-entity .about-link {
 }
 
 div.quarto-about-solana .about-entity .about-link:hover {
-    color: #7B8AB9;
+    color: #D9E3F1;
+    background-color: #475687;
     font-size: 1.1em;
     padding: 0.5em 0.5em;
     text-align: center;
-    font-weight: bold;
-    border-width: 2px;
 }
 
 p {

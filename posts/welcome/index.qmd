@@ -1,5 +1,5 @@
 ---
-title: "Welcome to my Blog (-:"
+title: "Welcome to my Blog"
 author: "Brenden Smith"
 date: "2022-10-09"
 categories: [personal]
@@ -25,7 +25,7 @@ During my undergrad I was also introduced to R for the first time in a quantitat
 
 To start, I think I will document certain projects I've taken on that relate to data analysis and visualization. I consider myself a beginning to intermediate level R user. To help me retain the information I'm learning, I will try to blog everything that seems worth sharing. I hope that these help you, if you are trying to learn more about R like I am.
 
-I don't want my posts to be exclusive to R. Like any tool, the language has its strengths and weaknesses. I will likely include some content on PowerBI and perhaps its integration with R. I also want to document notably takeaways from my experiences in graduate school and other projects I am involved with in my professional work.
+I don't want my posts to be exclusive to R. Like any tool, the language has its strengths and weaknesses. I will likely include some content on PowerBI and perhaps its integration with R. I also want to document notable takeaways from my experiences in graduate school and other projects I am involved with in my professional work.
 
 ## Stay in touch
 
