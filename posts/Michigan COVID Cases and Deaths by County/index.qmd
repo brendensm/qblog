@@ -1,9 +1,9 @@
 ---
-title: "Michigan COVID Cases and Deaths by County"
+title: "Michigan COVID-19 County Maps"
 author: "Brenden Smith"
 date: "2022-10-11"
 categories: [R, maps]
-description: "A quick, interactive COVID map."
+description: "Two quick, interactive COVID-19 maps."
 execute:
   warning: false
 image: image.png
@@ -11,22 +11,33 @@ image: image.png
 
 ## Introduction
 
+This post is intended to demonstrate some basic ways to map data in R. For our example, we will be creating a choropleth map of Michigan's counties featuring COVID-19 data. The result is something quite similar to the map featured on the [state's dashboard.](https://www.michigan.gov/coronavirus/stats) The data used in this post is from October 4, 2022.
+
+For the sake of practice, we will walk through two different ways to go about this process. First we will use ggplot2. We will use a function called `map_data` to pull in shape file data easily. In our second example, we will use leaflet to create a better looking version of this map and use a raw shape file.
+
 ## Ggplot2 map
+
+To start, we will make a base map with ggplot2 and make it interactive with plotly. First, as always, we load in the libraries we will be using.
 
 ```{r}
 # Load packages -----------------------------------------------------------
-library(tidyverse)
-library(ggmap)
-library(maps)
-library(mapdata)
-library(openxlsx)
-library(plotly)
-library(RColorBrewer)
+library(tidyverse) # really just dplyr but the whole verse can't hurt
+library(openxlsx) # to read in excel data
+library(plotly) # for the interactive part
+library(RColorBrewer) # to set our color palette
+```
 
+Next, we will get our county map. To do this we can simply call the function map_data and specify that we want it at the county level. This will give us data for every county in the US. Because we are only mapping Michigan, we add a second line to subset our first data frame 'counties' to only include Michigan.
+
+```{r}
 # Make the base state map -------------------------------------------------
 counties <- map_data("county")
 mi_county <- subset(counties, region == "michigan")
+```
 
+For our COVID-19 data, I am importing an older file from state's website (linked previously). If you want a current version to follow along, you can find it there. Once the file is loaded into R Studio, we need to make a few adjustments. The original file splits the cases into two categories, confirmed and probable. On the state's dashboard, they combine these numbers into a total for map reporting. We will do the same. This is easily done with the group_by and summarise functions. We will also change the county names to lowercase in preparation for merging.
+
+```{r}
 
 # Data prep ---------------------------------------------------------------
 
@@ -44,7 +55,9 @@ cases_and_county <- cases_and_county %>%
   rename(county = COUNTY)
 
 
+```
 
+```{r}
 cases_and_county<- cases_and_county %>%
   mutate(Category = case_when(total_cases < 1000 ~ '0-999', 
                               total_cases < 5000 ~ '1000-4999',
@@ -64,7 +77,9 @@ lvls <- c('0-999',
           '100000+')
 
 cases_and_county$Category <- fct_relevel(cases_and_county$Category, lvls)
+```
 
+```{r}
 # Making the map ----------------------------------------------------------
 
 p <- c("#ACD1E7", "#82BADC", "#59A1CF", "#236893","#174562", "#122548")
@@ -104,12 +119,16 @@ ggplotly(g, tooltip = c("text"), width = 700, height = 600) %>%
 ## Using Leaflet
 
 ```{r}
+# leaflet -----------------------------------------------------------------
+
+
 library(sp)
 library(raster)
 library(rgdal)
 library(leaflet)
 
 miCounties <- readOGR("Counties_(v17a)", "Counties_(v17a)")
+
 micovid <- micovid %>%
   mutate(NAME = case_when(
     COUNTY == "St Clair" ~ "St. Clair",
@@ -119,19 +138,31 @@ micovid <- micovid %>%
 
 combined <- merge(miCounties, micovid)
 
-bins <- c(0, 1000, 5000, 15000, 30000, 100000, Inf)
-pal <- colorBin("YlOrRd", domain = combined$total_cases, bins = bins)
 
-labels <- sprintf(
-  "<strong>%s</strong><br/>%g",
+# pals and labels for each map -------------------------------------------------------
+
+case_bins <- c(0, 1000, 5000, 15000, 30000, 100000, Inf)
+case_pal <- colorBin("Blues", domain = combined$total_cases, bins = case_bins)
+
+case_labels <- sprintf(
+  "<strong>%s</strong><br/>Cases: %g",
   combined$NAME, combined$total_cases
 ) %>% lapply(htmltools::HTML)
 
+death_bins <- c(0, 50, 100, 150, 500, 1500, 3000, Inf)
 
-leaflet() %>%
-  addTiles() %>%
+death_pal <- colorBin("Reds", domain = combined$total_deaths, bins = death_bins)
+
+death_labels  <- sprintf(
+  "<strong>%s</strong><br/>Deaths: %g",
+  combined$NAME, combined$total_deaths
+) %>% lapply(htmltools::HTML)
+
+leaflet() %>% 
+  addTiles(group = "base") %>%
   addPolygons(data = combined,
-              fillColor = ~pal(total_cases),
+              group = "Cases",
+              fillColor = ~case_pal(total_cases),
               weight = 2,
               opacity = 1,
               color = "white",
@@ -143,16 +174,42 @@ leaflet() %>%
                 dashArray = "",
                 fillOpacity = 0.7,
                 bringToFront = TRUE),
-              label = labels,
+              label = case_labels,
+              labelOptions = labelOptions(
+                style = list("font-weight" = "normal", padding = "3px 8px"),
+                textsize = "15px",
+                direction = "auto")) %>%
+  addLegend(data = combined,
+            title = "Cases",
+            pal = case_pal, values = ~total_cases, opacity = 0.7,
+            position = "bottomright", group = "Cases") %>%
+  addPolygons(data = combined,
+              group = "Deaths",
+              fillColor = ~death_pal(total_deaths),
+              weight = 2,
+              opacity = 1,
+              color = "white",
+              dashArray = "3",
+              fillOpacity = 0.7,
+              highlightOptions = highlightOptions(
+                weight = 5,
+                color = "#666",
+                dashArray = "",
+                fillOpacity = 0.7,
+                bringToFront = TRUE),
+              label = death_labels,
               labelOptions = labelOptions(
                 style = list("font-weight" = "normal", padding = "3px 8px"),
                 textsize = "15px",
                 direction = "auto")) %>%
   addLegend(data = combined, 
-            pal = pal, values = ~total_cases, opacity = 0.7,
-    position = "bottomright",
-    title = "Number of Cases") 
-              
+            title = "Deaths",
+            pal = death_pal, values = ~total_deaths, opacity = 0.7,
+            position = "bottomright", group = "Deaths") %>%
+  addLayersControl(overlayGroups = c("Cases", "Deaths"),
+                   options = layersControlOptions(collapsed = FALSE)) %>%
+  hideGroup("Deaths")
+
 ```
 
 ## Conclusion

@@ -21,16 +21,30 @@ div.sourceCode {
 }
 
 .navbar-dark .navbar-nav .nav-link {
+  background-color:#475687;
   color:#D9E3F1;
+  border-style: solid;
+  border-color: #D9E3F1;
+  transition-duration: 0.02s;
+  font-size: 1.1em;
+    padding: 0.5em 0.5em;
+    text-align: center;
 }
 
 .navbar-dark .navbar-nav .nav-link.active {
+  background-color:#475687;
   color:#D9E3F1;
+  border-style: solid;
+  border-color: #D9E3F1;
+  transition-duration: 0.02s;
+  font-size: 1.1em;
+    padding: 0.5em 0.5em;
+    text-align: center;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
-  color:#D9E3F1;
-  font-weight: bold;
+  background-color:#D9E3F1;
+  color:#475687;
 }
 
 /* nav menu */
@@ -39,13 +53,9 @@ div.sourceCode {
 
 .navbar-dark .navbar-toggler-icon {
     background-image: url('nav.png');
-    color: rgba(0,0,0,0);
-    border-color: rgba(0,0,0,0);
+    
 }
 
-.navbar-dark .navbar-toggler-icon:hover {
-    background-image: url('nav-hover.png');
-}
 
 /* homepage */
 
@@ -59,7 +69,6 @@ div.quarto-about-solana .about-entity .about-link {
     font-size: 1.1em;
     padding: 0.5em 0.5em;
     text-align: center;
-    border-radius: 175px;
     margin-right: 10px;
 }
 
@@ -81,6 +90,19 @@ p {
 /* for the blog section */
 
 
+a {
+  color: #0078D4;
+}
+a:hover {
+  color: #0078D4;
+}
+
+
+p code:not(.sourceCode){
+  background-color: #F4F4F4;
+  color: #9954bb;
+;
+}
 
 
 

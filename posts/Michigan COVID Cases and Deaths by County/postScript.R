@@ -108,7 +108,7 @@ case_bins <- c(0, 1000, 5000, 15000, 30000, 100000, Inf)
 case_pal <- colorBin("Blues", domain = combined$total_cases, bins = case_bins)
 
 case_labels <- sprintf(
-  "<strong>%s</strong><br/>%g",
+  "<strong>%s</strong><br/>Cases: %g",
   combined$NAME, combined$total_cases
 ) %>% lapply(htmltools::HTML)
 
@@ -117,7 +117,7 @@ death_bins <- c(0, 50, 100, 150, 500, 1500, 3000, Inf)
 death_pal <- colorBin("Reds", domain = combined$total_deaths, bins = death_bins)
 
 death_labels  <- sprintf(
-  "<strong>%s</strong><br/>%g",
+  "<strong>%s</strong><br/>Deaths: %g",
   combined$NAME, combined$total_deaths
 ) %>% lapply(htmltools::HTML)
 
@@ -142,8 +142,9 @@ leaflet() %>%
                 style = list("font-weight" = "normal", padding = "3px 8px"),
                 textsize = "15px",
                 direction = "auto")) %>%
-  addLegend(data = combined, 
-            pal = case_pal, values = ~total_cases, opacity = 0.7, title = NULL,
+  addLegend(data = combined,
+            title = "Cases",
+            pal = case_pal, values = ~total_cases, opacity = 0.7,
             position = "bottomright", group = "Cases") %>%
   addPolygons(data = combined,
               group = "Deaths",
@@ -165,9 +166,11 @@ leaflet() %>%
                 textsize = "15px",
                 direction = "auto")) %>%
   addLegend(data = combined, 
-            pal = death_pal, values = ~total_deaths, opacity = 0.7, title = NULL,
+            title = "Deaths",
+            pal = death_pal, values = ~total_deaths, opacity = 0.7,
             position = "bottomright", group = "Deaths") %>%
-  addLayersControl(overlayGroups = c("Cases", "Deaths")) %>%
+  addLayersControl(overlayGroups = c("Cases", "Deaths"),
+                   options = layersControlOptions(collapsed = FALSE)) %>%
   hideGroup("Deaths")
 
 
