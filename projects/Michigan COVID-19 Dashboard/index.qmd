@@ -1,0 +1,19 @@
+---
+title: "Michigan COVID-19 Dashboard"
+author: "Brenden Smith"
+date: "2022-12-10"
+description: "My first Power BI Dashboard using Michigan COVID-19 data."
+image: dash.png
+---
+
+# Power BI
+
+This past semester, I had the pleasure of taking a course on health informatics. We were tasked with creating an entire interactive dashboard using Power BI. This is my first experience using the software, and I have to say it is a lot of fun to play around with. After learning some of the ins and outs of exporting and transforming data, formatting beautiful visualizations came surprisingly easy.
+
+The dashboard featured here is a re-imagining of the State's [current COVID-19 dashboard.](https://www.michigan.gov/coronavirus/stats) I began with recreating the content they already provide. This entire project was made using the publicly available data files on the SOM's website. In the last tab, I incorporated the CDC's community level data that they provide for each state. I included this as the data provided is made comparable by population standardization, and increasingly, it seems that officials are looking to these levels specifically for policy guidance.
+
+To view the dashboard in full screen you can use the [link here.](https://app.powerbi.com/view?r=eyJrIjoiNDg5MTRkNjctYzc5NS00M2Y4LWFhMzgtOTgyZmJhODFjOWUwIiwidCI6IjIyMTc3MTMwLTY0MmYtNDFkOS05MjExLTc0MjM3YWQ1Njg3ZCIsImMiOjN9&pageName=ReportSection7416d6f46c712479902e) Below is the embedded dashboard. Enjoy!
+
+```{=html}
+<iframe title="842 C-19 Dash" width="800" height="500" src="https://app.powerbi.com/view?r=eyJrIjoiNDg5MTRkNjctYzc5NS00M2Y4LWFhMzgtOTgyZmJhODFjOWUwIiwidCI6IjIyMTc3MTMwLTY0MmYtNDFkOS05MjExLTc0MjM3YWQ1Njg3ZCIsImMiOjN9&pageName=ReportSection7416d6f46c712479902e" frameborder="0" allowFullScreen="true"></iframe>
+```

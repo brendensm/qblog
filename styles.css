@@ -1,6 +1,6 @@
 /* css styles */
 
-div.sourceCode {
+.sourceCode {
     background-color: #F4F4F4;
     border: 1px solid #000000;
     border-radius: 0.25rem;
@@ -27,7 +27,7 @@ div.sourceCode {
   border-color: #D9E3F1;
   transition-duration: 0.02s;
   font-size: 1.1em;
-    padding: 0.5em 0.5em;
+    padding: 0.5em 1.5em;
     text-align: center;
 }
 
@@ -38,7 +38,7 @@ div.sourceCode {
   border-color: #D9E3F1;
   transition-duration: 0.02s;
   font-size: 1.1em;
-    padding: 0.5em 0.5em;
+    padding: 0.5em 1.5em;
     text-align: center;
 }
 
@@ -55,7 +55,6 @@ div.sourceCode {
     background-image: url('nav.png');
     
 }
-
 
 /* homepage */
 

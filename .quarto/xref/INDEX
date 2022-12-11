@@ -28,5 +28,14 @@
   },
   "posts/Survival Analysis/index.qmd": {
     "index.html": "0f3f1fe4"
+  },
+  "projects/Michigan COVID-19 Dashboard/index.qmd": {
+    "index.html": "c47a8bbb"
+  },
+  "projects.qmd": {
+    "projects.html": "fe06aedc"
+  },
+  "projects/Mental Health and the Pandemic/index.qmd": {
+    "index.html": "0ee8347e"
   }
 }

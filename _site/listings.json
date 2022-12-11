@@ -12,5 +12,12 @@
       "/posts/Michigan COVID Cases and Deaths by County/index.html",
       "/posts/welcome/index.html"
     ]
+  },
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/Michigan COVID-19 Dashboard/index.html",
+      "/projects/Mental Health and the Pandemic/index.html"
+    ]
   }
 ]

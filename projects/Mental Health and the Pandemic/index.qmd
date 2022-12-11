@@ -1,0 +1,7 @@
+---
+title: "Mental Health and the Pandemic"
+author: "Brenden Smith"
+date: "2022-11-14"
+description: "NCHS/Health Academy Data Visualization Challenge Submission"
+image: shiny.png
+---

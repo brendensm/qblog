@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Brenden Smith">
+<meta name="dcterms.date" content="2022-12-10">
+<meta name="description" content="My first Power BI Dashboard using Michigan COVID-19 data.">
 
-<title>Brenden Smith</title>
+<title>Brenden Smith - Michigan COVID-19 Dashboard</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,18 +26,19 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<link href="./cat96.png" rel="icon" type="image/png">
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../../cat96.png" rel="icon" type="image/png">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -50,7 +54,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -60,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Brenden Smith</span>
     </a>
   </div>
@@ -70,10 +74,10 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html">Projects</a>
+    <a class="nav-link" href="../../projects.html">Projects</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html">Blog</a>
+    <a class="nav-link" href="../../blog.html">Blog</a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -86,41 +90,52 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<div class="quarto-about-solana column-body">
-  <div class="about-entity">
-    <div class="entity-contents">
-      <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Brenden Smith</h1>
-<p class="subtitle lead">MPH Student, Research Assistant @ Michigan State University - Institute for Health Policy</p>
+<h1 class="title">Michigan COVID-19 Dashboard</h1>
 </div>
+
+<div>
+  <div class="description">
+    My first Power BI Dashboard using Michigan COVID-19 data.
+  </div>
+</div>
+
+
 <div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Brenden Smith </p>
+          </div>
   </div>
-</header> <div class="about-links">
-  <a href="https://twitter.com/brendenmsmith" class="about-link">
-    <i class="bi bi-twitter"></i>
-     <span class="about-link-text">Twitter</span>
-  </a>
-  <a href="https://linkedin.com" class="about-link">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/brendensm" class="about-link">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-      <div class="about-contents"><main class="content" id="quarto-document-content">
-<p>Hello, I’m Brenden. I am a student of public health with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast.</p>
-
-
-</main></div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 10, 2022</p>
     </div>
-    <img src="transme.png" class="about-image
-  rounded " style="width: 15em;">
   </div>
-</div>
- <!-- /main -->
+    
+  </div>
+  
+
+</header>
+
+<section id="power-bi" class="level1">
+<h1>Power BI</h1>
+<p>This past semester, I had the pleasure of taking a course on health informatics. We were tasked with creating an entire interactive dashboard using Power BI. This is my first experience using the software, and I have to say it is a lot of fun to play around with. After learning some of the ins and outs of exporting and transforming data, formatting beautiful visualizations came surprisingly easy.</p>
+<p>The dashboard featured here is a re-imagining of the State’s <a href="https://www.michigan.gov/coronavirus/stats">current COVID-19 dashboard.</a> I began with recreating the content they already provide. This entire project was made using the publicly available data files on the SOM’s website. In the last tab, I incorporated the CDC’s community level data that they provide for each state. I included this as the data provided is made comparable by population standardization, and increasingly, it seems that officials are looking to these levels specifically for policy guidance.</p>
+<p>To view the dashboard in full screen you can use the <a href="https://app.powerbi.com/view?r=eyJrIjoiNDg5MTRkNjctYzc5NS00M2Y4LWFhMzgtOTgyZmJhODFjOWUwIiwidCI6IjIyMTc3MTMwLTY0MmYtNDFkOS05MjExLTc0MjM3YWQ1Njg3ZCIsImMiOjN9&amp;pageName=ReportSection7416d6f46c712479902e">link here.</a> Below is the embedded dashboard. Enjoy!</p>
+<iframe title="842 C-19 Dash" width="800" height="500" src="https://app.powerbi.com/view?r=eyJrIjoiNDg5MTRkNjctYzc5NS00M2Y4LWFhMzgtOTgyZmJhODFjOWUwIiwidCI6IjIyMTc3MTMwLTY0MmYtNDFkOS05MjExLTc0MjM3YWQ1Njg3ZCIsImMiOjN9&amp;pageName=ReportSection7416d6f46c712479902e" frameborder="0" allowfullscreen="true"></iframe>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -141,6 +156,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;
