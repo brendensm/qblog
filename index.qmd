@@ -1,6 +1,6 @@
 ---
 title: "Brenden Smith"
-subtitle: "MPH Student, Research Assistant @ Michigan State University - Institute for Health Policy"
+subtitle: "MPH Candidate, Research Assistant, Michigan State University, Institute for Health Policy"
 image: transme.png
 about:
   template: solana

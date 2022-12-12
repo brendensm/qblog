@@ -32,7 +32,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "R\n\n\nmaps\n\n\n\n\nTwo quick, interactive COVID-19 maps.\n\n\n\n\n\n\nOct 11, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\npersonal\n\n\n\n\nA brief introduction\n\n\n\n\n\n\nOct 9, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\nNo matching items"
+    "text": "R\n\n\nmaps\n\n\n\nTwo quick, interactive COVID-19 maps.\n\n\n\nBrenden Smith\n\n\nOct 11, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\npersonal\n\n\n\nA brief introduction\n\n\n\nBrenden Smith\n\n\nOct 9, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/welcome/index.html#header-two",
@@ -124,5 +124,12 @@
     "title": "Michigan COVID-19 Dashboard",
     "section": "",
     "text": "This past semester, I had the pleasure of taking a course on health informatics. We were tasked with creating an entire interactive dashboard using Power BI. This is my first experience using the software, and I have to say it is a lot of fun to play around with. After learning some of the ins and outs of exporting and transforming data, formatting beautiful visualizations came surprisingly easy.\nThe dashboard featured here is a re-imagining of the State’s current COVID-19 dashboard. I began with recreating the content they already provide. This entire project was made using the publicly available data files on the SOM’s website. In the last tab, I incorporated the CDC’s community level data that they provide for each state. I included this as the data provided is made comparable by population standardization, and increasingly, it seems that officials are looking to these levels specifically for policy guidance.\nTo view the dashboard in full screen you can use the link here. Below is the embedded dashboard. Enjoy!"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Resume",
+    "section": "",
+    "text": "#####Minor in Chicano/Latino Studies"
   }
 ]
