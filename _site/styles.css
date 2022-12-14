@@ -1,5 +1,9 @@
 /* css styles */
 
+html * {
+  font-family: 'Optima';
+}
+
 .sourceCode {
     background-color: #F4F4F4;
     border: 1px solid #000000;
@@ -23,8 +27,6 @@
 .navbar-dark .navbar-nav .nav-link {
   background-color:#475687;
   color:#D9E3F1;
-  border-style: solid;
-  border-color: #D9E3F1;
   transition-duration: 0.02s;
   font-size: 1.1em;
     padding: 0.5em 1.0em;
@@ -34,8 +36,6 @@
 .navbar-dark .navbar-nav .nav-link.active {
   background-color:#475687;
   color:#D9E3F1;
-  border-style: solid;
-  border-color: #D9E3F1;
   transition-duration: 0.02s;
   font-size: 1.1em;
     padding: 0.5em 1.0em;
@@ -43,8 +43,9 @@
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
-  background-color:#D9E3F1;
   color:#475687;
+  background-color: #D9E3F1;
+
 }
 
 /* nav menu */
