@@ -3,7 +3,7 @@ title: "Michigan COVID-19 Dashboard"
 author: "Brenden Smith"
 date: "2022-12-10"
 description: "My first Power BI Dashboard using Michigan COVID-19 data."
-image: dash.png
+image: bi.jpeg
 ---
 
 # Power BI

@@ -10,8 +10,6 @@ website:
     right:
       - text: "About"
         file: index.qmd
-      - text: "Resume"
-        file: resume.qmd
       - projects.qmd
       - blog.qmd
      

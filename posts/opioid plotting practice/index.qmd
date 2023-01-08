@@ -62,7 +62,7 @@ opdeaths %>%
   geom_line(aes(color = County))
 ```
 
-That looks a lot better! But we can do more. The lines look a bit skinny to me. I would like them to stand out more. It also might help to adjust the opacity of the lines. This can make points that cross over easier to read. To make these changes, we can specify `size` and `alpha` in `geom_line()` outside of the `aes()` argument.
+That looks a lot better! But we can do more. The lines look a bit skinny to me. I would like them to stand out more. It also might help to adjust the opacity of the lines. This can make points that cross over easier to read. To make these changes, we can specify `linewidth` and `alpha` in `geom_line()` outside of the `aes()` argument.
 
 I think it would be great to add points to our plot, too. Like the `geom_line()` layer, I want these to be large enough and overlap easily. I will pass through similar arguments in the `geom_point()` layer, also specifying the `color`.
 
@@ -71,7 +71,7 @@ I think it would be great to add points to our plot, too. Like the `geom_line()`
 opdeaths %>%
   filter(County %in% counties)  %>%
   ggplot(aes(x = Year, y = `Opioids Overdose Deaths`)) +
-  geom_line(size = 1, alpha = 0.8, aes(color = County)) +
+  geom_line(linewidth = 1, alpha = 0.8, aes(color = County)) +
   geom_point(size = 2, alpha = 0.8, aes(color = County))
 ```
 
@@ -86,14 +86,15 @@ After our `theme_fivethrityeight()` layer, I'm adding a general `theme()` layer 
 opdeaths %>%
   filter(County %in% counties)  %>%
   ggplot(aes(x = Year, y = `Opioids Overdose Deaths`)) +
-  geom_line(size = 1, alpha = 0.8, aes(color = County)) +
+  geom_line(linewidth = 1, alpha = 0.8, aes(color = County)) +
   geom_point(size = 2, alpha = 0.8, aes(color = County)) +
-  labs(title = "Figure 1: Opioid Overdose Deaths, 1999 – 2020",
+  labs(title = "Opioid Overdose Deaths in Michigan's Capital Area Counties, 1999 – 2020",
        x = "Year",
        y = "Number of Deaths") +
   theme_fivethirtyeight() +
   theme(axis.title = element_text(),
-        plot.title = element_text(size = 14))
+        plot.title = element_text(size = 14),
+        plot.title.position = "plot")
 ```
 
 And just like that, we have a very nice looking line chart!
@@ -106,14 +107,15 @@ Next I want to briefly show how easy it is to take a basic ggplot figure and mak
 p1 <- opdeaths %>%
   filter(County %in% counties)  %>%
   ggplot(aes(x = Year, y = `Opioids Overdose Deaths`)) +
-  geom_line(size = 1, alpha = 0.8, aes(color = County)) +
+  geom_line(linewidth = 1, alpha = 0.8, aes(color = County)) +
   geom_point(size = 2, alpha = 0.8, aes(color = County)) +
-  labs(title = "Figure 1: Opioid Overdose Deaths, 1999 – 2020",
+  labs(title = "Opioid Overdose Deaths in Michigan's Capital Area Counties, 1999 – 2020",
        x = "Year",
        y = "Number of Deaths") +
   theme_fivethirtyeight() +
   theme(axis.title = element_text(),
-        plot.title = element_text(size = 14))
+        plot.title = element_text(size = 14),
+        plot.title.position = "plot")
 
 ggplotly(p1)
 ```
