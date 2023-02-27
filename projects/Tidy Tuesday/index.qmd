@@ -1,0 +1,14 @@
+---
+title: "Tidy Tuesday"
+author: "Brenden Smith"
+date: "2023-2-27"
+description: "A collection of practice visualizations from the Tidy Tuesday weekly data project."
+image: tt_logo.png
+toc: true
+---
+
+# About
+
+# Week 8, 2023 
+
+![](tt-w8-2023.png)

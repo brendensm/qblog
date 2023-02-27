@@ -16,6 +16,7 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/Tidy Tuesday/index.html",
       "/projects/Michigan COVID-19 Dashboard/index.html",
       "/projects/Mental Health and the Pandemic/index.html"
     ]

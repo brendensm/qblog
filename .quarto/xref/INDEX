@@ -40,5 +40,8 @@
   },
   "resume.qmd": {
     "resume.html": "aada5433"
+  },
+  "projects/Tidy Tuesday/index.qmd": {
+    "index.html": "6c914eb0"
   }
 }
