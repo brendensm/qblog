@@ -7,7 +7,7 @@ description: "Two quick, interactive COVID-19 maps."
 execute:
   warning: false
 image: image.png
-code-fold: true
+code-fold: show
 ---
 
 ## Introduction
@@ -121,10 +121,7 @@ ggplotly(g, tooltip = c("text"), width = 700, height = 600) %>%
 
 ```{r}
 # leaflet -----------------------------------------------------------------
-
-
 library(sp)
-library(raster)
 library(rgdal)
 library(leaflet)
 
