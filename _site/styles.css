@@ -4,8 +4,10 @@ html * {
   font-family: 'Optima';
 }
 
-.sourceCode cell-code{
+.sourceCode.cell-code{
   background-color: #F4F4F4;
+  border-left-color: #9954bb;
+  border-left-width: 10px;
 }
 
 .navbar-dark {
@@ -97,7 +99,6 @@ a:hover {
 p code:not(.sourceCode){
   background-color: #F4F4F4;
   color: #9954bb;
-;
 }
 
 
