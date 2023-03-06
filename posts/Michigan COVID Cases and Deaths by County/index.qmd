@@ -6,7 +6,7 @@ categories: [R, maps]
 description: "Two quick, interactive COVID-19 maps."
 execute:
   warning: false
-image: image.png
+image: c19.jpg
 code-fold: show
 ---
 
@@ -18,7 +18,7 @@ For the sake of practice, we will walk through two different ways to go about th
 
 ## Ggplot2 map
 
-To start, we will make a base map with ggplot2 and make it interactive with plotly. First, as always, we load in the libraries we will be using.
+To start, we will make a base map with `ggplot2` and make it interactive with `plotly`. First, as always, we load in the libraries we will be using.
 
 ```{r}
 # Load packages -----------------------------------------------------------
@@ -36,12 +36,10 @@ counties <- map_data("county")
 mi_county <- subset(counties, region == "michigan")
 ```
 
-For our COVID-19 data, I am importing an older file from state's website (linked previously). If you want a current version to follow along, you can find it there. Once the file is loaded into R Studio, we need to make a few adjustments. The original file splits the cases into two categories, confirmed and probable. On the state's dashboard, they combine these numbers into a total for map reporting. We will do the same. This is easily done with the group_by and summarise functions. We will also change the county names to lowercase in preparation for merging.
+For our COVID-19 data, I am importing an older file from state's website (linked previously). If you want a current version to follow along, you can find it there. Once the file is loaded into R Studio, we need to make a few adjustments. The original file splits the cases into two categories, confirmed and probable. On the state's dashboard, they combine these numbers into a total for map reporting. We will do the same. This is easily done with the `group_by` and `summarise` functions. We will also change the county names to lowercase in preparation for merging.
 
 ```{r}
-
 # Data prep ---------------------------------------------------------------
-
 micovid <- read.xlsx("Cases and Deaths by County 2022-10-04.xlsx")
 
 micovid <- micovid %>%

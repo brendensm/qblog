@@ -4,6 +4,7 @@ author: "Brenden Smith"
 date: "2022-12-10"
 description: "My first Power BI Dashboard using Michigan COVID-19 data."
 image: bi.jpeg
+page-layout: full
 ---
 
 # Power BI
@@ -15,5 +16,5 @@ The dashboard featured here is a re-imagining of the State's [current COVID-19 d
 To view the dashboard in full screen you can use the [link here.](https://app.powerbi.com/view?r=eyJrIjoiNDg5MTRkNjctYzc5NS00M2Y4LWFhMzgtOTgyZmJhODFjOWUwIiwidCI6IjIyMTc3MTMwLTY0MmYtNDFkOS05MjExLTc0MjM3YWQ1Njg3ZCIsImMiOjN9&pageName=ReportSection7416d6f46c712479902e) Below is the embedded dashboard. Enjoy!
 
 ```{=html}
-<iframe title="842 C-19 Dash" width="800" height="500" src="https://app.powerbi.com/view?r=eyJrIjoiNDg5MTRkNjctYzc5NS00M2Y4LWFhMzgtOTgyZmJhODFjOWUwIiwidCI6IjIyMTc3MTMwLTY0MmYtNDFkOS05MjExLTc0MjM3YWQ1Njg3ZCIsImMiOjN9&pageName=ReportSection7416d6f46c712479902e" frameborder="0" allowFullScreen="true"></iframe>
+<iframe title="842 C-19 Dash" width="1000" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiNDg5MTRkNjctYzc5NS00M2Y4LWFhMzgtOTgyZmJhODFjOWUwIiwidCI6IjIyMTc3MTMwLTY0MmYtNDFkOS05MjExLTc0MjM3YWQ1Njg3ZCIsImMiOjN9&pageName=ReportSection7416d6f46c712479902e" frameborder="0" allowFullScreen="true" align = "center"></iframe>
 ```

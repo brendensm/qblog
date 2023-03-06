@@ -16,17 +16,16 @@ html * {
 }
 
 .navbar-dark .navbar-brand {
-    color:#D9E3F1
+    color:#C3CBD9
 }
 
 .navbar-dark .navbar-brand:hover {
     color:#D9E3F1;
-    font-weight: bold;
 }
 
 .navbar-dark .navbar-nav .nav-link {
   background-color:#475687;
-  color:#D9E3F1;
+  color:#C3CBD9;
   transition-duration: 0.02s;
   font-size: 1.1em;
     padding: 0.5em 1.0em;
@@ -43,8 +42,7 @@ html * {
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
-  color:#475687;
-  background-color: #D9E3F1;
+  color:#D9E3F1;
 
 }
 

@@ -43,5 +43,8 @@
   },
   "projects/Tidy Tuesday/index.qmd": {
     "index.html": "6c914eb0"
+  },
+  "posts/Bluets/index.qmd": {
+    "index.html": "3130063e"
   }
 }
