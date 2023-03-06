@@ -9,6 +9,9 @@ execute:
   eval: false
 image: bluets.jpeg
 code-fold: show
+code-overflow: scroll
+code-block-bg: "#F4F4F4"
+code-block-border-left: "#9954bb"
 ---
 
 # Introduction

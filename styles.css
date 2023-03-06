@@ -4,10 +4,8 @@ html * {
   font-family: 'Optima';
 }
 
-.sourceCode {
-    background-color: #F4F4F4;
-    border: 1px solid #000000;
-    border-radius: 0.25rem;
+.sourceCode cell-code{
+  background-color: #F4F4F4;
 }
 
 .navbar-dark {
