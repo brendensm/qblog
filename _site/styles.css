@@ -3,7 +3,7 @@
 html * {
   font-family: 'Optima';
 }
-
+ /* code blocks */
 .sourceCode.cell-code{
   background-color: #F4F4F4;
   border-left-color: #9954bb;
@@ -84,10 +84,12 @@ p {
     color: #475687;
 }
 
+/*for the captions*/
+.quarto-categories{
+  color: #53575C;
+}
 
 /* for the blog section */
-
-
 a {
   color: #0078D4;
 }
