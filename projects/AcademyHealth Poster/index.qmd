@@ -1,0 +1,16 @@
+---
+title: "AcademyHealth Poster"
+author: "Brenden Smith"
+date: "2023-6-30"
+description: "The digital version of the poster I presented at the 2023 Annual Research Meeting."
+image: arm-logo-date.jpg
+toc: false
+page-layout: full
+filters: 
+ - lightbox
+lightbox: auto
+---
+
+This research was put together in collaboration with Ann Annis and Wenjuan Ma. This poster would not be possible without their dedication and support!
+
+![](Slide1.png){group="\"my-gallery"}

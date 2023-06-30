@@ -3,8 +3,9 @@ title: "Opioid Plotting Practice"
 author: "Brenden Smith"
 date: "2022-10-09"
 categories: [R, ggplot2]
+description: "A basic ggplot2 walkthrough and an introduction to plotly."
 image: "image.jpg"
-draft: true
+draft: false
 ---
 
 ## Introduction
@@ -32,7 +33,7 @@ library(readxl)
 library(plotly)
 ```
 
-Next, we will read in our data using readxl. The data I am using comes from the Michigan Substance Use Disorder Data Repository (SUDDR). You can download the data yourself [here](https://mi-suddr.com/opioids/). Keep in mind that the numbers we are working with in this example are raw counts of opioid overdose deaths by county. I'm interested in looking at trends over time with this dataset.
+Next, we will read in our data using readxl. The data I am using comes from the Michigan Substance Use Disorder Data Repository (SUDDR). You can download the data yourself [here](https://mi-suddr.com/opioids/). Keep in mind that the numbers we are working with in this example are raw counts of opioid overdose deaths by county, NOT rates. Therefore, we should not compare these counties against each other without considering population size differences. I'm interested in looking at changes over time with this dataset.
 
 Because I'm focusing on the three counties in my area, I'm going to create a vector with the names of the capital area counties. This will make subsetting the data a little easier.
 
@@ -82,19 +83,23 @@ Adding a theme is even easier. We can quickly add on a layer and pick a theme th
 After our `theme_fivethrityeight()` layer, I'm adding a general `theme()` layer to specify that I want all my main title and axes titles to be shown. I am also adjusting the text size to make the title a bit more readable.
 
 ```{r}
-
 opdeaths %>%
   filter(County %in% counties)  %>%
   ggplot(aes(x = Year, y = `Opioids Overdose Deaths`)) +
   geom_line(linewidth = 1, alpha = 0.8, aes(color = County)) +
   geom_point(size = 2, alpha = 0.8, aes(color = County)) +
-  labs(title = "Opioid Overdose Deaths in Michigan's Capital Area Counties, 1999 – 2020",
+  labs(title = "Opioid Overdose Deaths in Michigan's Capital Area \nCounties, 1999 – 2020",
        x = "Year",
        y = "Number of Deaths") +
   theme_fivethirtyeight() +
-  theme(axis.title = element_text(),
-        plot.title = element_text(size = 14),
-        plot.title.position = "plot")
+  theme(plot.title = element_text(size = 16),
+        plot.title.position = "plot",
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size = 11),
+        axis.title.y = element_text(vjust = +3),
+        axis.title.x = element_text(vjust = -0.75),
+        text = element_text(family = "Georgia"),
+        plot.margin = unit(c(1, 1, 1, 1), "lines"))
 ```
 
 And just like that, we have a very nice looking line chart!
@@ -113,9 +118,14 @@ p1 <- opdeaths %>%
        x = "Year",
        y = "Number of Deaths") +
   theme_fivethirtyeight() +
-  theme(axis.title = element_text(),
-        plot.title = element_text(size = 14),
-        plot.title.position = "plot")
+  theme(plot.title = element_text(size = 16),
+        plot.title.position = "plot",
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size = 11),
+        axis.title.y = element_text(vjust = +3),
+        axis.title.x = element_text(vjust = -0.75),
+        text = element_text(family = "Georgia"),
+        plot.margin = unit(c(1, 1, 1, 1), "lines"))
 
 ggplotly(p1)
 ```

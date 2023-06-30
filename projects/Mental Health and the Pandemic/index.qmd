@@ -2,8 +2,20 @@
 title: "Mental Health and the Pandemic"
 author: "Brenden Smith"
 date: "2022-11-14"
-description: "NCHS/Academy Health Data Visualization Challenge Submission"
+description: "NCHS/AcademyHealth Data Visualization Challenge Submission"
 image: shiny.jpeg
 ---
 
-# 
+# Introduction
+
+This project was originally a submission to the National Center for Health Statistics and AcademyHealth sponsored Data Visualization Challenge in Fall of 2022.
+
+This web application was my first experience building a Shiny application! I found it fascinating to dive into the mechanics of making a usable, interactive web application for data exploration.
+
+This project uses data from the Household Pulse Survey as well as data from the Uniform Data System to understand mental illness during the pandemic years. HHP data shows national trends for varying mental illnesses while the UDS data speaks to the experience of patients accessing care at federally qualified health centers throughout the country. We added this data and compared it with poverty rates across U.S. counties (American Community Survey) and mental health provider shortage levels (Area Health Resources Files).
+
+My favorite part of this challenge was getting to create large, interactive maps to explore these data.
+
+While the application could be embedded here, it is best viewed in its own window. You can access the app and the full data [here.](https://n1mbmu-brenden-smith.shinyapps.io/nchs-v4/)
+
+![](shiny-screenshot.jpg)
