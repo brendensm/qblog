@@ -14,6 +14,10 @@ about:
     - icon: github
       text: Github
       href: https://github.com/brendensm
+
 ---
 
 Hello, I'm Brenden. I am an MPH candidate with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast.
+
+
+

@@ -12,6 +12,11 @@ lightbox: auto
 ---
 
 ::: grid
+
+::: {.g-col-12 .g-col-md-6}
+![](week27_viz.png){group="\"my-gallery"}
+:::
+
 ::: {.g-col-12 .g-col-md-6}
 ![](tt-week-10-1.png){group="\"my-gallery"}
 :::

@@ -7,8 +7,8 @@ freeze: true
 # Enable banner style title blocks
 title-block-banner: true
 
-toc: true
-toc-depth: 3
+toc: false
+
 
 page-layout: article
 

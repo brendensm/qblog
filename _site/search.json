@@ -32,7 +32,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Twitter Bots\n\n\n\nR\n\n\ncolor\n\n\nweb-scraping\n\n\n\n‘Suppose I were to begin by saying that I had fallen in love with a color.’\n\n\n\nBrenden Smith\n\n\nMar 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMichigan COVID-19 County Maps\n\n\n\nR\n\n\nmaps\n\n\n\nTwo quick, interactive COVID-19 maps.\n\n\n\nBrenden Smith\n\n\nOct 11, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpioid Plotting Practice\n\n\n\nR\n\n\nggplot2\n\n\n\nA basic ggplot2 walkthrough and an introduction to plotly.\n\n\n\nBrenden Smith\n\n\nOct 9, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Twitter Bots\n\n\n‘Suppose I were to begin by saying that I had fallen in love with a color.’\n\n\n\nBrenden Smith\n\n\nMar 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMichigan COVID-19 County Maps\n\n\nTwo quick, interactive COVID-19 maps.\n\n\n\nBrenden Smith\n\n\nOct 11, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpioid Plotting Practice\n\n\nA basic ggplot2 walkthrough and an introduction to plotly.\n\n\n\nBrenden Smith\n\n\nOct 9, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/welcome/index.html#header-two",
@@ -194,5 +194,33 @@
     "title": "Opioid Plotting Practice",
     "section": "A Glimpse of Plotly",
     "text": "A Glimpse of Plotly\nNext I want to briefly show how easy it is to take a basic ggplot figure and make it interactive with the amazing package plotly. If I save the figure we created before as an object, we can pass it through the function ggplotly(), and as a result, we get a chart where we can zoom in and hover over points to gain more insight. I will demonstrate this below.\n\np1 <- opdeaths %>%\n  filter(County %in% counties)  %>%\n  ggplot(aes(x = Year, y = `Opioids Overdose Deaths`)) +\n  geom_line(linewidth = 1, alpha = 0.8, aes(color = County)) +\n  geom_point(size = 2, alpha = 0.8, aes(color = County)) +\n  labs(title = \"Opioid Overdose Deaths in Michigan's Capital Area Counties, 1999 – 2020\",\n       x = \"Year\",\n       y = \"Number of Deaths\") +\n  theme_fivethirtyeight() +\n  theme(plot.title = element_text(size = 16),\n        plot.title.position = \"plot\",\n        axis.title = element_text(size = 12),\n        axis.text = element_text(size = 11),\n        axis.title.y = element_text(vjust = +3),\n        axis.title.x = element_text(vjust = -0.75),\n        text = element_text(family = \"Georgia\"),\n        plot.margin = unit(c(1, 1, 1, 1), \"lines\"))\n\nggplotly(p1)\n\n\n\n\n\nIt’s amazing how quickly you can produce interactive charts with R! The output from this function in an html widget. So it can easily be viewed on a website or a local html file. This makes it ideal for sharing graphics quickly among coworkers.\nFor my project, I created a few more graphics with the same color palette and arranged them on a pdf for easy distribution. If you want to view the finished product you can find that here.\nI hope you found this post helpful. Next time I want to focus more on plotly demonstrating its capabilities with spatial data analysis. Until next time!"
+  },
+  {
+    "objectID": "index.html#blog-highlights",
+    "href": "index.html#blog-highlights",
+    "title": "Brenden Smith",
+    "section": "Blog Highlights",
+    "text": "Blog Highlights\n\nBlog post 1\nBlog post 2\nBlog post 3"
+  },
+  {
+    "objectID": "index.html#featured-projects",
+    "href": "index.html#featured-projects",
+    "title": "Brenden Smith",
+    "section": "Featured Projects",
+    "text": "Featured Projects\n\nThis div...\n...required...\n...no offset (it’s still in the first row)"
+  },
+  {
+    "objectID": "index.html#recent-blog-posts",
+    "href": "index.html#recent-blog-posts",
+    "title": "Brenden Smith",
+    "section": "Recent Blog Posts",
+    "text": "Recent Blog Posts\n\n\n\n\n\n\n\n\n\n\n\n\nTwitter Bots\n\n\n6 min\n\n\n\nR\n\n\ncolor\n\n\nweb-scraping\n\n\n\n\nBrenden Smith\n\n\nMar 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMichigan COVID-19 County Maps\n\n\n8 min\n\n\n\nR\n\n\nmaps\n\n\n\n\nBrenden Smith\n\n\nOct 11, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpioid Plotting Practice\n\n\n6 min\n\n\n\nR\n\n\nggplot2\n\n\n\n\nBrenden Smith\n\n\nOct 9, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#mph-candidate-research-assistant-michigan-state-university-institute-for-health-policy",
+    "href": "index.html#mph-candidate-research-assistant-michigan-state-university-institute-for-health-policy",
+    "title": "Brenden Smith",
+    "section": "MPH Candidate, Research Assistant, Michigan State University, Institute for Health Policy",
+    "text": "MPH Candidate, Research Assistant, Michigan State University, Institute for Health Policy\nHello, I’m Brenden. I am an MPH candidate with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast.\n :::"
   }
 ]
