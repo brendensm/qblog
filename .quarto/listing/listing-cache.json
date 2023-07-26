@@ -3,7 +3,12 @@
     "index.qmd": [
       "posts",
       "posts/**/*.qmd",
-      "projects/**/*.qmd"
+      "projects/**/*.qmd",
+      "projects/*.qmd",
+      "projects/**.qmd",
+      "projects/*/*.qmd",
+      "blog/*/*.qmd",
+      "posts/*/*.qmd"
     ],
     "blog.qmd": [
       "posts"

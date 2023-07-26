@@ -2,6 +2,10 @@
   {
     "listing": "/index.html",
     "items": [
+      "/projects/AcademyHealth Poster/index.html",
+      "/projects/Tidy Tuesday/index.html",
+      "/projects/Michigan COVID-19 Dashboard/index.html",
+      "/projects/Mental Health and the Pandemic/index.html",
       "/posts/Bluets/index.html",
       "/posts/Michigan COVID Cases and Deaths by County/index.html",
       "/posts/opioid plotting practice/index.html"

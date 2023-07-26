@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Brenden Smith",
     "section": "",
-    "text": "Hello, I’m Brenden. I am an MPH candidate with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast."
+    "text": "Hello, I’m Brenden. I am an MPH candidate with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast.\nIf you would like to see some of my current and past work, you can visit my portfolio page or check out my blog."
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -222,5 +222,19 @@
     "title": "Brenden Smith",
     "section": "MPH Candidate, Research Assistant, Michigan State University, Institute for Health Policy",
     "text": "MPH Candidate, Research Assistant, Michigan State University, Institute for Health Policy\nHello, I’m Brenden. I am an MPH candidate with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast.\n :::"
+  },
+  {
+    "objectID": "index.html#projects",
+    "href": "index.html#projects",
+    "title": "Brenden Smith",
+    "section": "Projects",
+    "text": "Projects\n\n\n\n\n\n\n\n\n\n\nAcademyHealth Poster\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday\n\n\n\n\n\n\n\n\n\n\n\n\n\nMichigan COVID-19 Dashboard\n\n\n\n\n\n\n\n\n\n\n\n\n\nMental Health and the Pandemic\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#blog-posts",
+    "href": "index.html#blog-posts",
+    "title": "Brenden Smith",
+    "section": "Blog Posts",
+    "text": "Blog Posts\n\n\n\n\n\n\n\n\n\n\nTwitter Bots\n\n\n\nR\n\n\ncolor\n\n\nweb-scraping\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMichigan COVID-19 County Maps\n\n\n\nR\n\n\nmaps\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOpioid Plotting Practice\n\n\n\nR\n\n\nggplot2\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]
