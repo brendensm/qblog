@@ -12,6 +12,8 @@ code-fold: show
 code-overflow: scroll
 ---
 
+*Update: Since a certain someone took over the bird app, this bot is no longer functional. Unfortunately, it is not worth paying \$100/month to post random shades of blue. What an injustice.*
+
 # Introduction
 
 Blue is a color that moves me. I love how many forms it can take, the way its shades can channel moods. I recently reread my copy of Maggie Nelson's *Bluets* and felt inspired to revisit an older project of mine. Possibly the first R project I put together (that was more fun, and not statistics or graphic related) was my twitter bot, everywordisblue.

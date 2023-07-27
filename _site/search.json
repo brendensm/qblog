@@ -144,7 +144,7 @@
     "href": "posts/Bluets/index.html",
     "title": "Twitter Bots",
     "section": "",
-    "text": "Blue is a color that moves me. I love how many forms it can take, the way its shades can channel moods. I recently reread my copy of Maggie Nelson’s Bluets and felt inspired to revisit an older project of mine. Possibly the first R project I put together (that was more fun, and not statistics or graphic related) was my twitter bot, everywordisblue.\nThis was a year or so back when I was just starting to dust off R and commit to learning the language fully. The original account was influenced by many of the silly bots on the website and my personal passion for the color blue. It took a randomly selected noun, pasted the word 'blue' in front of it, and posted it straight to Twitter once a day. While this creation gave me some immediate satisfaction (and some interesting results), I did feel that the account was a bit too simplistic; I always wanted to do more.\nInfinitely more satisfying would be a randomly selected hue of blue, shared daily, completely automated. To do this required editing my original script and, most importantly, web-scraping a data set of blue colors with accompanying hex codes. Follow along and let’s build something fun!"
+    "text": "Update: Since a certain someone took over the bird app, this bot is no longer functional. Unfortunately, it is not worth paying $100/month to post random shades of blue. What an injustice."
   },
   {
     "objectID": "posts/Bluets/index.html#using-rvest",
