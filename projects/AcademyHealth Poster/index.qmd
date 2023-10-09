@@ -1,16 +1,22 @@
 ---
-title: "AcademyHealth Poster"
+title: "Academic Posters"
 author: "Brenden Smith"
-date: "2023-6-30"
-description: "The digital version of the poster I presented at the 2023 Annual Research Meeting."
+date: "2023-8-3"
+description: "Various academic and professional projects that I have prepared into poster presentations."
 image: arm-logo-date.jpg
+
 toc: false
 page-layout: full
 filters: 
  - lightbox
 lightbox: auto
 ---
+# Barriers to Refuse Disposal in Larteh, Ghana
+This poster was put together as a result of my research experiences in Ghana. This fulfilled my practicum requirement for my MPH program. As of this posting, the research has not been submitted or presented formally.
 
+![](SMITH GHANA POSTER.png){group="\my-gallery"}
+
+# AcademyHealth Poster: Mental Health and the Pandemic
 This research was put together in collaboration with Ann Annis and Wenjuan Ma. This poster would not be possible without their dedication and support!
 
 ![](Slide1.png){group="\"my-gallery"}

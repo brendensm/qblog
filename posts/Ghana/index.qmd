@@ -1,0 +1,38 @@
+---
+title: "My Time in Ghana"
+author: "Brenden Smith"
+date: "2023-8-4"
+categories: [R, maps, personal]
+description: "Reflecting on my first experience abroad."
+execute: 
+  warning: false
+  eval: false
+image: gh-flag.jpg
+code-fold: true
+code-overflow: scroll
+draft: true
+---
+
+:::grid
+::: {.g-col-12 .g-col-md-6}
+![Map of the stops on my trip through Ghana.](ghana_trip23.svg){group="\"my-gallery"}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+# Introduction
+This is some basic introduction text to test if the grid is working properly.
+:::
+
+:::{.g-col-24 .g-col-md-12} 
+# My Practicum Experience
+More of a test to see how this format looks.
+:::
+
+:::
+
+
+
+
+
+
+

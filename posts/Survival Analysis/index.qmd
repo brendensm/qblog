@@ -6,15 +6,21 @@ categories: [R, Epi, ggplot2]
 description: "Exploring survival analysis with the packages 'survival' and 'survminer.'"
 image: thumbnail.png
 draft: true
+code-fold: show
 execute: 
   warning: false
 format: 
   html:
     fig-height: 6
     fig-width: 8
----
 
-# Survival Analysis
+---
+# Introduction
+In this blog post, I'll be exploring some basic survival analysis in R. Survival analysis focuses on describing the occurance of an event (in this example death) in a set timeframe. Survival analysis is often used in clinical research and cancer epidemiology. For more reading, I recommend visiting The Epidemiologist R Handbook page on survival analysis, as well as their listed resources. The following blog post was adapted from my Biostatistics coursework and features data used in that course. We will create a Kaplan-Meier plot and go through Cox Hazard Regression.
+
+# Packages and Data
+
+For this blog post, I will use the packages have, dplyr, survival, ggthemes, and survminer.
 
 ```{R}
 # Load in libraries
@@ -25,14 +31,20 @@ library(ggthemes)
 
 ```
 
+Next, we will load the data. My professor provided a dataset from SPSS, so we are using haven to load it into R.
+
 ```{R}
 FHS <- read_sav("data/Cox Prop Hazard Regression Data.sav")
 ```
 
+To initialize our analysis, we will create a survival object with the function 
+
 ```{R}
 FHS_surv <- Surv(time = FHS$TimeDeathYears,
                  event = FHS$death)
+
 summary(survfit(FHS_surv ~ 1))
+  
 ```
 
 # Kaplan-Meier Plot
@@ -90,6 +102,8 @@ survminer::ggsurvplot(
 
 # Cox Regression and Hazard Ratios
 
+
+
 ```{R}
 FHS_cox <-  coxph(
   Surv(TimeDeathYears, death) ~ diabetes + cursmoke + diabetes + 
@@ -98,6 +112,9 @@ FHS_cox <-  coxph(
 )
 
 summary(FHS_cox)
+
+FHS_cox_test <- cox.zph(FHS_cox)
+FHS_cox_test
 
 survminer::ggforest(FHS_cox, data = FHS)
 ```
