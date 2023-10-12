@@ -15,7 +15,11 @@ html * {
   border-left-width: 10px;
 }
 
-h1{
+code{
+  background: #D9E3F1;
+  color:#9954bb;
+}
+h1, h2{
   color:#D9E3F1;
 }
 
@@ -128,8 +132,13 @@ a:hover {
 
 
 p code:not(.sourceCode){
-  background-color: #F4F4F4;
+  background-color: #D9E3F1;
   color: #9954bb;
+}
+
+div.cell-output.cell-output-stdout{
+  background: #1C2235;
+  color:#D9E3F1;
 }
 
 
