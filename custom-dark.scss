@@ -161,3 +161,11 @@ div.cell-output.cell-output-stdout{
 #quarto-margin-sidebar .quarto-listing-category{
   color:#D9E3F1;
 }
+
+div#quarto-margin-sidebar.sidebar.margin-sidebar{
+  color: #B98AD0;
+}
+
+div#quarto-margin-sidebar.sidebar.margin-sidebar.ul::hover{
+  color:#D9E3F1;
+}
