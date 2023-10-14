@@ -199,24 +199,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chi_log</span>(mb1, mtcars, <span class="st">"Block 1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Pearson Goodness of Fit Test
+ Null Hypothesis: The model fits.
+ Alternative Hypothesis: The model does not fit.
 
- Null Hypothesis: The model fits
- Alternative Hypothesis: the model does not fit
+ Pearson chi-squared for Block 1:  32 
+ Degrees of freedom for Block 1:  31 
+ P-value for Block 1:  0.416744 
 
- Pearson chi-squared for  Block 1:  32 
- Degrees of freedom for  Block 1:  31 
- P-value for  Block 1:  0.416744 </code></pre>
+ ---
+ Failed to reject Null Hypothesis. The model fits.
+ ---</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chi_log</span>(mb2, mtcars, <span class="st">"Block 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Pearson Goodness of Fit Test
+ Null Hypothesis: The model fits.
+ Alternative Hypothesis: The model does not fit.
 
- Null Hypothesis: The model fits
- Alternative Hypothesis: the model does not fit
+ Pearson chi-squared for Block 2:  27.42 
+ Degrees of freedom for Block 2:  30 
+ P-value for Block 2:  0.6013516 
 
- Pearson chi-squared for  Block 2:  27.42 
- Degrees of freedom for  Block 2:  30 
- P-value for  Block 2:  0.6013516 </code></pre>
+ ---
+ Failed to reject Null Hypothesis. The model fits.
+ ---</code></pre>
 </div>
 </div>
 <p>The function gives us the chi-squared statistic, degrees of freedom, and a p-value. It also reminds us of the null and alternative hypotheses. Both models appear to be a good fit.</p>
@@ -227,11 +233,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict_percent</span>(mb1, mtcars<span class="sc">$</span>vs, <span class="st">"Block 1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Accuracy for Block 1: 56.25%</code></pre>
+<pre><code>
+Accuracy for Block 1: 56.25%</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict_percent</span>(mb2, mtcars<span class="sc">$</span>vs, <span class="st">"Block 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Accuracy for Block 2: 84.38%</code></pre>
+<pre><code>
+Accuracy for Block 2: 84.38%</code></pre>
 </div>
 </div>
 </section>
@@ -259,8 +267,16 @@ cyl             0.204474  0.04827075 4.455527e-01 0.001917098</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fences</span>(mtcars<span class="sc">$</span>cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> Lower Fence: -2 
- Upper Fence: 14</code></pre>
+<pre><code>    Lower Upper
+25%    -2    14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fences</span>(mtcars<span class="sc">$</span>cyl)<span class="sc">$</span>Upper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fences</span>(mtcars<span class="sc">$</span>cyl)<span class="sc">$</span>Lower</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2</code></pre>
 </div>
 </div>
 </section>
@@ -268,9 +284,9 @@ cyl             0.204474  0.04827075 4.455527e-01 0.001917098</code></pre>
 <h2 class="anchored" data-anchor-id="comparing-model-results-with-compare_models">Comparing Model Results with <code>compare_models</code></h2>
 <p>Lastly, when you are putting together multiple models, it can be helpful to view them all at the same time, next to one another. This is particularly helpful if you have more than two models you are comparing. For this function, pass through however many models you have to compare, and optionally label each one, using a vector of strings for each model. To demonstrate, I will add on another model <code>mb3</code> that will have another continuous independent variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mb3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vs <span class="sc">~</span> cyl <span class="sc">+</span> wt, <span class="at">data =</span> mtcars, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_models</span>(mb1, mb2, mb3, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Model 1 Block 1"</span>, <span class="st">"Model 1 Block 2"</span>, <span class="st">"Model Block 3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mb3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vs <span class="sc">~</span> cyl <span class="sc">+</span> wt, <span class="at">data =</span> mtcars, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_models</span>(mb1, mb2, mb3, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Model 1 Block 1"</span>, <span class="st">"Model 1 Block 2"</span>, <span class="st">"Model Block 3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$`Model 1 Block 1`
 
@@ -307,6 +323,28 @@ Coefficients:
 Degrees of Freedom: 31 Total (i.e. Null);  29 Residual
 Null Deviance:      43.86 
 Residual Deviance: 15.55    AIC: 21.55</code></pre>
+</div>
+</div>
+</section>
+<section id="deviance_aic-pull-the-deviances-and-aics-from-model-summarys" class="level2">
+<h2 class="anchored" data-anchor-id="deviance_aic-pull-the-deviances-and-aics-from-model-summarys"><code>deviance_aic</code> Pull the Deviances and AICs from model summarys</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance_aic</span>(mb1, mb2, mb3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>mb1 
+Residual Deviance: 43.86 
+Null Deviance: 43.86 
+AIC: 45.86 
+
+mb2 
+Residual Deviance: 17.96 
+Null Deviance: 43.86 
+AIC: 21.96 
+
+mb3 
+Residual Deviance: 15.55 
+Null Deviance: 43.86 
+AIC: 21.55 </code></pre>
 </div>
 </div>
 
