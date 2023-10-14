@@ -59,6 +59,8 @@ If you want to revise and adjust your model, it can be helpful to limit outliers
 
 ```{r}
 fences(mtcars$cyl)
+fences(mtcars$cyl)$Upper
+fences(mtcars$cyl)$Lower
 ```
 
 
@@ -71,4 +73,8 @@ mb3 <- glm(vs ~ cyl + wt, data = mtcars, family = "binomial")
 compare_models(mb1, mb2, mb3, labels = c("Model 1 Block 1", "Model 1 Block 2", "Model Block 3"))
 ```
 
+## `deviance_aic` Pull the Deviances and AICs from model summarys
+```{r}
+deviance_aic(mb1, mb2, mb3)
+```
 
