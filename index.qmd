@@ -7,7 +7,7 @@ about:
   links:
     - icon: twitter
       text: Twitter
-      href: https://twitter.com/brendenmsmith
+      href: https://twitter.com/brendensm
     - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com
