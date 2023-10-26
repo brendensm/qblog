@@ -15,9 +15,7 @@ website:
      
 format:
   html:
-    theme: 
-      dark: [morph, custom-dark.scss]
-      light: [morph, custom-light.scss]
+    theme: [morph, custom-dark.scss]
 
 
 

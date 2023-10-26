@@ -6,7 +6,7 @@ $body-bg: #475687;
 
 
 html * {
-  font-family: 'Optima';
+  font-family: 'PT Serif';
 }
  /* code blocks */
 .sourceCode.cell-code{
@@ -38,7 +38,7 @@ details>summary{
 }
 
 .navbar-dark .navbar-brand:hover {
-    color:#9954bb;
+    color:#F3E073;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -52,7 +52,7 @@ details>summary{
 
 .navbar-dark .navbar-nav .nav-link.active {
   background-color: #1C2235;
-  color:#9954bb;
+  color:#F3E073;
   transition-duration: 0.02s;
   font-size: 1.1em;
     padding: 0.5em 1.0em;
@@ -60,7 +60,7 @@ details>summary{
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
-  color:#9954bb;
+  color:#F3E073;
 
 }
 
@@ -126,7 +126,7 @@ a {
   color: #B98AD0;
 }
 a:hover {
-  color: #9954bb;
+  color: #F3E073;
 }
 
 
