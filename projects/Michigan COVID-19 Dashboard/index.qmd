@@ -12,6 +12,7 @@ page-layout: full
 This page shows the Power BI projects that I have created in my academic and professional work. Samples below contain publicly available data.
 
 # COVID-19 Long Term Care Data Dashboard
+
 This project was created to support the MDHHS long term care data reporting live on their website. I joined this project in early 2023 and recreated an existing dashboard that was made in Tableau into a PowerBI format. This was done to ease the integration process. The dashboard went live in March and was regularly updated until mid-May. This change was due to changing data reporting requirements.
 
 ```{=html}
