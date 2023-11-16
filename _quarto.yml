@@ -15,6 +15,7 @@ website:
      
 format:
   html:
+  #  theme: minty
     theme: [morph, custom-dark.scss]
 
 

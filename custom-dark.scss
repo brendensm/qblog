@@ -139,6 +139,7 @@ p code:not(.sourceCode){
 div.cell-output.cell-output-stdout{
   background: #1C2235;
   color:#D9E3F1;
+  border-radius: 10px;
 }
 
 
@@ -170,5 +171,51 @@ div#quarto-margin-sidebar.sidebar.margin-sidebar.ul::hover{
   color:#D9E3F1;
 }
 
+a#toc-packages-and-data.nav-link:hover{
+  color:#F3E073;
+}
+
+.sidebar nav[role="doc-toc"] ul > li > a.active {
+    color: #F3E073 !important;
+
+}
+
+.sidebar nav[role="doc-toc"] ul > li > a:hover {
+    color: #F3E073 !important;
+}
+
+.sidebar nav[role="doc-toc"] ul > li > ul > li > a:hover {
+    color: #F3E073 !important;
+}
+
+.sidebar nav[role="doc-toc"] ul > li > ul > li > a.active {
+    color: #F3E073 !important;
+}
+
+div.utterances{
+  background-color: #D9E3F1;
+}
+
+ol{
+  color:#D9E3F1;
+  
+}
+
+h3{
+  color:#D9E3F1;
+}
+
+tr.even{
+    color:#1C2235;
+    
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   color:#1C2235;
+}
 
 
+colgroup{
+  background-color:#D9E3F1;
+
+}

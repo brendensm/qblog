@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brenden Smith">
 <meta name="dcterms.date" content="2022-10-24">
-<meta name="description" content="Exploring survival analysis with the packages ‘survival’ and ‘survminer.’">
+<meta name="description" content="Exploring survival analysis with the package survival.">
 
 <title>Brenden Smith - Survival Analysis in R</title>
 <style>
@@ -69,12 +69,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -85,14 +83,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -125,7 +124,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -138,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <h1 class="title">Survival Analysis in R</h1>
                   <div>
         <div class="description">
-          Exploring survival analysis with the packages ‘survival’ and ‘survminer.’
+          Exploring survival analysis with the package <code>survival</code>.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -173,204 +171,500 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#packages-and-data" id="toc-packages-and-data" class="nav-link" data-scroll-target="#packages-and-data">Packages and Data</a></li>
+  <li><a href="#cox-regression" id="toc-cox-regression" class="nav-link" data-scroll-target="#cox-regression">Cox Regression</a>
+  <ul class="collapse">
+  <li><a href="#hazard-ratios" id="toc-hazard-ratios" class="nav-link" data-scroll-target="#hazard-ratios">Hazard Ratios</a></li>
+  <li><a href="#survival-curves" id="toc-survival-curves" class="nav-link" data-scroll-target="#survival-curves">Survival Curves</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
+  </ul></li>
+  <li><a href="#kaplan-meier" id="toc-kaplan-meier" class="nav-link" data-scroll-target="#kaplan-meier">Kaplan-Meier</a>
+  <ul class="collapse">
+  <li><a href="#function-for-analysis" id="toc-function-for-analysis" class="nav-link" data-scroll-target="#function-for-analysis">Function for Analysis</a></li>
+  <li><a href="#diabetes" id="toc-diabetes" class="nav-link" data-scroll-target="#diabetes">Diabetes</a></li>
+  <li><a href="#smoker-status" id="toc-smoker-status" class="nav-link" data-scroll-target="#smoker-status">Smoker Status</a></li>
+  <li><a href="#education-level" id="toc-education-level" class="nav-link" data-scroll-target="#education-level">Education Level</a></li>
+  <li><a href="#prevalence-of-coronary-heart-disease" id="toc-prevalence-of-coronary-heart-disease" class="nav-link" data-scroll-target="#prevalence-of-coronary-heart-disease">Prevalence of Coronary Heart Disease</a></li>
+  <li><a href="#sex" id="toc-sex" class="nav-link" data-scroll-target="#sex">Sex</a></li>
+  </ul></li>
+  <li><a href="#reflections-on-cox-regression-vs.-kaplan-meier" id="toc-reflections-on-cox-regression-vs.-kaplan-meier" class="nav-link" data-scroll-target="#reflections-on-cox-regression-vs.-kaplan-meier">Reflections on Cox Regression vs.&nbsp;Kaplan-Meier</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<p>In this blog post, I’ll be exploring some basic survival analysis in R. Survival analysis focuses on describing the occurance of an event (in this example death) in a set timeframe. Survival analysis is often used in clinical research and cancer epidemiology. For more reading, I recommend visiting The Epidemiologist R Handbook page on survival analysis, as well as their listed resources. The following blog post was adapted from my Biostatistics coursework and features data used in that course. We will create a Kaplan-Meier plot and go through Cox Hazard Regression.</p>
+<p><em>At first I was afraid, I was petrified…</em></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this blog post, I’ll be exploring some basic survival analysis in R. Survival analysis focuses on describing the occurrence of an event (in this example death) in a set time frame. Survival analysis is often used in clinical research and cancer epidemiology. For more reading, I recommend visiting The Epidemiologist R Handbook page on survival analysis, as well as their listed resources. The following blog post was adapted from my biostatistics coursework and features data used in that course. We will create Kaplan-Meier plots and go through Cox Hazard Regression.</p>
 </section>
-<section id="packages-and-data" class="level1">
-<h1>Packages and Data</h1>
-<p>For this blog post, I will use the packages have, dplyr, survival, ggthemes, and survminer.</p>
+<section id="packages-and-data" class="level2">
+<h2 class="anchored" data-anchor-id="packages-and-data">Packages and Data</h2>
+<p>For this blog post, I will use the packages have, dplyr, survival.</p>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load in libraries</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Next, we will load the data. My professor provided a dataset from SPSS, so we are using haven to load it into R.</p>
+<p>Next, we will load the data.</p>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>FHS <span class="ot">&lt;-</span> <span class="fu">read_sav</span>(<span class="st">"data/Cox Prop Hazard Regression Data.sav"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sd <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/HM 878 730 Clements - Survival Analysis R Data.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#death = factor(death, levels = c(0, 1),</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                 <span class="co">#  labels = c("Living", "Died")),</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cursmoke =</span> <span class="fu">factor</span>(cursmoke, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Not current smoker"</span>, <span class="st">"Current smoker"</span>)),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">diabetes =</span> <span class="fu">factor</span>(diabetes, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Not diabetic"</span>, <span class="st">"Diabetic"</span>)),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">educ =</span> <span class="fu">factor</span>(educ, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0-11 years"</span>, <span class="st">"HS Diploma/GED"</span>, </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"Some College/Vocational School"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"College degree or more"</span>)),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">prevchd =</span> <span class="fu">factor</span>(prevchd, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"No"</span>, <span class="st">"Yes"</span>)),</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">sex =</span> <span class="fu">factor</span>(sex, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                 <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Female"</span>, <span class="st">"Male"</span>))</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>To initialize our analysis, we will create a survival object with the function</p>
+</section>
+<section id="cox-regression" class="level2">
+<h2 class="anchored" data-anchor-id="cox-regression">Cox Regression</h2>
+<section id="hazard-ratios" class="level3">
+<h3 class="anchored" data-anchor-id="hazard-ratios">Hazard Ratios</h3>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>FHS_surv <span class="ot">&lt;-</span> <span class="fu">Surv</span>(<span class="at">time =</span> FHS<span class="sc">$</span>TimeDeathYears,</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">event =</span> FHS<span class="sc">$</span>death)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cm <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(TimeDeathYears, death) <span class="sc">~</span> cursmoke <span class="sc">+</span> diabetes <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>              educ <span class="sc">+</span> prevchd <span class="sc">+</span> age <span class="sc">+</span> bmi <span class="sc">+</span> sex, <span class="at">data =</span> sd)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">survfit</span>(FHS_surv <span class="sc">~</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Call: survfit(formula = FHS_surv ~ 1)
+<pre><code>Call:
+coxph(formula = Surv(TimeDeathYears, death) ~ cursmoke + diabetes + 
+    educ + prevchd + age + bmi + sex, data = sd)
 
- time n.risk n.event survival std.err lower 95% CI upper 95% CI
-    2   3263       6    0.998 0.00075        0.997        1.000
-    3   3257      32    0.988 0.00188        0.985        0.992
-    4   3225      53    0.972 0.00288        0.966        0.978
-    5   3172      57    0.955 0.00364        0.948        0.962
-    6   3115      65    0.935 0.00432        0.926        0.943
-    7   3050      64    0.915 0.00488        0.906        0.925
-    8   2986      66    0.895 0.00537        0.884        0.905
-    9   2920      58    0.877 0.00575        0.866        0.888
-   10   2862      76    0.854 0.00618        0.842        0.866
-   11   2786      87    0.827 0.00662        0.814        0.840
-   12   2699      67    0.807 0.00691        0.793        0.820
-   13   2632      69    0.785 0.00719        0.772        0.800
-   14   2563      75    0.762 0.00745        0.748        0.777</code></pre>
+  n= 3165, number of events= 746 
+   (98 observations deleted due to missingness)
+
+                                        coef exp(coef)  se(coef)      z
+cursmokeCurrent smoker              0.432597  1.541256  0.081165  5.330
+diabetesDiabetic                    0.741622  2.099338  0.100251  7.398
+educHS Diploma/GED                 -0.007861  0.992169  0.092149 -0.085
+educSome College/Vocational School -0.158231  0.853652  0.111205 -1.423
+educCollege degree or more         -0.454487  0.634773  0.131159 -3.465
+prevchdYes                          0.790013  2.203425  0.086862  9.095
+age                                 0.092917  1.097370  0.005068 18.333
+bmi                                -0.012792  0.987290  0.009667 -1.323
+sexMale                             0.672732  1.959583  0.075393  8.923
+                                   Pr(&gt;|z|)    
+cursmokeCurrent smoker             9.83e-08 ***
+diabetesDiabetic                   1.39e-13 ***
+educHS Diploma/GED                  0.93201    
+educSome College/Vocational School  0.15477    
+educCollege degree or more          0.00053 ***
+prevchdYes                          &lt; 2e-16 ***
+age                                 &lt; 2e-16 ***
+bmi                                 0.18575    
+sexMale                             &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+                                   exp(coef) exp(-coef) lower .95 upper .95
+cursmokeCurrent smoker                1.5413     0.6488    1.3146    1.8070
+diabetesDiabetic                      2.0993     0.4763    1.7248    2.5551
+educHS Diploma/GED                    0.9922     1.0079    0.8282    1.1886
+educSome College/Vocational School    0.8537     1.1714    0.6865    1.0615
+educCollege degree or more            0.6348     1.5754    0.4909    0.8208
+prevchdYes                            2.2034     0.4538    1.8585    2.6124
+age                                   1.0974     0.9113    1.0865    1.1083
+bmi                                   0.9873     1.0129    0.9688    1.0062
+sexMale                               1.9596     0.5103    1.6904    2.2716
+
+Concordance= 0.761  (se = 0.009 )
+Likelihood ratio test= 688.4  on 9 df,   p=&lt;2e-16
+Wald test            = 686.8  on 9 df,   p=&lt;2e-16
+Score (logrank) test = 783.3  on 9 df,   p=&lt;2e-16</code></pre>
+</div>
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sjPlot<span class="sc">::</span><span class="fu">tab_model</span>(cm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table data-quarto-postprocess="true" class="table table-sm table-striped small">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">Surv(Time Death<br>
+Years,death)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">cursmoke [Current smoker]</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.54</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.31&nbsp;–&nbsp;1.81</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">diabetes [Diabetic]</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">2.10</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.72&nbsp;–&nbsp;2.56</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">educ [HS Diploma/GED]</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.99</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.83&nbsp;–&nbsp;1.19</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.932</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">educ [Some<br>
+College/Vocational<br>
+School]</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.85</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.69&nbsp;–&nbsp;1.06</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.155</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">educ [College degree or<br>
+more]</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.63</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.49&nbsp;–&nbsp;0.82</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">prevchd [Yes]</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">2.20</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.86&nbsp;–&nbsp;2.61</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">age</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.10</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.09&nbsp;–&nbsp;1.11</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">bmi</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.99</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.97&nbsp;–&nbsp;1.01</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.186</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">sex [Male]</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.96</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1.69&nbsp;–&nbsp;2.27</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">3165</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> Nagelkerke</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.200</td>
+</tr>
+</tbody>
+</table>
+
+
 </div>
 </div>
 </section>
-<section id="kaplan-meier-plot" class="level1">
-<h1>Kaplan-Meier Plot</h1>
+<section id="survival-curves" class="level3">
+<h3 class="anchored" data-anchor-id="survival-curves">Survival Curves</h3>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(FHS_surv, </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Years Since Baseline"</span>,    <span class="co"># x-axis label</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span><span class="st">"Survival Probability"</span>,   <span class="co"># y-axis label</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Overall survival curve"</span>, <span class="co"># figure title</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">mark.time =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">conf.int =</span> <span class="cn">FALSE</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<div class="cell">
-<details open="">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>FHS_fit_db <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(TimeDeathYears, death) <span class="sc">~</span> diabetes, <span class="at">data =</span> FHS)</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>surv_fit_diab <span class="ot">&lt;-</span>  <span class="fu">survfit</span>(<span class="fu">Surv</span>(TimeDeathYears, death) <span class="sc">~</span> diabetes, <span class="at">data =</span> sd)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>col_diabetes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lightblue"</span>, <span class="st">"darkblue"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>col_diab <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"lightgreen"</span>, <span class="st">"darkgreen"</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  FHS_fit_db,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> col_diabetes,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Years since baseline"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  surv_fit_diab,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> col_diab,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Years"</span>,</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Survival Probability"</span>)</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"bottomright"</span>,</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Not diabetic"</span>,<span class="st">"Diabetic"</span>),</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> col_diabetes,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> col_diab,</span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">lty =</span> <span class="dv">1</span>,</span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> .<span class="dv">9</span>,</span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">"n"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="768"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="768"></p>
 </div>
 </div>
+</section>
+<section id="interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation">Interpretation</h3>
+<p>Hazard ratios for the cox regression show that smoker status, diabetic status, prevalent coronary heart disease, age, sex, and the highest level of education all have significant p-values. This means that each were found to impact the outcome of death in our survival analysis.</p>
+<p>Smoker status has a hazard ratio of 1.54 meaning that, compared to non-smokers, current smokers have 1.54 times the risk of death.</p>
+<p>Diabetic status has a hazard ratio of 2.10. This means that those with diabetes, compared to those that were not diabetic, had 2.1 times greater risk of death.</p>
+<p>Education at the level of college degree or more had a hazard ratio of 0.63. Compared to those with 0-11 years of education, this group had 37% decreased risk of death.</p>
+<p>Prevalence of coronary heart disease has a hazard ratio of 2.20, meaning that compared to those without CHD, they had 120% increased risk of death.</p>
+<p>Age also has a significant p-value, and a hazard ratio of 1.10. This means for every increase unit in age, there is 10% greater risk of death.</p>
+<p>Lastly, sex had a hazard ratio of 1.96. This means that compared to females, males had 95% greater risk of death.</p>
+<p>The survival curve shows the difference in survival probability between diabetics and non-diabetics. The differences are quite noticeably, with a lower survival probability among diabetics. This is in line with the results of the cox regression. For example, at 10 years, the survival probability among non-diabetics is about 85%, while the probability among diabetics is 65%.</p>
+</section>
+</section>
+<section id="kaplan-meier" class="level2">
+<h2 class="anchored" data-anchor-id="kaplan-meier">Kaplan-Meier</h2>
+<p><strong>Conduct Kaplan-Meier for each categorical IV. Interpret the summary, mean and median survival time, Log Rank Mantel-Cox Test, survival probability at 10 years. Compare and contrast between each variable.</strong></p>
+<section id="function-for-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="function-for-analysis">Function for Analysis</h3>
+<p>Because I have to compare quite a few variables, I make a quick function to output exactly what I need.</p>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>survminer<span class="sc">::</span><span class="fu">ggsurvplot</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  FHS_fit_db, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> FHS,          </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">conf.int =</span> <span class="cn">TRUE</span>,  </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">surv.scale =</span> <span class="st">"percent"</span>,        <span class="co"># present probabilities in the y axis in %</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">break.time.by =</span> <span class="dv">1</span>,            <span class="co"># present the time axis with an increment of years</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Time Since baseline (Years)"</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Survival Probability"</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pval =</span> T,       <span class="co"># print p-value at these plot coordinates</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">risk.table =</span> T,                <span class="co"># print the risk table at bottom </span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.title =</span> <span class="st">"Diabetic Status"</span>,       <span class="co"># legend characteristics</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.labs =</span> <span class="fu">c</span>(<span class="st">"not diabetic"</span>,<span class="st">"diabetic"</span>),</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">font.legend =</span> <span class="dv">10</span>, </span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">palette =</span> <span class="st">"Dark2"</span>,             <span class="co"># specify color palette </span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">surv.median.line =</span> <span class="st">"hv"</span>,       <span class="co"># draw horizontal and vertical lines to the median survivals</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">ggtheme =</span> <span class="fu">theme_few</span>()</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>km <span class="ot">&lt;-</span> <span class="cf">function</span>(time, event, data, iv, title_label){</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span>  <span class="fu">survfit</span>(<span class="fu">Surv</span>(time, event) <span class="sc">~</span> iv, <span class="at">data =</span> sd)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="dv">4</span>, <span class="st">"Set1"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plot_title <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"Survival Curve by"</span>, title_label)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  model,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> cols,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> plot_title,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Years"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Survival Probability"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"bottomleft"</span>,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend =</span> <span class="fu">levels</span>(iv),</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> cols,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">lty =</span> <span class="dv">1</span>,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex =</span> .<span class="dv">9</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,.<span class="dv">2</span>), <span class="at">lty =</span> <span class="st">"dashed"</span>, <span class="at">col =</span> <span class="st">"gray75"</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">lty =</span> <span class="st">"dashed"</span>, <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">v =</span> <span class="dv">10</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Model summary with mean and median: </span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model, <span class="at">print.rmean =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>logrank <span class="ot">&lt;-</span> <span class="fu">survdiff</span>(<span class="fu">Surv</span>(time, event) <span class="sc">~</span> iv, <span class="at">data =</span> data)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(logrank)</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="diabetes" class="level3">
+<h3 class="anchored" data-anchor-id="diabetes">Diabetes</h3>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">km</span>(sd<span class="sc">$</span>TimeDeathYears, sd<span class="sc">$</span>death, sd, sd<span class="sc">$</span>diabetes, <span class="st">"Diabetes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="768"></p>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model summary with mean and median: 
+Call: survfit(formula = Surv(time, event) ~ iv, data = sd)
+
+                   n events rmean* se(rmean) median 0.95LCL 0.95UCL
+iv=Not diabetic 3009    646   13.7    0.0525     NA      NA      NA
+iv=Diabetic      254    129   11.8    0.2540     14      13      NA
+    * restricted mean with upper limit =  15 
+Call:
+survdiff(formula = Surv(time, event) ~ iv, data = data)
+
+                   N Observed Expected (O-E)^2/E (O-E)^2/V
+iv=Not diabetic 3009      646    724.5       8.5       133
+iv=Diabetic      254      129     50.5     121.8       133
+
+ Chisq= 133  on 1 degrees of freedom, p= &lt;2e-16 </code></pre>
 </div>
+</div>
+<p>As interpreted before, the survival probability differs quite drastically between these two groups. At 10 years, the survival probability among non-diabetics is about 85%, while the probability among diabetics is 65%.</p>
+<p>The model summary shows the total number in each group and the number of events (deaths) in each group.</p>
+<p>The mean survival time is 13.7 years for non-diabetics, compared to 11.8 for diabetics. The median survival time could not be computed for non-diabetics, and was 14 years for diabetics. The median was not computed for non-diabetics because over 50% were still alive by the end of the time period.</p>
+<p>The Log Rank Mantel-Cox Test shows a resulting p-value of &lt;0.0001, meaning that the null hypothesis, that there is no difference in survival between groups, is rejected.</p>
 </section>
-<section id="cox-regression-and-hazard-ratios" class="level1">
-<h1>Cox Regression and Hazard Ratios</h1>
+<section id="smoker-status" class="level3">
+<h3 class="anchored" data-anchor-id="smoker-status">Smoker Status</h3>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>FHS_cox <span class="ot">&lt;-</span>  <span class="fu">coxph</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Surv</span>(TimeDeathYears, death) <span class="sc">~</span> diabetes <span class="sc">+</span> cursmoke <span class="sc">+</span> diabetes <span class="sc">+</span> </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    educ <span class="sc">+</span> prevchd <span class="sc">+</span> age <span class="sc">+</span> bmi <span class="sc">+</span> sex,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> FHS</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(FHS_cox)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Call:
-coxph(formula = Surv(TimeDeathYears, death) ~ diabetes + cursmoke + 
-    diabetes + educ + prevchd + age + bmi + sex, data = FHS)
-
-  n= 3165, number of events= 746 
-   (98 observations deleted due to missingness)
-
-              coef exp(coef)  se(coef)      z Pr(&gt;|z|)    
-diabetes  0.732430  2.080129  0.100183  7.311 2.65e-13 ***
-cursmoke  0.433427  1.542535  0.080983  5.352 8.70e-08 ***
-educ     -0.124079  0.883310  0.036412 -3.408 0.000655 ***
-prevchd   0.781816  2.185437  0.086662  9.021  &lt; 2e-16 ***
-age       0.091694  1.096030  0.004996 18.353  &lt; 2e-16 ***
-bmi      -0.014066  0.986032  0.009644 -1.459 0.144676    
-sex       0.657285  1.929546  0.074741  8.794  &lt; 2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-         exp(coef) exp(-coef) lower .95 upper .95
-diabetes    2.0801     0.4807    1.7093    2.5314
-cursmoke    1.5425     0.6483    1.3161    1.8079
-educ        0.8833     1.1321    0.8225    0.9487
-prevchd     2.1854     0.4576    1.8440    2.5900
-age         1.0960     0.9124    1.0853    1.1068
-bmi         0.9860     1.0142    0.9676    1.0048
-sex         1.9295     0.5183    1.6666    2.2340
-
-Concordance= 0.761  (se = 0.009 )
-Likelihood ratio test= 685.5  on 7 df,   p=&lt;2e-16
-Wald test            = 687.1  on 7 df,   p=&lt;2e-16
-Score (logrank) test = 781.6  on 7 df,   p=&lt;2e-16</code></pre>
-</div>
-<details open="">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>FHS_cox_test <span class="ot">&lt;-</span> <span class="fu">cox.zph</span>(FHS_cox)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>FHS_cox_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>          chisq df     p
-diabetes  0.384  1 0.536
-cursmoke  0.428  1 0.513
-educ      2.096  1 0.148
-prevchd   2.225  1 0.136
-age       3.681  1 0.055
-bmi       1.531  1 0.216
-sex       1.950  1 0.163
-GLOBAL   12.671  7 0.081</code></pre>
-</div>
-<details open="">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>survminer<span class="sc">::</span><span class="fu">ggforest</span>(FHS_cox, <span class="at">data =</span> FHS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">km</span>(sd<span class="sc">$</span>TimeDeathYears, sd<span class="sc">$</span>death, sd, sd<span class="sc">$</span>cursmoke, <span class="st">"Smoker Status"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="768"></p>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model summary with mean and median: 
+Call: survfit(formula = Surv(time, event) ~ iv, data = sd)
+
+                         n events rmean* se(rmean) median 0.95LCL 0.95UCL
+iv=Not current smoker 2142    501   13.6    0.0649     NA      NA      NA
+iv=Current smoker     1121    274   13.5    0.0922     NA      NA      NA
+    * restricted mean with upper limit =  15 
+Call:
+survdiff(formula = Surv(time, event) ~ iv, data = data)
+
+                         N Observed Expected (O-E)^2/E (O-E)^2/V
+iv=Not current smoker 2142      501      510     0.173     0.517
+iv=Current smoker     1121      274      265     0.333     0.517
+
+ Chisq= 0.5  on 1 degrees of freedom, p= 0.5 </code></pre>
 </div>
+</div>
+<p>The model results show that the mean survival time was 13.6 among non-smokers and 13.5 among current smokers. These are not very different from each other, and on par with the average survival time of non-diabetics. The median survival times were not able to be calculated for this variable.</p>
+<p>The Log Rank test shows a p-value of 0.5 indicating we should accept the null hypothesis that there is no difference in survival between the two groups.</p>
+<p>At 10 years, the survival probability is nearly the same between the two groups, a bit greater than 80%. Once again, similar to non-diabetic suvival probability at the same time.</p>
+</section>
+<section id="education-level" class="level3">
+<h3 class="anchored" data-anchor-id="education-level">Education Level</h3>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">km</span>(sd<span class="sc">$</span>TimeDeathYears, sd<span class="sc">$</span>death, sd, sd<span class="sc">$</span>educ, <span class="st">"Education"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="768"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model summary with mean and median: 
+Call: survfit(formula = Surv(time, event) ~ iv, data = sd)
+
+   82 observations deleted due to missingness 
+                                     n events rmean* se(rmean) median 0.95LCL
+iv=0-11 years                     1281    381   13.2    0.0936     NA      NA
+iv=HS Diploma/GED                  967    194   13.8    0.0911     NA      NA
+iv=Some College/Vocational School  542    108   13.9    0.1188     NA      NA
+iv=College degree or more          391     71   14.0    0.1275     NA      NA
+                                  0.95UCL
+iv=0-11 years                          NA
+iv=HS Diploma/GED                      NA
+iv=Some College/Vocational School      NA
+iv=College degree or more              NA
+    * restricted mean with upper limit =  15 
+Call:
+survdiff(formula = Surv(time, event) ~ iv, data = data)
+
+n=3181, 82 observations deleted due to missingness.
+
+                                     N Observed Expected (O-E)^2/E (O-E)^2/V
+iv=0-11 years                     1281      381    291.6     27.40     45.74
+iv=HS Diploma/GED                  967      194    234.0      6.84     10.14
+iv=Some College/Vocational School  542      108    131.9      4.32      5.36
+iv=College degree or more          391       71     96.5      6.74      7.91
+
+ Chisq= 46.4  on 3 degrees of freedom, p= 5e-10 </code></pre>
+</div>
+</div>
+<p>This model summary compares each of the four education levels in our variable. The mean survival years for those 0-11 is 13.2, for HS/Diploma/GED it is 13.8, for Some College/Vocational School it is 13.9 and for College degree or more it is 14. These are close to the averages we saw among smokers/nonsmokers, and non-diabetics. However, diabetics have still had the lowest average at 11 years. Once again, the medians could not be calculated for this variable because of the high proportion of groups surviving by the end of the time period.</p>
+<p>The Log Rank test shows a p-value of &lt;0.0001. This leads us to reject the null and accept the alternative hypothesis that there is a significant difference in survival time between these groups (somewhere).</p>
+<p>The survival probability at 10 years is 80% for the group 0-11, and around 90% for the other three groups. This is in the range of most groups thus far, aside from diabetics.</p>
+</section>
+<section id="prevalence-of-coronary-heart-disease" class="level3">
+<h3 class="anchored" data-anchor-id="prevalence-of-coronary-heart-disease">Prevalence of Coronary Heart Disease</h3>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">km</span>(sd<span class="sc">$</span>TimeDeathYears, sd<span class="sc">$</span>death, sd, sd<span class="sc">$</span>prevchd, <span class="st">"CHD Prevalence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="768"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model summary with mean and median: 
+Call: survfit(formula = Surv(time, event) ~ iv, data = sd)
+
+          n events rmean* se(rmean) median 0.95LCL 0.95UCL
+iv=No  2903    582   13.8    0.0522     NA      NA      NA
+iv=Yes  360    193   11.7    0.2077     14      12      NA
+    * restricted mean with upper limit =  15 
+Call:
+survdiff(formula = Surv(time, event) ~ iv, data = data)
+
+          N Observed Expected (O-E)^2/E (O-E)^2/V
+iv=No  2903      582    704.1      21.2       237
+iv=Yes  360      193     70.9     210.4       237
+
+ Chisq= 237  on 1 degrees of freedom, p= &lt;2e-16 </code></pre>
+</div>
+</div>
+<p>Those without coronary heart disease had an average survival time of 13.8 years, while those with CHD had an average of 11.7 years. The median was only calculated for those with CHD, which was at 14 years. These metrics align with results from many other groups. the average survival years for those without CHD is comparable to the same metrics examined among the three highest education levels, smokers and non-smokers, and non-diabetics. Diabetics and those with CHD have similar average survival time.</p>
+<p>The Log Rank Test shows a p-value of less than 0.0001. This leads us to reject the null and accept the alternative hypothesis that there is a difference in survival times between the two groups.</p>
+<p>Looking at the survival curve, the survival probability of those with CHD at 10 years is about 65%. The survival probability of those without CHD is around 90%. This is a comparable split to diabetics/non-diabetics.</p>
+</section>
+<section id="sex" class="level3">
+<h3 class="anchored" data-anchor-id="sex">Sex</h3>
+<div class="cell">
+<details open="">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">km</span>(sd<span class="sc">$</span>TimeDeathYears, sd<span class="sc">$</span>death, sd, sd<span class="sc">$</span>sex, <span class="st">"Sex"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="768"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Model summary with mean and median: 
+Call: survfit(formula = Surv(time, event) ~ iv, data = sd)
+
+             n events rmean* se(rmean) median 0.95LCL 0.95UCL
+iv=Female 1876    345   13.9    0.0635     NA      NA      NA
+iv=Male   1387    430   13.1    0.0894     NA      NA      NA
+    * restricted mean with upper limit =  15 
+Call:
+survdiff(formula = Surv(time, event) ~ iv, data = data)
+
+             N Observed Expected (O-E)^2/E (O-E)^2/V
+iv=Female 1876      345      458      28.0      70.1
+iv=Male   1387      430      317      40.5      70.1
+
+ Chisq= 70.1  on 1 degrees of freedom, p= &lt;2e-16 </code></pre>
+</div>
+</div>
+<p>For the Kaplan-Meier examining sex, the model results show that the average survival time among females was 13.9 compared to male’s 13.1. This is a similar split between the highest and lowest education levels. Overall, this seems to be a significant difference, but not as big of a difference as CHD or diabetes status. The medians for these groups could not be calculated.</p>
+<p>The Log Rank Test shows a p-value of less than 0.0001, which again leads us to accept the alternative hypothesis that this model shows a significant difference in survival time between the two groups.</p>
+<p>On the survival curve, it appears that at 10 years, males had 80% survival probability, and females had about 90%. This is a much closer gap, agian comparable to the difference between education level. The gap is narrower among smokers and non-smokers, but larger when diabetes or CHD is examined.</p>
+</section>
+</section>
+<section id="reflections-on-cox-regression-vs.-kaplan-meier" class="level2">
+<h2 class="anchored" data-anchor-id="reflections-on-cox-regression-vs.-kaplan-meier">Reflections on Cox Regression vs.&nbsp;Kaplan-Meier</h2>
+<p>The cox regression showed that smoker status, diabetes status, education level (college degree or more), CHD status, age, and sex were all statistically significant in the model. The highest increased hazard ratios were from the variables for CHD and diabetes.</p>
+<p>When we examine the Kaplan-Meier and Log Rank tests, all categorical variables were significant except for smoker status. This difference was not expected. Being that the cox regression showed it as significant and with a fairly high hazard ratio, I expected to see a bigger difference in survival time. Perhaps this is due to comorbidities associated with this variable. But the two largest hazard ratios in the cox regression, diabetes and CHD, displayed the biggest differences in suvival time, which was expected. Also, variables like education and sex showed smaller but still present difference in line with cox regression results.</p>
+<p>Cox regression is obviously necessary whenever you are interested in a continuous variable’s relationship to the outcome. It is also preferred when you have multiple groups in a categorical variables. As we saw in this project, education level was shown as significant using both methods. However, cox regression gave us a greater level of detail of increased risk within groups. The Kaplan-Meier (and Log Rank test) simply told us there was a significant difference somewhere within the groups.</p>
+<p>There are other advantages to picking a particular method. For instance, if you are more interested in metrics like average survival time, KP delivers that information. If you are looking for information for example in a clinical trial, a cox regression may be preferable due to the hazard ratio it gives you. This may be more practical too if you are interested in multiple factors influencing an outcome. KP is limited to one factor at a time.</p>
+<p>Lastly, Kaplan-Meier may be the most reliable method to use if you have data that do not meet the proper assumptions, as KP is a non-parametric test. Cox regression is semi-parametric, meaning there are some assumptions that must be met. In this way, it may be easier to apply KP to ill fitting data. But one method is not “better” than the other, they are simply different techniques that answer slightly different questions.</p>
 
 
 </section>
@@ -396,121 +690,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'alternate';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -83,14 +83,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -170,7 +171,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a>
+  <ul class="collapse">
+  <li><a href="#using-rvest" id="toc-using-rvest" class="nav-link" data-scroll-target="#using-rvest">Using ‘rvest’</a></li>
+  </ul></li>
+  <li><a href="#the-script" id="toc-the-script" class="nav-link" data-scroll-target="#the-script">The Script</a></li>
+  <li><a href="#automation-with-github-actions" id="toc-automation-with-github-actions" class="nav-link" data-scroll-target="#automation-with-github-actions">Automation with Github Actions</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -178,17 +193,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><em>Update: Since a certain someone took over the bird app, this bot is no longer functional. Unfortunately, it is not worth paying $100/month to post random shades of blue. What an injustice.</em></p>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Blue is a color that moves me. I love how many forms it can take, the way its shades can channel moods. I recently reread my copy of Maggie Nelson’s <em>Bluets</em> and felt inspired to revisit an older project of mine. Possibly the first R project I put together (that was more fun, and not statistics or graphic related) was my twitter bot, everywordisblue.</p>
 <p>This was a year or so back when I was just starting to dust off R and commit to learning the language fully. The original account was influenced by many of the silly bots on the website and my personal passion for the color blue. It took a randomly selected noun, pasted the word <code>'blue'</code> in front of it, and posted it straight to Twitter once a day. While this creation gave me some immediate satisfaction (and some interesting results), I did feel that the account was a bit too simplistic; I always wanted to do more.</p>
 <p>Infinitely more satisfying would be a randomly selected hue of blue, shared daily, completely automated. To do this required editing my original script and, most importantly, web-scraping a data set of blue colors with accompanying hex codes. Follow along and let’s build something fun!</p>
 </section>
-<section id="the-data" class="level1">
-<h1>The Data</h1>
+<section id="the-data" class="level2">
+<h2 class="anchored" data-anchor-id="the-data">The Data</h2>
 <p>Originally, I attempted to find an existing data set. Most colors sets I’m familiar with using in R, however, are not as hyper-fixated on a singular color. I quickly found <a href="color-names.com">color-names.com</a>, and noticed when you simply search for the word <code>'blue'</code>, the search provides over 89 pages (12 colors on each page), giving over a thousand colors with hex codes. This seemed like an adequate source for this project and a great way to practice web scraping data from R.</p>
-<section id="using-rvest" class="level2">
-<h2 class="anchored" data-anchor-id="using-rvest">Using ‘rvest’</h2>
+<section id="using-rvest" class="level3">
+<h3 class="anchored" data-anchor-id="using-rvest">Using ‘rvest’</h3>
 <p>To help us source our data, the library <code>'rvest'</code> provides everything we need. In order to create a data frame containing the color name and the hex code, we need to:</p>
 <ul>
 <li><p>import the web search’s html</p></li>
@@ -250,8 +265,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="the-script" class="level1">
-<h1>The Script</h1>
+<section id="the-script" class="level2">
+<h2 class="anchored" data-anchor-id="the-script">The Script</h2>
 <p>Now that we have the data, we need to make a script that randomly selects a color, creates a color square, saves it as an image, and posts a tweet. For all of this, we will load <code>'rtweet'</code> and <code>'ggplot2'</code>.</p>
 <div class="cell">
 <details open="">
@@ -314,8 +329,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="automation-with-github-actions" class="level1">
-<h1>Automation with Github Actions</h1>
+<section id="automation-with-github-actions" class="level2">
+<h2 class="anchored" data-anchor-id="automation-with-github-actions">Automation with Github Actions</h2>
 <p>Github makes it surprisingly easy to automate scripts with Github Actions! Again for the full length guide on this process I will direct you to Matt Dray’s <a href="https://www.rostrum.blog/2020/09/21/londonmapbot/">blog post</a> which taught me how to properly set this bot up.</p>
 <p>Essentially, all that is needed in a yml file that lists the correct instructions on when and what to run. My example yml is below:</p>
 <div class="cell">

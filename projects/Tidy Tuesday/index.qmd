@@ -12,7 +12,7 @@ lightbox: auto
 ---
 
 ::: grid
-:::{.g-col-12 .g-col-md-6}
+::: {.g-col-12 .g-col-md-6}
 ![](tt-w42-2023.png){group="\"my-gallery"}
 :::
 

@@ -3,118 +3,227 @@ title: "Survival Analysis in R"
 author: "Brenden Smith"
 date: "2022-10-24"
 categories: [R, Epi, ggplot2]
-description: "Exploring survival analysis with the packages 'survival' and 'survminer.'"
+description: "Exploring survival analysis with the package `survival`."
 image: thumbnail.png
-draft: true
+draft: false
 code-fold: show
 execute: 
   warning: false
+toc: true
 format: 
   html:
     fig-height: 6
     fig-width: 8
-
 ---
-# Introduction
-In this blog post, I'll be exploring some basic survival analysis in R. Survival analysis focuses on describing the occurance of an event (in this example death) in a set timeframe. Survival analysis is often used in clinical research and cancer epidemiology. For more reading, I recommend visiting The Epidemiologist R Handbook page on survival analysis, as well as their listed resources. The following blog post was adapted from my Biostatistics coursework and features data used in that course. We will create a Kaplan-Meier plot and go through Cox Hazard Regression.
 
-# Packages and Data
+*At first I was afraid, I was petrified...*
 
-For this blog post, I will use the packages have, dplyr, survival, ggthemes, and survminer.
+## Introduction
+
+In this blog post, I'll be exploring some basic survival analysis in R. Survival analysis focuses on describing the occurrence of an event (in this example death) in a set time frame. Survival analysis is often used in clinical research and cancer epidemiology. For more reading, I recommend visiting The Epidemiologist R Handbook page on survival analysis, as well as their listed resources. The following blog post was adapted from my biostatistics coursework and features data used in that course. We will create Kaplan-Meier plots and go through Cox Hazard Regression.
+
+## Packages and Data
+
+For this blog post, I will use the packages have, dplyr, survival.
 
 ```{R}
 # Load in libraries
-library(haven)
 library(dplyr)
+library(readr)
 library(survival)
-library(ggthemes)
-
+library(sjPlot)
 ```
 
-Next, we will load the data. My professor provided a dataset from SPSS, so we are using haven to load it into R.
+Next, we will load the data.
 
 ```{R}
-FHS <- read_sav("data/Cox Prop Hazard Regression Data.sav")
+sd <- read_csv("data/HM 878 730 Clements - Survival Analysis R Data.csv") %>% 
+  mutate(
+    #death = factor(death, levels = c(0, 1),
+                 #  labels = c("Living", "Died")),
+    cursmoke = factor(cursmoke, levels = c(0, 1), 
+                      labels = c("Not current smoker", "Current smoker")),
+    diabetes = factor(diabetes, levels = c(0, 1),
+                      labels = c("Not diabetic", "Diabetic")),
+    educ = factor(educ, levels = c(1, 2, 3, 4),
+                  labels = c("0-11 years", "HS Diploma/GED", 
+                             "Some College/Vocational School",
+                             "College degree or more")),
+    prevchd = factor(prevchd, levels = c(0, 1),
+                    labels = c("No", "Yes")),
+    sex = factor(sex, levels = c(0, 1),
+                 labels = c("Female", "Male"))
+  )
 ```
 
-To initialize our analysis, we will create a survival object with the function 
+## Cox Regression
 
-```{R}
-FHS_surv <- Surv(time = FHS$TimeDeathYears,
-                 event = FHS$death)
+### Hazard Ratios
 
-summary(survfit(FHS_surv ~ 1))
-  
+```{r}
+
+cm <- coxph(Surv(TimeDeathYears, death) ~ cursmoke + diabetes +
+              educ + prevchd + age + bmi + sex, data = sd)
+
+summary(cm)
+
+sjPlot::tab_model(cm)
 ```
 
-# Kaplan-Meier Plot
+### Survival Curves
 
-```{R}
-plot(FHS_surv, 
-     xlab = "Years Since Baseline",    # x-axis label
-     ylab ="Survival Probability",   # y-axis label
-     main = "Overall survival curve", # figure title
-     ylim = c(0, 1),
-     mark.time = TRUE,
-     conf.int = FALSE
-)
-```
+```{r}
+surv_fit_diab <-  survfit(Surv(TimeDeathYears, death) ~ diabetes, data = sd)
 
-```{R}
-FHS_fit_db <- survfit(Surv(TimeDeathYears, death) ~ diabetes, data = FHS)
-
-col_diabetes <- c("lightblue", "darkblue")
+col_diab <- c("lightgreen", "darkgreen")
 
 plot(
-  FHS_fit_db,
-  col = col_diabetes,
-  xlab = "Years since baseline",
+  surv_fit_diab,
+  col = col_diab,
+  xlab = "Years",
   ylab = "Survival Probability")
 legend(
   "bottomright",
   legend = c("Not diabetic","Diabetic"),
-  col = col_diabetes,
+  col = col_diab,
   lty = 1,
   cex = .9,
   bty = "n")
+
 ```
 
-```{R}
+### Interpretation
 
-survminer::ggsurvplot(
-  FHS_fit_db, 
-  data = FHS,          
-  conf.int = TRUE,  
-  surv.scale = "percent",        # present probabilities in the y axis in %
-  break.time.by = 1,            # present the time axis with an increment of years
-  xlab = "Time Since baseline (Years)",
-  ylab = "Survival Probability",
-  pval = T,       # print p-value at these plot coordinates
-  risk.table = T,                # print the risk table at bottom 
-  legend.title = "Diabetic Status",       # legend characteristics
-  legend.labs = c("not diabetic","diabetic"),
-  font.legend = 10, 
-  palette = "Dark2",             # specify color palette 
-  surv.median.line = "hv",       # draw horizontal and vertical lines to the median survivals
-  ggtheme = theme_few()
-)
+Hazard ratios for the cox regression show that smoker status, diabetic status, prevalent coronary heart disease, age, sex, and the highest level of education all have significant p-values. This means that each were found to impact the outcome of death in our survival analysis.
+
+Smoker status has a hazard ratio of 1.54 meaning that, compared to non-smokers, current smokers have 1.54 times the risk of death.
+
+Diabetic status has a hazard ratio of 2.10. This means that those with diabetes, compared to those that were not diabetic, had 2.1 times greater risk of death.
+
+Education at the level of college degree or more had a hazard ratio of 0.63. Compared to those with 0-11 years of education, this group had 37% decreased risk of death.
+
+Prevalence of coronary heart disease has a hazard ratio of 2.20, meaning that compared to those without CHD, they had 120% increased risk of death.
+
+Age also has a significant p-value, and a hazard ratio of 1.10. This means for every increase unit in age, there is 10% greater risk of death.
+
+Lastly, sex had a hazard ratio of 1.96. This means that compared to females, males had 95% greater risk of death.
+
+The survival curve shows the difference in survival probability between diabetics and non-diabetics. The differences are quite noticeably, with a lower survival probability among diabetics. This is in line with the results of the cox regression. For example, at 10 years, the survival probability among non-diabetics is about 85%, while the probability among diabetics is 65%.
+
+## Kaplan-Meier
+
+**Conduct Kaplan-Meier for each categorical IV. Interpret the summary, mean and median survival time, Log Rank Mantel-Cox Test, survival probability at 10 years. Compare and contrast between each variable.**
+
+### Function for Analysis
+
+Because I have to compare quite a few variables, I make a quick function to output exactly what I need.
+
+```{r}
+km <- function(time, event, data, iv, title_label){
+  
+model <-  survfit(Surv(time, event) ~ iv, data = sd)
+
+cols <- RColorBrewer::brewer.pal(4, "Set1")
+
+plot_title <- paste("Survival Curve by", title_label)
+
+plot(
+  model,
+  col = cols,
+  lwd = 2,
+  main = plot_title,
+  xlab = "Years",
+  ylab = "Survival Probability")
+legend(
+  "bottomleft",
+  legend = levels(iv),
+  col = cols,
+  lty = 1,
+  cex = .9,
+  bty = "n")
+abline(h = seq(0,1,.2), lty = "dashed", col = "gray75")
+abline(lty = "dashed", col = "black", v = 10)
+  
+  
+cat("Model summary with mean and median: \n")
+print(model, print.rmean = TRUE)
+
+logrank <- survdiff(Surv(time, event) ~ iv, data = data)
+print(logrank)
+  
+}
 ```
 
-# Cox Regression and Hazard Ratios
+### Diabetes
 
-
-
-```{R}
-FHS_cox <-  coxph(
-  Surv(TimeDeathYears, death) ~ diabetes + cursmoke + diabetes + 
-    educ + prevchd + age + bmi + sex,
-  data = FHS
-)
-
-summary(FHS_cox)
-
-FHS_cox_test <- cox.zph(FHS_cox)
-FHS_cox_test
-
-survminer::ggforest(FHS_cox, data = FHS)
+```{r}
+km(sd$TimeDeathYears, sd$death, sd, sd$diabetes, "Diabetes")
 ```
+
+As interpreted before, the survival probability differs quite drastically between these two groups. At 10 years, the survival probability among non-diabetics is about 85%, while the probability among diabetics is 65%.
+
+The model summary shows the total number in each group and the number of events (deaths) in each group.
+
+The mean survival time is 13.7 years for non-diabetics, compared to 11.8 for diabetics. The median survival time could not be computed for non-diabetics, and was 14 years for diabetics. The median was not computed for non-diabetics because over 50% were still alive by the end of the time period.
+
+The Log Rank Mantel-Cox Test shows a resulting p-value of \<0.0001, meaning that the null hypothesis, that there is no difference in survival between groups, is rejected.
+
+### Smoker Status
+
+```{r}
+km(sd$TimeDeathYears, sd$death, sd, sd$cursmoke, "Smoker Status")
+```
+
+The model results show that the mean survival time was 13.6 among non-smokers and 13.5 among current smokers. These are not very different from each other, and on par with the average survival time of non-diabetics. The median survival times were not able to be calculated for this variable.
+
+The Log Rank test shows a p-value of 0.5 indicating we should accept the null hypothesis that there is no difference in survival between the two groups.
+
+At 10 years, the survival probability is nearly the same between the two groups, a bit greater than 80%. Once again, similar to non-diabetic suvival probability at the same time.
+
+### Education Level
+
+```{r}
+km(sd$TimeDeathYears, sd$death, sd, sd$educ, "Education")
+```
+
+This model summary compares each of the four education levels in our variable. The mean survival years for those 0-11 is 13.2, for HS/Diploma/GED it is 13.8, for Some College/Vocational School it is 13.9 and for College degree or more it is 14. These are close to the averages we saw among smokers/nonsmokers, and non-diabetics. However, diabetics have still had the lowest average at 11 years. Once again, the medians could not be calculated for this variable because of the high proportion of groups surviving by the end of the time period.
+
+The Log Rank test shows a p-value of \<0.0001. This leads us to reject the null and accept the alternative hypothesis that there is a significant difference in survival time between these groups (somewhere).
+
+The survival probability at 10 years is 80% for the group 0-11, and around 90% for the other three groups. This is in the range of most groups thus far, aside from diabetics.
+
+### Prevalence of Coronary Heart Disease
+
+```{r}
+km(sd$TimeDeathYears, sd$death, sd, sd$prevchd, "CHD Prevalence")
+```
+
+Those without coronary heart disease had an average survival time of 13.8 years, while those with CHD had an average of 11.7 years. The median was only calculated for those with CHD, which was at 14 years. These metrics align with results from many other groups. the average survival years for those without CHD is comparable to the same metrics examined among the three highest education levels, smokers and non-smokers, and non-diabetics. Diabetics and those with CHD have similar average survival time.
+
+The Log Rank Test shows a p-value of less than 0.0001. This leads us to reject the null and accept the alternative hypothesis that there is a difference in survival times between the two groups.
+
+Looking at the survival curve, the survival probability of those with CHD at 10 years is about 65%. The survival probability of those without CHD is around 90%. This is a comparable split to diabetics/non-diabetics.
+
+### Sex
+
+```{r}
+km(sd$TimeDeathYears, sd$death, sd, sd$sex, "Sex")
+```
+
+For the Kaplan-Meier examining sex, the model results show that the average survival time among females was 13.9 compared to male's 13.1. This is a similar split between the highest and lowest education levels. Overall, this seems to be a significant difference, but not as big of a difference as CHD or diabetes status. The medians for these groups could not be calculated.
+
+The Log Rank Test shows a p-value of less than 0.0001, which again leads us to accept the alternative hypothesis that this model shows a significant difference in survival time between the two groups.
+
+On the survival curve, it appears that at 10 years, males had 80% survival probability, and females had about 90%. This is a much closer gap, agian comparable to the difference between education level. The gap is narrower among smokers and non-smokers, but larger when diabetes or CHD is examined.
+
+## Reflections on Cox Regression vs. Kaplan-Meier
+
+The cox regression showed that smoker status, diabetes status, education level (college degree or more), CHD status, age, and sex were all statistically significant in the model. The highest increased hazard ratios were from the variables for CHD and diabetes.
+
+When we examine the Kaplan-Meier and Log Rank tests, all categorical variables were significant except for smoker status. This difference was not expected. Being that the cox regression showed it as significant and with a fairly high hazard ratio, I expected to see a bigger difference in survival time. Perhaps this is due to comorbidities associated with this variable. But the two largest hazard ratios in the cox regression, diabetes and CHD, displayed the biggest differences in suvival time, which was expected. Also, variables like education and sex showed smaller but still present difference in line with cox regression results.
+
+Cox regression is obviously necessary whenever you are interested in a continuous variable's relationship to the outcome. It is also preferred when you have multiple groups in a categorical variables. As we saw in this project, education level was shown as significant using both methods. However, cox regression gave us a greater level of detail of increased risk within groups. The Kaplan-Meier (and Log Rank test) simply told us there was a significant difference somewhere within the groups.
+
+There are other advantages to picking a particular method. For instance, if you are more interested in metrics like average survival time, KP delivers that information. If you are looking for information for example in a clinical trial, a cox regression may be preferable due to the hazard ratio it gives you. This may be more practical too if you are interested in multiple factors influencing an outcome. KP is limited to one factor at a time.
+
+Lastly, Kaplan-Meier may be the most reliable method to use if you have data that do not meet the proper assumptions, as KP is a non-parametric test. Cox regression is semi-parametric, meaning there are some assumptions that must be met. In this way, it may be easier to apply KP to ill fitting data. But one method is not "better" than the other, they are simply different techniques that answer slightly different questions.

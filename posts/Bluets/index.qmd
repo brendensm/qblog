@@ -10,11 +10,12 @@ execute:
 image: bluets.jpeg
 code-fold: show
 code-overflow: scroll
+toc: true
 ---
 
 *Update: Since a certain someone took over the bird app, this bot is no longer functional. Unfortunately, it is not worth paying \$100/month to post random shades of blue. What an injustice.*
 
-# Introduction
+## Introduction
 
 Blue is a color that moves me. I love how many forms it can take, the way its shades can channel moods. I recently reread my copy of Maggie Nelson's *Bluets* and felt inspired to revisit an older project of mine. Possibly the first R project I put together (that was more fun, and not statistics or graphic related) was my twitter bot, everywordisblue.
 
@@ -22,11 +23,11 @@ This was a year or so back when I was just starting to dust off R and commit to 
 
 Infinitely more satisfying would be a randomly selected hue of blue, shared daily, completely automated. To do this required editing my original script and, most importantly, web-scraping a data set of blue colors with accompanying hex codes. Follow along and let's build something fun!
 
-# The Data
+## The Data
 
 Originally, I attempted to find an existing data set. Most colors sets I'm familiar with using in R, however, are not as hyper-fixated on a singular color. I quickly found [color-names.com](color-names.com), and noticed when you simply search for the word `'blue'`, the search provides over 89 pages (12 colors on each page), giving over a thousand colors with hex codes. This seemed like an adequate source for this project and a great way to practice web scraping data from R.
 
-## Using 'rvest'
+### Using 'rvest'
 
 To help us source our data, the library `'rvest'` provides everything we need. In order to create a data frame containing the color name and the hex code, we need to:
 
@@ -84,7 +85,7 @@ library(dplyr)
 blues <- colors |> filter(grepl('Blue', name))
 ```
 
-# The Script
+## The Script
 
 Now that we have the data, we need to make a script that randomly selects a color, creates a color square, saves it as an image, and posts a tweet. For all of this, we will load `'rtweet'` and `'ggplot2'`.
 
@@ -143,7 +144,7 @@ rtweet::post_tweet(status = temp,
                    token = everywordisblue_token)
 ```
 
-# Automation with Github Actions
+## Automation with Github Actions
 
 Github makes it surprisingly easy to automate scripts with Github Actions! Again for the full length guide on this process I will direct you to Matt Dray's [blog post](https://www.rostrum.blog/2020/09/21/londonmapbot/) which taught me how to properly set this bot up.
 

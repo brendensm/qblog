@@ -11,28 +11,28 @@ image: gh-flag.jpg
 code-fold: true
 code-overflow: scroll
 draft: true
+filters: 
+ - lightbox
+lightbox: auto
 ---
 
-:::grid
+## Introduction
+Introduction text here!!!
+
+::: grid
 ::: {.g-col-12 .g-col-md-6}
-![Map of the stops on my trip through Ghana.](ghana_trip23.svg){group="\"my-gallery"}
+![](ghana_trip23.svg){group="\"my-gallery"}
 :::
 
 ::: {.g-col-12 .g-col-md-6}
-# Introduction
 This is some basic introduction text to test if the grid is working properly.
+
+Me describing how my trip was and also other details that will go into here once I have the format down solid!
 :::
 
-:::{.g-col-24 .g-col-md-12} 
-# My Practicum Experience
+::: {.g-col-24 .g-col-md-12}
+## My Practicum Experience
+
 More of a test to see how this format looks.
 :::
-
 :::
-
-
-
-
-
-
-

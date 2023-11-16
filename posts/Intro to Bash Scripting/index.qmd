@@ -1,0 +1,142 @@
+---
+title: "Intro to Bash Scripting"
+author: "Brenden Smith"
+date: "2023-11-15"
+categories: [Bash, Command line, R]
+description: "Learning to write my first useful Bash script."
+engine: knitr
+execute: 
+  warning: false
+  eval: false
+image: bash.png
+code-fold: show
+code-overflow: scroll
+toc: true
+---
+
+*And I thought R gave me super powers...*
+
+## Introduction
+
+Recently, I've been having fun with Linux. I really didn't know much about Linux or how it was different from MacOS or Windows. All I really knew was that very smart people use it and many computers depend on it!
+
+By recommendation of a friend, I tried loading Pop!\_OS on an old Macbook Air I had laying around. I quickly learned how lightweight many distributions of Linux are, and how customization they can be.
+
+For anyone familiar with Linux you know that, even when you are just setting up a computer with the OS, you have to start using a bit of the command line. I had used this before learning some helpful functions with git, but nothing has exposed me to the command line and Bash more than this endeavor.
+
+I have been inspired by this exposure and want to start learning more about the functionality of Bash. As a part of this, I wanted to try creating a Bash script of my own that I could implement into my current workflows.
+
+## The Idea
+
+I work primarily in R. And I love a good R Project. One of my usual habits for creating a project include adding sub folders and a starting script. I realized Bash is really good for doing this! So with some basic commands, I wanted to create a single executable script that makes a new R project, default sub folders, and a starting script.
+
+## Writing the Script
+
+For the script I wanted several tasks accomplished:
+
+1.  Created an R project file within a contained folder
+2.  Several sub-directories within that folder (data, ref, output)
+3.  A blank R script file
+
+To start, I had the script ask for the name of the project. This was done by using `echo` to print the prompt, then `read` takes in the name of the project.
+
+```{zsh}
+#!/bin/bash
+
+echo "Please enter your project title: "
+
+read name
+```
+
+Next, I had to make the script navigate to the folder I want my projects in (for me, this is a folder on my desktop called 'R'). Then, I had a directory made with sub-folders using `mkdir -p`. Here we use `$name` to use the variable stored as the name of the project. Within the `{}` are the names of the sub-folder I most commonly use. This could be anything you like though! Lastly, `touch` creates the blank R script.
+
+```{zsh}
+cd Desktop/R
+
+mkdir -p $name/{data,ref,output}
+
+cd $name
+
+touch script.R
+```
+
+Next, we have an extra step that allows RStudio to open our new project properly. When I first tried this script out, I created a blank file with the .Rproj extension to set up the project. This immediately gave me problems when I tried to open the project. Specifically, I recall an issue with the version being unspecified.
+
+After a bit a research, I discovered that files with .Rproj are nothing really but a .txt file. I opened one of my existing R projects with a text editor and copied the contents exactly into the code chunk below. I wrote this text into the new R project. After some trial and error, I can confirm this method works!
+
+```{zsh}
+
+echo -e 'Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTex: pdfLaTeX' >> $name.Rproj
+```
+
+The last few lines of code echo some responses to the terminal and launch the new R project.
+
+```{zsh}
+echo "Project $name has been created."
+echo "It is stored in the R directory."
+echo "Opening project now..."
+
+open $name.Rproj
+```
+
+## Making it Accessible
+
+For me, personally, I like to be able to execute my scripts without worrying where I am in the terminal. Once my script was working properly, I moved it to the /usr/local/bin folder. 
+
+```{zsh}
+mv setupr /usr/local/bin
+```
+
+And that's it! You can find the full script code below. I hope this is helpful! It was certainly useful to me to learn more about bash and make a useful script to help me set up projects.
+
+## Full Script Code
+
+```{zsh}
+#!/bin/bash
+
+echo "Please enter your project title: "
+
+read name
+
+cd Desktop/R
+
+mkdir -p $name/{data,ref,output}
+
+cd $name
+
+touch script.R
+
+echo -e 'Version: 1.0
+
+RestoreWorkspace: Default
+SaveWorkspace: Default
+AlwaysSaveHistory: Default
+
+EnableCodeIndexing: Yes
+UseSpacesForTab: Yes
+NumSpacesForTab: 2
+Encoding: UTF-8
+
+RnwWeave: Sweave
+LaTex: pdfLaTeX' >> $name.txt
+
+mv $name.txt $name.Rproj
+
+echo "Project $name has been created."
+echo "It is stored in the R directory."
+echo "Opening project now..."
+
+open $name.Rproj
+```
