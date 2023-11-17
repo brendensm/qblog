@@ -35,7 +35,7 @@ I work primarily in R. And I love a good R Project. One of my usual habits for c
 For the script I wanted several tasks accomplished:
 
 1.  Created an R project file within a contained folder
-2.  Several sub-directories within that folder (data, ref, output)
+2.  Several sub-directories within that folder (data-raw, data, ref, output)
 3.  A blank R script file
 
 To start, I had the script ask for the name of the project. This was done by using `echo` to print the prompt, then `read` takes in the name of the project.
@@ -53,7 +53,7 @@ Next, I had to make the script navigate to the folder I want my projects in (for
 ```{zsh}
 cd Desktop/R
 
-mkdir -p $name/{data,ref,output}
+mkdir -p $name/{data-raw,data,ref,output}
 
 cd $name
 
@@ -112,7 +112,7 @@ read name
 
 cd Desktop/R
 
-mkdir -p $name/{data,ref,output}
+mkdir -p $name/{data-raw,data,ref,output}
 
 cd $name
 
@@ -130,9 +130,7 @@ NumSpacesForTab: 2
 Encoding: UTF-8
 
 RnwWeave: Sweave
-LaTex: pdfLaTeX' >> $name.txt
-
-mv $name.txt $name.Rproj
+LaTex: pdfLaTeX' >> $name.Rproj
 
 echo "Project $name has been created."
 echo "It is stored in the R directory."

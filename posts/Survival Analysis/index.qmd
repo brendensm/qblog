@@ -1,7 +1,7 @@
 ---
 title: "Survival Analysis in R"
 author: "Brenden Smith"
-date: "2022-10-24"
+date: "2023-10-24"
 categories: [R, Epi, ggplot2]
 description: "Exploring survival analysis with the package `survival`."
 image: thumbnail.png
