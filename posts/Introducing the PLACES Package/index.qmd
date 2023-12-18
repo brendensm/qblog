@@ -19,20 +19,19 @@ This post contains a brief vignette demonstrating the use of the package `PLACES
 
 To begin, we can install `PLACES` from github, then load our packages.
 
-```{r}
+```{r, message = F}
 devtools::install_github("brendensm/PLACES")
 
 library(PLACES)
 library(dplyr)
 library(ggplot2)
-library(knitr)
 ```
 
 ## Function: `get_measures`
-Our first functions allows us to easily view what measures we can query, along with a brief definition. If we run `get_measures`, we can view the measures in a data frame in the R Studio viewer. If we instead print `measures`, the pre-loaded data set, we see a preview.
+Our first functions allows us to easily view what measures we can query, along with a brief definition. If we run `get_measures`, we must specify a release year. Then we can view the measures in a data frame in the R Studio viewer. If we instead print `measures23`, the pre-loaded data set, we see a preview.
 
 ```{r}
-head(measures) %>% tibble()
+head(measures23) %>% tibble()
 ```
 
 Remember to use the `measureid` when using the next function.

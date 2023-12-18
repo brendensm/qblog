@@ -417,21 +417,21 @@
     "href": "posts/Introducing the PLACES Package/index.html",
     "title": "Introducing the PLACES Package",
     "section": "",
-    "text": "This post contains a brief vignette demonstrating the use of the package PLACES.\nTo begin, we can install PLACES from github, then load our packages.\n\n\nCode\ndevtools::install_github(\"brendensm/PLACES\")\n\nlibrary(PLACES)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(knitr)"
+    "text": "This post contains a brief vignette demonstrating the use of the package PLACES.\nTo begin, we can install PLACES from github, then load our packages.\n\n\nCode\ndevtools::install_github(\"brendensm/PLACES\")\n\nlibrary(PLACES)\nlibrary(dplyr)\nlibrary(ggplot2)"
   },
   {
     "objectID": "posts/Introducing the PLACES Package/index.html#introduction",
     "href": "posts/Introducing the PLACES Package/index.html#introduction",
     "title": "Introducing the PLACES Package",
     "section": "",
-    "text": "This post contains a brief vignette demonstrating the use of the package PLACES.\nTo begin, we can install PLACES from github, then load our packages.\n\n\nCode\ndevtools::install_github(\"brendensm/PLACES\")\n\nlibrary(PLACES)\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(knitr)"
+    "text": "This post contains a brief vignette demonstrating the use of the package PLACES.\nTo begin, we can install PLACES from github, then load our packages.\n\n\nCode\ndevtools::install_github(\"brendensm/PLACES\")\n\nlibrary(PLACES)\nlibrary(dplyr)\nlibrary(ggplot2)"
   },
   {
     "objectID": "posts/Introducing the PLACES Package/index.html#function-get_measures",
     "href": "posts/Introducing the PLACES Package/index.html#function-get_measures",
     "title": "Introducing the PLACES Package",
     "section": "Function: get_measures",
-    "text": "Function: get_measures\nOur first functions allows us to easily view what measures we can query, along with a brief definition. If we run get_measures, we can view the measures in a data frame in the R Studio viewer. If we instead print measures, the pre-loaded data set, we see a preview.\n\n\nCode\nhead(measures) %&gt;% tibble()\n\n\n# A tibble: 6 × 4\n  measureid short_question_text           measure                     categoryid\n  &lt;chr&gt;     &lt;chr&gt;                         &lt;chr&gt;                       &lt;chr&gt;     \n1 OBESITY   Obesity                       Obesity among adults aged … HLTHOUT   \n2 STROKE    Stroke                        Stroke among adults aged &gt;… HLTHOUT   \n3 ARTHRITIS Arthritis                     Arthritis among adults age… HLTHOUT   \n4 SLEEP     Sleep &lt;7 hours                Sleeping less than 7 hours… RISKBEH   \n5 INDEPLIVE Independent Living Disability Independent living disabil… DISABLT   \n6 COGNITION Cognitive Disability          Cognitive disability among… DISABLT   \n\n\nRemember to use the measureid when using the next function."
+    "text": "Function: get_measures\nOur first functions allows us to easily view what measures we can query, along with a brief definition. If we run get_measures, we must specify a release year. Then we can view the measures in a data frame in the R Studio viewer. If we instead print measures23, the pre-loaded data set, we see a preview.\n\n\nCode\nhead(measures23) %&gt;% tibble()\n\n\n# A tibble: 6 × 6\n  year  measureid short_question_text           measure       categoryid release\n  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;                         &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;  \n1 2021  OBESITY   Obesity                       Obesity amon… HLTHOUT    2023   \n2 2021  STROKE    Stroke                        Stroke among… HLTHOUT    2023   \n3 2021  ARTHRITIS Arthritis                     Arthritis am… HLTHOUT    2023   \n4 2020  SLEEP     Sleep &lt;7 hours                Sleeping les… RISKBEH    2023   \n5 2021  INDEPLIVE Independent Living Disability Independent … DISABLT    2023   \n6 2021  COGNITION Cognitive Disability          Cognitive di… DISABLT    2023   \n\n\nRemember to use the measureid when using the next function."
   },
   {
     "objectID": "posts/Introducing the PLACES Package/index.html#function-get_places",

@@ -195,29 +195,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PLACES)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="function-get_measures" class="level2">
 <h2 class="anchored" data-anchor-id="function-get_measures">Function: <code>get_measures</code></h2>
-<p>Our first functions allows us to easily view what measures we can query, along with a brief definition. If we run <code>get_measures</code>, we can view the measures in a data frame in the R Studio viewer. If we instead print <code>measures</code>, the pre-loaded data set, we see a preview.</p>
+<p>Our first functions allows us to easily view what measures we can query, along with a brief definition. If we run <code>get_measures</code>, we must specify a release year. Then we can view the measures in a data frame in the R Studio viewer. If we instead print <code>measures23</code>, the pre-loaded data set, we see a preview.</p>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(measures) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(measures23) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  measureid short_question_text           measure                     categoryid
-  &lt;chr&gt;     &lt;chr&gt;                         &lt;chr&gt;                       &lt;chr&gt;     
-1 OBESITY   Obesity                       Obesity among adults aged … HLTHOUT   
-2 STROKE    Stroke                        Stroke among adults aged &gt;… HLTHOUT   
-3 ARTHRITIS Arthritis                     Arthritis among adults age… HLTHOUT   
-4 SLEEP     Sleep &lt;7 hours                Sleeping less than 7 hours… RISKBEH   
-5 INDEPLIVE Independent Living Disability Independent living disabil… DISABLT   
-6 COGNITION Cognitive Disability          Cognitive disability among… DISABLT   </code></pre>
+<pre><code># A tibble: 6 × 6
+  year  measureid short_question_text           measure       categoryid release
+  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;                         &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;  
+1 2021  OBESITY   Obesity                       Obesity amon… HLTHOUT    2023   
+2 2021  STROKE    Stroke                        Stroke among… HLTHOUT    2023   
+3 2021  ARTHRITIS Arthritis                     Arthritis am… HLTHOUT    2023   
+4 2020  SLEEP     Sleep &lt;7 hours                Sleeping les… RISKBEH    2023   
+5 2021  INDEPLIVE Independent Living Disability Independent … DISABLT    2023   
+6 2021  COGNITION Cognitive Disability          Cognitive di… DISABLT    2023   </code></pre>
 </div>
 </div>
 <p>Remember to use the <code>measureid</code> when using the next function.</p>
