@@ -58,5 +58,8 @@
   },
   "posts/Intro to Bash Scripting/index.qmd": {
     "index.html": "e36075fa"
+  },
+  "posts/Introducing the PLACES Package/index.qmd": {
+    "index.html": "405adcaa"
   }
 }
