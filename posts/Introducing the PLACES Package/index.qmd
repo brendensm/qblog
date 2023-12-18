@@ -1,5 +1,5 @@
 ---
-title: "Introducing the PLACES Package"
+title: "Introducing the CDCPLACES Package"
 author: "Brenden Smith"
 date: "2023-12-17"
 categories: [R, Packages, API, vignette]
@@ -15,14 +15,14 @@ toc: true
 ---
 
 ## Introduction
-This post contains a brief vignette demonstrating the use of the package `PLACES`.
+This post contains a brief vignette demonstrating the use of the package `CDCPLACES`.
 
-To begin, we can install `PLACES` from github, then load our packages.
+To begin, we can install `CDCPLACES` from github, then load our packages.
 
 ```{r, message = F}
-devtools::install_github("brendensm/PLACES")
+devtools::install_github("brendensm/CDCPLACES")
 
-library(PLACES)
+library(CDCPLACES)
 library(dplyr)
 library(ggplot2)
 ```
