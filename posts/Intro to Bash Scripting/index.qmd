@@ -2,7 +2,7 @@
 title: "Intro to Bash Scripting"
 author: "Brenden Smith"
 date: "2023-11-15"
-categories: [Bash, Command line, R]
+categories: [Command line, R]
 description: "Learning to write my first useful Bash script."
 engine: knitr
 execute: 
@@ -93,7 +93,7 @@ open $name.Rproj
 
 ## Making it Accessible
 
-For me, personally, I like to be able to execute my scripts without worrying where I am in the terminal. Once my script was working properly, I moved it to the /usr/local/bin folder. 
+For me, personally, I like to be able to execute my scripts without worrying where I am in the terminal. Once my script was working properly, I moved it to the /usr/local/bin folder.
 
 ```{zsh}
 mv setupr /usr/local/bin

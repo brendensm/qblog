@@ -2,7 +2,7 @@
 title: "Introducing the CDCPLACES Package"
 author: "Brenden Smith"
 date: "2023-12-17"
-categories: [R, Packages, API, vignette]
+categories: [R, packages, API, vignette]
 description: ""
 engine: knitr
 execute: 

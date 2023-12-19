@@ -62,9 +62,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -131,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="API">API <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Bash">Bash <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Command line">Command line <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Epi">Epi <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Packages">Packages <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(7)</span></div><div class="category" data-category="color">color <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="maps">maps <span class="quarto-category-count">(1)</span></div><div class="category" data-category="packages">packages <span class="quarto-category-count">(1)</span></div><div class="category" data-category="vignette">vignette <span class="quarto-category-count">(2)</span></div><div class="category" data-category="web-scraping">web-scraping <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="API">API <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Command line">Command line <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Epi">Epi <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(7)</span></div><div class="category" data-category="color">color <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="maps">maps <span class="quarto-category-count">(1)</span></div><div class="category" data-category="packages">packages <span class="quarto-category-count">(2)</span></div><div class="category" data-category="vignette">vignette <span class="quarto-category-count">(2)</span></div><div class="category" data-category="web-scraping">web-scraping <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -156,22 +156,27 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="R,Packages,API,vignette" data-listing-date-sort="1702789200000" data-listing-file-modified-sort="1702934779614" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<a href="./posts/Introducing the PLACES Package/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="posts/Introducing the PLACES Package/index_files/figure-html/unnamed-chunk-4-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="R,packages,API,vignette" data-listing-date-sort="1702789200000" data-listing-file-modified-sort="1702994501650" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="thumbnail">
+<p><a href="./posts/Introducing the PLACES Package/index.html"> <p class="card-img-top"><img src="posts/Introducing the PLACES Package/index_files/figure-html/unnamed-chunk-4-1.png"  class="thumbnail-image card-img"/></p> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Introducing the PLACES Package/index.html">
+<h3 class="no-anchor listing-title">
 Introducing the CDCPLACES Package
-</h5>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('Packages'); return false;">
-Packages
+<div class="listing-category" onclick="window.quartoListingCategory('packages'); return false;">
+packages
 </div>
 <div class="listing-category" onclick="window.quartoListingCategory('API'); return false;">
 API
@@ -180,35 +185,37 @@ API
 vignette
 </div>
 </div>
-<div class="card-text listing-description">
+<a href="./posts/Introducing the PLACES Package/index.html">
+<div class="listing-description">
 This post contains a brief vignette demonstrating the use of the package <code>CDCPLACES</code>.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Brenden Smith
-</div>
-<div class="listing-date">
-Dec 17, 2023
-</div>
-</div>
-</div>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="Bash,Command line,R" data-listing-date-sort="1700024400000" data-listing-file-modified-sort="1700238853024" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<a href="./posts/Intro to Bash Scripting/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/Intro to Bash Scripting/bash.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Intro to Bash Scripting
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Bash'); return false;">
-Bash
+<div class="metadata">
+<a href="./posts/Introducing the PLACES Package/index.html">
+<div class="listing-date">
+Dec 17, 2023
 </div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Command line,R" data-listing-date-sort="1700024400000" data-listing-file-modified-sort="1702994519995" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="thumbnail">
+<p><a href="./posts/Intro to Bash Scripting/index.html"> <img src="./posts/Intro to Bash Scripting/bash.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Intro to Bash Scripting/index.html">
+<h3 class="no-anchor listing-title">
+Intro to Bash Scripting
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Command line'); return false;">
 Command line
 </div>
@@ -216,31 +223,36 @@ Command line
 R
 </div>
 </div>
-<div class="card-text listing-description">
-Learning to write my first useful Bash script.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Brenden Smith
-</div>
-<div class="listing-date">
-Nov 15, 2023
-</div>
-</div>
-</div>
+<a href="./posts/Intro to Bash Scripting/index.html">
+<div class="listing-description">
+<p>Learning to write my first useful Bash script.</p>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="R,Epi,ggplot2" data-listing-date-sort="1698120000000" data-listing-file-modified-sort="1700112637593" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
-<a href="./posts/Survival Analysis/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/Survival Analysis/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+<div class="metadata">
+<a href="./posts/Intro to Bash Scripting/index.html">
+<div class="listing-date">
+Nov 15, 2023
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="R,Epi,ggplot2" data-listing-date-sort="1698120000000" data-listing-file-modified-sort="1700112637593" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
+<div class="thumbnail">
+<p><a href="./posts/Survival Analysis/index.html"> <img src="./posts/Survival Analysis/thumbnail.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Survival Analysis/index.html">
+<h3 class="no-anchor listing-title">
 Survival Analysis in R
-</h5>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -252,31 +264,36 @@ Epi
 ggplot2
 </div>
 </div>
-<div class="card-text listing-description">
-Exploring survival analysis with the package <code>survival</code>.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Brenden Smith
-</div>
-<div class="listing-date">
-Oct 24, 2023
-</div>
-</div>
-</div>
+<a href="./posts/Survival Analysis/index.html">
+<div class="listing-description">
+<p>Exploring survival analysis with the package <code>survival</code>.</p>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="R,packages,vignette" data-listing-date-sort="1697083200000" data-listing-file-modified-sort="1702834385076" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<a href="./posts/HM878: Helper Functions/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/HM878: Helper Functions/rp.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+<div class="metadata">
+<a href="./posts/Survival Analysis/index.html">
+<div class="listing-date">
+Oct 24, 2023
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="R,packages,vignette" data-listing-date-sort="1697083200000" data-listing-file-modified-sort="1702834385076" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="thumbnail">
+<p><a href="./posts/HM878: Helper Functions/index.html"> <img src="./posts/HM878: Helper Functions/rp.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/HM878: Helper Functions/index.html">
+<h3 class="no-anchor listing-title">
 HM878: Helper Functions
-</h5>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -288,31 +305,36 @@ packages
 vignette
 </div>
 </div>
-<div class="card-text listing-description">
-A walkthrough of the helper functions in the package <code>hm878</code>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Brenden Smith
-</div>
-<div class="listing-date">
-Oct 12, 2023
-</div>
-</div>
-</div>
+<a href="./posts/HM878: Helper Functions/index.html">
+<div class="listing-description">
+<p>A walkthrough of the helper functions in the package <code>hm878</code></p>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="R,color,web-scraping" data-listing-date-sort="1677646800000" data-listing-file-modified-sort="1700112287323" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
-<a href="./posts/Bluets/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/Bluets/bluets.jpeg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+<div class="metadata">
+<a href="./posts/HM878: Helper Functions/index.html">
+<div class="listing-date">
+Oct 12, 2023
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="R,color,web-scraping" data-listing-date-sort="1677646800000" data-listing-file-modified-sort="1700112287323" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
+<div class="thumbnail">
+<p><a href="./posts/Bluets/index.html"> <img src="./posts/Bluets/bluets.jpeg" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Bluets/index.html">
+<h3 class="no-anchor listing-title">
 Twitter Bots
-</h5>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -324,31 +346,36 @@ color
 web-scraping
 </div>
 </div>
-<div class="card-text listing-description">
-‘Suppose I were to begin by saying that I had fallen in love with a color.’
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Brenden Smith
-</div>
-<div class="listing-date">
-Mar 1, 2023
-</div>
-</div>
-</div>
+<a href="./posts/Bluets/index.html">
+<div class="listing-description">
+<p>‘Suppose I were to begin by saying that I had fallen in love with a color.’</p>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="R,maps" data-listing-date-sort="1665460800000" data-listing-file-modified-sort="1678130288511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
-<a href="./posts/Michigan COVID Cases and Deaths by County/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/Michigan COVID Cases and Deaths by County/c19.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+<div class="metadata">
+<a href="./posts/Bluets/index.html">
+<div class="listing-date">
+Mar 1, 2023
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="R,maps" data-listing-date-sort="1665460800000" data-listing-file-modified-sort="1678130288511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
+<div class="thumbnail">
+<p><a href="./posts/Michigan COVID Cases and Deaths by County/index.html"> <img src="./posts/Michigan COVID Cases and Deaths by County/c19.jpg" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/Michigan COVID Cases and Deaths by County/index.html">
+<h3 class="no-anchor listing-title">
 Michigan COVID-19 County Maps
-</h5>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -357,31 +384,36 @@ R
 maps
 </div>
 </div>
-<div class="card-text listing-description">
-Two quick, interactive COVID-19 maps.
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Brenden Smith
-</div>
-<div class="listing-date">
-Oct 11, 2022
-</div>
-</div>
-</div>
+<a href="./posts/Michigan COVID Cases and Deaths by County/index.html">
+<div class="listing-description">
+<p>Two quick, interactive COVID-19 maps.</p>
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="R,ggplot2" data-listing-date-sort="1665288000000" data-listing-file-modified-sort="1688151712714" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
-<a href="./posts/opioid plotting practice/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img src="./posts/opioid plotting practice/image.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
+<div class="metadata">
+<a href="./posts/Michigan COVID Cases and Deaths by County/index.html">
+<div class="listing-date">
+Oct 11, 2022
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="R,ggplot2" data-listing-date-sort="1665288000000" data-listing-file-modified-sort="1688151712714" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="thumbnail">
+<p><a href="./posts/opioid plotting practice/index.html"> <img src="./posts/opioid plotting practice/image.jpg" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./posts/opioid plotting practice/index.html">
+<h3 class="no-anchor listing-title">
 Opioid Plotting Practice
-</h5>
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -390,20 +422,22 @@ R
 ggplot2
 </div>
 </div>
-<div class="card-text listing-description">
-A basic ggplot2 walkthrough and an introduction to plotly.
+<a href="./posts/opioid plotting practice/index.html">
+<div class="listing-description">
+<p>A basic ggplot2 walkthrough and an introduction to plotly.</p>
 </div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Brenden Smith
+</a>
 </div>
+<div class="metadata">
+<a href="./posts/opioid plotting practice/index.html">
 <div class="listing-date">
 Oct 9, 2022
 </div>
-</div>
-</div>
+<div class="listing-author">
+Brenden Smith
 </div>
 </a>
+</div>
 </div>
 </div>
 <div class="listing-no-matching d-none">
