@@ -116,7 +116,7 @@
     "href": "projects.html",
     "title": "Portfolio",
     "section": "",
-    "text": "Academic Posters\n\n\nVarious academic and professional projects that I have prepared into poster presentations.\n\n\n\nBrenden Smith\n\n\nAug 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nA collection of practice visualizations from the Tidy Tuesday weekly data project.\n\n\n\nBrenden Smith\n\n\nFeb 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPowerBI Dashboards\n\n\nA collection of work of mine in PowerBI.\n\n\n\nBrenden Smith\n\n\nDec 10, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMental Health and the Pandemic\n\n\nNCHS/AcademyHealth Data Visualization Challenge Submission\n\n\n\nBrenden Smith\n\n\nNov 14, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Academic Posters\n\n\nVarious academic and professional projects that I have prepared into poster presentations.\n\n\n\nBrenden Smith\n\n\nAug 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nAn ongoing collection of practice visualizations from the Tidy Tuesday weekly data project.\n\n\n\nBrenden Smith\n\n\nFeb 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPowerBI Dashboards\n\n\nA collection of work of mine in PowerBI.\n\n\n\nBrenden Smith\n\n\nDec 10, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMental Health and the Pandemic\n\n\nNCHS/AcademyHealth Data Visualization Challenge Submission\n\n\n\nBrenden Smith\n\n\nNov 14, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/Michigan COVID-19 Dashboard/index.html",
@@ -137,7 +137,7 @@
     "href": "projects/Tidy Tuesday/index.html",
     "title": "Tidy Tuesday",
     "section": "",
-    "text": "]{#img-fluid}"
+    "text": "https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/"
   },
   {
     "objectID": "posts/Bluets/index.html",
@@ -446,5 +446,19 @@
     "title": "Introducing the CDCPLACES Package",
     "section": "Use Case",
     "text": "Use Case\nFrom here, we can start to have fun. It is fairly straight forward to begin exploring data. Here I will first filter out the data so that I can plot the age adjusted rates of lack of health insurance in Arizona.\nNotice that the data provide you with confidence limits, so I have chosen to plot them here with error bars.\n\n\nCode\naz_access %&gt;%\n  filter(datavaluetypeid == \"AgeAdjPrv\") %&gt;%\n  ggplot(aes(data_value, reorder(locationname, data_value))) +\n  geom_point(size = 2) +\n  geom_errorbar(aes(xmin = low_confidence_limit, xmax = high_confidence_limit)) +\n  labs(title = \"Lack of health insurance among adults aged 18-64 years In Arizona Counties\",\n       y = \"\", x = \"Percent\") +\n  theme_minimal() +\n  theme(plot.title.position = \"plot\")\n\n\n\n\n\nYou can also extend this to multiple states to compare. You can easily query two (or more) state names, and plot them. Arizona seems to have a couple of counties that have a much higher rate compared to others.\n\n\nCode\n# multi state comparison\ntwo &lt;- get_places(state = c(\"AZ\", \"NV\"), measure = \"ACCESS2\")\n\ntwo %&gt;%\n  filter(datavaluetypeid == \"AgeAdjPrv\") %&gt;%\n  ggplot(aes(data_value, reorder(locationname, data_value), color = stateabbr)) +\n  geom_point(size = 2) +\n  geom_errorbar(aes(xmin = low_confidence_limit, xmax = high_confidence_limit)) +\n  labs(title = \n         \"Lack of health insurance among adults aged 18-64 years In Arizona and Nevada\",\n       y = \"Counties\", x = \"Percent\") +\n  theme_minimal() +\n  theme(plot.title.position = \"plot\")\n\n\n\n\n\nWe can go even further by comparing more states in the region. Here I have taken the average rate by state to easily compare. Texas appears to be far above the average.\n\n\nCode\nmulti &lt;- get_places(state = c(\"AZ\", \"NV\", \"NM\", \"TX\", \"CA\"), measure = \"ACCESS2\") %&gt;%\n  filter(datavaluetypeid == \"AgeAdjPrv\") %&gt;%\n  summarise(.by = \"stateabbr\", mean_val = mean(data_value), mean_low = mean(low_confidence_limit), mean_high = mean(high_confidence_limit))\n\nmulti %&gt;%\n  ggplot(aes(mean_val, reorder(stateabbr, mean_val), color = stateabbr)) +\n  geom_point(size = 2) +\n  geom_errorbar(aes(xmin = mean_low, xmax = mean_high)) +\n  labs(title = \"Mean lack of health insurance among adults aged 18-64 years In Southwest States\",\n       y = \"\", x = \"Percent\") +\n  theme_minimal() +\n  theme(plot.title.position = \"plot\")"
+  },
+  {
+    "objectID": "projects/Tidy Tuesday/index.html#section-1",
+    "href": "projects/Tidy Tuesday/index.html#section-1",
+    "title": "Tidy Tuesday",
+    "section": "2023",
+    "text": "2023"
+  },
+  {
+    "objectID": "projects/Tidy Tuesday/index.html#section",
+    "href": "projects/Tidy Tuesday/index.html#section",
+    "title": "Tidy Tuesday",
+    "section": "",
+    "text": "https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/"
   }
 ]

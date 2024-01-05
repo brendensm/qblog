@@ -2,14 +2,24 @@
 title: "Tidy Tuesday"
 author: "Brenden Smith"
 date: "2023-2-27"
-description: "A collection of practice visualizations from the Tidy Tuesday weekly data project."
+description: "An ongoing collection of practice visualizations from the Tidy Tuesday weekly data project."
 image: tt_logo.png
-toc: true
+toc: false
 page-layout: full
 filters: 
  - lightbox
 lightbox: auto
 ---
+
+## 2024
+
+::: grid
+::: {.g-col-12 .g-col-md-6}
+[![](LGACDCPLACES.jpg){group="my-gallery"}](https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/)
+:::
+:::
+
+## 2023
 
 ::: grid
 ::: {.g-col-12 .g-col-md-6}
