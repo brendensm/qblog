@@ -16,13 +16,10 @@ toc: true
 
 ## Introduction
 
-To begin, we can install the most recent version of `CDCPLACES` from github, then load our packages. You can also install this package directly from CRAN.
+To begin, we can install the most recent version of `CDCPLACES` from github, then load our packages.
 
 ```{r, message = F}
 devtools::install_github("brendensm/CDCPLACES")
-
-# Or from CRAN
-# install.packages("CDCPLACES")
 
 library(CDCPLACES)
 library(dplyr)

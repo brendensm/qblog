@@ -417,14 +417,14 @@
     "href": "posts/Introducing the PLACES Package/index.html",
     "title": "Introducing the CDCPLACES Package",
     "section": "",
-    "text": "To begin, we can install the most recent version of CDCPLACES from github, then load our packages. You can also install this package directly from CRAN.\n\n\nCode\ndevtools::install_github(\"brendensm/CDCPLACES\")\n\n\nrlang (1.1.2 -&gt; 1.1.3) [CRAN]\nglue  (1.6.2 -&gt; 1.7.0) [CRAN]\n\nThe downloaded binary packages are in\n    /var/folders/yk/vq2kx8014nxfpjd3xpxmgg400000gn/T//Rtmp6fcFHj/downloaded_packages\n── R CMD build ─────────────────────────────────────────────────────────────────\n* checking for file ‘/private/var/folders/yk/vq2kx8014nxfpjd3xpxmgg400000gn/T/Rtmp6fcFHj/remotes680f76673581/brendensm-CDCPLACES-628a7ea/DESCRIPTION’ ... OK\n* preparing ‘CDCPLACES’:\n* checking DESCRIPTION meta-information ... OK\n* checking for LF line-endings in source and make files and shell scripts\n* checking for empty or unneeded directories\nOmitted ‘LazyData’ from DESCRIPTION\n* building ‘CDCPLACES_1.1.4.tar.gz’\n\n\nCode\n# Or from CRAN\n# install.packages(\"CDCPLACES\")\n\nlibrary(CDCPLACES)\nlibrary(dplyr)\nlibrary(ggplot2)"
+    "text": "To begin, we can install the most recent version of CDCPLACES from github, then load our packages.\n\n\nCode\ndevtools::install_github(\"brendensm/CDCPLACES\")\n\nlibrary(CDCPLACES)\nlibrary(dplyr)\nlibrary(ggplot2)"
   },
   {
     "objectID": "posts/Introducing the PLACES Package/index.html#introduction",
     "href": "posts/Introducing the PLACES Package/index.html#introduction",
     "title": "Introducing the CDCPLACES Package",
     "section": "",
-    "text": "To begin, we can install the most recent version of CDCPLACES from github, then load our packages. You can also install this package directly from CRAN.\n\n\nCode\ndevtools::install_github(\"brendensm/CDCPLACES\")\n\n\nrlang (1.1.2 -&gt; 1.1.3) [CRAN]\nglue  (1.6.2 -&gt; 1.7.0) [CRAN]\n\nThe downloaded binary packages are in\n    /var/folders/yk/vq2kx8014nxfpjd3xpxmgg400000gn/T//Rtmp6fcFHj/downloaded_packages\n── R CMD build ─────────────────────────────────────────────────────────────────\n* checking for file ‘/private/var/folders/yk/vq2kx8014nxfpjd3xpxmgg400000gn/T/Rtmp6fcFHj/remotes680f76673581/brendensm-CDCPLACES-628a7ea/DESCRIPTION’ ... OK\n* preparing ‘CDCPLACES’:\n* checking DESCRIPTION meta-information ... OK\n* checking for LF line-endings in source and make files and shell scripts\n* checking for empty or unneeded directories\nOmitted ‘LazyData’ from DESCRIPTION\n* building ‘CDCPLACES_1.1.4.tar.gz’\n\n\nCode\n# Or from CRAN\n# install.packages(\"CDCPLACES\")\n\nlibrary(CDCPLACES)\nlibrary(dplyr)\nlibrary(ggplot2)"
+    "text": "To begin, we can install the most recent version of CDCPLACES from github, then load our packages.\n\n\nCode\ndevtools::install_github(\"brendensm/CDCPLACES\")\n\nlibrary(CDCPLACES)\nlibrary(dplyr)\nlibrary(ggplot2)"
   },
   {
     "objectID": "posts/Introducing the PLACES Package/index.html#function-get_measures",
