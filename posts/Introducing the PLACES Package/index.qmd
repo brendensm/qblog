@@ -1,7 +1,7 @@
 ---
 title: "Introducing the CDCPLACES Package"
 author: "Brenden Smith"
-date: "2023-12-17"
+date: "2024-1-10"
 categories: [R, packages, API, vignette]
 description: ""
 engine: knitr
@@ -15,28 +15,39 @@ toc: true
 ---
 
 ## Introduction
+
 This post contains a brief vignette demonstrating the use of the package `CDCPLACES`.
 
-To begin, we can install `CDCPLACES` from github, then load our packages.
+To begin, we can install the most recent version of `CDCPLACES` from github, then load our packages. You can also install this package directly from CRAN.
 
 ```{r, message = F}
 devtools::install_github("brendensm/CDCPLACES")
+
+# Or from CRAN
+# install.packages("CDCPLACES")
 
 library(CDCPLACES)
 library(dplyr)
 library(ggplot2)
 ```
 
-## Function: `get_measures`
-Our first functions allows us to easily view what measures we can query, along with a brief definition. If we run `get_measures`, we must specify a release year. Then we can view the measures in a data frame in the R Studio viewer. If we instead print `measures23`, the pre-loaded data set, we see a preview.
+## Function: `get_dictionary`
 
-```{r}
-head(measures23) %>% tibble()
+Our first functions allows us to easily view what measures we can query, via 'measureid', along with a brief definition of each function. If we run `get_dictionary`, a data frame is returned. We can view the measures in a data frame in the R Studio with `View()`. This is the preferred method for exploring the available measures.
+
+For our example here, I will print the names of the variables in this dataframe.
+
+```{r, message=F}
+# To open a viewer
+# get_dictionary() %>% View()
+
+get_dictionary() %>% names()
 ```
 
-Remember to use the `measureid` when using the next function.
+This data frame is useful for several reasons. It lists the available measures for each year of the CDC PLACES data, along with the data each variable was collected, all in a single place. Remember to use the `measureid` when querying your data.
 
 ## Function: `get_places`
+
 This function allows us to easily query data that we specify. In the example below, I will get the measure `ACCESS2` (the current lack of health insurance among adults aged 18-64 years) for the state of Arizona. This function allows for multiple of these arguments.
 
 ```{r}
@@ -104,5 +115,3 @@ multi %>%
   theme(plot.title.position = "plot")
 
 ```
-
-

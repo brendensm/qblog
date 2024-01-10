@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brenden Smith">
-<meta name="dcterms.date" content="2023-12-17">
+<meta name="dcterms.date" content="2024-01-10">
 
 <title>Brenden Smith - Introducing the CDCPLACES Package</title>
 <style>
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 17, 2023</p>
+        <p class="date">January 10, 2024</p>
       </div>
     </div>
     
@@ -172,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#function-get_measures" id="toc-function-get_measures" class="nav-link" data-scroll-target="#function-get_measures">Function: <code>get_measures</code></a></li>
+  <li><a href="#function-get_dictionary" id="toc-function-get_dictionary" class="nav-link" data-scroll-target="#function-get_dictionary">Function: <code>get_dictionary</code></a></li>
   <li><a href="#function-get_places" id="toc-function-get_places" class="nav-link" data-scroll-target="#function-get_places">Function: <code>get_places</code></a></li>
   <li><a href="#use-case" id="toc-use-case" class="nav-link" data-scroll-target="#use-case">Use Case</a></li>
   </ul>
@@ -187,39 +187,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>This post contains a brief vignette demonstrating the use of the package <code>CDCPLACES</code>.</p>
-<p>To begin, we can install <code>CDCPLACES</code> from github, then load our packages.</p>
+<p>To begin, we can install the most recent version of <code>CDCPLACES</code> from github, then load our packages. You can also install this package directly from CRAN.</p>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"brendensm/CDCPLACES"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CDCPLACES)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Or from CRAN</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("CDCPLACES")</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CDCPLACES)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="function-get_measures" class="level2">
-<h2 class="anchored" data-anchor-id="function-get_measures">Function: <code>get_measures</code></h2>
-<p>Our first functions allows us to easily view what measures we can query, along with a brief definition. If we run <code>get_measures</code>, we must specify a release year. Then we can view the measures in a data frame in the R Studio viewer. If we instead print <code>measures23</code>, the pre-loaded data set, we see a preview.</p>
+<section id="function-get_dictionary" class="level2">
+<h2 class="anchored" data-anchor-id="function-get_dictionary">Function: <code>get_dictionary</code></h2>
+<p>Our first functions allows us to easily view what measures we can query, via ‘measureid’, along with a brief definition of each function. If we run <code>get_dictionary</code>, a data frame is returned. We can view the measures in a data frame in the R Studio with <code>View()</code>. This is the preferred method for exploring the available measures.</p>
+<p>For our example here, I will print the names of the variables in this dataframe.</p>
 <div class="cell">
 <details open="">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(measures23) <span class="sc">%&gt;%</span> <span class="fu">tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To open a viewer</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># get_dictionary() %&gt;% View()</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">get_dictionary</span>() <span class="sc">%&gt;%</span> <span class="fu">names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 6
-  year  measureid short_question_text           measure       categoryid release
-  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;                         &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;  
-1 2021  OBESITY   Obesity                       Obesity amon… HLTHOUT    2023   
-2 2021  STROKE    Stroke                        Stroke among… HLTHOUT    2023   
-3 2021  ARTHRITIS Arthritis                     Arthritis am… HLTHOUT    2023   
-4 2020  SLEEP     Sleep &lt;7 hours                Sleeping les… RISKBEH    2023   
-5 2021  INDEPLIVE Independent Living Disability Independent … DISABLT    2023   
-6 2021  COGNITION Cognitive Disability          Cognitive di… DISABLT    2023   </code></pre>
+<pre><code> [1] "measureid"                "measure_full_name"       
+ [3] "measure_short_name"       "categoryid"              
+ [5] "category_name"            "places_release_2023"     
+ [7] "places_release_2022"      "places_release_2021"     
+ [9] "places_release_2020"      "_500_cities_release_2019"
+[11] "_500_cities_release_2018" "_500_cities_release_2017"
+[13] "_500_cities_release_2016" "frequency_brfss_year"    </code></pre>
 </div>
 </div>
-<p>Remember to use the <code>measureid</code> when using the next function.</p>
+<p>This data frame is useful for several reasons. It lists the available measures for each year of the CDC PLACES data, along with the data each variable was collected, all in a single place. Remember to use the <code>measureid</code> when querying your data.</p>
 </section>
 <section id="function-get_places" class="level2">
 <h2 class="anchored" data-anchor-id="function-get_places">Function: <code>get_places</code></h2>
