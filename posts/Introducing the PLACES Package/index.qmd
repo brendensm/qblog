@@ -3,7 +3,7 @@ title: "Introducing the CDCPLACES Package"
 author: "Brenden Smith"
 date: "2024-1-10"
 categories: [R, packages, API, vignette]
-description: ""
+description: "This post contains a brief vignette demonstrating the use of the package `CDCPLACES`."
 engine: knitr
 execute: 
   warning: false
@@ -15,8 +15,6 @@ toc: true
 ---
 
 ## Introduction
-
-This post contains a brief vignette demonstrating the use of the package `CDCPLACES`.
 
 To begin, we can install the most recent version of `CDCPLACES` from github, then load our packages. You can also install this package directly from CRAN.
 

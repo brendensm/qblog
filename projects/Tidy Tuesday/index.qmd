@@ -14,6 +14,11 @@ lightbox: auto
 ## 2024
 
 ::: grid
+
+::: {.g-col-12 .g-col-md-6}
+![](24week2.png){group="\"my-gallery"}
+:::
+
 ::: {.g-col-12 .g-col-md-6}
 [![](LGACDCPLACES.jpg){group="my-gallery"}](https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/)
 :::
