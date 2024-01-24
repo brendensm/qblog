@@ -1,10 +1,10 @@
 ---
-title: "Brenden Smith"
-subtitle: "MPH Candidate, Research Assistant, Michigan State University, Institute for Health Policy"
-image: transme.png
-about:
-  template: solana
-  links:
+ title: "Brenden Smith"
+ subtitle: "MPH Candidate, Research Assistant, Michigan State University, Institute for Health Policy"
+ image: transme.png
+ about:
+   template: solana
+   links:
     - icon: twitter
       text: Twitter
       href: https://twitter.com/brendensm
@@ -19,3 +19,5 @@ about:
 Hi, I'm Brenden. I am an MPH candidate with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast.
 
 If you would like to see some of my current and past work, you can visit my [portfolio page](projects.qmd) or check out [my blog](blog.qmd).
+
+

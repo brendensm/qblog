@@ -32,7 +32,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Introducing the CDCPLACES Package\n\n\n\n\n\n\n\nR\n\n\npackages\n\n\nAPI\n\n\nvignette\n\n\n\n\nThis post contains a brief vignette demonstrating the use of the package CDCPLACES.\n\n\n\n\n\n\nJan 10, 2024\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nIntro to Bash Scripting\n\n\n\n\n\n\n\nCommand line\n\n\nR\n\n\n\n\nLearning to write my first useful Bash script.\n\n\n\n\n\n\nNov 15, 2023\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nSurvival Analysis in R\n\n\n\n\n\n\n\nR\n\n\nEpi\n\n\nggplot2\n\n\n\n\nExploring survival analysis with the package survival.\n\n\n\n\n\n\nOct 24, 2023\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nHM878: Helper Functions\n\n\n\n\n\n\n\nR\n\n\npackages\n\n\nvignette\n\n\n\n\nA walkthrough of the helper functions in the package hm878\n\n\n\n\n\n\nOct 12, 2023\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nTwitter Bots\n\n\n\n\n\n\n\nR\n\n\ncolor\n\n\nweb-scraping\n\n\n\n\n‘Suppose I were to begin by saying that I had fallen in love with a color.’\n\n\n\n\n\n\nMar 1, 2023\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nMichigan COVID-19 County Maps\n\n\n\n\n\n\n\nR\n\n\nmaps\n\n\n\n\nTwo quick, interactive COVID-19 maps.\n\n\n\n\n\n\nOct 11, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nOpioid Plotting Practice\n\n\n\n\n\n\n\nR\n\n\nggplot2\n\n\n\n\nA basic ggplot2 walkthrough and an introduction to plotly.\n\n\n\n\n\n\nOct 9, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\nNo matching items"
+    "text": "Introducing the CDCPLACES Package\n\n\n\n\n\n\n\nR\n\n\npackages\n\n\nAPI\n\n\nvignette\n\n\n\n\nA brief vignette demonstrating the use of the package CDCPLACES.\n\n\n\n\n\n\nJan 10, 2024\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nIntro to Bash Scripting\n\n\n\n\n\n\n\nCommand line\n\n\nR\n\n\n\n\nLearning to write my first useful Bash script.\n\n\n\n\n\n\nNov 15, 2023\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nSurvival Analysis in R\n\n\n\n\n\n\n\nR\n\n\nEpi\n\n\nggplot2\n\n\n\n\nExploring survival analysis with the package survival.\n\n\n\n\n\n\nOct 24, 2023\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nHM878: Helper Functions\n\n\n\n\n\n\n\nR\n\n\npackages\n\n\nvignette\n\n\n\n\nA walkthrough of the helper functions in the package hm878\n\n\n\n\n\n\nOct 12, 2023\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nTwitter Bots\n\n\n\n\n\n\n\nR\n\n\ncolor\n\n\nweb-scraping\n\n\n\n\n‘Suppose I were to begin by saying that I had fallen in love with a color.’\n\n\n\n\n\n\nMar 1, 2023\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nMichigan COVID-19 County Maps\n\n\n\n\n\n\n\nR\n\n\nmaps\n\n\n\n\nTwo quick, interactive COVID-19 maps.\n\n\n\n\n\n\nOct 11, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\n  \n\n\n\n\nOpioid Plotting Practice\n\n\n\n\n\n\n\nR\n\n\nggplot2\n\n\n\n\nA basic ggplot2 walkthrough and an introduction to plotly.\n\n\n\n\n\n\nOct 9, 2022\n\n\nBrenden Smith\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/welcome/index.html#header-two",
@@ -220,8 +220,8 @@
     "objectID": "index.html#mph-candidate-research-assistant-michigan-state-university-institute-for-health-policy",
     "href": "index.html#mph-candidate-research-assistant-michigan-state-university-institute-for-health-policy",
     "title": "Brenden Smith",
-    "section": "MPH Candidate, Research Assistant, Michigan State University, Institute for Health Policy",
-    "text": "MPH Candidate, Research Assistant, Michigan State University, Institute for Health Policy\nHello, I’m Brenden. I am an MPH candidate with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast.\n :::"
+    "section": "",
+    "text": "Hi, I’m Brenden. I am an MPH candidate with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast.\nIf you would like to see some of my current and past work, you can visit my portfolio page or check out my blog."
   },
   {
     "objectID": "index.html#projects",
@@ -417,14 +417,14 @@
     "href": "posts/Introducing the PLACES Package/index.html",
     "title": "Introducing the CDCPLACES Package",
     "section": "",
-    "text": "To begin, we can install the most recent version of CDCPLACES from github, then load our packages.\n\n\nCode\ndevtools::install_github(\"brendensm/CDCPLACES\")\n\nlibrary(CDCPLACES)\nlibrary(dplyr)\nlibrary(ggplot2)"
+    "text": "To begin, we can install the most recent version of CDCPLACES from github, then load our packages.\n\n\nCode\n# install from github\n# devtools::install_github(\"brendensm/CDCPLACES\")\n\nlibrary(CDCPLACES)\nlibrary(dplyr)\nlibrary(ggplot2)"
   },
   {
     "objectID": "posts/Introducing the PLACES Package/index.html#introduction",
     "href": "posts/Introducing the PLACES Package/index.html#introduction",
     "title": "Introducing the CDCPLACES Package",
     "section": "",
-    "text": "To begin, we can install the most recent version of CDCPLACES from github, then load our packages.\n\n\nCode\ndevtools::install_github(\"brendensm/CDCPLACES\")\n\nlibrary(CDCPLACES)\nlibrary(dplyr)\nlibrary(ggplot2)"
+    "text": "To begin, we can install the most recent version of CDCPLACES from github, then load our packages.\n\n\nCode\n# install from github\n# devtools::install_github(\"brendensm/CDCPLACES\")\n\nlibrary(CDCPLACES)\nlibrary(dplyr)\nlibrary(ggplot2)"
   },
   {
     "objectID": "posts/Introducing the PLACES Package/index.html#function-get_measures",
@@ -467,5 +467,12 @@
     "title": "Introducing the CDCPLACES Package",
     "section": "Function: get_dictionary",
     "text": "Function: get_dictionary\nOur first functions allows us to easily view what measures we can query, via ‘measureid’, along with a brief definition of each function. If we run get_dictionary, a data frame is returned. We can view the measures in a data frame in the R Studio with View(). This is the preferred method for exploring the available measures.\nFor our example here, I will print the names of the variables in this dataframe.\n\n\nCode\n# To open a viewer\n# get_dictionary() %&gt;% View()\n\nget_dictionary() %&gt;% names()\n\n\n [1] \"measureid\"                \"measure_full_name\"       \n [3] \"measure_short_name\"       \"categoryid\"              \n [5] \"category_name\"            \"places_release_2023\"     \n [7] \"places_release_2022\"      \"places_release_2021\"     \n [9] \"places_release_2020\"      \"_500_cities_release_2019\"\n[11] \"_500_cities_release_2018\" \"_500_cities_release_2017\"\n[13] \"_500_cities_release_2016\" \"frequency_brfss_year\"    \n\n\nThis data frame is useful for several reasons. It lists the available measures for each year of the CDC PLACES data, along with the data each variable was collected, all in a single place. Remember to use the measureid when querying your data."
+  },
+  {
+    "objectID": "index.html#brenden-smith",
+    "href": "index.html#brenden-smith",
+    "title": "Brenden Smith",
+    "section": "",
+    "text": "Hi, I’m Brenden. I am an MPH candidate with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast.\nIf you would like to see some of my current and past work, you can visit my portfolio page or check out my blog."
   }
 ]
