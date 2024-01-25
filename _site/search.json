@@ -116,7 +116,7 @@
     "href": "projects.html",
     "title": "Portfolio",
     "section": "",
-    "text": "Academic Posters\n\n\nVarious academic and professional projects that I have prepared into poster presentations.\n\n\n\nBrenden Smith\n\n\nAug 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nAn ongoing collection of practice visualizations from the Tidy Tuesday weekly data project.\n\n\n\nBrenden Smith\n\n\nFeb 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPowerBI Dashboards\n\n\nA collection of work of mine in PowerBI.\n\n\n\nBrenden Smith\n\n\nDec 10, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMental Health and the Pandemic\n\n\nNCHS/AcademyHealth Data Visualization Challenge Submission\n\n\n\nBrenden Smith\n\n\nNov 14, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "R Shiny Apps\n\n\nFeatured work using Shiny.\n\n\n\nBrenden Smith\n\n\nJan 24, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAcademic Posters\n\n\nVarious academic and professional projects that I have prepared into poster presentations.\n\n\n\nBrenden Smith\n\n\nAug 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nAn ongoing collection of practice visualizations from the Tidy Tuesday weekly data project.\n\n\n\nBrenden Smith\n\n\nFeb 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPowerBI Dashboards\n\n\nA collection of work of mine in PowerBI.\n\n\n\nBrenden Smith\n\n\nDec 10, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/Michigan COVID-19 Dashboard/index.html",
@@ -474,5 +474,33 @@
     "title": "Brenden Smith",
     "section": "",
     "text": "Hi, I’m Brenden. I am an MPH candidate with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast.\nIf you would like to see some of my current and past work, you can visit my portfolio page or check out my blog."
+  },
+  {
+    "objectID": "projects/R Shiny Apps/Mental Health and the Pandemic/index.html",
+    "href": "projects/R Shiny Apps/Mental Health and the Pandemic/index.html",
+    "title": "Mental Health and the Pandemic",
+    "section": "",
+    "text": "Introduction\nThis project was originally a submission to the National Center for Health Statistics and AcademyHealth sponsored Data Visualization Challenge in Fall of 2022.\nThis web application was my first experience building a Shiny application! I found it fascinating to dive into the mechanics of making a usable, interactive web application for data exploration.\nThis project uses data from the Household Pulse Survey as well as data from the Uniform Data System to understand mental illness during the pandemic years. HHP data shows national trends for varying mental illnesses while the UDS data speaks to the experience of patients accessing care at federally qualified health centers throughout the country. We added this data and compared it with poverty rates across U.S. counties (American Community Survey) and mental health provider shortage levels (Area Health Resources Files).\nMy favorite part of this challenge was getting to create large, interactive maps to explore these data.\nWhile the application could be embedded here, it is best viewed in its own window. You can access the app and the full data here."
+  },
+  {
+    "objectID": "projects/shiny.html",
+    "href": "projects/shiny.html",
+    "title": "R Shiny Apps",
+    "section": "",
+    "text": "Sugar Smart Coalition Lansing - Nutrition Calculator\n\n\nCalculator\n\n\n\nBrenden Smith\n\n\nJan 24, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMental Health and the Pandemic\n\n\nNCHS/AcademyHealth Data Visualization Challenge Submission\n\n\n\nBrenden Smith\n\n\nNov 14, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects/R Shiny Apps/index.html#mental-health-and-the-pandemic",
+    "href": "projects/R Shiny Apps/index.html#mental-health-and-the-pandemic",
+    "title": "R Shiny Apps",
+    "section": "Mental Health and the Pandemic",
+    "text": "Mental Health and the Pandemic\nThis project was originally a submission to the National Center for Health Statistics and AcademyHealth sponsored Data Visualization Challenge in Fall of 2022.\nThis web application was my first experience building a Shiny application! I found it fascinating to dive into the mechanics of making a usable, interactive web application for data exploration.\nThis project uses data from the Household Pulse Survey as well as data from the Uniform Data System to understand mental illness during the pandemic years. HHP data shows national trends for varying mental illnesses while the UDS data speaks to the experience of patients accessing care at federally qualified health centers throughout the country. We added this data and compared it with poverty rates across U.S. counties (American Community Survey) and mental health provider shortage levels (Area Health Resources Files).\nMy favorite part of this challenge was getting to create large, interactive maps to explore these data.\nWhile the application could be embedded here, it is best viewed in its own window. You can access the app and the full data here."
+  },
+  {
+    "objectID": "projects/R Shiny Apps/index.html#cdcplaces-data-explorer",
+    "href": "projects/R Shiny Apps/index.html#cdcplaces-data-explorer",
+    "title": "R Shiny Apps",
+    "section": "CDCPLACES Data Explorer",
+    "text": "CDCPLACES Data Explorer"
   }
 ]

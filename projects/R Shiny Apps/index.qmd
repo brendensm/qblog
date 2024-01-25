@@ -1,12 +1,22 @@
 ---
-title: "Mental Health and the Pandemic"
+title: "R Shiny Apps"
 author: "Brenden Smith"
-date: "2022-11-14"
-description: "NCHS/AcademyHealth Data Visualization Challenge Submission"
+date: "2024-01-24"
+description: "Featured work using Shiny."
 image: shiny.jpeg
+toc: true
 ---
 
-# Introduction
+## Sugar Smart Coalition Lansing - Nutrition Calculator
+
+<iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/sugar_smart_coalition/"> </iframe>
+
+## CDCPLACES Data Explorer
+
+<iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/"> </iframe>
+
+
+## Mental Health and the Pandemic
 
 This project was originally a submission to the National Center for Health Statistics and AcademyHealth sponsored Data Visualization Challenge in Fall of 2022.
 

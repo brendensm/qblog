@@ -15,6 +15,9 @@
     ],
     "projects.qmd": [
       "projects"
+    ],
+    "projects/shiny.qmd": [
+      "R Shiny Apps"
     ]
   }
 }

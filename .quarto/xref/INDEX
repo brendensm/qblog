@@ -61,5 +61,17 @@
   },
   "posts/Introducing the PLACES Package/index.qmd": {
     "index.html": "405adcaa"
+  },
+  "projects/R Shiny Apps/SSC/index.qmd": {
+    "index.html": "5a6b4329"
+  },
+  "projects/shiny.qmd": {
+    "shiny.html": "d0b79b33"
+  },
+  "projects/R Shiny Apps/Mental Health and the Pandemic/index.qmd": {
+    "index.html": "e84a6690"
+  },
+  "projects/R Shiny Apps/index.qmd": {
+    "index.html": "ec2cffa5"
   }
 }

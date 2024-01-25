@@ -26,10 +26,17 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/R Shiny Apps/index.html",
       "/projects/AcademyHealth Poster/index.html",
       "/projects/Tidy Tuesday/index.html",
-      "/projects/Michigan COVID-19 Dashboard/index.html",
-      "/projects/Mental Health and the Pandemic/index.html"
+      "/projects/Michigan COVID-19 Dashboard/index.html"
+    ]
+  },
+  {
+    "listing": "/projects/shiny.html",
+    "items": [
+      "/projects/R Shiny Apps/SSC/index.html",
+      "/projects/R Shiny Apps/Mental Health and the Pandemic/index.html"
     ]
   }
 ]
