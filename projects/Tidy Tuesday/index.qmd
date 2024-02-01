@@ -14,15 +14,23 @@ lightbox: auto
 ## 2024
 
 ::: grid
-:::{.g-col-12 .g-col-md-6}
+:::{.g-col-8 .g-col-md-4}
+![](24week5.png){group="\"my-gallery"}
+:::
+
+:::{.g-col-8 .g-col-md-4}
+![](24week4.png){group="\"my-gallery"}
+:::
+
+:::{.g-col-8 .g-col-md-4}
 ![](24week3.png){group="\"my-gallery"}
 :::
 
-::: {.g-col-12 .g-col-md-6}
+:::{.g-col-8 .g-col-md-4}
 ![](24week2.png){group="\"my-gallery"}
 :::
 
-::: {.g-col-12 .g-col-md-6}
+:::{.g-col-8 .g-col-md-4}
 [![](LGACDCPLACES.jpg){group="my-gallery"}](https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/)
 :::
 :::
@@ -30,27 +38,27 @@ lightbox: auto
 ## 2023
 
 ::: grid
-::: {.g-col-12 .g-col-md-6}
+:::{.g-col-8 .g-col-md-4}
 ![](tt-w42-2023.png){group="\"my-gallery"}
 :::
 
-::: {.g-col-12 .g-col-md-6}
+:::{.g-col-8 .g-col-md-4}
 ![](week27_viz.png){group="\"my-gallery"}
 :::
 
-::: {.g-col-12 .g-col-md-6}
+:::{.g-col-8 .g-col-md-4}
 ![](tt-week-10-1.png){group="\"my-gallery"}
 :::
 
-::: {.g-col-12 .g-col-md-6}
+:::{.g-col-8 .g-col-md-4}
 ![](tt-week-10-2.png){group="\"my-gallery"}
 :::
 
-::: {.g-col-12 .g-col-md-6}
+:::{.g-col-8 .g-col-md-4}
 ![](tt-w8-2023.png){group="\"my-gallery"}
 :::
 
-::: {.g-col-12 .g-col-md-6}
+:::{.g-col-8 .g-col-md-4}
 ![](tt-week9-test.jpg){group="\"my-gallery"}
 :::
 :::
