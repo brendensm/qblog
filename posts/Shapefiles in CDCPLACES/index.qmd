@@ -53,7 +53,7 @@ mi |>
 We can do the same for census level data. This is as simple as specifying our geography to "census".
 
 ```{r, output=FALSE}
-vt <- get_places(geo = "census", state = c("VT"), measure = "SLEEP", geometry = TRUE)
+vt <- get_places(geo = "census", state = "VT", measure = "SLEEP", geometry = TRUE)
 ```
 
 Then we can map it just the same.
