@@ -1,0 +1,14 @@
+{
+  "hash": "d32ab5b23d183dbe3eced9089b8d8231",
+  "result": {
+    "markdown": "---\ntitle: \"R Shiny Apps\"\nlisting:\n  contents: R Shiny Apps\n  sort: \"date desc\"\n  type: grid\n  categories: false\n  sort-ui: false\n  filter-ui: false\npage-layout: full\ntitle-block-banner: false\nknitr:\n  opts_chunk: \n    collapse: true\nexecute: \n  echo: false\n---\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

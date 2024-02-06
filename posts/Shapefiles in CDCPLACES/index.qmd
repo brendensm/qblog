@@ -1,0 +1,75 @@
+---
+title: "Shapefiles in CDCPLACES 1.1.5"
+author: "Brenden Smith"
+date: "2024-2-06"
+categories: [R, packages, API, vignette, maps]
+description: "Map PLACES data with ease with the help of `tigris`."
+engine: knitr
+execute: 
+  warning: false
+  eval: true
+#image: vt.png
+code-fold: show
+code-overflow: scroll
+toc: true
+---
+
+## Introduction
+
+With the most recent development release of `CDCPLACES`, users can now request an sf data frame to allow for simple, streamlined mapping of PLACES data. To use this new feature, be sure to install the latest development version from GitHub.
+
+```{r}
+
+# Install the latest development version
+# devtools::install_github("brendensm/CDCPLACES")
+
+library(CDCPLACES)
+library(ggplot2)
+library(dplyr)
+
+```
+
+## New argument `geometry`
+
+First we need to query our data. To include our shape file, we need to specify the argument `geometry` as "TRUE". For our first example we will look at the percentage of adults sleeping less than 7 hours in Michigan Counties.
+
+```{r, output=FALSE}
+mi <- get_places(state = "MI", measure = "SLEEP", geometry = TRUE)
+```
+
+Now we can take this dataset and immediately plot the spatial data with `ggplot2`. I will also add a nicer looking color palette and the percentage scale in `scale_fill_viridis_c`, as well as a title with the function `labs`.
+
+```{r}
+mi |> 
+  filter(datavaluetypeid == "AgeAdjPrv") |> 
+  ggplot(aes(fill = data_value)) +
+  geom_sf() +
+  scale_fill_viridis_c(labels = scales::percent_format(scale = 1)) +
+  theme_minimal() +
+  labs(title = mi$measure) +
+  theme(plot.title.position = "plot")
+```
+
+We can do the same for census level data. This is as simple as specifying our geography to "census".
+
+```{r, output=FALSE}
+vt <- get_places(geo = "census", state = c("VT"), measure = "SLEEP", geometry = TRUE)
+```
+
+Then we can map it just the same.
+
+```{r}
+vt |> 
+  ggplot(aes(fill = data_value)) +
+  geom_sf() +
+  scale_fill_viridis_c(labels = scales::percent_format(scale = 1)) +
+  theme_minimal() +
+  labs(title = vt$measure) +
+  theme(plot.title.position = "plot")
+
+```
+
+## Acknowledgements
+
+These features would not be possible without the excellent work of Kyle Walker's package `tigris`. The contributions he has made to the R community have been incredibly inspiring to me. His other package, `tidycensus` was the inspiration for this entire pacakge. To see his work visit his website [here.](https://walker-data.com/) 
+
