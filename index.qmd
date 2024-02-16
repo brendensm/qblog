@@ -19,5 +19,3 @@
 Hi, I'm Brenden. I am an MPH candidate with interests in health equity, harm reduction, and community engagement. I am a data analyst, community researcher, and R enthusiast.
 
 If you would like to see some of my current and past work, you can visit my [portfolio page](projects.qmd) or check out [my blog](blog.qmd).
-
-

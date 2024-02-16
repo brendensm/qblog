@@ -6,7 +6,7 @@ website:
   favicon: cat96.png
   search: false
   navbar:
-    logo: cat-dark.png
+    logo: white-cat.png
     right:
       - text: "About"
         file: index.qmd
@@ -15,8 +15,8 @@ website:
      
 format:
   html:
-  #  theme: minty
-    theme:  [morph, custom-dark.scss]
+    #theme: minty
+    theme:  custom2.scss
     # , custom-dark.scss
 
 

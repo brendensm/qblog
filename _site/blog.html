@@ -34,10 +34,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -62,9 +62,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -95,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./cat-dark.png" alt="" class="navbar-logo">
+    <img src="./white-cat.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Brenden Smith</span>
@@ -129,11 +129,9 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="API">API <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Command line">Command line <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Epi">Epi <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(8)</span></div><div class="category" data-category="color">color <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="maps">maps <span class="quarto-category-count">(2)</span></div><div class="category" data-category="packages">packages <span class="quarto-category-count">(3)</span></div><div class="category" data-category="vignette">vignette <span class="quarto-category-count">(3)</span></div><div class="category" data-category="web-scraping">web-scraping <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -156,337 +154,122 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="R,packages,API,vignette,maps" data-listing-date-sort="1707195600000" data-listing-file-modified-sort="1707253095380" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/Shapefiles in CDCPLACES/index.html"> <p class="card-img-top"><img src="posts/Shapefiles in CDCPLACES/index_files/figure-html/unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Shapefiles in CDCPLACES/index.html">
-<h3 class="no-anchor listing-title">
-Shapefiles in CDCPLACES 1.1.5
-</h3>
-<div class="listing-subtitle">
+<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('packages'); return false;">
-packages
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('API'); return false;">
-API
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('vignette'); return false;">
-vignette
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('maps'); return false;">
-maps
-</div>
-</div>
-<a href="./posts/Shapefiles in CDCPLACES/index.html">
-<div class="listing-description">
-<p>Map PLACES data with ease with the help of <code>tigris</code>.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Shapefiles in CDCPLACES/index.html">
-<div class="listing-date">
-Feb 6, 2024
-</div>
-<div class="listing-author">
-Brenden Smith
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="R,packages,API,vignette" data-listing-date-sort="1704862800000" data-listing-file-modified-sort="1706115220784" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/Introducing the PLACES Package/index.html"> <p class="card-img-top"><img src="posts/Introducing the PLACES Package/index_files/figure-html/unnamed-chunk-4-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Introducing the PLACES Package/index.html">
-<h3 class="no-anchor listing-title">
-Introducing the CDCPLACES Package
-</h3>
-<div class="listing-subtitle">
+<table class="quarto-listing-table table table-hover">
+<thead>
+<tr>
+<th>
+Date
+</th>
+<th>
+Title
+</th>
+<th>
+Description
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-categories="R,packages,API,vignette,maps" data-listing-date-sort="1707195600000" data-listing-file-modified-sort="1707253095380" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-title-sort="Shapefiles in CDCPLACES 1.1.5" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Feb 6, 2024</span>
+</td>
+<td>
+<a href="./posts/Shapefiles in CDCPLACES/index.html" class="title listing-title">Shapefiles in CDCPLACES 1.1.5</a>
+</td>
+<td>
+<span class="listing-description">Map PLACES data with ease with the help of <code>tigris</code>.</span>
+</td>
+</tr>
+<tr data-index="1" data-categories="R,packages,API,vignette" data-listing-date-sort="1704862800000" data-listing-file-modified-sort="1706115220784" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Introducing the CDCPLACES Package" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Jan 10, 2024</span>
+</td>
+<td>
+<a href="./posts/Introducing the PLACES Package/index.html" class="title listing-title">Introducing the CDCPLACES Package</a>
+</td>
+<td>
+<span class="listing-description">A brief vignette demonstrating the use of the package <code>CDCPLACES</code>.</span>
+</td>
+</tr>
+<tr data-index="2" data-categories="Command line,R" data-listing-date-sort="1700024400000" data-listing-file-modified-sort="1702994519995" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Intro to Bash Scripting" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Nov 15, 2023</span>
+</td>
+<td>
+<a href="./posts/Intro to Bash Scripting/index.html" class="title listing-title">Intro to Bash Scripting</a>
+</td>
+<td>
+<span class="listing-description">Learning to write my first useful Bash script.</span>
+</td>
+</tr>
+<tr data-index="3" data-categories="R,Epi,ggplot2" data-listing-date-sort="1698120000000" data-listing-file-modified-sort="1700112637593" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-title-sort="Survival Analysis in R" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Oct 24, 2023</span>
+</td>
+<td>
+<a href="./posts/Survival Analysis/index.html" class="title listing-title">Survival Analysis in R</a>
+</td>
+<td>
+<span class="listing-description">Exploring survival analysis with the package <code>survival</code>.</span>
+</td>
+</tr>
+<tr data-index="4" data-categories="R,packages,vignette" data-listing-date-sort="1697083200000" data-listing-file-modified-sort="1702834385076" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="HM878: Helper Functions" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Oct 12, 2023</span>
+</td>
+<td>
+<a href="./posts/HM878: Helper Functions/index.html" class="title listing-title">HM878: Helper Functions</a>
+</td>
+<td>
+<span class="listing-description">A walkthrough of the helper functions in the package <code>hm878</code></span>
+</td>
+</tr>
+<tr data-index="5" data-categories="R,color,web-scraping" data-listing-date-sort="1677646800000" data-listing-file-modified-sort="1708056360478" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-title-sort="Twitter Bots" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Mar 1, 2023</span>
+</td>
+<td>
+<a href="./posts/Bluets/index.html" class="title listing-title">Twitter Bots</a>
+</td>
+<td>
+<span class="listing-description">‘Suppose I were to begin by saying that I had fallen in love with a color.’</span>
+</td>
+</tr>
+<tr data-index="6" data-categories="R,maps" data-listing-date-sort="1665460800000" data-listing-file-modified-sort="1678130288511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-title-sort="Michigan COVID-19 County Maps" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Oct 11, 2022</span>
+</td>
+<td>
+<a href="./posts/Michigan COVID Cases and Deaths by County/index.html" class="title listing-title">Michigan COVID-19 County Maps</a>
+</td>
+<td>
+<span class="listing-description">Two quick, interactive COVID-19 maps.</span>
+</td>
+</tr>
+<tr data-index="7" data-categories="R,ggplot2" data-listing-date-sort="1665288000000" data-listing-file-modified-sort="1688151712714" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Opioid Plotting Practice" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
+ if (href) { window.location=href ; return false; }">
+<td>
+<span class="listing-date">Oct 9, 2022</span>
+</td>
+<td>
+<a href="./posts/opioid plotting practice/index.html" class="title listing-title">Opioid Plotting Practice</a>
+</td>
+<td>
+<span class="listing-description">A basic ggplot2 walkthrough and an introduction to plotly.</span>
+</td>
+</tr>
+</tbody>
 
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('packages'); return false;">
-packages
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('API'); return false;">
-API
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('vignette'); return false;">
-vignette
-</div>
-</div>
-<a href="./posts/Introducing the PLACES Package/index.html">
-<div class="listing-description">
-<p>A brief vignette demonstrating the use of the package <code>CDCPLACES</code>.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Introducing the PLACES Package/index.html">
-<div class="listing-date">
-Jan 10, 2024
-</div>
-<div class="listing-author">
-Brenden Smith
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Command line,R" data-listing-date-sort="1700024400000" data-listing-file-modified-sort="1702994519995" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/Intro to Bash Scripting/index.html"> <img src="./posts/Intro to Bash Scripting/bash.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Intro to Bash Scripting/index.html">
-<h3 class="no-anchor listing-title">
-Intro to Bash Scripting
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Command line'); return false;">
-Command line
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<a href="./posts/Intro to Bash Scripting/index.html">
-<div class="listing-description">
-<p>Learning to write my first useful Bash script.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Intro to Bash Scripting/index.html">
-<div class="listing-date">
-Nov 15, 2023
-</div>
-<div class="listing-author">
-Brenden Smith
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="R,Epi,ggplot2" data-listing-date-sort="1698120000000" data-listing-file-modified-sort="1700112637593" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
-<div class="thumbnail">
-<p><a href="./posts/Survival Analysis/index.html"> <img src="./posts/Survival Analysis/thumbnail.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Survival Analysis/index.html">
-<h3 class="no-anchor listing-title">
-Survival Analysis in R
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Epi'); return false;">
-Epi
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-</div>
-<a href="./posts/Survival Analysis/index.html">
-<div class="listing-description">
-<p>Exploring survival analysis with the package <code>survival</code>.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Survival Analysis/index.html">
-<div class="listing-date">
-Oct 24, 2023
-</div>
-<div class="listing-author">
-Brenden Smith
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="R,packages,vignette" data-listing-date-sort="1697083200000" data-listing-file-modified-sort="1702834385076" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/HM878: Helper Functions/index.html"> <img src="./posts/HM878: Helper Functions/rp.png" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/HM878: Helper Functions/index.html">
-<h3 class="no-anchor listing-title">
-HM878: Helper Functions
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('packages'); return false;">
-packages
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('vignette'); return false;">
-vignette
-</div>
-</div>
-<a href="./posts/HM878: Helper Functions/index.html">
-<div class="listing-description">
-<p>A walkthrough of the helper functions in the package <code>hm878</code></p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/HM878: Helper Functions/index.html">
-<div class="listing-date">
-Oct 12, 2023
-</div>
-<div class="listing-author">
-Brenden Smith
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="R,color,web-scraping" data-listing-date-sort="1677646800000" data-listing-file-modified-sort="1700112287323" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
-<div class="thumbnail">
-<p><a href="./posts/Bluets/index.html"> <img src="./posts/Bluets/bluets.jpeg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Bluets/index.html">
-<h3 class="no-anchor listing-title">
-Twitter Bots
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('color'); return false;">
-color
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('web-scraping'); return false;">
-web-scraping
-</div>
-</div>
-<a href="./posts/Bluets/index.html">
-<div class="listing-description">
-<p>‘Suppose I were to begin by saying that I had fallen in love with a color.’</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Bluets/index.html">
-<div class="listing-date">
-Mar 1, 2023
-</div>
-<div class="listing-author">
-Brenden Smith
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="R,maps" data-listing-date-sort="1665460800000" data-listing-file-modified-sort="1678130288511" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
-<div class="thumbnail">
-<p><a href="./posts/Michigan COVID Cases and Deaths by County/index.html"> <img src="./posts/Michigan COVID Cases and Deaths by County/c19.jpg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Michigan COVID Cases and Deaths by County/index.html">
-<h3 class="no-anchor listing-title">
-Michigan COVID-19 County Maps
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('maps'); return false;">
-maps
-</div>
-</div>
-<a href="./posts/Michigan COVID Cases and Deaths by County/index.html">
-<div class="listing-description">
-<p>Two quick, interactive COVID-19 maps.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Michigan COVID Cases and Deaths by County/index.html">
-<div class="listing-date">
-Oct 11, 2022
-</div>
-<div class="listing-author">
-Brenden Smith
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="R,ggplot2" data-listing-date-sort="1665288000000" data-listing-file-modified-sort="1688151712714" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
-<div class="thumbnail">
-<p><a href="./posts/opioid plotting practice/index.html"> <img src="./posts/opioid plotting practice/image.jpg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/opioid plotting practice/index.html">
-<h3 class="no-anchor listing-title">
-Opioid Plotting Practice
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-</div>
-<a href="./posts/opioid plotting practice/index.html">
-<div class="listing-description">
-<p>A basic ggplot2 walkthrough and an introduction to plotly.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/opioid plotting practice/index.html">
-<div class="listing-date">
-Oct 9, 2022
-</div>
-<div class="listing-author">
-Brenden Smith
-</div>
-</a>
-</div>
-</div>
-</div>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>

@@ -1,0 +1,20 @@
+/*-- scss:default --*/
+$body-bg: white;
+$navbar-bg: #7988B9;
+$font-family-sans-serif: Georgia;
+$font-size-base: 1.15rem;
+$primary: #9954bb;
+$toc-font-size: 1.1rem;
+
+
+/*-- scss:rules --*/
+
+
+div.quarto-about-solana .about-entity .about-link {
+
+    font-size: 1.1em;
+    padding: 0.5em 0.5em;
+    text-align: center;
+    margin-right: 10px;
+}
+

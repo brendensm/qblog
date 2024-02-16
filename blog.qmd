@@ -3,8 +3,13 @@ title: "Blog"
 listing:
   contents: posts
   sort: "date desc"
-  type: default
-  categories: true
+  type: table
+  table-hover: true
+  fields: 
+    - date
+    - title
+    - description
+  categories: false
   sort-ui: false
   filter-ui: false
 page-layout: full
