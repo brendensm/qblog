@@ -20,7 +20,7 @@ toc: true
 
 Recently, I've been having fun with Linux. I really didn't know much about Linux or how it was different from MacOS or Windows. All I really knew was that very smart people use it and many computers depend on it!
 
-By recommendation of a friend, I tried loading Pop!\_OS on an old Macbook Air I had laying around. I quickly learned how lightweight many distributions of Linux are, and how customization they can be.
+By recommendation of a friend, I tried loading Pop!\_OS on an old Macbook Air I had laying around. I quickly learned how lightweight many distributions of Linux are, and how customizable they can be.
 
 For anyone familiar with Linux you know that, even when you are just setting up a computer with the OS, you have to start using a bit of the command line. I had used this before learning some helpful functions with git, but nothing has exposed me to the command line and Bash more than this endeavor.
 
