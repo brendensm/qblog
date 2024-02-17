@@ -120,10 +120,10 @@ ggplotly(g, tooltip = c("text"), width = 700, height = 600) %>%
 ```{r}
 # leaflet -----------------------------------------------------------------
 library(sp)
-library(rgdal)
+library(tigris)
 library(leaflet)
 
-miCounties <- readOGR("Counties_(v17a)", "Counties_(v17a)")
+miCounties <- counties(state = "MI", cb = TRUE, progress_bar = FALSE)
 
 micovid <- micovid %>%
   mutate(NAME = case_when(
@@ -207,5 +207,3 @@ leaflet() %>%
   hideGroup("Deaths")
 
 ```
-
-## Conclusion
