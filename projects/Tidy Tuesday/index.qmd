@@ -14,7 +14,6 @@ lightbox: auto
 ## 2024
 
 ::: grid
-
 ::: {.g-col-12 .g-col-md-6}
 ![](24week6.png){group="\"my-gallery"}
 
@@ -24,15 +23,14 @@ lightbox: auto
 :::
 
 ::: {.g-col-12 .g-col-md-6}
+![](24week7.png){group="\"my-gallery"}
+
 ![](24week5.png){group="\"my-gallery"}
 
 ![](24week3.png){group="\"my-gallery"}
 
 [![](LGACDCPLACES.jpg){group="my-gallery"}](https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/)
 :::
-
-
-
 :::
 
 ## 2023
@@ -53,6 +51,4 @@ lightbox: auto
 
 ![](tt-week9-test.jpg){group="\"my-gallery"}
 :::
-
-
 :::
