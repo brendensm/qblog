@@ -15,6 +15,8 @@ lightbox: auto
 
 ::: grid
 ::: {.g-col-12 .g-col-md-6}
+![](24week9.png){group="\"my-gallery"}
+
 ![](24week6.png){group="\"my-gallery"}
 
 ![](24week4.png){group="\"my-gallery"}
@@ -23,6 +25,8 @@ lightbox: auto
 :::
 
 ::: {.g-col-12 .g-col-md-6}
+![](24week8.png){group="\"my-gallery"}
+
 ![](24week7.png){group="\"my-gallery"}
 
 ![](24week5.png){group="\"my-gallery"}
