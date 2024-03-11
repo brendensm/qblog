@@ -62,7 +62,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-date','listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
       searchColumns: ["listing-date","listing-title","listing-author"],
     };
@@ -129,9 +129,11 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div><div class="category" data-category="API">API <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Command line">Command line <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Epi">Epi <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(8)</span></div><div class="category" data-category="color">color <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="maps">maps <span class="quarto-category-count">(2)</span></div><div class="category" data-category="packages">packages <span class="quarto-category-count">(3)</span></div><div class="category" data-category="vignette">vignette <span class="quarto-category-count">(3)</span></div><div class="category" data-category="web-scraping">web-scraping <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -165,9 +167,6 @@ Date
 <th>
 Title
 </th>
-<th>
-Description
-</th>
 </tr>
 </thead>
 <tbody class="list">
@@ -179,9 +178,6 @@ Description
 <td>
 <a href="./posts/Shapefiles in CDCPLACES/index.html" class="title listing-title">Shapefiles in CDCPLACES 1.1.5</a>
 </td>
-<td>
-<span class="listing-description">Map PLACES data with ease with the help of <code>tigris</code>.</span>
-</td>
 </tr>
 <tr data-index="1" data-categories="R,packages,API,vignette" data-listing-date-sort="1704862800000" data-listing-file-modified-sort="1708810413448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="Introducing the CDCPLACES Package" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
@@ -190,9 +186,6 @@ Description
 </td>
 <td>
 <a href="./posts/Introducing the PLACES Package/index.html" class="title listing-title">Introducing the CDCPLACES Package</a>
-</td>
-<td>
-<span class="listing-description">A brief vignette demonstrating the use of the package <code>CDCPLACES</code>.</span>
 </td>
 </tr>
 <tr data-index="2" data-categories="Command line,R" data-listing-date-sort="1700024400000" data-listing-file-modified-sort="1708137582937" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-title-sort="Intro to Bash Scripting" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
@@ -203,9 +196,6 @@ Description
 <td>
 <a href="./posts/Intro to Bash Scripting/index.html" class="title listing-title">Intro to Bash Scripting</a>
 </td>
-<td>
-<span class="listing-description">Learning to write my first useful Bash script.</span>
-</td>
 </tr>
 <tr data-index="3" data-categories="R,Epi,ggplot2" data-listing-date-sort="1698120000000" data-listing-file-modified-sort="1700112637593" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-title-sort="Survival Analysis in R" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
@@ -214,9 +204,6 @@ Description
 </td>
 <td>
 <a href="./posts/Survival Analysis/index.html" class="title listing-title">Survival Analysis in R</a>
-</td>
-<td>
-<span class="listing-description">Exploring survival analysis with the package <code>survival</code>.</span>
 </td>
 </tr>
 <tr data-index="4" data-categories="R,packages,vignette" data-listing-date-sort="1697083200000" data-listing-file-modified-sort="1702834385076" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-title-sort="HM878: Helper Functions" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
@@ -227,9 +214,6 @@ Description
 <td>
 <a href="./posts/HM878: Helper Functions/index.html" class="title listing-title">HM878: Helper Functions</a>
 </td>
-<td>
-<span class="listing-description">A walkthrough of the helper functions in the package <code>hm878</code></span>
-</td>
 </tr>
 <tr data-index="5" data-categories="R,color,web-scraping" data-listing-date-sort="1677646800000" data-listing-file-modified-sort="1708056360478" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-title-sort="Twitter Bots" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
@@ -238,9 +222,6 @@ Description
 </td>
 <td>
 <a href="./posts/Bluets/index.html" class="title listing-title">Twitter Bots</a>
-</td>
-<td>
-<span class="listing-description">‘Suppose I were to begin by saying that I had fallen in love with a color.’</span>
 </td>
 </tr>
 <tr data-index="6" data-categories="R,maps" data-listing-date-sort="1665460800000" data-listing-file-modified-sort="1708138434252" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-title-sort="Michigan COVID-19 County Maps" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
@@ -251,9 +232,6 @@ Description
 <td>
 <a href="./posts/Michigan COVID Cases and Deaths by County/index.html" class="title listing-title">Michigan COVID-19 County Maps</a>
 </td>
-<td>
-<span class="listing-description">Two quick, interactive COVID-19 maps.</span>
-</td>
 </tr>
 <tr data-index="7" data-categories="R,ggplot2" data-listing-date-sort="1665288000000" data-listing-file-modified-sort="1688151712714" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-title-sort="Opioid Plotting Practice" data-listing-filename-sort="index.qmd" onclick="href = this.querySelector('a').getAttribute('href');
  if (href) { window.location=href ; return false; }">
@@ -262,9 +240,6 @@ Description
 </td>
 <td>
 <a href="./posts/opioid plotting practice/index.html" class="title listing-title">Opioid Plotting Practice</a>
-</td>
-<td>
-<span class="listing-description">A basic ggplot2 walkthrough and an introduction to plotly.</span>
 </td>
 </tr>
 </tbody>

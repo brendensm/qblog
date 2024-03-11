@@ -5,11 +5,10 @@ listing:
   sort: "date desc"
   type: table
   table-hover: true
-  fields: 
+  fields:
     - date
     - title
-    - description
-  categories: false
+  categories: true
   sort-ui: false
   filter-ui: false
 page-layout: full
