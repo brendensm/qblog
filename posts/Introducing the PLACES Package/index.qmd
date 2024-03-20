@@ -14,12 +14,17 @@ code-overflow: scroll
 toc: true
 ---
 
+*This post was updated on March 19, 2024 to reflect updates introduced in CDCPLACES 1.1.5.*
+
 ## Introduction
 
-To begin, we can install the most recent version of `CDCPLACES` from github, then load our packages.
+To begin, we can install from CRAN, or from github, then load our packages.
 
 ```{r, message = F}
-# install from github
+# Install from CRAN
+# install.packages("CDCPLACES)
+
+# Install from Github
 # devtools::install_github("brendensm/CDCPLACES")
 
 library(CDCPLACES)
@@ -48,13 +53,24 @@ This function allows us to easily query data that we specify. In the example bel
 
 ```{r}
 
-az_access <- get_places(state = "AZ", measure = "ACCESS2") 
+az_access <- get_places(state = "AZ", 
+                        measure = "ACCESS2") 
 head(az_access)
 
 
 ```
 
-It is also worth noting that by default `geo` specifying geography is set to `county`. If instead we want to examine census tracts, we could specify the argument. Likewise, release is set to `2023`.
+It is also worth noting that by default `geography` specifying geography is set to "county". If instead we want to examine census tracts, we could specify the argument. Likewise, `release` is set to "2023" by default.
+
+The argument `county` can be used to filter results to specific counties. This is extremely useful for examining census level data for specific areas of states. Additionally, `geometry` can be added to include a shapefile in the query. For further examples of plotting with shapefiles, see this [dedicated blog post.](https://brendenmsmith.com/posts/shapefiles%20in%20cdcplaces/)
+
+```{r, output=FALSE}
+cap_counties <- get_places(geography = "census",
+                           state = "MI",
+                           measure = "ACCESS2",
+                           county = c("Ingham", "Eaton", "Clinton"),
+                           geometry = TRUE)
+```
 
 ## Use Case
 
@@ -79,7 +95,8 @@ You can also extend this to multiple states to compare. You can easily query two
 ```{r}
 
 # multi state comparison
-two <- get_places(state = c("AZ", "NV"), measure = "ACCESS2")
+two <- get_places(state = c("AZ", "NV"), 
+                  measure = "ACCESS2")
 
 two %>%
   filter(datavaluetypeid == "AgeAdjPrv") %>%
