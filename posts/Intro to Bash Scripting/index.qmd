@@ -3,7 +3,7 @@ title: "Intro to Bash Scripting"
 author: "Brenden Smith"
 date: "2023-11-15"
 categories: [Command line, R]
-description: "Learning to write my first useful Bash script."
+description: "Creating a simple R project set up tool."
 engine: knitr
 execute: 
   warning: false
