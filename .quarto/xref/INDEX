@@ -79,5 +79,35 @@
   },
   "posts/Text in R/index.qmd": {
     "index.html": "cb740850"
+  },
+  "blog/Bluets/index.qmd": {
+    "index.html": "8f8dddf9"
+  },
+  "blog/Ghana/index.qmd": {
+    "index.html": "7afe7e4d"
+  },
+  "blog/Intro to Bash Scripting/index.qmd": {
+    "index.html": "aa06be8f"
+  },
+  "blog/Introducing the PLACES Package/index.qmd": {
+    "index.html": "7a767718"
+  },
+  "blog/Survival Analysis/index.qmd": {
+    "index.html": "b3438207"
+  },
+  "blog/Text in R/index.qmd": {
+    "index.html": "bf99bef8"
+  },
+  "blog/Michigan COVID Cases and Deaths by County/index.qmd": {
+    "index.html": "a1ed2fca"
+  },
+  "blog/opioid plotting practice/index.qmd": {
+    "index.html": "60d4f9a4"
+  },
+  "blog/Shapefiles in CDCPLACES/index.qmd": {
+    "index.html": "a14c891e"
+  },
+  "blog/HM878: Helper Functions/index.qmd": {
+    "index.html": "838d4691"
   }
 }

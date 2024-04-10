@@ -11,7 +11,8 @@
       "posts/*/*.qmd"
     ],
     "blog.qmd": [
-      "posts"
+      "posts",
+      "blog"
     ],
     "projects.qmd": [
       "projects"

@@ -5,6 +5,7 @@ website:
   title: Brenden Smith
   favicon: cat96.png
   search: false
+  site-url: "https://brendenmsmith.com"
   navbar:
     logo: white-cat.png
     right:
@@ -12,6 +13,8 @@ website:
         file: index.qmd
       - projects.qmd
       - blog.qmd
+      - icon: rss
+        href: blog.xml
      
 format:
   html:
