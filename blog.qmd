@@ -18,3 +18,4 @@ page-layout: full
 title-block-banner: false
 ---
 
+Posts related to R are shared to [R-bloggers.](https://www.r-bloggers.com/)
