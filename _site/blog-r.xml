@@ -14,8 +14,9 @@
 <item>
   <title>I Made R Text For Me</title>
   <dc:creator>Brenden Smith</dc:creator>
-  <link>https://brendenmsmith.com/blog/Text in R/</link>
+  <link>https://brendenmsmith.com/blog/Text_in_R/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -49,7 +50,7 @@
 <h3 class="anchored" data-anchor-id="getting-the-data">Getting the Data</h3>
 <p>First, we can call the libraries we will need.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -62,7 +63,7 @@ font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
 <p>The package <code>googlesheets4</code> made this project incredibly easy.</p>
 <p>You can connect to your Google account using <code>gs4_auth</code>.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -75,7 +76,7 @@ font-style: inherit;">"your email here"</span>)</span></code></pre></div>
 </div>
 <p>Then, you can import your sheet.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">data <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -88,7 +89,7 @@ font-style: inherit;">"your_url_here"</span>)</span></code></pre></div>
 </div>
 <p>To demonstrate what my data looked like, I will create a demo data set to work with in this example.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">month <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -191,7 +192,7 @@ font-style: inherit;">mdy</span>(due_date))</span>
 5   Mar     Water     70 2024-03-05
 6   Mar  Internet     25 2024-03-06</code></pre>
 </div>
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">table2<span class="fl" style="color: #AD0000;
 background-color: null;
@@ -270,7 +271,7 @@ font-style: inherit;">.2</span>)</span>
 <p>Because my real data has all of the month’s data in it, we need to filter to get the right amounts to send in our text. We can use <code>Sys.Date</code> to get the current date, and <code>lubridate::month</code> to make the date a numeric value representing the month.</p>
 <p>Then we can do the same for our tables to filter by. Remember I will have this script executing at the first of every month to report what the costs were for the previous month.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -355,7 +356,7 @@ font-style: inherit;">select</span>(bill_type, amount)</span></code></pre></div>
 </div>
 <p>Now that we have the amounts we need, we can construct a message.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"> message <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -467,7 +468,7 @@ Internet: 25</code></pre>
 <p>The method I am using is <strong>only for iMessage devices,</strong> and is really only possible from a Mac. This method is taken from a very helpful <a href="https://stackoverflow.com/questions/6543070/send-a-text-message-from-r">Stackoverflow post.</a> There is probably a workaround for other devices and sending through SMS, but that is not the focus of this post.</p>
 <p>We can send our text with an Apple Script. Here is a function to do just that. This is slightly adapted from the Stackoverflow answer and allows for separate texts to multiple recipients.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">send_text <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -522,7 +523,7 @@ font-style: inherit;">'</span>))</span>
 </div>
 <p>Then we can simply plug in the rest. But be warned: running this command will send a text! Be careful when testing this out.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">buddies <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -562,7 +563,7 @@ font-style: inherit;">send_text</span>(message, buddies)</span></code></pre></di
 <p>Now that the hard part is over, we can simply create a cron job to run this script directly from the command line on the first of every month.</p>
 <p><strong>Important: make sure the following is at the top of your saved R script:</strong></p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
@@ -571,7 +572,7 @@ font-style: inherit;">#!/usr/local/bin/Rscript</span></span></code></pre></div>
 </div>
 <p>To open your cron tab, in the terminal type the following command:</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb14-1"><span class="bu" style="color: null;
 background-color: null;
@@ -591,7 +592,7 @@ font-style: inherit;">-e</span></span></code></pre></div>
 <p>As an added tip, you can save this command as an alias in your .zshrc file to make it easier to quickly access.</p>
 <p>Once the cron tab is open, you have to set up the job and specify how often you want it to run. The following runs on the first of every month at 9 AM. The command navigates to my home directory, and then executes my R script which I have named “utes_notif.R”.</p>
 <div class="cell">
-<details open="">
+<details open="" class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode zsh code-with-copy"><code class="sourceCode zsh"><span id="cb15-1"><span class="ex" style="color: null;
 background-color: null;
@@ -618,9 +619,9 @@ font-style: inherit;">./Desktop/R/utility_notification/utes_notif.R</span></span
  ]]></description>
   <category>R</category>
   <category>Command line</category>
-  <guid>https://brendenmsmith.com/blog/Text in R/</guid>
+  <guid>https://brendenmsmith.com/blog/Text_in_R/</guid>
   <pubDate>Sat, 23 Mar 2024 04:00:00 GMT</pubDate>
-  <media:content url="https://brendenmsmith.com/blog/Text in R/R-text.png" medium="image" type="image/png" height="96" width="144"/>
+  <media:content url="https://brendenmsmith.com/blog/Text_in_R/R-text.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
   <title>What’s New in CDCPLACES 1.1.5</title>

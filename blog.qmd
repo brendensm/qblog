@@ -1,8 +1,9 @@
 ---
 title: "Blog"
 listing:
-  contents: blog
+  contents: blog/**/*.qmd
   sort: "date desc"
+  type: default
  # table-hover: true
   # fields:
   #   - image

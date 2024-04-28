@@ -2,6 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://brendenmsmith.com/blog.html</loc>
-    <lastmod>2024-04-28T13:42:28.253Z</lastmod>
+    <lastmod>2024-04-28T13:57:07.802Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/blog/Text_in_R/index.html</loc>
+    <lastmod>2024-04-28T13:13:19.950Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/index.html</loc>
+    <lastmod>2024-04-28T13:15:32.743Z</lastmod>
   </url>
 </urlset>
