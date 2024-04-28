@@ -9,12 +9,12 @@
 <link>https://brendenmsmith.com/blog.html</link>
 <atom:link href="https://brendenmsmith.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
-<generator>quarto-1.3.450</generator>
+<generator>quarto-1.4.553</generator>
 <lastBuildDate>Sat, 23 Mar 2024 04:00:00 GMT</lastBuildDate>
 <item>
   <title>I Made R Text For Me</title>
   <dc:creator>Brenden Smith</dc:creator>
-  <link>https://brendenmsmith.com/blog/Text in R/index.html</link>
+  <link>https://brendenmsmith.com/blog/Text in R/</link>
   <description><![CDATA[ 
 
 
@@ -618,14 +618,14 @@ font-style: inherit;">./Desktop/R/utility_notification/utes_notif.R</span></span
  ]]></description>
   <category>R</category>
   <category>Command line</category>
-  <guid>https://brendenmsmith.com/blog/Text in R/index.html</guid>
+  <guid>https://brendenmsmith.com/blog/Text in R/</guid>
   <pubDate>Sat, 23 Mar 2024 04:00:00 GMT</pubDate>
   <media:content url="https://brendenmsmith.com/blog/Text in R/R-text.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
   <title>What’s New in CDCPLACES 1.1.5</title>
   <dc:creator>Brenden Smith</dc:creator>
-  <link>https://brendenmsmith.com/blog/Shapefiles in CDCPLACES/index.html</link>
+  <link>https://brendenmsmith.com/blog/Shapefiles in CDCPLACES/</link>
   <description><![CDATA[ 
 
 
@@ -974,13 +974,13 @@ font-style: inherit;">"plot"</span>)</span></code></pre></div>
   <category>API</category>
   <category>vignette</category>
   <category>maps</category>
-  <guid>https://brendenmsmith.com/blog/Shapefiles in CDCPLACES/index.html</guid>
+  <guid>https://brendenmsmith.com/blog/Shapefiles in CDCPLACES/</guid>
   <pubDate>Tue, 19 Mar 2024 04:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Introducing the CDCPLACES Package</title>
   <dc:creator>Brenden Smith</dc:creator>
-  <link>https://brendenmsmith.com/blog/Introducing the PLACES Package/index.html</link>
+  <link>https://brendenmsmith.com/blog/Introducing the PLACES Package/</link>
   <description><![CDATA[ 
 
 
@@ -1461,13 +1461,13 @@ font-style: inherit;">"plot"</span>)</span></code></pre></div>
   <category>packages</category>
   <category>API</category>
   <category>vignette</category>
-  <guid>https://brendenmsmith.com/blog/Introducing the PLACES Package/index.html</guid>
+  <guid>https://brendenmsmith.com/blog/Introducing the PLACES Package/</guid>
   <pubDate>Wed, 10 Jan 2024 05:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Intro to Bash Scripting</title>
   <dc:creator>Brenden Smith</dc:creator>
-  <link>https://brendenmsmith.com/blog/Intro to Bash Scripting/index.html</link>
+  <link>https://brendenmsmith.com/blog/Intro to Bash Scripting/</link>
   <description><![CDATA[ 
 
 
@@ -1774,14 +1774,14 @@ font-style: inherit;">$name</span>.Rproj</span></code></pre></div>
  ]]></description>
   <category>Command line</category>
   <category>R</category>
-  <guid>https://brendenmsmith.com/blog/Intro to Bash Scripting/index.html</guid>
+  <guid>https://brendenmsmith.com/blog/Intro to Bash Scripting/</guid>
   <pubDate>Wed, 15 Nov 2023 05:00:00 GMT</pubDate>
   <media:content url="https://brendenmsmith.com/blog/Intro to Bash Scripting/bash.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
   <title>Survival Analysis in R</title>
   <dc:creator>Brenden Smith</dc:creator>
-  <link>https://brendenmsmith.com/blog/Survival Analysis/index.html</link>
+  <link>https://brendenmsmith.com/blog/Survival Analysis/</link>
   <description><![CDATA[ 
 
 
@@ -2653,14 +2653,14 @@ iv=Male   1387      430      317      40.5      70.1
   <category>R</category>
   <category>Epi</category>
   <category>ggplot2</category>
-  <guid>https://brendenmsmith.com/blog/Survival Analysis/index.html</guid>
+  <guid>https://brendenmsmith.com/blog/Survival Analysis/</guid>
   <pubDate>Tue, 24 Oct 2023 04:00:00 GMT</pubDate>
   <media:content url="https://brendenmsmith.com/blog/Survival Analysis/thumbnail.png" medium="image" type="image/png" height="99" width="144"/>
 </item>
 <item>
   <title>HM878: Helper Functions</title>
   <dc:creator>Brenden Smith</dc:creator>
-  <link>https://brendenmsmith.com/blog/HM878: Helper Functions/index.html</link>
+  <link>https://brendenmsmith.com/blog/HM878: Helper Functions/</link>
   <description><![CDATA[ 
 
 
@@ -2938,14 +2938,14 @@ AIC: 21.55 </code></pre>
   <category>R</category>
   <category>packages</category>
   <category>vignette</category>
-  <guid>https://brendenmsmith.com/blog/HM878: Helper Functions/index.html</guid>
+  <guid>https://brendenmsmith.com/blog/HM878: Helper Functions/</guid>
   <pubDate>Thu, 12 Oct 2023 04:00:00 GMT</pubDate>
   <media:content url="https://brendenmsmith.com/blog/HM878: Helper Functions/rp.png" medium="image" type="image/png" height="96" width="144"/>
 </item>
 <item>
   <title>Twitter Bots</title>
   <dc:creator>Brenden Smith</dc:creator>
-  <link>https://brendenmsmith.com/blog/Bluets/index.html</link>
+  <link>https://brendenmsmith.com/blog/Bluets/</link>
   <description><![CDATA[ 
 
 
@@ -3581,14 +3581,14 @@ font-style: inherit;"> Rscript blue-script.R</span></span></code></pre></div>
   <category>R</category>
   <category>color</category>
   <category>web-scraping</category>
-  <guid>https://brendenmsmith.com/blog/Bluets/index.html</guid>
+  <guid>https://brendenmsmith.com/blog/Bluets/</guid>
   <pubDate>Wed, 01 Mar 2023 05:00:00 GMT</pubDate>
   <media:content url="https://brendenmsmith.com/blog/Bluets/bluets.jpeg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Michigan COVID-19 County Maps</title>
   <dc:creator>Brenden Smith</dc:creator>
-  <link>https://brendenmsmith.com/blog/Michigan COVID Cases and Deaths by County/index.html</link>
+  <link>https://brendenmsmith.com/blog/Michigan COVID Cases and Deaths by County/</link>
   <description><![CDATA[ 
 
 
@@ -4581,14 +4581,14 @@ font-style: inherit;">"Deaths"</span>)</span></code></pre></div>
  ]]></description>
   <category>R</category>
   <category>maps</category>
-  <guid>https://brendenmsmith.com/blog/Michigan COVID Cases and Deaths by County/index.html</guid>
+  <guid>https://brendenmsmith.com/blog/Michigan COVID Cases and Deaths by County/</guid>
   <pubDate>Tue, 11 Oct 2022 04:00:00 GMT</pubDate>
   <media:content url="https://brendenmsmith.com/blog/Michigan COVID Cases and Deaths by County/c19.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Opioid Plotting Practice</title>
   <dc:creator>Brenden Smith</dc:creator>
-  <link>https://brendenmsmith.com/blog/opioid plotting practice/index.html</link>
+  <link>https://brendenmsmith.com/blog/opioid plotting practice/</link>
   <description><![CDATA[ 
 
 
@@ -5163,7 +5163,7 @@ font-style: inherit;">ggplotly</span>(p1)</span></code></pre></div>
  ]]></description>
   <category>R</category>
   <category>ggplot2</category>
-  <guid>https://brendenmsmith.com/blog/opioid plotting practice/index.html</guid>
+  <guid>https://brendenmsmith.com/blog/opioid plotting practice/</guid>
   <pubDate>Sun, 09 Oct 2022 04:00:00 GMT</pubDate>
   <media:content url="https://brendenmsmith.com/blog/opioid plotting practice/image.jpg" medium="image" type="image/jpeg"/>
 </item>

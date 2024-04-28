@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -47,6 +47,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -85,15 +86,42 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="alternate" type="application/rss+xml" title="Brenden Smith" href="blog.xml"></head>
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="alternate" type="application/rss+xml" title="Brenden Smith" href="blog.xml" data-external="1"></head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./white-cat.png" alt="" class="navbar-logo">
     </a>
@@ -107,26 +135,26 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html" rel="" target="">
- <span class="menu-text">Portfolio</span></a>
+    <a class="nav-link" href="./projects.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" rel="" target="" aria-current="page">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+<span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./blog.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="./blog-r.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -147,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -155,7 +183,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <p>Posts related to R are shared to <a href="https://www.r-bloggers.com/">R-bloggers.</a></p>
 
@@ -164,19 +194,19 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="R,Command line" data-listing-date-sort="1711166400000" data-listing-file-modified-sort="1714309999950" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="quarto-post image-right" data-index="0" data-categories="R,Command line" data-listing-date-sort="1711166400000" data-listing-file-modified-sort="1714309999950" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1346">
 <div class="thumbnail">
-<p><a href="./blog/Text in R/index.html"> <img src="./blog/Text in R/R-text.png" class="thumbnail-image"> </a></p>
+<p><a href="./blog/Text in R/index.html" class="no-external"></a></p><a href="./blog/Text in R/index.html" class="no-external">
+<p><img src="./blog/Text in R/R-text.png" class="thumbnail-image"></p>
+</a><p><a href="./blog/Text in R/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/Text in R/index.html">
 <h3 class="no-anchor listing-title">
-I Made R Text For Me
+<a href="./blog/Text in R/index.html" class="no-external">I Made R Text For Me</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/Text in R/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -185,14 +215,12 @@ R
 Command line
 </div>
 </div>
-<a href="./blog/Text in R/index.html">
 <div class="listing-description">
-<p>Do you ever wish that text message would just send itself?</p>
+<a href="./blog/Text in R/index.html" class="no-external">Do you ever wish that text message would just send itself?</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/Text in R/index.html">
+<a href="./blog/Text in R/index.html" class="no-external">
 <div class="listing-date">
 Mar 23, 2024
 </div>
@@ -202,19 +230,19 @@ Brenden Smith
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="R,packages,API,vignette,maps" data-listing-date-sort="1710820800000" data-listing-file-modified-sort="1714309999947" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="1" data-categories="R,packages,API,vignette,maps" data-listing-date-sort="1710820800000" data-listing-file-modified-sort="1714309999947" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="610">
 <div class="thumbnail">
-<p><a href="./blog/Shapefiles in CDCPLACES/index.html"> <p class="card-img-top"><img src="blog/Shapefiles in CDCPLACES/index_files/figure-html/unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p> </a></p>
+<p><a href="./blog/Shapefiles in CDCPLACES/index.html" class="no-external"></a></p><a href="./blog/Shapefiles in CDCPLACES/index.html" class="no-external">
+<p class="card-img-top"><img src="blog/Shapefiles in CDCPLACES/index_files/figure-html/unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./blog/Shapefiles in CDCPLACES/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/Shapefiles in CDCPLACES/index.html">
 <h3 class="no-anchor listing-title">
-What’s New in CDCPLACES 1.1.5
+<a href="./blog/Shapefiles in CDCPLACES/index.html" class="no-external">What’s New in CDCPLACES 1.1.5</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/Shapefiles in CDCPLACES/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -232,14 +260,12 @@ vignette
 maps
 </div>
 </div>
-<a href="./blog/Shapefiles in CDCPLACES/index.html">
 <div class="listing-description">
-<p>Map PLACES data easily with the help of <code>tigris</code>.</p>
+<a href="./blog/Shapefiles in CDCPLACES/index.html" class="no-external">Map PLACES data easily with the help of <code>tigris</code>.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/Shapefiles in CDCPLACES/index.html">
+<a href="./blog/Shapefiles in CDCPLACES/index.html" class="no-external">
 <div class="listing-date">
 Mar 19, 2024
 </div>
@@ -249,19 +275,19 @@ Brenden Smith
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="R,packages,API,vignette" data-listing-date-sort="1704862800000" data-listing-file-modified-sort="1714309999934" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<div class="quarto-post image-right" data-index="2" data-categories="R,packages,API,vignette" data-listing-date-sort="1704862800000" data-listing-file-modified-sort="1714309999934" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="826">
 <div class="thumbnail">
-<p><a href="./blog/Introducing the PLACES Package/index.html"> <p class="card-img-top"><img src="blog/Introducing the PLACES Package/index_files/figure-html/unnamed-chunk-5-1.png"  class="thumbnail-image card-img"/></p> </a></p>
+<p><a href="./blog/Introducing the PLACES Package/index.html" class="no-external"></a></p><a href="./blog/Introducing the PLACES Package/index.html" class="no-external">
+<p class="card-img-top"><img src="blog/Introducing the PLACES Package/index_files/figure-html/unnamed-chunk-5-1.png"  class="thumbnail-image card-img"/></p>
+</a><p><a href="./blog/Introducing the PLACES Package/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/Introducing the PLACES Package/index.html">
 <h3 class="no-anchor listing-title">
-Introducing the CDCPLACES Package
+<a href="./blog/Introducing the PLACES Package/index.html" class="no-external">Introducing the CDCPLACES Package</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/Introducing the PLACES Package/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -276,14 +302,12 @@ API
 vignette
 </div>
 </div>
-<a href="./blog/Introducing the PLACES Package/index.html">
 <div class="listing-description">
-<p>A brief vignette demonstrating the use of the package <code>CDCPLACES</code>.</p>
+<a href="./blog/Introducing the PLACES Package/index.html" class="no-external">A brief vignette demonstrating the use of the package <code>CDCPLACES</code>.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/Introducing the PLACES Package/index.html">
+<a href="./blog/Introducing the PLACES Package/index.html" class="no-external">
 <div class="listing-date">
 Jan 10, 2024
 </div>
@@ -293,19 +317,19 @@ Brenden Smith
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="Command line,R" data-listing-date-sort="1700024400000" data-listing-file-modified-sort="1714309999934" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="quarto-post image-right" data-index="3" data-categories="Command line,R" data-listing-date-sort="1700024400000" data-listing-file-modified-sort="1714309999934" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="682">
 <div class="thumbnail">
-<p><a href="./blog/Intro to Bash Scripting/index.html"> <img src="./blog/Intro to Bash Scripting/bash.png" class="thumbnail-image"> </a></p>
+<p><a href="./blog/Intro to Bash Scripting/index.html" class="no-external"></a></p><a href="./blog/Intro to Bash Scripting/index.html" class="no-external">
+<p><img src="./blog/Intro to Bash Scripting/bash.png" class="thumbnail-image"></p>
+</a><p><a href="./blog/Intro to Bash Scripting/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/Intro to Bash Scripting/index.html">
 <h3 class="no-anchor listing-title">
-Intro to Bash Scripting
+<a href="./blog/Intro to Bash Scripting/index.html" class="no-external">Intro to Bash Scripting</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/Intro to Bash Scripting/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Command line'); return false;">
 Command line
@@ -314,14 +338,12 @@ Command line
 R
 </div>
 </div>
-<a href="./blog/Intro to Bash Scripting/index.html">
 <div class="listing-description">
-<p>Creating a simple R project set up tool.</p>
+<a href="./blog/Intro to Bash Scripting/index.html" class="no-external">Creating a simple R project set up tool.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/Intro to Bash Scripting/index.html">
+<a href="./blog/Intro to Bash Scripting/index.html" class="no-external">
 <div class="listing-date">
 Nov 15, 2023
 </div>
@@ -331,19 +353,19 @@ Brenden Smith
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="R,Epi,ggplot2" data-listing-date-sort="1698120000000" data-listing-file-modified-sort="1714309999949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
+<div class="quarto-post image-right" data-index="4" data-categories="R,Epi,ggplot2" data-listing-date-sort="1698120000000" data-listing-file-modified-sort="1714309999949" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1978">
 <div class="thumbnail">
-<p><a href="./blog/Survival Analysis/index.html"> <img src="./blog/Survival Analysis/thumbnail.png" class="thumbnail-image"> </a></p>
+<p><a href="./blog/Survival Analysis/index.html" class="no-external"></a></p><a href="./blog/Survival Analysis/index.html" class="no-external">
+<p><img src="./blog/Survival Analysis/thumbnail.png" class="thumbnail-image"></p>
+</a><p><a href="./blog/Survival Analysis/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/Survival Analysis/index.html">
 <h3 class="no-anchor listing-title">
-Survival Analysis in R
+<a href="./blog/Survival Analysis/index.html" class="no-external">Survival Analysis in R</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/Survival Analysis/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -355,14 +377,12 @@ Epi
 ggplot2
 </div>
 </div>
-<a href="./blog/Survival Analysis/index.html">
 <div class="listing-description">
-<p>Exploring survival analysis with the package <code>survival</code>.</p>
+<a href="./blog/Survival Analysis/index.html" class="no-external">Exploring survival analysis with the package <code>survival</code>.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/Survival Analysis/index.html">
+<a href="./blog/Survival Analysis/index.html" class="no-external">
 <div class="listing-date">
 Oct 24, 2023
 </div>
@@ -372,19 +392,19 @@ Brenden Smith
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="R,packages,vignette" data-listing-date-sort="1697083200000" data-listing-file-modified-sort="1714309999933" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="5" data-categories="R,packages,vignette" data-listing-date-sort="1697083200000" data-listing-file-modified-sort="1714309999933" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="515">
 <div class="thumbnail">
-<p><a href="./blog/HM878: Helper Functions/index.html"> <img src="./blog/HM878: Helper Functions/rp.png" class="thumbnail-image"> </a></p>
+<p><a href="./blog/HM878: Helper Functions/index.html" class="no-external"></a></p><a href="./blog/HM878: Helper Functions/index.html" class="no-external">
+<p><img src="./blog/HM878: Helper Functions/rp.png" class="thumbnail-image"></p>
+</a><p><a href="./blog/HM878: Helper Functions/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/HM878: Helper Functions/index.html">
 <h3 class="no-anchor listing-title">
-HM878: Helper Functions
+<a href="./blog/HM878: Helper Functions/index.html" class="no-external">HM878: Helper Functions</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/HM878: Helper Functions/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -396,14 +416,12 @@ packages
 vignette
 </div>
 </div>
-<a href="./blog/HM878: Helper Functions/index.html">
 <div class="listing-description">
-<p>A walkthrough of the helper functions in the package <code>hm878</code></p>
+<a href="./blog/HM878: Helper Functions/index.html" class="no-external">A walkthrough of the helper functions in the package <code>hm878</code></a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/HM878: Helper Functions/index.html">
+<a href="./blog/HM878: Helper Functions/index.html" class="no-external">
 <div class="listing-date">
 Oct 12, 2023
 </div>
@@ -413,19 +431,19 @@ Brenden Smith
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="R,color,web-scraping" data-listing-date-sort="1677646800000" data-listing-file-modified-sort="1714309999927" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
+<div class="quarto-post image-right" data-index="6" data-categories="R,color,web-scraping" data-listing-date-sort="1677646800000" data-listing-file-modified-sort="1714309999927" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1421">
 <div class="thumbnail">
-<p><a href="./blog/Bluets/index.html"> <img src="./blog/Bluets/bluets.jpeg" class="thumbnail-image"> </a></p>
+<p><a href="./blog/Bluets/index.html" class="no-external"></a></p><a href="./blog/Bluets/index.html" class="no-external">
+<p><img src="./blog/Bluets/bluets.jpeg" class="thumbnail-image"></p>
+</a><p><a href="./blog/Bluets/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/Bluets/index.html">
 <h3 class="no-anchor listing-title">
-Twitter Bots
+<a href="./blog/Bluets/index.html" class="no-external">Twitter Bots</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/Bluets/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -437,14 +455,12 @@ color
 web-scraping
 </div>
 </div>
-<a href="./blog/Bluets/index.html">
 <div class="listing-description">
-<p>‘Suppose I were to begin by saying that I had fallen in love with a color.’</p>
+<a href="./blog/Bluets/index.html" class="no-external">‘Suppose I were to begin by saying that I had fallen in love with a color.’</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/Bluets/index.html">
+<a href="./blog/Bluets/index.html" class="no-external">
 <div class="listing-date">
 Mar 1, 2023
 </div>
@@ -454,19 +470,19 @@ Brenden Smith
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="R,maps" data-listing-date-sort="1665460800000" data-listing-file-modified-sort="1714309999947" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
+<div class="quarto-post image-right" data-index="7" data-categories="R,maps" data-listing-date-sort="1665460800000" data-listing-file-modified-sort="1714309999947" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1741">
 <div class="thumbnail">
-<p><a href="./blog/Michigan COVID Cases and Deaths by County/index.html"> <img src="./blog/Michigan COVID Cases and Deaths by County/c19.jpg" class="thumbnail-image"> </a></p>
+<p><a href="./blog/Michigan COVID Cases and Deaths by County/index.html" class="no-external"></a></p><a href="./blog/Michigan COVID Cases and Deaths by County/index.html" class="no-external">
+<p><img src="./blog/Michigan COVID Cases and Deaths by County/c19.jpg" class="thumbnail-image"></p>
+</a><p><a href="./blog/Michigan COVID Cases and Deaths by County/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/Michigan COVID Cases and Deaths by County/index.html">
 <h3 class="no-anchor listing-title">
-Michigan COVID-19 County Maps
+<a href="./blog/Michigan COVID Cases and Deaths by County/index.html" class="no-external">Michigan COVID-19 County Maps</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/Michigan COVID Cases and Deaths by County/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -475,14 +491,12 @@ R
 maps
 </div>
 </div>
-<a href="./blog/Michigan COVID Cases and Deaths by County/index.html">
 <div class="listing-description">
-<p>Two quick, interactive COVID-19 maps.</p>
+<a href="./blog/Michigan COVID Cases and Deaths by County/index.html" class="no-external">Two quick, interactive COVID-19 maps.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/Michigan COVID Cases and Deaths by County/index.html">
+<a href="./blog/Michigan COVID Cases and Deaths by County/index.html" class="no-external">
 <div class="listing-date">
 Oct 11, 2022
 </div>
@@ -492,19 +506,19 @@ Brenden Smith
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="R,ggplot2" data-listing-date-sort="1665288000000" data-listing-file-modified-sort="1714309999953" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="quarto-post image-right" data-index="8" data-categories="R,ggplot2" data-listing-date-sort="1665288000000" data-listing-file-modified-sort="1714309999953" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1208">
 <div class="thumbnail">
-<p><a href="./blog/opioid plotting practice/index.html"> <img src="./blog/opioid plotting practice/image.jpg" class="thumbnail-image"> </a></p>
+<p><a href="./blog/opioid plotting practice/index.html" class="no-external"></a></p><a href="./blog/opioid plotting practice/index.html" class="no-external">
+<p><img src="./blog/opioid plotting practice/image.jpg" class="thumbnail-image"></p>
+</a><p><a href="./blog/opioid plotting practice/index.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<a href="./blog/opioid plotting practice/index.html">
 <h3 class="no-anchor listing-title">
-Opioid Plotting Practice
+<a href="./blog/opioid plotting practice/index.html" class="no-external">Opioid Plotting Practice</a>
 </h3>
 <div class="listing-subtitle">
-
+<a href="./blog/opioid plotting practice/index.html" class="no-external"></a>
 </div>
-</a>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
 R
@@ -513,14 +527,12 @@ R
 ggplot2
 </div>
 </div>
-<a href="./blog/opioid plotting practice/index.html">
 <div class="listing-description">
-<p>A basic ggplot2 walkthrough and an introduction to plotly.</p>
+<a href="./blog/opioid plotting practice/index.html" class="no-external">A basic ggplot2 walkthrough and an introduction to plotly.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="./blog/opioid plotting practice/index.html">
+<a href="./blog/opioid plotting practice/index.html" class="no-external">
 <div class="listing-date">
 Oct 9, 2022
 </div>
@@ -614,10 +626,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/brendenmsmith\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -627,8 +656,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -640,7 +678,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -684,6 +845,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -709,6 +871,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -769,6 +957,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
