@@ -15,14 +15,14 @@
     "listing": "/blog.html",
     "items": [
       "/blog/Text_in_R/index.html",
-      "/blog/Shapefiles in CDCPLACES/index.html",
-      "/blog/Introducing the PLACES Package/index.html",
-      "/blog/Intro to Bash Scripting/index.html",
-      "/blog/Survival Analysis/index.html",
-      "/blog/HM878: Helper Functions/index.html",
+      "/blog/Shapefiles_in_CDCPLACES/index.html",
+      "/blog/Introducing_the_PLACES_Package/index.html",
+      "/blog/Intro_to_Bash_Scripting/index.html",
+      "/blog/Survival_Analysis/index.html",
+      "/blog/HM878:_Helper_Functions/index.html",
       "/blog/Bluets/index.html",
-      "/blog/Michigan COVID Cases and Deaths by County/index.html",
-      "/blog/opioid plotting practice/index.html"
+      "/blog/Michigan_COVID_Cases_and_Deaths_by_County/index.html",
+      "/blog/opioid_plotting_practice/index.html"
     ]
   },
   {

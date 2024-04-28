@@ -112,5 +112,26 @@
   },
   "blog/Text_in_R/index.qmd": {
     "index.html": "b4d48067"
+  },
+  "blog/Survival_Analysis/index.qmd": {
+    "index.html": "ff32240d"
+  },
+  "blog/Shapefiles_in_CDCPLACES/index.qmd": {
+    "index.html": "8f3ee10c"
+  },
+  "blog/HM878:_Helper_Functions/index.qmd": {
+    "index.html": "ddd81262"
+  },
+  "blog/Michigan_COVID_Cases_and_Deaths_by_County/index.qmd": {
+    "index.html": "c72a08af"
+  },
+  "blog/opioid_plotting_practice/index.qmd": {
+    "index.html": "23eba3cb"
+  },
+  "blog/Introducing_the_PLACES_Package/index.qmd": {
+    "index.html": "26b2bc6c"
+  },
+  "blog/Intro_to_Bash_Scripting/index.qmd": {
+    "index.html": "a1e661d6"
   }
 }

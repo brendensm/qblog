@@ -64,9 +64,9 @@ The output results in a data frame with the odds ratios, confidence intervals, a
 If you want to revise and adjust your model, it can be helpful to limit outliers. To find upper and lower fences quickly, use the function `fences`. To do this, pass the continuous variable you are interested in examining through the function. Once again, use the format data\$variable.
 
 ```{r}
-fences(mtcars$cyl)
-fences(mtcars$cyl)$Upper
-fences(mtcars$cyl)$Lower
+#fences(iris$Sepal.Length)
+#fences(mtcars$cyl)$Upper
+#fences(mtcars$cyl)$Lower
 ```
 
 ## Comparing Model Results with `compare_models`

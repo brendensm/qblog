@@ -103,7 +103,6 @@ cap_county |>
   theme(plot.title.position = "plot")
 ```
 
-
 ## Acknowledgements
 
 These features would not be possible without the excellent work of Kyle Walker's package `tigris`. The contributions he has made to the R community have been incredibly inspiring to me. His other package, `tidycensus` was the inspiration for this entire pacakge. To see his work visit his website [here.](https://walker-data.com/)
