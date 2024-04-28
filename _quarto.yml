@@ -5,7 +5,7 @@ website:
   title: Brenden Smith
   favicon: cat96.png
   search: false
-  site-url: "https://brendenmsmith.com"
+  site-url: https://brendenmsmith.com
   navbar:
     logo: white-cat.png
     right:

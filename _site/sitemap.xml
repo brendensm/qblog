@@ -2,10 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://brendenmsmith.com/blog.html</loc>
-    <lastmod>2024-04-10T18:14:19.506Z</lastmod>
+    <lastmod>2024-04-28T13:13:55.962Z</lastmod>
   </url>
   <url>
     <loc>https://brendenmsmith.com/index.html</loc>
-    <lastmod>2024-04-10T18:14:35.582Z</lastmod>
+    <lastmod>2024-04-28T13:15:35.104Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/blog/HM878: Helper Functions/index.html</loc>
+    <lastmod>2024-04-28T13:13:55.166Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/blog/opioid plotting practice/index.html</loc>
+    <lastmod>2024-04-28T13:13:54.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/blog/Text in R/index.html</loc>
+    <lastmod>2024-04-28T13:13:52.744Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/blog/Introducing the PLACES Package/index.html</loc>
+    <lastmod>2024-04-28T13:13:51.243Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/projects.html</loc>
+    <lastmod>2024-04-28T13:13:49.140Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/projects/Michigan COVID-19 Dashboard/index.html</loc>
+    <lastmod>2024-04-28T13:13:47.741Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/projects/Tidy Tuesday/index.html</loc>
+    <lastmod>2024-04-28T13:13:47.108Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/resume.html</loc>
+    <lastmod>2024-04-28T13:13:46.773Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/projects/R Shiny Apps/index.html</loc>
+    <lastmod>2024-04-28T13:13:47.417Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/projects/AcademyHealth Poster/index.html</loc>
+    <lastmod>2024-04-28T13:13:48.046Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/blog/Bluets/index.html</loc>
+    <lastmod>2024-04-28T13:13:49.899Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/blog/Intro to Bash Scripting/index.html</loc>
+    <lastmod>2024-04-28T13:13:50.647Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/blog/Survival Analysis/index.html</loc>
+    <lastmod>2024-04-28T13:13:52.079Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/blog/Michigan COVID Cases and Deaths by County/index.html</loc>
+    <lastmod>2024-04-28T13:13:53.495Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/blog/Shapefiles in CDCPLACES/index.html</loc>
+    <lastmod>2024-04-28T13:13:54.618Z</lastmod>
   </url>
 </urlset>
