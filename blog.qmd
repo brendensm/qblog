@@ -10,10 +10,10 @@ listing:
   #   - title
   sort-ui: false
   filter-ui: false
+  categories: true
   feed: 
     categories: 
       - R
-  categories: true
 page-layout: full
 title-block-banner: false
 ---
