@@ -14,6 +14,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/shiny_map_filter/index.html",
       "/blog/Text_in_R/index.html",
       "/blog/Shapefiles_in_CDCPLACES/index.html",
       "/blog/Introducing_the_PLACES_Package/index.html",

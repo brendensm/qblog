@@ -1,5 +1,13 @@
 /* css styles */
 
+
+:root {
+  --main-bg-color: #3498db;
+  --main-text-color: #ffffff;
+  --main-padding: 10px;
+}
+
+
 html * {
   font-family: 'Optima';
 }

@@ -1,14 +1,17 @@
 /*-- scss:default --*/
 $body-bg: white;
-$navbar-bg: #7988B9;
+$navbar-bg: #685068;   /* #665E73; */
 $font-family-sans-serif: Georgia;
 $font-size-base: 1.15rem;
 $primary: #9954bb;
 $toc-font-size: 1.1rem;
+$btn-code-copy-color: #685068;
 
 
 /*-- scss:rules --*/
 
+
+/* Home Page and Hovering */ 
 
 div.quarto-about-solana .about-entity .about-link {
 
@@ -17,4 +20,32 @@ div.quarto-about-solana .about-entity .about-link {
     text-align: center;
     margin-right: 10px;
 }
+
+
+div.quarto-about-solana .about-entity .about-link:hover {
+    background-color: #685068;
+    color: white;
+    font-size: 1.1em;
+    padding: 0.5em 0.5em;
+    text-align: center;
+    margin-right: 10px;
+}
+
+
+
+/*for the categories in the blog*/
+
+div.quarto-title .quarto-categories .quarto-category {
+  
+  color: white;
+  opacity: 1;
+  
+  
+}
+div.quarto-post .listing-categories .listing-category {
+  color: black;
+  border-color: black;
+}
+
+
 
