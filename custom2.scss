@@ -1,11 +1,12 @@
 /*-- scss:default --*/
-$body-bg: white;
+$body-bg: #f0f0f0;
 $navbar-bg: #685068;   /* #665E73; */
 $font-family-sans-serif: Georgia;
 $font-size-base: 1.15rem;
 $primary: #9954bb;
 $toc-font-size: 1.1rem;
 $btn-code-copy-color: #685068;
+$code-block-bg: #E0E0E0;
 
 
 /*-- scss:rules --*/
@@ -24,7 +25,7 @@ div.quarto-about-solana .about-entity .about-link {
 
 div.quarto-about-solana .about-entity .about-link:hover {
     background-color: #685068;
-    color: white;
+    color: #f0f0f0;
     font-size: 1.1em;
     padding: 0.5em 0.5em;
     text-align: center;
@@ -37,7 +38,7 @@ div.quarto-about-solana .about-entity .about-link:hover {
 
 div.quarto-title .quarto-categories .quarto-category {
   
-  color: white;
+  color: #f0f0f0;
   opacity: 1;
   
   

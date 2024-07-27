@@ -11,15 +11,20 @@ filters:
  - lightbox
 lightbox: auto
 ---
+# Opioid Overdose Mortalities and Emergency Department Visits in Michigan Counties and ZCTAs
+
+This poster was presented at the Michigan Epidemiology Conference in Saginaw, Michigan on April 12, 2024.
+
+![](miepi2024.png){group="\\my-gallery"}
 
 # Barriers to Refuse Disposal in Larteh, Ghana
 
-This poster was put together as a result of my research experiences in Ghana. This fulfilled my practicum requirement for my MPH program. As of this posting, the research has not been submitted or presented formally.
+This poster was put together as a result of my research experiences in Ghana. This project fulfilled my practicum requirement for my MPH program. This poster was presented at the Consortium of Universities for Global Health Conference on March 9, 2024, in Los Angeles, California.
 
-![](SMITH%20GHANA%20POSTER.png){group="\\my-gallery"}
+![](ghana2024.png){group="\\my-gallery"}
 
 # AcademyHealth Poster: Mental Health and the Pandemic
 
 This research was put together in collaboration with Ann Annis and Wenjuan Ma. This poster would not be possible without their dedication and support!
 
-![](Slide1.png){group="\"my-gallery"}
+![](Slide1.png){group="\\my-gallery"}
