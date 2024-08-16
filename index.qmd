@@ -1,6 +1,6 @@
 ---
  title: "Brenden Smith, MPH"
- subtitle: "Health Data Analyst, Barry County Community Mental Health Authority"
+ subtitle: "SUD Medicaid Analyst, Michigan Department of Health and Human Services"
  image: transme.png
  about:
    template: solana
@@ -16,6 +16,6 @@
       href: https://github.com/brendensm
 ---
 
-Hi, I'm Brenden. I am a data analyst, community researcher, and R enthusiast. I am passionate about health equity, harm reduction, and community engagement.
+Hi, I'm Brenden. I am an epidemiologist, community researcher, and R enthusiast. I am passionate about health equity, harm reduction, and community engagement.
 
 If you would like to see some of my current and past work, you can visit my [portfolio page](projects.qmd) or check out [my blog](blog.qmd).
