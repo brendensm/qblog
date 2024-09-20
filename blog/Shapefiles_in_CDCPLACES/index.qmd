@@ -2,7 +2,7 @@
 title: "What's New in CDCPLACES 1.1.5"
 author: "Brenden Smith"
 date: "2024-3-19"
-categories: [R, packages, API, vignette, maps]
+categories: [R, packages, API, vignette, maps, CDCPLACES]
 description: "Map PLACES data easily with the help of `tigris`."
 engine: knitr
 execute: 
@@ -14,7 +14,10 @@ code-overflow: scroll
 toc: true
 ---
 
+*This is part of the `CDCPLACES` blog series. To view the other posts in this series [click here.](https://brendenmsmith.com/blog#category=CDCPLACES)*
+
 *An earlier version of this blog post was published on February 6, 2024 and described the new features in the development version of this package. This update shows all of the new features of the package as of March 16, 2024.*
+
 
 ## Introduction
 

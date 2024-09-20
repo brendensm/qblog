@@ -150,6 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                 <div class="quarto-category">packages</div>
                 <div class="quarto-category">API</div>
                 <div class="quarto-category">vignette</div>
+                <div class="quarto-category">CDCPLACES</div>
               </div>
                   </div>
   </div>
@@ -197,6 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<p><em>This is part of the <code>CDCPLACES</code> blog series. To view the other posts in this series <a href="https://brendenmsmith.com/blog#category=CDCPLACES">click here.</a></em></p>
 <p><em>This post was updated on March 19, 2024 to reflect updates introduced in CDCPLACES 1.1.5.</em></p>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
@@ -231,11 +233,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "measureid"                "measure_full_name"       
  [3] "measure_short_name"       "categoryid"              
- [5] "category_name"            "places_release_2023"     
- [7] "places_release_2022"      "places_release_2021"     
- [9] "places_release_2020"      "_500_cities_release_2019"
-[11] "_500_cities_release_2018" "_500_cities_release_2017"
-[13] "_500_cities_release_2016" "frequency_brfss_year"    </code></pre>
+ [5] "category_name"            "places_release_2024"     
+ [7] "measurename16_23"         "places_release_2023"     
+ [9] "places_release_2022"      "places_release_2021"     
+[11] "places_release_2020"      "_500_cities_release_2019"
+[13] "_500_cities_release_2018" "_500_cities_release_2017"
+[15] "_500_cities_release_2016" "frequency_brfss_year"    
+[17] "shortname16_23"          </code></pre>
 </div>
 </div>
 <p>This data frame is useful for several reasons. It lists the available measures for each year of the CDC PLACES data, along with the data each variable was collected, all in a single place. Remember to use the <code>measureid</code> when querying your data.</p>
@@ -251,20 +255,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(az_access)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 21
-  year  stateabbr statedesc locationname datasource category   measure          
-  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;            
-1 2021  AZ        Arizona   Yuma         BRFSS      Prevention Current lack of …
-2 2021  AZ        Arizona   Graham       BRFSS      Prevention Current lack of …
-3 2021  AZ        Arizona   Apache       BRFSS      Prevention Current lack of …
-4 2021  AZ        Arizona   La Paz       BRFSS      Prevention Current lack of …
-5 2021  AZ        Arizona   Coconino     BRFSS      Prevention Current lack of …
-6 2021  AZ        Arizona   Cochise      BRFSS      Prevention Current lack of …
-# ℹ 14 more variables: data_value_unit &lt;chr&gt;, data_value_type &lt;chr&gt;,
-#   data_value &lt;dbl&gt;, low_confidence_limit &lt;dbl&gt;, high_confidence_limit &lt;dbl&gt;,
-#   totalpopulation &lt;chr&gt;, locationid &lt;chr&gt;, categoryid &lt;chr&gt;, measureid &lt;chr&gt;,
-#   datavaluetypeid &lt;chr&gt;, short_question_text &lt;chr&gt;, type &lt;chr&gt;, lon &lt;dbl&gt;,
-#   lat &lt;dbl&gt;</code></pre>
+<pre><code>  year stateabbr statedesc locationname datasource   category
+1 2022        AZ   Arizona         Yuma      BRFSS Prevention
+2 2022        AZ   Arizona       La Paz      BRFSS Prevention
+3 2022        AZ   Arizona      Yavapai      BRFSS Prevention
+4 2022        AZ   Arizona      Yavapai      BRFSS Prevention
+5 2022        AZ   Arizona       Graham      BRFSS Prevention
+6 2022        AZ   Arizona       La Paz      BRFSS Prevention
+                                                         measure
+1 Current lack of health insurance among adults aged 18-64 years
+2 Current lack of health insurance among adults aged 18-64 years
+3 Current lack of health insurance among adults aged 18-64 years
+4 Current lack of health insurance among adults aged 18-64 years
+5 Current lack of health insurance among adults aged 18-64 years
+6 Current lack of health insurance among adults aged 18-64 years
+  data_value_unit         data_value_type data_value low_confidence_limit
+1               %        Crude prevalence       15.6                 14.2
+2               %        Crude prevalence        9.2                  8.3
+3               % Age-adjusted prevalence       10.9                  9.8
+4               %        Crude prevalence        6.5                  5.7
+5               % Age-adjusted prevalence       16.2                 14.4
+6               % Age-adjusted prevalence       20.4                 18.5
+  high_confidence_limit totalpopulation totalpop18plus locationid categoryid
+1                  17.1          207842         155973      04027    PREVENT
+2                  10.2           16506          13903      04012    PREVENT
+3                  12.2          246191         208516      04025    PREVENT
+4                   7.2          246191         208516      04025    PREVENT
+5                  18.0           38779          28375      04009    PREVENT
+6                  22.3           16506          13903      04012    PREVENT
+  measureid datavaluetypeid short_question_text
+1   ACCESS2          CrdPrv    Health Insurance
+2   ACCESS2          CrdPrv    Health Insurance
+3   ACCESS2       AgeAdjPrv    Health Insurance
+4   ACCESS2          CrdPrv    Health Insurance
+5   ACCESS2       AgeAdjPrv    Health Insurance
+6   ACCESS2       AgeAdjPrv    Health Insurance
+                                 geolocation
+1 Point, -113.905997385394, 32.7694427722845
+2  Point, -113.98153747073, 33.7292571142703
+3 Point, -112.553640853115, 34.5996977529402
+4 Point, -112.553640853115, 34.5996977529402
+5 Point, -109.887402691851, 32.9327553402921
+6  Point, -113.98153747073, 33.7292571142703</code></pre>
 </div>
 </div>
 <p>It is also worth noting that by default <code>geography</code> specifying geography is set to “county”. If instead we want to examine census tracts, we could specify the argument. Likewise, <code>release</code> is set to “2023” by default.</p>

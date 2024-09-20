@@ -10,7 +10,436 @@
 <atom:link href="https://brendenmsmith.com/blog-r.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.4.553</generator>
-<lastBuildDate>Wed, 26 Jun 2024 04:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 12 Aug 2024 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>CDCPLACES 1.1.8: 2024 Release</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/blog/CDCPLACES_1.1.8/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><em>This is part of the <code>CDCPLACES</code> blog series. To view the other posts in this series <a href="https://brendenmsmith.com/blog#category=CDCPLACES">click here.</a></em></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This brief blog post explains the new additions to <code>CDCPLACES</code> 1.1.8. This update provides a few new features:</p>
+<ul>
+<li><p>Updated 2024 release data, including several new measures under the health-related social needs category</p></li>
+<li><p>Two new arguments to help filter your data, <code>cat</code> and <code>age_adjust</code></p></li>
+<li><p>The ability to query Zip Code Tabulation Areas (ZCTAs)</p></li>
+<li><p>Improved functionality when querying counties with the same name across different states</p></li>
+</ul>
+<p>In addition to these features, <code>CDCPLACES</code> now depends on <code>yyjsonr</code> instead of <code>jsonlite</code>. Originally, the <code>get_places</code> function included a step to clean the returned <code>geolocation</code> variable (essentially a centroid of the geography queried). This step was removed as it was computationally intensive on larger queries and unncessary given the support for shapefiles with the <code>geometry</code> argument. These changes drastically improve the speed of the package.</p>
+<p>To begin, we will load the required packages.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># install.packages("CDCPLACES")</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># install.packges("tidyverse)</span></span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(CDCPLACES)</span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span></code></pre></div>
+</details>
+</div>
+</section>
+<section id="new-measures" class="level2">
+<h2 class="anchored" data-anchor-id="new-measures">New Measures</h2>
+<p>With the 2024 release of the PLACES data, the default option for the release argument in <code>get_places</code> has been updated to “2024”. You can find all the details of these updated data in the release <a href="https://www.cdc.gov/places/help/data-notes/index.html">notes.</a></p>
+<p>An exciting addition to the PLACES data are the new health-related social needs variables. These include: social isolation, food stamps, food insecurity, housing insecurity, utility services threat, transportation barriers, and lack of social and emotional support. These measures are only available in 39 states and the District of Columbia (DC).</p>
+<p><a href="screenshots/HRSN.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://brendenmsmith.com/blog/CDCPLACES_1.1.8/screenshots/HRSN.png" class="img-fluid"></a></p>
+<p>You can view these measures by calling <code>get_dictionary</code>. The category ID for these new measures is “SOCLNEED”.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_dictionary</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">filter</span>(categoryid <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SOCLNEED"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_tibble</span>()</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 17
+  measureid   measure_full_name      measure_short_name categoryid category_name
+  &lt;chr&gt;       &lt;chr&gt;                  &lt;chr&gt;              &lt;chr&gt;      &lt;chr&gt;        
+1 ISOLATION   Feeling socially isol… Social Isolation   SOCLNEED   Health-Relat…
+2 FOODSTAMP   Received food stamps … Food Stamps        SOCLNEED   Health-Relat…
+3 FOODINSECU  Food insecurity in th… Food Insecurity    SOCLNEED   Health-Relat…
+4 HOUSINSECU  Housing insecurity in… Housing Insecurity SOCLNEED   Health-Relat…
+5 SHUTUTILITY Utility services thre… Utilities Service… SOCLNEED   Health-Relat…
+6 LACKTRPT    Lack of reliable tran… Transportation Ba… SOCLNEED   Health-Relat…
+7 EMOTIONSPT  Lack of social and em… Lack of Social/Em… SOCLNEED   Health-Relat…
+# ℹ 12 more variables: places_release_2024 &lt;chr&gt;, measurename16_23 &lt;chr&gt;,
+#   places_release_2023 &lt;chr&gt;, places_release_2022 &lt;chr&gt;,
+#   places_release_2021 &lt;chr&gt;, places_release_2020 &lt;chr&gt;,
+#   `_500_cities_release_2019` &lt;chr&gt;, `_500_cities_release_2018` &lt;chr&gt;,
+#   `_500_cities_release_2017` &lt;chr&gt;, `_500_cities_release_2016` &lt;chr&gt;,
+#   frequency_brfss_year &lt;chr&gt;, shortname16_23 &lt;chr&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="new-arguments-cat-and-age_adjust" class="level2">
+<h2 class="anchored" data-anchor-id="new-arguments-cat-and-age_adjust">New Arguments: cat and age_adjust</h2>
+<p>Some minor quality of life improvements are introduced with the new arguments <code>cat</code> and <code>age_adjust</code>.</p>
+<p>We can filter our results to returns a set of measures by category ID.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_places</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geography =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"county"</span>,</span>
+<span id="cb4-2">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">state =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AL"</span>, </span>
+<span id="cb4-3">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cat =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SOCLNEED"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_tibble</span>()</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 938 × 20
+   year  stateabbr statedesc locationname datasource category            measure
+   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;               &lt;chr&gt;  
+ 1 2022  AL        Alabama   Escambia     BRFSS      Health-Related Soc… Food i…
+ 2 2022  AL        Alabama   Greene       BRFSS      Health-Related Soc… Utilit…
+ 3 2022  AL        Alabama   Morgan       BRFSS      Health-Related Soc… Receiv…
+ 4 2022  AL        Alabama   Franklin     BRFSS      Health-Related Soc… Feelin…
+ 5 2022  AL        Alabama   Dale         BRFSS      Health-Related Soc… Food i…
+ 6 2022  AL        Alabama   Crenshaw     BRFSS      Health-Related Soc… Food i…
+ 7 2022  AL        Alabama   Greene       BRFSS      Health-Related Soc… Feelin…
+ 8 2022  AL        Alabama   Tuscaloosa   BRFSS      Health-Related Soc… Housin…
+ 9 2022  AL        Alabama   Clay         BRFSS      Health-Related Soc… Utilit…
+10 2022  AL        Alabama   Clay         BRFSS      Health-Related Soc… Housin…
+# ℹ 928 more rows
+# ℹ 13 more variables: data_value_unit &lt;chr&gt;, data_value_type &lt;chr&gt;,
+#   data_value &lt;dbl&gt;, low_confidence_limit &lt;dbl&gt;, high_confidence_limit &lt;dbl&gt;,
+#   totalpopulation &lt;chr&gt;, totalpop18plus &lt;chr&gt;, locationid &lt;chr&gt;,
+#   categoryid &lt;chr&gt;, measureid &lt;chr&gt;, datavaluetypeid &lt;chr&gt;,
+#   short_question_text &lt;chr&gt;, geolocation &lt;list&gt;</code></pre>
+</div>
+</div>
+<p>If a measure is provided as well as a category, the category will override it. A message is displayed in the console noting this when it occurs.</p>
+<p>To return only the age-adjusted prevalence rates, we can set the argument <code>age_adjust</code> to TRUE. Age-adjusted rates are only available at the county level.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_places</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geography =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"county"</span>,</span>
+<span id="cb6-2">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">state =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"AL"</span>, </span>
+<span id="cb6-3">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cat =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SOCLNEED"</span>, </span>
+<span id="cb6-4">           <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age_adjust =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as_tibble</span>()</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 469 × 20
+   year  stateabbr statedesc locationname datasource category            measure
+   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;               &lt;chr&gt;  
+ 1 2022  AL        Alabama   Choctaw      BRFSS      Health-Related Soc… Feelin…
+ 2 2022  AL        Alabama   Escambia     BRFSS      Health-Related Soc… Food i…
+ 3 2022  AL        Alabama   Morgan       BRFSS      Health-Related Soc… Receiv…
+ 4 2022  AL        Alabama   Dale         BRFSS      Health-Related Soc… Food i…
+ 5 2022  AL        Alabama   Etowah       BRFSS      Health-Related Soc… Lack o…
+ 6 2022  AL        Alabama   Wilcox       BRFSS      Health-Related Soc… Housin…
+ 7 2022  AL        Alabama   Limestone    BRFSS      Health-Related Soc… Food i…
+ 8 2022  AL        Alabama   Coosa        BRFSS      Health-Related Soc… Food i…
+ 9 2022  AL        Alabama   Crenshaw     BRFSS      Health-Related Soc… Housin…
+10 2022  AL        Alabama   Cleburne     BRFSS      Health-Related Soc… Lack o…
+# ℹ 459 more rows
+# ℹ 13 more variables: data_value_unit &lt;chr&gt;, data_value_type &lt;chr&gt;,
+#   data_value &lt;dbl&gt;, low_confidence_limit &lt;dbl&gt;, high_confidence_limit &lt;dbl&gt;,
+#   totalpopulation &lt;chr&gt;, totalpop18plus &lt;chr&gt;, locationid &lt;chr&gt;,
+#   categoryid &lt;chr&gt;, measureid &lt;chr&gt;, datavaluetypeid &lt;chr&gt;,
+#   short_question_text &lt;chr&gt;, geolocation &lt;list&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="query-zctas" class="level2">
+<h2 class="anchored" data-anchor-id="query-zctas">Query ZCTAs</h2>
+<p>A new option has been added to query ZCTAs. To do this, simply set the <code>geography</code> argument equal to “zcta”.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">w_sleep <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_places</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geography =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"zcta"</span>, </span>
+<span id="cb8-2">                      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">state =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MI"</span>, </span>
+<span id="cb8-3">                      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">measure =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"SLEEP"</span>,</span>
+<span id="cb8-4">                      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">county =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Barry"</span>, </span>
+<span id="cb8-5">                      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+</details>
+</div>
+<p>Like other geographies, we can query shapefiles in the same call and easily plot the output:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">w_sleep <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb9-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> data_value, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">label =</span> locationname)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf_label</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"white"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_viridis_c</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">percent_format</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb9-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"% Sleeping less than 7 hours among adults aged &gt;=18 years"</span>,</span>
+<span id="cb9-8">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"In Barry County, Michigan ZCTAs"</span>)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://brendenmsmith.com/blog/CDCPLACES_1.1.8/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="handle-overlapping-counties" class="level2">
+<h2 class="anchored" data-anchor-id="handle-overlapping-counties">Handle Overlapping Counties</h2>
+<p>This update provides the ability to query ZCTAs in different states and counties at the same time. This can raise issues when we want to look at counties that have the same name in multiple states.</p>
+<p>Consider the following example. If we were interested in looking at dental health access around the Michigan/Ohio border and the Toledo area, we might query Monroe and Lucas Counties. We would set the query up like this:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">tol <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">get_places</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geography =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"zcta"</span>,</span>
+<span id="cb10-2">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">state =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MI"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"OH"</span>),</span>
+<span id="cb10-3">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">measure =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"DENTAL"</span>,</span>
+<span id="cb10-4">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">county =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"LUCAS"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"MONROE"</span>),</span>
+<span id="cb10-5">                  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">geometry =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span></code></pre></div>
+</details>
+</div>
+<p>The main issue here is that Ohio also has a Monroe County. <code>CDCPLACES</code> will automatically check to see if your returned data contains these overlaps. You will see output in the console that looks like this:</p>
+<p><a href="screenshots/terminal1.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="https://brendenmsmith.com/blog/CDCPLACES_1.1.8/screenshots/terminal1.jpg" class="img-fluid"></a></p>
+<p>The package will prompt you if you want to include these overlaps. After asking this, it will ask you to specify the counties you wish to exclude from your returned data:</p>
+<p><a href="screenshots/terminal2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://brendenmsmith.com/blog/CDCPLACES_1.1.8/screenshots/terminal2.jpg" class="img-fluid"></a></p>
+<p>If you choose not to make any exclusions you will get the full data with overlaps. In this example, I excluded Ohio’s Monroe County because it is far from the area of interest.<sup>1</sup></p>
+<p>We can now plot our returned data:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">tol <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> </span>
+<span id="cb11-2">     <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> data_value)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-3">     <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-4">     <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_void</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-5">     <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_fill_viridis_c</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">labels =</span> scales<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">percent_format</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb11-6">     <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Visited a dentist or dental clinic in the past year among adults aged &gt;=18 years"</span>, </span>
+<span id="cb11-7">          <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"In Monroe County, Michigan and Lucas County, Ohio ZCTAs"</span>)</span></code></pre></div>
+</details>
+</div>
+<p><a href="screenshots/tol2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="https://brendenmsmith.com/blog/CDCPLACES_1.1.8/screenshots/tol2.png" class="img-fluid"></a></p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>It is crucial to mention that using this function in an R Markdown or Quarto document will override this user input. Full data with overlaps will be returned when knitting/rendering the document. If this is your specific use case, it is recommended to disregard this functionality and filter your data once it is returned.↩︎</p></li>
+</ol>
+</section></div> ]]></description>
+  <category>R</category>
+  <category>packages</category>
+  <category>maps</category>
+  <category>CDCPLACES</category>
+  <guid>https://brendenmsmith.com/blog/CDCPLACES_1.1.8/</guid>
+  <pubDate>Mon, 12 Aug 2024 04:00:00 GMT</pubDate>
+  <media:content url="https://brendenmsmith.com/blog/CDCPLACES_1.1.8/screenshots/places.png" medium="image" type="image/png" height="120" width="144"/>
+</item>
 <item>
   <title>Interactive Map Filter in Shiny</title>
   <dc:creator>Brenden Smith</dc:creator>
@@ -1949,6 +2378,7 @@ font-style: inherit;">./Desktop/R/utility_notification/utes_notif.R</span></span
 
 
 <p><em>An earlier version of this blog post was published on February 6, 2024 and described the new features in the development version of this package. This update shows all of the new features of the package as of March 16, 2024.</em></p>
+<p><em>This is part of the <code>CDCPLACES</code> blog series. To view the other posts in this series <a href="https://brendenmsmith.com/blog#category=CDCPLACES">click here.</a></em></p>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p><code>CDCPLACES</code> version 1.1.5 is now available on CRAN. Users can now request an sf data frame to allow for simple, streamlined mapping of PLACES data. To use this new feature, be sure to install the latest version from CRAN or GitHub.</p>
@@ -2303,6 +2733,7 @@ font-style: inherit;">"plot"</span>)</span></code></pre></div>
   <category>API</category>
   <category>vignette</category>
   <category>maps</category>
+  <category>CDCPLACES</category>
   <guid>https://brendenmsmith.com/blog/Shapefiles_in_CDCPLACES/</guid>
   <pubDate>Tue, 19 Mar 2024 04:00:00 GMT</pubDate>
 </item>
@@ -2316,6 +2747,7 @@ font-style: inherit;">"plot"</span>)</span></code></pre></div>
 
 
 
+<p><em>This is part of the <code>CDCPLACES</code> blog series. To view the other posts in this series <a href="https://brendenmsmith.com/blog#category=CDCPLACES">click here.</a></em></p>
 <p><em>This post was updated on March 19, 2024 to reflect updates introduced in CDCPLACES 1.1.5.</em></p>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
@@ -2374,11 +2806,13 @@ font-style: inherit;">names</span>()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "measureid"                "measure_full_name"       
  [3] "measure_short_name"       "categoryid"              
- [5] "category_name"            "places_release_2023"     
- [7] "places_release_2022"      "places_release_2021"     
- [9] "places_release_2020"      "_500_cities_release_2019"
-[11] "_500_cities_release_2018" "_500_cities_release_2017"
-[13] "_500_cities_release_2016" "frequency_brfss_year"    </code></pre>
+ [5] "category_name"            "places_release_2024"     
+ [7] "measurename16_23"         "places_release_2023"     
+ [9] "places_release_2022"      "places_release_2021"     
+[11] "places_release_2020"      "_500_cities_release_2019"
+[13] "_500_cities_release_2018" "_500_cities_release_2017"
+[15] "_500_cities_release_2016" "frequency_brfss_year"    
+[17] "shortname16_23"          </code></pre>
 </div>
 </div>
 <p>This data frame is useful for several reasons. It lists the available measures for each year of the CDC PLACES data, along with the data each variable was collected, all in a single place. Remember to use the <code>measureid</code> when querying your data.</p>
@@ -2408,20 +2842,48 @@ background-color: null;
 font-style: inherit;">head</span>(az_access)</span></code></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 21
-  year  stateabbr statedesc locationname datasource category   measure          
-  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;            
-1 2021  AZ        Arizona   Yuma         BRFSS      Prevention Current lack of …
-2 2021  AZ        Arizona   Graham       BRFSS      Prevention Current lack of …
-3 2021  AZ        Arizona   Apache       BRFSS      Prevention Current lack of …
-4 2021  AZ        Arizona   La Paz       BRFSS      Prevention Current lack of …
-5 2021  AZ        Arizona   Coconino     BRFSS      Prevention Current lack of …
-6 2021  AZ        Arizona   Cochise      BRFSS      Prevention Current lack of …
-# ℹ 14 more variables: data_value_unit &lt;chr&gt;, data_value_type &lt;chr&gt;,
-#   data_value &lt;dbl&gt;, low_confidence_limit &lt;dbl&gt;, high_confidence_limit &lt;dbl&gt;,
-#   totalpopulation &lt;chr&gt;, locationid &lt;chr&gt;, categoryid &lt;chr&gt;, measureid &lt;chr&gt;,
-#   datavaluetypeid &lt;chr&gt;, short_question_text &lt;chr&gt;, type &lt;chr&gt;, lon &lt;dbl&gt;,
-#   lat &lt;dbl&gt;</code></pre>
+<pre><code>  year stateabbr statedesc locationname datasource   category
+1 2022        AZ   Arizona         Yuma      BRFSS Prevention
+2 2022        AZ   Arizona       La Paz      BRFSS Prevention
+3 2022        AZ   Arizona      Yavapai      BRFSS Prevention
+4 2022        AZ   Arizona      Yavapai      BRFSS Prevention
+5 2022        AZ   Arizona       Graham      BRFSS Prevention
+6 2022        AZ   Arizona       La Paz      BRFSS Prevention
+                                                         measure
+1 Current lack of health insurance among adults aged 18-64 years
+2 Current lack of health insurance among adults aged 18-64 years
+3 Current lack of health insurance among adults aged 18-64 years
+4 Current lack of health insurance among adults aged 18-64 years
+5 Current lack of health insurance among adults aged 18-64 years
+6 Current lack of health insurance among adults aged 18-64 years
+  data_value_unit         data_value_type data_value low_confidence_limit
+1               %        Crude prevalence       15.6                 14.2
+2               %        Crude prevalence        9.2                  8.3
+3               % Age-adjusted prevalence       10.9                  9.8
+4               %        Crude prevalence        6.5                  5.7
+5               % Age-adjusted prevalence       16.2                 14.4
+6               % Age-adjusted prevalence       20.4                 18.5
+  high_confidence_limit totalpopulation totalpop18plus locationid categoryid
+1                  17.1          207842         155973      04027    PREVENT
+2                  10.2           16506          13903      04012    PREVENT
+3                  12.2          246191         208516      04025    PREVENT
+4                   7.2          246191         208516      04025    PREVENT
+5                  18.0           38779          28375      04009    PREVENT
+6                  22.3           16506          13903      04012    PREVENT
+  measureid datavaluetypeid short_question_text
+1   ACCESS2          CrdPrv    Health Insurance
+2   ACCESS2          CrdPrv    Health Insurance
+3   ACCESS2       AgeAdjPrv    Health Insurance
+4   ACCESS2          CrdPrv    Health Insurance
+5   ACCESS2       AgeAdjPrv    Health Insurance
+6   ACCESS2       AgeAdjPrv    Health Insurance
+                                 geolocation
+1 Point, -113.905997385394, 32.7694427722845
+2  Point, -113.98153747073, 33.7292571142703
+3 Point, -112.553640853115, 34.5996977529402
+4 Point, -112.553640853115, 34.5996977529402
+5 Point, -109.887402691851, 32.9327553402921
+6  Point, -113.98153747073, 33.7292571142703</code></pre>
 </div>
 </div>
 <p>It is also worth noting that by default <code>geography</code> specifying geography is set to “county”. If instead we want to examine census tracts, we could specify the argument. Likewise, <code>release</code> is set to “2023” by default.</p>
@@ -2803,6 +3265,7 @@ font-style: inherit;">"plot"</span>)</span></code></pre></div>
   <category>packages</category>
   <category>API</category>
   <category>vignette</category>
+  <category>CDCPLACES</category>
   <guid>https://brendenmsmith.com/blog/Introducing_the_PLACES_Package/</guid>
   <pubDate>Wed, 10 Jan 2024 05:00:00 GMT</pubDate>
 </item>

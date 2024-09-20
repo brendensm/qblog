@@ -1,21 +1,63 @@
 /*-- scss:default --*/
-$body-bg: #f0f0f0;
+$body-bg: #EEE8ED;/* #f0f0f0;*/
 $navbar-bg: #685068;   /* #665E73; */
 $font-family-sans-serif: Georgia;
 $font-size-base: 1.15rem;
-$primary: #9954bb;
+
+$primary: #522966;
 $toc-font-size: 1.1rem;
 $btn-code-copy-color: #685068;
-$code-block-bg: #E0E0E0;
+$code-block-bg:  #F8F9FA;
+$link-color: #874CA4;
 
 
 /*-- scss:rules --*/
+
+details.code-fold summary {
+  color: black;
+}
+
+a#tabset-1-1-tab.nav-link.active{
+  background: #F8F9FA;
+}
+
+a#tabset-1-2-tab.nav-link.active{
+  background: #F8F9FA;
+}
+
+a#tabset-1-1-tab.nav-link{
+  background: #F8F9FA;
+}
+
+a#tabset-1-2-tab.nav-link{
+  background: #F8F9FA;
+}
+
+
+
+div.tab-content {
+  background: #F8F9FA;
+}
+
+div.callout-body-container.callout-body {
+  background: #F8F9FA;
+}
+
+div#tippy-1 {
+  border-color: black;
+  border: 3px;
+  border-style: dashed;
+}
+
+div.cell-output.cell-output-stdout {
+  background:  #F8F9FA;/*#f0f0f0;*/ /* #DCD0DB;*/ /* #D3C5D2;*/
+}
 
 
 /* Home Page and Hovering */ 
 
 div.quarto-about-solana .about-entity .about-link {
-
+    color: black;
     font-size: 1.1em;
     padding: 0.5em 0.5em;
     text-align: center;
@@ -46,6 +88,10 @@ div.quarto-title .quarto-categories .quarto-category {
 div.quarto-post .listing-categories .listing-category {
   color: black;
   border-color: black;
+}
+
+div.card-attribution.card-text-small.justify {
+  color:  black;
 }
 
 

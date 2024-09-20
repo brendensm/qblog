@@ -136,5 +136,17 @@
   },
   "blog/shiny_map_filter/index.qmd": {
     "index.html": "5f0fd4cf"
+  },
+  "blog/CDCPLACES_1.1.6/index.qmd": {
+    "index.html": "6305edea"
+  },
+  "projects/R Packages/index.qmd": {
+    "index.html": "1f02fe22"
+  },
+  "blog/CDCPLACES_1.1.7/index.qmd": {
+    "index.html": "da027d96"
+  },
+  "blog/CDCPLACES_1.1.8/index.qmd": {
+    "index.html": "f6515930"
   }
 }

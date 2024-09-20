@@ -1,0 +1,57 @@
+---
+title: "R Packages"
+author: "Brenden Smith"
+date: "2024-8-12"
+description: "A landing page for the R packages I have developed."
+image: rp.png
+toc: true
+page-layout: full
+filters: 
+ - lightbox
+lightbox: auto
+draft: true
+---
+
+## [misuvi](https://cran.r-project.org/web/packages/misuvi/)
+
+This package allows users to easily access the MI-SUVI data sets. The user can import data sets with full metrics, percentiles, Z-scores, or rankings. Data is available at both the County and Zip Code Tabulation Area (ZCTA) levels.
+
+"The MI-SUVI was created to consider the diverse factors that influence a community’s vulnerability related to substance use. The MI-SUVI is a single, standardized score that considers multiple factors that influence a community’s vulnerability related to substance use, including indicators related to substance use burden, resources, and social vulnerability." (MDHHS, 2024)
+
+Main functions include:
+
+-   `misuvi_load` — Loads the MI-SUVI data set of your choice. Defaults to County metrics.
+
+-   `add_geometry` — Adds shape files to your MI-SUVI data.
+
+-   `documentation` — Launches a browser with the full technical documentation of the MI-SUVI data.
+
+-   `dictionary` — Provides a data frame with a more detailed name of the abbreviated variables that `misuvi_load` returns.
+
+## [CDCPLACES](https://cran.r-project.org/web/packages/CDCPLACES/)
+
+This package allows users to seamlessly query the Centers for Disease Control and Prevention's (CDC) Population Level Analysis and Community Estimates (PLACES) API.
+
+From the [CDC's website:](https://www.cdc.gov/places/index.html)
+
+> PLACES is a collaboration between CDC, the Robert Wood Johnson Foundation, and the CDC Foundation. PLACES provides health data for small areas across the country. This allows local health departments and jurisdictions, regardless of population size and rurality, to better understand the burden and geographic distribution of health measures in their areas and assist them in planning public health interventions.
+>
+> PLACES provides model-based, population-level analysis and community estimates of health measures to all counties, places (incorporated and census designated places), census tracts, and ZIP Code Tabulation Areas (ZCTAs) across the United States.
+
+For more information on this data set's methodology and measure definitions refer to the [CDC PLACES website.](https://www.cdc.gov/places/about/index.html)
+
+## [hm878](https://github.com/brendensm/hm878)
+
+This package was developed to introduce helper functions for common tasks in the class's assignments. These functions save us some time and energy. Helper functions currently include:
+
+-   or — a function to calculate odds ratios and confidence intervals for a logistic regression model
+
+-   chi_log — a function to calculate the Pearson's goodness of fit to a logistic regression model
+
+-   predict_percent — a function to calculate an accuracy percentage for a logistic regression model based off of predicted probabilities
+
+-   fences — a function to calculate the upper and lower fences of a continuous variable
+
+-   compare_models — a function to compare output from multiple models
+
+-   deviance_aic — a function that compares only null deviance, residual deviance, and AIC between multiple models
