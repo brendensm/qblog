@@ -19,3 +19,27 @@
 Hi, I'm Brenden. I am an epidemiologist, community researcher, and R enthusiast. I am passionate about health equity, harm reduction, and community engagement.
 
 If you would like to see some of my current and past work, you can visit my [portfolio page](projects.qmd) or check out [my blog](blog.qmd).
+
+
+```{=html}
+<p>To stay up to date with me, you can <a href="https://n1mbmu-brenden-smith.shinyapps.io/listserv">subscribe to my newsletter.</a></p>
+
+<!-- <p>To stay up to date with me, you can <a id="showShinyApp">subscribe to my newsletter.</a></p> -->
+<!-- <button id="showShinyApp">Subscribe to my newsletter!</button> -->
+<!-- <div id="shinyContainer"> -->
+<!--     <iframe style = "width: 100%; height: 275px; border: none;" src="https://n1mbmu-brenden-smith.shinyapps.io/listserv" title="Embedded Shiny App"></iframe> -->
+<!-- </div> -->
+
+<!-- <script> -->
+<!--   document.getElementById('showShinyApp').addEventListener('click', function() { -->
+<!--     var container = document.getElementById('shinyContainer'); -->
+<!--     if (container.style.display === 'none' || container.style.display === '') { -->
+<!--       container.style.display = 'block'; -->
+<!--       this.textContent = 'subscribe to my newsletter.'; -->
+<!--     } else { -->
+<!--       container.style.display = 'none'; -->
+<!--       this.textContent = 'subscribe to my newsletter.'; -->
+<!--     } -->
+<!--   }); -->
+<!-- </script> -->
+```

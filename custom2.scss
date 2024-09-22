@@ -56,6 +56,18 @@ div.cell-output.cell-output-stdout {
 
 /* Home Page and Hovering */ 
 
+#shinyContainer{
+  display: none;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#showShinyApp {
+  text-decoration: underline;
+  color:#874CA4;
+}
+
 div.quarto-about-solana .about-entity .about-link {
     color: black;
     font-size: 1.1em;

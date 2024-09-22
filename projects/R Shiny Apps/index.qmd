@@ -9,12 +9,15 @@ toc: true
 
 ## Sugar Smart Coalition Lansing - Nutrition Calculator
 
-<iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/sugar_smart_coalition/"> </iframe>
+<iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/sugar_smart_coalition/">
+
+</iframe>
 
 ## CDCPLACES Data Explorer
 
-<iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/"> </iframe>
+<iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/">
 
+</iframe>
 
 ## Mental Health and the Pandemic
 
