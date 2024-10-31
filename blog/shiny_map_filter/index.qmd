@@ -149,23 +149,19 @@ The code chunk below runs when a polygon on our map is clicked. That is the logi
 
 If we were to simply `print(click)` we would see the following output upon an initial click and a second click of the same polygon:
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## Initial Click
 
 ![](images/firstclick.jpg){height="250"}
 
-
 ## Second Click
 
 ![](images/selected.jpg){height="250"}
-
-
 :::
 
 This will inform how we use the input to update our data and map.
 
-We can use a set of `if` and `else` statements to store  data from click in our reactive values.
+We can use a set of `if` and `else` statements to store data from click in our reactive values.
 
 -   The first statement checks to see if the current `click$id` exists in `rv$selected_counties`. If it does, it will remove it from the vector.
 
