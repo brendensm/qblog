@@ -196,10 +196,42 @@ font-style: inherit;">return</span>(out)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="another-alternative">Another Alternative</h2>
 <p>If you are using R version 4.0.0 or later, you also have the option of <a href="https://stackoverflow.com/questions/14185287/escaping-backslash-in-string-or-paths-in-r/14185627#14185627">using a raw string constant</a>. This is done by wrapping your text with <code>r"()"</code>. This will return a string with double back slashes:</p>
 <p><a href="r.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="https://brendenmsmith.com/blog/windows_filepaths/r.jpg" class="img-fluid"></a></p>
-<!-- <div style = "border-style: dashed; border-color: #685068;"> -->
-<iframe style="width: 100%; height: 275px; border: none;" src="https://n1mbmu-brenden-smith.shinyapps.io/listserv" title="Embedded Shiny App">
-</iframe>
-<!-- </div> -->
+<button onclick="loadApp()" class="btn btn-primary" id="loadButton" style="background:#685068;">
+Subscribe to my Newsletter!
+</button>
+<div id="myapp">
+
+</div>
+<script>
+let isLoaded = false;
+
+function loadApp() {
+  const container = document.getElementById("myapp");
+  const button = document.getElementById("loadButton");
+  
+  if (!isLoaded) {
+    // Create and add the iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://n1mbmu-brenden-smith.shinyapps.io/listserv/";
+    iframe.width = "100%";
+    iframe.height = "275px";
+    iframe.style.border = "none";
+    container.appendChild(iframe);
+    button.textContent = "Hide App";
+    isLoaded = true;
+    container.style.display = "block";
+  } else {
+    // Toggle visibility of existing iframe
+    if (container.style.display === "none") {
+      container.style.display = "block";
+      button.textContent = "Hide App";
+    } else {
+      container.style.display = "none";
+      button.textContent = "Subscribe to my Newsletter!";
+    }
+  }
+}
+</script>
 
 
 </section>

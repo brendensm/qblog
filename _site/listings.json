@@ -31,6 +31,7 @@
   {
     "listing": "/projects.html",
     "items": [
+      "/projects/R Packages/index.html",
       "/projects/R Shiny Apps/index.html",
       "/projects/AcademyHealth Poster/index.html",
       "/projects/Tidy Tuesday/index.html",

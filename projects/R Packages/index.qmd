@@ -9,7 +9,7 @@ page-layout: full
 filters: 
  - lightbox
 lightbox: auto
-draft: true
+draft: false
 ---
 
 ## [misuvi](https://cran.r-project.org/web/packages/misuvi/)

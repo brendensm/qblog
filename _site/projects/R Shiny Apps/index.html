@@ -157,13 +157,85 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="sugar-smart-coalition-lansing---nutrition-calculator" class="level2">
 <h2 class="anchored" data-anchor-id="sugar-smart-coalition-lansing---nutrition-calculator">Sugar Smart Coalition Lansing - Nutrition Calculator</h2>
-<iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/sugar_smart_coalition/">
-</iframe>
+<!-- <iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/sugar_smart_coalition/"> -->
+<!-- </iframe> -->
+<button onclick="loadAppSSC()" class="btn btn-primary" id="loadButton-ssc" style="background:#685068;">
+Show App
+</button>
+<div id="ssc">
+
+</div>
+<script>
+let isLoadedSSC = false;
+
+function loadAppSSC() {
+  const container = document.getElementById("ssc");
+  const button = document.getElementById("loadButton-ssc");
+  
+  if (!isLoadedSSC) {
+    // Create and add the iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://n1mbmu-brenden-smith.shinyapps.io/sugar_smart_coalition/";
+    iframe.width = "100%";
+    iframe.height = "750px";
+    iframe.style.border = "none";
+    container.appendChild(iframe);
+    button.textContent = "Hide App";
+    isLoadedSSC = true;
+    container.style.display = "block";
+  } else {
+    // Toggle visibility of existing iframe
+    if (container.style.display === "none") {
+      container.style.display = "block";
+      button.textContent = "Hide App";
+    } else {
+      container.style.display = "none";
+      button.textContent = "Show App";
+    }
+  }
+}
+</script>
 </section>
 <section id="cdcplaces-data-explorer" class="level2">
 <h2 class="anchored" data-anchor-id="cdcplaces-data-explorer">CDCPLACES Data Explorer</h2>
-<iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/">
-</iframe>
+<!-- <iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/"> -->
+<!-- </iframe> -->
+<button onclick="loadAppCDC()" class="btn btn-primary" id="loadButton-cdc" style="background:#685068;">
+Show App
+</button>
+<div id="cdc">
+
+</div>
+<script>
+let isLoadedCDC = false;
+
+function loadAppCDC() {
+  const container = document.getElementById("cdc");
+  const button = document.getElementById("loadButton-cdc");
+  
+  if (!isLoadedCDC) {
+    // Create and add the iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/";
+    iframe.width = "100%";
+    iframe.height = "750px";
+    iframe.style.border = "none";
+    container.appendChild(iframe);
+    button.textContent = "Hide App";
+    isLoadedCDC = true;
+    container.style.display = "block";
+  } else {
+    // Toggle visibility of existing iframe
+    if (container.style.display === "none") {
+      container.style.display = "block";
+      button.textContent = "Hide App";
+    } else {
+      container.style.display = "none";
+      button.textContent = "Show App";
+    }
+  }
+}
+</script>
 </section>
 <section id="mental-health-and-the-pandemic" class="level2">
 <h2 class="anchored" data-anchor-id="mental-health-and-the-pandemic">Mental Health and the Pandemic</h2>

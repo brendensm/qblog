@@ -9,15 +9,93 @@ toc: true
 
 ## Sugar Smart Coalition Lansing - Nutrition Calculator
 
-<iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/sugar_smart_coalition/">
+<!-- <iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/sugar_smart_coalition/"> -->
 
-</iframe>
+<!-- </iframe> -->
+
+
+
+<button onclick="loadAppSSC()" class="btn btn-primary" id="loadButton-ssc" style="background:#685068;">Show App</button>
+
+<div id="ssc"></div>
+
+<script>
+let isLoadedSSC = false;
+
+function loadAppSSC() {
+  const container = document.getElementById("ssc");
+  const button = document.getElementById("loadButton-ssc");
+  
+  if (!isLoadedSSC) {
+    // Create and add the iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://n1mbmu-brenden-smith.shinyapps.io/sugar_smart_coalition/";
+    iframe.width = "100%";
+    iframe.height = "750px";
+    iframe.style.border = "none";
+    container.appendChild(iframe);
+    button.textContent = "Hide App";
+    isLoadedSSC = true;
+    container.style.display = "block";
+  } else {
+    // Toggle visibility of existing iframe
+    if (container.style.display === "none") {
+      container.style.display = "block";
+      button.textContent = "Hide App";
+    } else {
+      container.style.display = "none";
+      button.textContent = "Show App";
+    }
+  }
+}
+</script>
+
+
+
+
+
 
 ## CDCPLACES Data Explorer
 
-<iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/">
+<!-- <iframe height="750" width="100%" frameborder="no" src="https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/"> -->
 
-</iframe>
+<!-- </iframe> -->
+
+<button onclick="loadAppCDC()" class="btn btn-primary" id="loadButton-cdc" style="background:#685068;">Show App</button>
+
+<div id="cdc"></div>
+
+<script>
+let isLoadedCDC = false;
+
+function loadAppCDC() {
+  const container = document.getElementById("cdc");
+  const button = document.getElementById("loadButton-cdc");
+  
+  if (!isLoadedCDC) {
+    // Create and add the iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/";
+    iframe.width = "100%";
+    iframe.height = "750px";
+    iframe.style.border = "none";
+    container.appendChild(iframe);
+    button.textContent = "Hide App";
+    isLoadedCDC = true;
+    container.style.display = "block";
+  } else {
+    // Toggle visibility of existing iframe
+    if (container.style.display === "none") {
+      container.style.display = "block";
+      button.textContent = "Hide App";
+    } else {
+      container.style.display = "none";
+      button.textContent = "Show App";
+    }
+  }
+}
+</script>
+
 
 ## Mental Health and the Pandemic
 

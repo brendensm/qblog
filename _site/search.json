@@ -116,7 +116,7 @@
     "href": "projects.html",
     "title": "Portfolio",
     "section": "",
-    "text": "R Shiny Apps\n\n\nFeatured work using Shiny.\n\n\n\nBrenden Smith\n\n\nJan 24, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAcademic Posters\n\n\nVarious academic and professional projects that I have prepared into poster presentations.\n\n\n\nBrenden Smith\n\n\nAug 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nAn ongoing collection of practice visualizations from the Tidy Tuesday weekly data project.\n\n\n\nBrenden Smith\n\n\nFeb 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPowerBI Dashboards\n\n\nA collection of work of mine in PowerBI.\n\n\n\nBrenden Smith\n\n\nDec 10, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "R Packages\n\n\nA landing page for the R packages I have developed.\n\n\n\nBrenden Smith\n\n\nAug 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Shiny Apps\n\n\nFeatured work using Shiny.\n\n\n\nBrenden Smith\n\n\nJan 24, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAcademic Posters\n\n\nVarious academic and professional projects that I have prepared into poster presentations.\n\n\n\nBrenden Smith\n\n\nAug 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy Tuesday\n\n\nAn ongoing collection of practice visualizations from the Tidy Tuesday weekly data project.\n\n\n\nBrenden Smith\n\n\nFeb 27, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPowerBI Dashboards\n\n\nA collection of work of mine in PowerBI.\n\n\n\nBrenden Smith\n\n\nDec 10, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects/Michigan COVID-19 Dashboard/index.html",
@@ -501,7 +501,7 @@
     "href": "projects/R Shiny Apps/index.html#cdcplaces-data-explorer",
     "title": "R Shiny Apps",
     "section": "CDCPLACES Data Explorer",
-    "text": "CDCPLACES Data Explorer"
+    "text": "CDCPLACES Data Explorer\n\n\n\nShow App"
   },
   {
     "objectID": "posts/Shapefiles in CDCPLACES/index.html",
@@ -1341,6 +1341,48 @@
     "href": "blog/windows_filepaths/index.html#another-alternative",
     "title": "Dealing with Windows File Paths in R",
     "section": "Another Alternative",
-    "text": "Another Alternative\nIf you are using R version 4.0.0 or later, you also have the option of using a raw string constant. This is done by wrapping your text with r\"()\". This will return a string with double back slashes:"
+    "text": "Another Alternative\nIf you are using R version 4.0.0 or later, you also have the option of using a raw string constant. This is done by wrapping your text with r\"()\". This will return a string with double back slashes:\n\n\nSubscribe to my Newsletter!"
+  },
+  {
+    "objectID": "projects/R Packages/index.html",
+    "href": "projects/R Packages/index.html",
+    "title": "R Packages",
+    "section": "",
+    "text": "This package allows users to easily access the MI-SUVI data sets. The user can import data sets with full metrics, percentiles, Z-scores, or rankings. Data is available at both the County and Zip Code Tabulation Area (ZCTA) levels.\n“The MI-SUVI was created to consider the diverse factors that influence a community’s vulnerability related to substance use. The MI-SUVI is a single, standardized score that considers multiple factors that influence a community’s vulnerability related to substance use, including indicators related to substance use burden, resources, and social vulnerability.” (MDHHS, 2024)\nMain functions include:\n\nmisuvi_load — Loads the MI-SUVI data set of your choice. Defaults to County metrics.\nadd_geometry — Adds shape files to your MI-SUVI data.\ndocumentation — Launches a browser with the full technical documentation of the MI-SUVI data.\ndictionary — Provides a data frame with a more detailed name of the abbreviated variables that misuvi_load returns."
+  },
+  {
+    "objectID": "projects/R Packages/index.html#misuvi",
+    "href": "projects/R Packages/index.html#misuvi",
+    "title": "R Packages",
+    "section": "",
+    "text": "This package allows users to easily access the MI-SUVI data sets. The user can import data sets with full metrics, percentiles, Z-scores, or rankings. Data is available at both the County and Zip Code Tabulation Area (ZCTA) levels.\n“The MI-SUVI was created to consider the diverse factors that influence a community’s vulnerability related to substance use. The MI-SUVI is a single, standardized score that considers multiple factors that influence a community’s vulnerability related to substance use, including indicators related to substance use burden, resources, and social vulnerability.” (MDHHS, 2024)\nMain functions include:\n\nmisuvi_load — Loads the MI-SUVI data set of your choice. Defaults to County metrics.\nadd_geometry — Adds shape files to your MI-SUVI data.\ndocumentation — Launches a browser with the full technical documentation of the MI-SUVI data.\ndictionary — Provides a data frame with a more detailed name of the abbreviated variables that misuvi_load returns."
+  },
+  {
+    "objectID": "projects/R Packages/index.html#cdcplaces",
+    "href": "projects/R Packages/index.html#cdcplaces",
+    "title": "R Packages",
+    "section": "CDCPLACES",
+    "text": "CDCPLACES\nThis package allows users to seamlessly query the Centers for Disease Control and Prevention’s (CDC) Population Level Analysis and Community Estimates (PLACES) API.\nFrom the CDC’s website:\n\nPLACES is a collaboration between CDC, the Robert Wood Johnson Foundation, and the CDC Foundation. PLACES provides health data for small areas across the country. This allows local health departments and jurisdictions, regardless of population size and rurality, to better understand the burden and geographic distribution of health measures in their areas and assist them in planning public health interventions.\nPLACES provides model-based, population-level analysis and community estimates of health measures to all counties, places (incorporated and census designated places), census tracts, and ZIP Code Tabulation Areas (ZCTAs) across the United States.\n\nFor more information on this data set’s methodology and measure definitions refer to the CDC PLACES website."
+  },
+  {
+    "objectID": "projects/R Packages/index.html#hm878",
+    "href": "projects/R Packages/index.html#hm878",
+    "title": "R Packages",
+    "section": "hm878",
+    "text": "hm878\nThis package was developed to introduce helper functions for common tasks in the class’s assignments. These functions save us some time and energy. Helper functions currently include:\n\nor — a function to calculate odds ratios and confidence intervals for a logistic regression model\nchi_log — a function to calculate the Pearson’s goodness of fit to a logistic regression model\npredict_percent — a function to calculate an accuracy percentage for a logistic regression model based off of predicted probabilities\nfences — a function to calculate the upper and lower fences of a continuous variable\ncompare_models — a function to compare output from multiple models\ndeviance_aic — a function that compares only null deviance, residual deviance, and AIC between multiple models"
+  },
+  {
+    "objectID": "projects/R Shiny Apps/index.html",
+    "href": "projects/R Shiny Apps/index.html",
+    "title": "R Shiny Apps",
+    "section": "",
+    "text": "Show App"
+  },
+  {
+    "objectID": "projects/R Shiny Apps/index.html#sugar-smart-coalition-lansing---nutrition-calculator",
+    "href": "projects/R Shiny Apps/index.html#sugar-smart-coalition-lansing---nutrition-calculator",
+    "title": "R Shiny Apps",
+    "section": "",
+    "text": "Show App"
   }
 ]
