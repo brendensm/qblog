@@ -1,0 +1,132 @@
+---
+title: "Introducing the CDCPLACES Package"
+author: "Brenden Smith"
+date: "2024-1-10"
+categories: [R, packages, API, vignette, CDCPLACES]
+description: "A brief vignette demonstrating the use of the package `CDCPLACES`."
+engine: knitr
+execute: 
+  warning: false
+  eval: false
+# image: 
+code-fold: show
+code-overflow: scroll
+toc: true
+---
+
+*This is part of the `CDCPLACES` blog series. To view the other posts in this series [click here.](https://brendenmsmith.com/blog#category=CDCPLACES)*
+
+*This post was updated on March 19, 2024 to reflect updates introduced in CDCPLACES 1.1.5.*
+
+## Introduction
+
+To begin, we can install from CRAN, or from github, then load our packages.
+
+```{r, message = F}
+# Install from CRAN
+# install.packages("CDCPLACES)
+
+# Install from Github
+# devtools::install_github("brendensm/CDCPLACES")
+
+library(CDCPLACES)
+library(dplyr)
+library(ggplot2)
+```
+
+## Function: `get_dictionary`
+
+Our first functions allows us to easily view what measures we can query, via 'measureid', along with a brief definition of each function. If we run `get_dictionary`, a data frame is returned. We can view the measures in a data frame in the R Studio with `View()`. This is the preferred method for exploring the available measures.
+
+For our example here, I will print the names of the variables in this dataframe.
+
+```{r, message=F}
+# To open a viewer
+# get_dictionary() %>% View()
+
+get_dictionary() %>% names()
+```
+
+This data frame is useful for several reasons. It lists the available measures for each year of the CDC PLACES data, along with the data each variable was collected, all in a single place. Remember to use the `measureid` when querying your data.
+
+## Function: `get_places`
+
+This function allows us to easily query data that we specify. In the example below, I will get the measure `ACCESS2` (the current lack of health insurance among adults aged 18-64 years) for the state of Arizona. This function allows for multiple of these arguments.
+
+```{r}
+
+az_access <- get_places(state = "AZ", 
+                        measure = "ACCESS2") 
+head(az_access)
+
+
+```
+
+It is also worth noting that by default `geography` specifying geography is set to "county". If instead we want to examine census tracts, we could specify the argument. Likewise, `release` is set to "2023" by default.
+
+The argument `county` can be used to filter results to specific counties. This is extremely useful for examining census level data for specific areas of states. Additionally, `geometry` can be added to include a shapefile in the query. For further examples of plotting with shapefiles, see this [dedicated blog post.](https://brendenmsmith.com/posts/shapefiles%20in%20cdcplaces/)
+
+```{r, output=FALSE}
+cap_counties <- get_places(geography = "census",
+                           state = "MI",
+                           measure = "ACCESS2",
+                           county = c("Ingham", "Eaton", "Clinton"),
+                           geometry = TRUE)
+```
+
+## Use Case
+
+From here, we can start to have fun. It is fairly straight forward to begin exploring data. Here I will first filter out the data so that I can plot the age adjusted rates of lack of health insurance in Arizona.
+
+Notice that the data provide you with confidence limits, so I have chosen to plot them here with error bars.
+
+```{r}
+az_access %>%
+  filter(datavaluetypeid == "AgeAdjPrv") %>%
+  ggplot(aes(data_value, reorder(locationname, data_value))) +
+  geom_point(size = 2) +
+  geom_errorbar(aes(xmin = low_confidence_limit, xmax = high_confidence_limit)) +
+  labs(title = "Lack of health insurance among adults aged 18-64 years In Arizona Counties",
+       y = "", x = "Percent") +
+  theme_minimal() +
+  theme(plot.title.position = "plot")
+```
+
+You can also extend this to multiple states to compare. You can easily query two (or more) state names, and plot them. Arizona seems to have a couple of counties that have a much higher rate compared to others.
+
+```{r}
+
+# multi state comparison
+two <- get_places(state = c("AZ", "NV"), 
+                  measure = "ACCESS2")
+
+two %>%
+  filter(datavaluetypeid == "AgeAdjPrv") %>%
+  ggplot(aes(data_value, reorder(locationname, data_value), color = stateabbr)) +
+  geom_point(size = 2) +
+  geom_errorbar(aes(xmin = low_confidence_limit, xmax = high_confidence_limit)) +
+  labs(title = 
+         "Lack of health insurance among adults aged 18-64 years In Arizona and Nevada",
+       y = "Counties", x = "Percent") +
+  theme_minimal() +
+  theme(plot.title.position = "plot")
+
+```
+
+We can go even further by comparing more states in the region. Here I have taken the average rate by state to easily compare. Texas appears to be far above the average.
+
+```{r}
+multi <- get_places(state = c("AZ", "NV", "NM", "TX", "CA"), measure = "ACCESS2") %>%
+  filter(datavaluetypeid == "AgeAdjPrv") %>%
+  summarise(.by = "stateabbr", mean_val = mean(data_value), mean_low = mean(low_confidence_limit), mean_high = mean(high_confidence_limit))
+
+multi %>%
+  ggplot(aes(mean_val, reorder(stateabbr, mean_val), color = stateabbr)) +
+  geom_point(size = 2) +
+  geom_errorbar(aes(xmin = mean_low, xmax = mean_high)) +
+  labs(title = "Mean lack of health insurance among adults aged 18-64 years In Southwest States",
+       y = "", x = "Percent") +
+  theme_minimal() +
+  theme(plot.title.position = "plot")
+
+```

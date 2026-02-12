@@ -1,29 +1,15 @@
 project:
   type: website
+  output-dir: _site
 
 website:
-  title: Brenden Smith
-  favicon: cat96.png
-  search: false
+  title: "bs"
   site-url: https://brendenmsmith.com
-  navbar:
-    logo: white-cat.png
-    right:
-      - text: "About"
-        file: index.qmd
-      - projects.qmd
-      - blog.qmd
-      - icon: rss
-        href: blog-r.xml
-     
 format:
   html:
-    #theme: minty
-    theme:  custom2.scss
-    # , custom-dark.scss
-
-
-
-
-editor: visual
-
+    theme: none
+    minimal: true
+    css: style.css
+    toc: false
+    link-external-newwindow: true
+    include-before-body: _nav.html

@@ -1,37 +1,25 @@
 ---
-title: "Resume"
-page-layout: full
-title-block-banner: false
+title: "resume"
 ---
 
-## For a downloadable version, click here.
+## Education
 
-### **Education**
+**Master of Public Health**
+Michigan State University | East Lansing, MI
 
-#### Master of Public Health, Expected Graduation Fall 2023
+**B.A. in Social Relations and Policy**
+Michigan State University | James Madison College | East Lansing, MI
+Minor in Chicano/Latino Studies
 
-##### Michigan State University \| East Lansing, MI
+## Work Experience
 
-#### B.A. in Social Relations and Policy, Aug. 2016 - Dec. 2019
+**SUD Medicaid Analyst**
+Michigan Department of Health and Human Services
 
-##### Michigan State University \| James Madison College \| East Lansing, MI
+**Research Assistant**
+Michigan State University, Institute for Health Policy | East Lansing, MI
 
-##### Minor in Chicano/Latino Studies
+## Extra Curricular
 
-### **Work Experience**
-
-#### Research Assistant, January 2021 - Present
-
-##### Michigan State University, Institute for Health Policy \| East Lansing, MI
-
-#### Clerical Assistant, August 2018 - December 2020
-
-##### Michigan State University, Institute for Health Policy \| East Lansing, MI
-
-#### Office Administrative Assistant, May 2018 - Aug. 2018
-##### Katz Midas | Toledo, OH
-
-### **Extra Curricular**
-
-#### Recruitment Coordinator/Volunteer Coordinator, Jan. 2022 - Present 
-##### MSU MPH Student Advisory Board | East Lansing, MI
+**Recruitment Coordinator/Volunteer Coordinator**
+MSU MPH Student Advisory Board | East Lansing, MI

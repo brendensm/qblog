@@ -1,6 +1,7 @@
-.Rproj.user
-.Rhistory
-.Rdata
-.httr-oauth
-.DS_Store
+/_site/
 /.quarto/
+*_cache/
+*.html
+!_site/**/*.html
+.Rproj.user
+.DS_Store

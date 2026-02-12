@@ -1,0 +1,15 @@
+{
+  "hash": "e2300557aae8a095c3aa237c2db128ba",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"hello world\"\ndescription: \"a first post\"\ndate: \"2026-02-12\"\n---\n\n\nThis is a first post. Write something here.\n\n## code example\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
