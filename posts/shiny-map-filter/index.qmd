@@ -3,7 +3,7 @@ title: "Interactive Map Filter in Shiny"
 author: "Brenden Smith"
 date: "2024-6-26"
 categories: [R, maps]
-description: ""
+description: "Create a clickable map filter similar to PowerBI"
 engine: knitr
 execute: 
   warning: false

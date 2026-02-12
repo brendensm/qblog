@@ -94,40 +94,7 @@ If you are using R version 4.0.0 or later, you also have the option of [using a 
 ![](r.jpg)
 
 
-<button onclick="loadApp()" class="btn btn-primary" id="loadButton" style="background:#685068;">Subscribe to my Newsletter!</button>
 
-<div id="myapp"></div>
-
-<script>
-let isLoaded = false;
-
-function loadApp() {
-  const container = document.getElementById("myapp");
-  const button = document.getElementById("loadButton");
-  
-  if (!isLoaded) {
-    // Create and add the iframe
-    const iframe = document.createElement('iframe');
-    iframe.src = "https://n1mbmu-brenden-smith.shinyapps.io/listserv/";
-    iframe.width = "100%";
-    iframe.height = "275px";
-    iframe.style.border = "none";
-    container.appendChild(iframe);
-    button.textContent = "Hide App";
-    isLoaded = true;
-    container.style.display = "block";
-  } else {
-    // Toggle visibility of existing iframe
-    if (container.style.display === "none") {
-      container.style.display = "block";
-      button.textContent = "Hide App";
-    } else {
-      container.style.display = "none";
-      button.textContent = "Subscribe to my Newsletter!";
-    }
-  }
-}
-</script>
 
 
 

@@ -3,6 +3,7 @@ title: "CDCPLACES 1.2.0"
 description: "Place geography, 2025 data, and a major reliability overhaul."
 date: 2026-02-12
 categories: [R, packages, public-health]
+draft: true
 format:
   html:
     toc: true
@@ -85,6 +86,18 @@ This release fixes a number of edge-case bugs that could cause confusing errors 
 
 The internal table of API endpoints used to be maintained by hand. In 1.2.0, `data-raw/DATASET.R` queries the [Socrata Discovery API](https://socratadiscovery.docs.apiary.io/) to programmatically find every PLACES dataset, making it straightforward to add new release years as CDC publishes them.
 
+In addition, the GitHub repo for this package now has a GitHub action to check monthly for URL changes. If for some reason the underlying API URLs change for a specific year or data set, a GitHub issue will automatically be opened. 
+
+## Other notes
+
+The underlying [data dictionary](https://data.cdc.gov/500-Cities-Places/PLACES-and-500-Cities-Data-Dictionary/m35w-spkz/about_data) for the full range of available PLACES data measures and variables has not yet been updated by the PLACES team. This means that there is no additional information included for the 2025 release in this data frame (this is the data frame queried when running `get_dictionary`).
+
+ZCTA-level data for the 2024 release of PLACES is currently unavailable. This is not posted as a public data set (even though it is present for other release years). I believe this may be due to a mistake during the 2025 release.
+
+For both of these issues, I have contacted PLACES to see if updates will be made. I will update the package and this blog post accordingly.
+
 ## Acknowledgments
 
-Thanks to everyone who opened issues and contributed feedback. If you run into problems or have ideas, please [open an issue](https://github.com/brendensm/CDCPLACES/issues) on GitHub.
+I wanted to recognize that many of these updates were made possible by Claude Code. I would like to thank Garrick Aden-Buie from Posit specifically for [sharing the Claude skills](https://github.com/posit-dev/skills) which helped immensely in the testing and review of this package update. 
+
+If you run into problems or have other ideas, please [open an issue](https://github.com/brendensm/CDCPLACES/issues) on GitHub. If you want to stay up to date with me and get notified when I post, consider [subscribing to my newsletter.](https://n1mbmu-brenden-smith.shinyapps.io/listserv/)

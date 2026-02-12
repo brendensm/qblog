@@ -6,8 +6,8 @@
   --link: #1a1a1a;
   --mono: "SF Mono", "Menlo", "Consolas", monospace;
   --sans: "Inter", "Helvetica Neue", "Arial", sans-serif;
-  --max-w: 820px;
-  --sidebar-w: 160px;
+  --max-w: 64em;
+  --sidebar-w: 12em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -156,6 +156,24 @@ p { margin-bottom: 1rem; }
 ul, ol { margin: 0 0 1rem 1.2rem; }
 li { margin-bottom: 0.3rem; }
 
+/* blockquotes / callouts */
+blockquote {
+  border-left: 3px solid var(--border);
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  background: color-mix(in srgb, var(--text) 4%, var(--bg));
+  border-radius: 0 4px 4px 0;
+}
+blockquote > p:last-child { margin-bottom: 0; }
+blockquote > p:first-child > strong:only-child {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  margin-bottom: 0.2rem;
+}
+
 /* code */
 code { font-family: var(--mono); font-size: 0.88em; background: color-mix(in srgb, var(--text) 8%, transparent); padding: 0.15em 0.35em; border-radius: 3px; }
 pre { overflow-x: auto; padding: 1rem; margin: 1rem 0; border: 1px solid var(--border); border-radius: 4px; background: color-mix(in srgb, var(--text) 4%, var(--bg)); }
@@ -215,13 +233,20 @@ code span.va { color: var(--text); }       /* variable */
 /* hide "no matching items" when not filtering */
 .listing-no-matching { display: none; }
 .listing-no-matching.d-none { display: none !important; }
-.list.quarto-listing-default .quarto-post { border-bottom: 1px solid var(--border); padding: 1rem 0; }
-.quarto-post .metadata { display: flex; gap: 0.5rem; align-items: center; }
-.quarto-post .listing-date { color: var(--muted); font-size: 0.85rem; font-family: var(--mono); }
+.list.quarto-listing-default .quarto-post { border-bottom: 1px solid var(--border); padding: 1rem 0; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.quarto-post .body { flex: 1; min-width: 0; }
+.quarto-post .listing-subtitle { display: none; }
 .quarto-post .listing-title { font-weight: 600; font-size: 1.05rem; }
 .quarto-post .listing-description { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
+.quarto-post .metadata { flex-shrink: 0; }
+.quarto-post .listing-date { color: var(--muted); font-size: 0.85rem; font-family: var(--mono); white-space: nowrap; }
 .listing-title a { text-decoration: none; }
 .listing-title a:hover { text-decoration: underline; }
+.listing-category {
+  font-size: 0.75rem; color: var(--muted); border: 1px solid var(--border);
+  padding: 0.1rem 0.45rem; border-radius: 3px; cursor: pointer;
+}
+.listing-category:hover { color: var(--text); border-color: var(--muted); }
 
 /* images */
 img { max-width: 100%; height: auto; }

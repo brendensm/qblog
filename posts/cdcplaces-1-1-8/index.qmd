@@ -145,8 +145,3 @@ tol |>
 
 ![](screenshots/tol2.png)
 
-```{=html}
-<!-- <div style = "border-style: dashed; border-color: #685068;"> -->
-<iframe style = "width: 100%; height: 275px; border: none;" src="https://n1mbmu-brenden-smith.shinyapps.io/listserv" title="Embedded Shiny App"></iframe>
-<!-- </div> -->
-```
