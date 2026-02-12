@@ -1,0 +1,180 @@
+---
+title: "Twitter Bots "
+author: "Brenden Smith"
+date: "2023-3-1"
+categories: [R, color, web-scraping]
+description: "'Suppose I were to begin by saying that I had fallen in love with a color.'"
+execute: 
+  warning: false
+  eval: false
+code-fold: show
+code-overflow: scroll
+toc: true
+---
+
+*Update: Since a certain someone took over the bird app, this bot is no longer functional. Unfortunately, it is not worth paying \$100/month to post random shades of blue. What an injustice.*
+
+## Introduction
+
+Blue is a color that moves me. I love how many forms it can take, the way its shades can channel moods. I recently reread my copy of Maggie Nelson's *Bluets* and felt inspired to revisit an older project of mine. Possibly the first R project I put together (that was more fun, and not statistics or graphic related) was my twitter bot, everywordisblue.
+
+This was a year or so back when I was just starting to dust off R and commit to learning the language fully. The original account was influenced by many of the silly bots on the website and my personal passion for the color blue. It took a randomly selected noun, pasted the word `'blue'` in front of it, and posted it straight to Twitter once a day. While this creation gave me some immediate satisfaction (and some interesting results), I did feel that the account was a bit too simplistic; I always wanted to do more.
+
+Infinitely more satisfying would be a randomly selected hue of blue, shared daily, completely automated. To do this required editing my original script and, most importantly, web-scraping a data set of blue colors with accompanying hex codes. Follow along and let's build something fun!
+
+## The Data
+
+Originally, I attempted to find an existing data set. Most colors sets I'm familiar with using in R, however, are not as hyper-fixated on a singular color. I quickly found [color-names.com](color-names.com), and noticed when you simply search for the word `'blue'`, the search provides over 89 pages (12 colors on each page), giving over a thousand colors with hex codes. This seemed like an adequate source for this project and a great way to practice web scraping data from R.
+
+### Using 'rvest'
+
+To help us source our data, the library `'rvest'` provides everything we need. In order to create a data frame containing the color name and the hex code, we need to:
+
+-   import the web search's html
+
+-   pull out the two elements from the code (name, hex code)
+
+-   then repeat this process for each of the 89 pages
+
+The function `'read_html'` from `rvest` makes the first step incredibly easily. For this, we simply pass in the web address as an argument in the function and save the output as a new value called `'page'`.
+
+```{r}
+library(rvest)
+link <- "https://www.color-name.com/search/blue"
+page <- read_html(link)
+```
+
+Next, we'll pass `'page'` into the function `'html_nodes'` and then into `'html_text'` to extract the desired string vector. The text passed through `'html_nodes'` must be sourced from the webpage you are scraping from. You can use the 'inspect' feature in Google Chrome, or the Chrome extension ['SelectorGadget'](https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en) to find the proper tag to use.
+
+```{r}
+name <- page |> html_nodes("h2 a") |> html_text()
+hex <- page |> html_nodes(".hx") |> html_text()
+```
+
+Once that is done, we can take both vectors and create a data frame.
+
+```{r}
+colors <- data.frame(name, hex, stringsAsFactors = FALSE)
+```
+
+In order to collect each page of data, it is easiest to use a for loop. For this we make a couple of changes. First, we will create an empty data frame titled `'colors'` to store data in for each iteration of the loop. Because there are 89 pages, we set the for loop to iterate that many times. We store this as `'page_result'` in the loop and change the url to match what is displayed on each page number then use `'paste0'` to put them together. Lastly, I added `'rbind'` to add the new rows to the `'colors'` data frame and a print command to keep track of the loop progress.
+
+```{r}
+colors <- data.frame()
+
+for (page_result in 1:89){
+  
+  link <- paste0("https://www.color-name.com/search/blue/page/", page_result)
+  
+  page <- read_html(link)
+  
+  name <- page |> html_nodes("h2 a") |> html_text()
+  hex <- page |> html_nodes(".hx") |> html_text()
+  
+  colors <- rbind(colors, data.frame(name, hex, stringsAsFactors = FALSE))
+  
+  print(paste("Page:", page_result))
+}
+```
+
+And as a last step, I decided to clean up the colors a bit. Even though the search used the key word `'blue'`, I noticed that the last page displayed colors that did not have the word `'blue'` in the title. To fix this, I filtered out any color that did not contain the word.
+
+```{r}
+library(dplyr)
+blues <- colors |> filter(grepl('Blue', name))
+```
+
+## The Script
+
+Now that we have the data, we need to make a script that randomly selects a color, creates a color square, saves it as an image, and posts a tweet. For all of this, we will load `'rtweet'` and `'ggplot2'`.
+
+```{r}
+library(rtweet)
+library(ggplot2)
+```
+
+After importing, we need to create the token to interact with Twitter's API. You can find a deeper dive into this process [here.](https://www.r-bloggers.com/2022/04/r-access-to-twitters-v2-api/) In my example below, I have stored my information as secrets in my Github repository.
+
+```{r}
+blues <- read.csv("blues_dataset.csv")[,-1] # import data 
+
+everywordisblue_token <- # Twitter token business
+  rtweet::rtweet_bot(
+   api_key =   Sys.getenv("TWITTER_CONSUMER_API_KEY"),
+    api_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"),
+    access_token =    Sys.getenv("TWITTER_ACCESS_TOKEN"),
+    access_secret =  Sys.getenv("TWITTER_ACCESS_TOKEN_SECRET")
+  )
+```
+
+Next we can select a single row in our main data frame by calling `'sample_n'`. Then to separate the name and the hex code we can save each as an object and index using brackets.
+
+```{r}
+random_blue <- sample_n(blues, 1)
+
+temp <- as.character(random_blue[1])
+
+blue_hex <- as.character(random_blue[2])
+```
+
+To create a square with the randomly selected color, we can create an empty ggplot, add `'theme_void'` to make it blank, and use theme to use the selected hex code. For this we use arguments `'plot.background'` and `'panel.background'`. Then we can use `'ggsave'` to save a copy of this as an image and specify the desired path.
+
+```{r}
+blue_square <- ggplot() + theme_void() +
+              theme(plot.background = element_rect(fill = blue_hex),
+              panel.background = element_rect(fill = blue_hex))
+
+ggsave(paste0("blue_squares/", temp, ".png"), blue_square,
+       width = 150, height = 150, units = "px")
+```
+
+Now that all the pieces are in place, we can assemble the tweet and sent it out! The function `'post_tweet'` now requires that the user provides alt text (awesome!) so we will first save that (this will be the same for each tweet sent). We will also save an image path that changes each time the script is run using `'paste0'` once again.
+
+To send the actual tweet, we pull in each object to the `'post_tweet'` and we are done!
+
+```{r}
+alt_text <- "A random shade of blue, sourced from color-name.com."
+
+image_path <- paste0("blue_squares/", temp, ".png")
+
+rtweet::post_tweet(status = temp, 
+                   media = image_path, 
+                   media_alt_text = alt_text,
+                   token = everywordisblue_token)
+```
+
+## Automation with Github Actions
+
+Github makes it surprisingly easy to automate scripts with Github Actions! Again for the full length guide on this process I will direct you to Matt Dray's [blog post](https://www.rostrum.blog/2020/09/21/londonmapbot/) which taught me how to properly set this bot up.
+
+Essentially, all that is needed in a yml file that lists the correct instructions on when and what to run. My example yml is below:
+
+```{yml}
+name: blue-version-2
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # once every day
+
+jobs:
+  blue-post:
+    runs-on: macOS-latest
+    env:
+      TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
+      TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
+      TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v2
+      - name: Install rtweet package
+        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: Install dplyr
+        run: Rscript -e 'install.packages("dplyr", dependencies = TRUE)'
+      - name: Install ggplot2
+        run: Rscript -e 'install.packages("ggplot2", dependencies = TRUE)'
+      - name: Create and post tweet
+        run: Rscript blue-script.R
+```
+
+And that's it! If you want to check out the live twitter bot you can follow it [here.](https://twitter.com/everywordisblue)

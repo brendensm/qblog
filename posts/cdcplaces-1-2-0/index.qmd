@@ -1,0 +1,90 @@
+---
+title: "CDCPLACES 1.2.0"
+description: "Place geography, 2025 data, and a major reliability overhaul."
+date: 2026-02-12
+categories: [R, packages, public-health]
+format:
+  html:
+    toc: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(CDCPLACES)
+```
+
+I'm happy to announce the release of [CDCPLACES](https://brendensm.github.io/CDCPLACES/) 1.2.0. CDCPLACES lets you query the CDC's Population Level Analysis and Community Estimates (PLACES) API directly from R, returning health measure estimates for counties, census tracts, ZCTAs, and---new in this release---places (cities, towns, and census-designated places).
+
+You can install it from CRAN with:
+
+```r
+install.packages("CDCPLACES")
+```
+
+Or get the development version from GitHub:
+
+```r
+devtools::install_github("brendensm/CDCPLACES")
+```
+
+This post walks through the highlights. The full changelog is in the [NEWS file](https://brendensm.github.io/CDCPLACES/news/index.html).
+
+## Place geography
+
+The biggest addition in 1.2.0 is support for **place-level** data. PLACES has always published estimates for incorporated places and census-designated places, but the package only supported county, tract, and ZCTA queries. Now you can pull place-level data across all release years (2020--2025):
+
+```{r}
+#| eval: false
+get_places(geography = "place", state = "MI", measure = "SLEEP")
+```
+
+Place geography also supports the `geometry` and `age_adjust` arguments, so you can map city-level estimates just as easily as counties:
+
+```{r}
+#| eval: false
+get_places(geography = "place", state = "MI", measure = "SLEEP", geometry = TRUE)
+```
+
+## 2025 release data
+
+The package now defaults to the **2025 release year**, which is the latest available from CDC. All four geographies---county, tract, ZCTA, and place---are supported for 2025.
+
+```{r}
+#| eval: false
+# 2025 is now the default
+get_places(geography = "county", state = "OH", measure = "ACCESS2")
+```
+
+You can still query any prior year back to 2020 by setting the `release` argument.
+
+## Smarter API queries
+
+Under the hood, the way queries are built has been rewritten. The package now constructs SQL `IN` operators instead of chaining `LIKE`/`OR` clauses, which produces shorter and more efficient API requests.
+
+More importantly, **ZCTA queries are now automatically batched**. Some states have thousands of ZCTAs (Texas alone has roughly 2,000), and the previous approach could exceed Socrata's URL length limit and fail silently. The package now detects when a query would be too long and splits it into multiple smaller requests behind the scenes.
+
+## Breaking changes
+
+A few things to watch for when upgrading:
+
+- **`geography = "census"` has been removed.** Use `"tract"` instead. The old value now produces a clear error message pointing you to the fix.
+- **The default release year is now `"2025"`.** If your code relied on the previous default, pass `release` explicitly to get the same results.
+- **Minimum R version is 4.1.0**, required for the base pipe (`|>`).
+
+## Reliability improvements
+
+This release fixes a number of edge-case bugs that could cause confusing errors or silently wrong results:
+
+- `geometry = TRUE` now uses the correct Census vintage. PLACES switched from 2010 to 2020 Census geographies starting with the 2024 release, so tract and ZCTA GEOIDs could silently fail to join. The package now picks the right shapefiles based on the `release` year.
+- County filtering is no longer case-sensitive. Previously, `county = "ST. LOUIS"` wouldn't match the API's title-case `"St. Louis"`.
+- Functions that prompt about overlapping counties no longer hang in non-interactive sessions (Shiny, knitr, CI). They now default to including all matches with a message.
+- Connection-level errors (DNS failures, timeouts) no longer crash with an opaque `$ operator is invalid for atomic vectors` error.
+
+## Dataset discovery is now automated
+
+The internal table of API endpoints used to be maintained by hand. In 1.2.0, `data-raw/DATASET.R` queries the [Socrata Discovery API](https://socratadiscovery.docs.apiary.io/) to programmatically find every PLACES dataset, making it straightforward to add new release years as CDC publishes them.
+
+## Acknowledgments
+
+Thanks to everyone who opened issues and contributed feedback. If you run into problems or have ideas, please [open an issue](https://github.com/brendensm/CDCPLACES/issues) on GitHub.

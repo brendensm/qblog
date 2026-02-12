@@ -1,0 +1,85 @@
+---
+title: "HM878: Helper Functions"
+author: "Brenden Smith"
+date: "2023-10-12"
+categories: [R, packages, vignette]
+description: "A walkthrough of the helper functions in the package `hm878`"
+execute: 
+  warning: false
+code-overflow: scroll
+toc: false
+---
+
+# Introduction
+
+This vignette demonstrates how to use the functions included in this package so far. If you have not yet, install the package with the following code: `devtools::install_github("brendensm/hm878")`. If you do not have the package devtools, be sure to install that first `install.packages("devtools")`.
+
+To start, we load the package
+
+```{r setup}
+library(hm878)
+```
+
+Let's assume we are running a binomial logistic regression using the data from `mtcars`, a built-in data set included with R. We will use `vs` (engine type as V-shaped or straight) as the dependent variable, and `cyl` (number of cylinders) as the independent variable. We will store our models for block 1 and block 2.
+
+```{r}
+mb1 <- glm(vs ~ 1, data = mtcars, family = "binomial")
+mb2 <- glm(vs ~ cyl, data = mtcars, family = "binomial")
+```
+
+## Testing Goodness of Fit with `chi_log`
+
+To assess the fit of our models, we may want to use the function `chi_log`. To use it, simply type in the name of your model as the first argument, followed by the data set that the model uses. Optionally, you can provide labels for each model using the third argument. Here I will label each block.
+
+```{r}
+chi_log(mb1, mtcars, "Block 1")
+chi_log(mb2, mtcars, "Block 2")
+```
+
+The function gives us the chi-squared statistic, degrees of freedom, and a p-value. It also reminds us of the null and alternative hypotheses. Both models appear to be a good fit.
+
+## Accuracy Percentage with `predict_percent`
+
+We may want to also check the accuracy of our models. To do this, we can use `predict_percent`. To use this function, enter the name of the model in the first argument, followed by the dependent variable we used in the model. For this, we must use the data\$variable format. In the example below, we use the variable `vs` from the data set `mtcars`. Once again, we can label the output with a string as the optional third argument.
+
+```{r}
+predict_percent(mb1, mtcars$vs, "Block 1")
+predict_percent(mb2, mtcars$vs, "Block 2")
+```
+
+## Calculating Odds Ratios with `or`
+
+To calculate odds ratios for the models, simply pass the model through the function `or`.
+
+```{r}
+or(mb1)
+or(mb2)
+```
+
+The output results in a data frame with the odds ratios, confidence intervals, and p-values.
+
+## Upper and Lower Fences with `fences`
+
+If you want to revise and adjust your model, it can be helpful to limit outliers. To find upper and lower fences quickly, use the function `fences`. To do this, pass the continuous variable you are interested in examining through the function. Once again, use the format data\$variable.
+
+```{r}
+#fences(iris$Sepal.Length)
+#fences(mtcars$cyl)$Upper
+#fences(mtcars$cyl)$Lower
+```
+
+## Comparing Model Results with `compare_models`
+
+Lastly, when you are putting together multiple models, it can be helpful to view them all at the same time, next to one another. This is particularly helpful if you have more than two models you are comparing. For this function, pass through however many models you have to compare, and optionally label each one, using a vector of strings for each model. To demonstrate, I will add on another model `mb3` that will have another continuous independent variable.
+
+```{r}
+mb3 <- glm(vs ~ cyl + wt, data = mtcars, family = "binomial")
+
+compare_models(mb1, mb2, mb3, labels = c("Model 1 Block 1", "Model 1 Block 2", "Model Block 3"))
+```
+
+## `deviance_aic` Pull the Deviances and AICs from model summarys
+
+```{r}
+deviance_aic(mb1, mb2, mb3)
+```

@@ -1,17 +1,36 @@
 ---
-title: "Portfolio"
-listing:
-  contents: projects
-  sort: "date desc"
-  type: grid
-  categories: false
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: false
-knitr:
-  opts_chunk: 
-    collapse: true
-execute: 
-  echo: false
+title: "projects"
 ---
+
+## Tidy Tuesday
+
+An ongoing collection of practice visualizations from the Tidy Tuesday weekly data project.
+
+- [Gallery](tidy-tuesday.qmd)
+- [TidyTuesday (R)](https://github.com/brendensm/TidyTuesday)
+- [PydyTuesday (Python)](https://github.com/brendensm/PydyTuesday)
+
+## R Packages
+
+- [sqlfluffr](https://github.com/brendensm/sqlfluffr) -- R Wrapper for SQLFluff, a linter for SQL
+- [CDCPLACES](https://github.com/brendensm/CDCPLACES) -- Query the CDC PLACES API from R
+- [misuvi](https://github.com/brendensm/misuvi) -- Access Michigan Substance Use Vulnerability Index (MI-SUVI) data sets
+- [hm878](https://github.com/brendensm/hm878) -- Helper functions for statistical analysis
+
+## Shiny Apps
+
+- [Sugar Smart Coalition Lansing - Nutrition Calculator](https://brendensm.github.io/python-shiny-test/)
+- [CDC PLACES Data Explorer - Greater Lansing Area](https://n1mbmu-brenden-smith.shinyapps.io/GLA_CDCPLACES/)
+- [Mental Health and the Pandemic](https://n1mbmu-brenden-smith.shinyapps.io/nchs-v4/)
+
+## Presentations
+
+- Complete tooth loss and social vulnerability among United States counties (oral presentation, American of Public Health Association annual conference, October 2024)
+- Opioid Overdose Mortalities and Emergency Department Visits in Michigan Counties and ZCTAs (poster presentation, Michigan Public Health Assocation's Epidemiology Conference, April 2024)
+- Barriers to Refuse Disposal in Larteh, Ghana (poster presentation, Consortium of Universities for Global Health annual conference, March 2024)
+- Trends in mental health services utilization among safety-net clinics and geographic mental health provider shortage areas during COVID-19 pandemic (poster presentation, AcademyHealth, June 2023)
+
+## PowerBI
+
+- [COVID-19 Long Term Care Data Dashboard](https://app.powerbi.com/view?r=eyJrIjoiNThkNzA2NWYtNmQwZi00ZDZlLTgwNDgtMzhlZWM3ZDhlOTQzIiwidCI6IjIyMTc3MTMwLTY0MmYtNDFkOS05MjExLTc0MjM3YWQ1Njg3ZCIsImMiOjN9)
+- [COVID-19 Cases and Deaths by County](https://app.powerbi.com/view?r=eyJrIjoiNDg5MTRkNjctYzc5NS00M2Y4LWFhMzgtOTgyZmJhODFjOWUwIiwidCI6IjIyMTc3MTMwLTY0MmYtNDFkOS05MjExLTc0MjM3YWQ1Njg3ZCIsImMiOjN9&pageName=ReportSection7416d6f46c712479902e)
