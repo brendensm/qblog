@@ -1,5 +1,5 @@
 ---
-title: "brenden smith, mph"
+title: "Hi, I'm Brenden Smith"
 listing:
   id: blog-listing
   contents: posts/**/*.qmd
@@ -12,7 +12,9 @@ listing:
 page-layout: full
 ---
 
-Hi, I'm Brenden. I am an epidemiologist, community researcher, and R enthusiast. I am passionate about health equity, harm reduction, and community engagement.
+I currently work as a Substance Use Disorder Medicaid Data Analyst at the Michigan Department of Health and Human Services. I am a formally trained epidemiologist and avid R user. I am interested in open source software development and its intersection with public health. 
+
+This website serves as my personal portfolio and blog. I post about anything that interests me. Posts tagged 'R' are cross posted to [R-bloggers.](https://www.r-bloggers.com/)
 
 ---
 
