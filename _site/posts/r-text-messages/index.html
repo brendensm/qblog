@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brenden Smith">
+<meta name="dcterms.date" content="2024-03-23">
+<meta name="description" content="Do you ever wish that text message would just send itself?">
+
+<title>bs - I Made R Text For Me</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+<nav id="site-nav">
+  <a href="../../index.html" class="site-title">bs</a>
+  <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('#site-nav').classList.toggle('open')">
+    <span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="../../index.html">home</a>
+    <a href="../../projects.html">projects</a>
+    <a href="https://bsky.app/profile/beesm.bsky.social">bluesky</a>
+    <a href="https://github.com/brendensm">github</a>
+    <a href="https://linkedin.com/in/brendenmsmith">linkedin</a>
+  </div>
+</nav>
+
+<header id="title-block-header">
+<h1 class="title">I Made R Text For Me</h1>
+<p class="author">Brenden Smith</p>
+
+<p class="date">2024-03-23</p>
+</header>
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+  <li><a href="#the-spreadsheet" id="toc-the-spreadsheet">The Spreadsheet</a></li>
+  <li><a href="#r-script" id="toc-r-script">R Script</a>
+  <ul>
+  <li><a href="#getting-the-data" id="toc-getting-the-data">Getting the Data</a></li>
+  <li><a href="#creating-the-message" id="toc-creating-the-message">Creating the Message</a></li>
+  <li><a href="#sending-the-message" id="toc-sending-the-message">Sending the Message</a></li>
+  </ul></li>
+  <li><a href="#the-cron-job" id="toc-the-cron-job">The Cron Job</a></li>
+  <li><a href="#other-considerations" id="toc-other-considerations">Other Considerations</a></li>
+  </ul>
+</nav>
+<h2 id="introduction">Introduction</h2>
+<p>Up front, I have problems with procrastination. The last few years in graduate school have made me prioritize certain things MUCH better. However, in my personal life, I still struggle. I continue to put off things that I would rather do later. A prime example of this is my role as utility-bill-payer in my current living situation.</p>
+<p>It is my duty to pay our house’s gas, internet, trash, and electric/water bills every month. I am reliable enough for this (especially with the convenience of automatic payments). My struggle is the monthly task of rounding up these payments, calculating the totals owed by my respective roommates, and the herculean task of texting them the breakdown for the month. Lately, I have been contemplating fun, useful projects to work on using the beauty of programming languages and I realized this is the perfect thing to do.</p>
+<p>The plan? Make this process as easy as possible for me. With a little trial and error, I’ve done it.</p>
+<p>This project consists of:</p>
+<ul>
+<li><p>A spreadsheet to store the monthly breakdown of utility payments (unfortunately, this still has to be done by hand).</p></li>
+<li><p>An R script to pull this spreadsheet in and send a custom text message that uses the most recent month’s total and roommate share amount (along with a breakdown of each bill amount).</p></li>
+<li><p>A method to automatically run this process without any reliability on my behalf (insert cron jobs).</p></li>
+</ul>
+<h2 id="the-spreadsheet">The Spreadsheet</h2>
+<p>This was a task I already had mostly completed. At the beginning of this year, I created a very basic spreadsheet in Google Sheets to track my utility bills. One table consists of the data in a tidy format, including columns for the month, bill type, amount, and date paid. A second table creates a sum from the first table giving the date to notify (the first of the month after the month in which the bill was paid), the total amount, and the amount owed by the roommate (one-third split on the total).</p>
+<p>Because each bill comes from a different place and my email isn’t easily accessible to a programming language, I still have to update this spreadsheet by hand whenever I am notified of a payment. And for my purposes, I was ok with this!</p>
+<h2 id="r-script">R Script</h2>
+<p>The script for this project has three main tasks:</p>
+<ol type="1">
+<li><p>Import the data from Google Sheets.</p></li>
+<li><p>Create the text of the message.</p></li>
+<li><p>Send the text message.</p></li>
+</ol>
+<h3 id="getting-the-data">Getting the Data</h3>
+<p>First, we can call the libraries we will need.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(googlesheets4)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+</details>
+</div>
+<p>The package <code>googlesheets4</code> made this project incredibly easy.</p>
+<p>You can connect to your Google account using <code>gs4_auth</code>.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gs4_auth</span>(<span class="at">email =</span> <span class="st">"your email here"</span>)</span></code></pre></div>
+</details>
+</div>
+<p>Then, you can import your sheet.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_sheet</span>(<span class="st">"your_url_here"</span>)</span></code></pre></div>
+</details>
+</div>
+<p>To demonstrate what my data looked like, I will create a demo data set to work with in this example.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>month <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Feb"</span>, <span class="st">"Feb"</span>, <span class="st">"Feb"</span>, <span class="st">"Mar"</span>, <span class="st">"Mar"</span>, <span class="st">"Mar"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>bill_type <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Gas"</span>, <span class="st">"Water"</span>, <span class="st">"Internet"</span>, <span class="st">"Gas"</span>, <span class="st">"Water"</span>, <span class="st">"Internet"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>amount <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">62</span>, <span class="dv">25</span>, <span class="dv">55</span>, <span class="dv">70</span>, <span class="dv">25</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>due_date <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"2/1/2024"</span>, <span class="st">"2/4/2024"</span>, <span class="st">"2/5/2024"</span>, </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">"3/1/2024"</span>, <span class="st">"3/5/2024"</span>, <span class="st">"3/6/2024"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(month, bill_type, amount, due_date) <span class="sc">|&gt;</span> </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">due_date =</span> lubridate<span class="sc">::</span><span class="fu">mdy</span>(due_date))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>table1</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>table2<span class="fl">.1</span><span class="ot">&lt;-</span> table1 <span class="sc">|&gt;</span> </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">.by =</span> month,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">total =</span> <span class="fu">sum</span>(amount),</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            <span class="at">third =</span> total<span class="sc">/</span><span class="dv">3</span>) </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>notify <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"3/1/2024"</span>, <span class="st">"4/1/2024"</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>table2<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(notify) <span class="sc">|&gt;</span> </span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">notify =</span> lubridate<span class="sc">::</span><span class="fu">mdy</span>(notify))</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>table2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(table2<span class="fl">.1</span>, table2<span class="fl">.2</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>table2</span></code></pre></div>
+</details>
+</div>
+<h3 id="creating-the-message">Creating the Message</h3>
+<p>Because my real data has all of the month’s data in it, we need to filter to get the right amounts to send in our text. We can use <code>Sys.Date</code> to get the current date, and <code>lubridate::month</code> to make the date a numeric value representing the month.</p>
+<p>Then we can do the same for our tables to filter by. Remember I will have this script executing at the first of every month to report what the costs were for the previous month.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># current_month &lt;- lubridate::month(Sys.Date())</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>current_month <span class="ot">&lt;-</span> <span class="dv">4</span> <span class="co"># for our example</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>filtered_sum <span class="ot">&lt;-</span> table2 <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">notify =</span> lubridate<span class="sc">::</span><span class="fu">month</span>(notify)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(notify <span class="sc">==</span> current_month)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>monthly_total <span class="ot">&lt;-</span> filtered_sum<span class="sc">$</span>total</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>third <span class="ot">&lt;-</span> filtered_sum<span class="sc">$</span>third</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>breakdown <span class="ot">&lt;-</span> table1 <span class="sc">|&gt;</span> </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month_num =</span> lubridate<span class="sc">::</span><span class="fu">month</span>(due_date)) </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>breakdown_amounts <span class="ot">&lt;-</span> breakdown <span class="sc">|&gt;</span> </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(month_num <span class="sc">==</span> (current_month <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(bill_type, amount)</span></code></pre></div>
+</details>
+</div>
+<p>Now that we have the amounts we need, we can construct a message.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a> message <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">"The total of our utility bill for the month of"</span>, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                  filtered_sum<span class="sc">$</span>month, <span class="st">"is:"</span>, monthly_total, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"</span><span class="sc">\n</span><span class="st">A third of this total is:"</span>, <span class="fu">round</span>(third, <span class="dv">2</span>), </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"</span><span class="sc">\n\n</span><span class="st">Here is a breakdown of the bill:"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">paste0</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">"</span>, breakdown_amounts[<span class="dv">1</span>,<span class="dv">1</span>], <span class="st">": "</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                     breakdown_amounts[<span class="dv">1</span>,<span class="dv">2</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                     breakdown_amounts[<span class="dv">2</span>,<span class="dv">1</span>], <span class="st">": "</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                     breakdown_amounts[<span class="dv">2</span>,<span class="dv">2</span>], <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                     breakdown_amounts[<span class="dv">3</span>,<span class="dv">1</span>], <span class="st">": "</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                     breakdown_amounts[<span class="dv">3</span>,<span class="dv">2</span>]</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                   )</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(message)</span></code></pre></div>
+</details>
+</div>
+<h3 id="sending-the-message">Sending the Message</h3>
+<p>Next, we text.</p>
+<p>The method I am using is <strong>only for iMessage devices,</strong> and is really only possible from a Mac. This method is taken from a very helpful <a href="https://stackoverflow.com/questions/6543070/send-a-text-message-from-r">Stackoverflow post.</a> There is probably a workaround for other devices and sending through SMS, but that is not the focus of this post.</p>
+<p>We can send our text with an Apple Script. Here is a function to do just that. This is slightly adapted from the Stackoverflow answer and allows for separate texts to multiple recipients.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>send_text <span class="ot">&lt;-</span> <span class="cf">function</span>(message, buddy){</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> buddy){</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">system</span>(<span class="fu">paste</span>(<span class="st">'osascript -e </span><span class="sc">\'</span><span class="st">tell application "Messages"</span><span class="sc">\'</span><span class="st"> -e </span><span class="sc">\'</span><span class="st">send "'</span>, message, <span class="st">'" to buddy'</span>, i,  <span class="st">'of (service 1 whose service type is iMessage)</span><span class="sc">\'</span><span class="st"> -e </span><span class="sc">\'</span><span class="st">end tell</span><span class="sc">\'</span><span class="st">'</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</details>
+</div>
+<p>Then we can simply plug in the rest. But be warned: running this command will send a text! Be careful when testing this out.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>buddies <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"</span><span class="sc">\"</span><span class="st">phonenumber1</span><span class="sc">\"</span><span class="st">"</span>, <span class="st">"</span><span class="sc">\"</span><span class="st">phonenumber2</span><span class="sc">\"</span><span class="st">"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">send_text</span>(message, buddies)</span></code></pre></div>
+</details>
+</div>
+<h2 id="the-cron-job">The Cron Job</h2>
+<p>Now that the hard part is over, we can simply create a cron job to run this script directly from the command line on the first of every month.</p>
+<p><strong>Important: make sure the following is at the top of your saved R script:</strong></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/local/bin/Rscript</span></span></code></pre></div>
+</details>
+</div>
+<p>To open your cron tab, in the terminal type the following command:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">VISUAL</span><span class="op">=</span>nano<span class="kw">;</span> <span class="fu">crontab</span> <span class="at">-e</span></span></code></pre></div>
+</details>
+</div>
+<p>As an added tip, you can save this command as an alias in your .zshrc file to make it easier to quickly access.</p>
+<p>Once the cron tab is open, you have to set up the job and specify how often you want it to run. The following runs on the first of every month at 9 AM. The command navigates to my home directory, and then executes my R script which I have named “utes_notif.R”.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> 9 1 <span class="pp">*</span> <span class="pp">*</span> cd ~<span class="kw">;</span> <span class="ex">./Desktop/R/utility_notification/utes_notif.R</span></span></code></pre></div>
+</details>
+</div>
+<h2 id="other-considerations">Other Considerations</h2>
+<p>Lastly, I want to note a small consideration when setting up an automated process like this. The cron job will run in this form only if the computer is awake during the scheduled time.</p>
+<p>To work around this, you can utilize the battery options in your Mac’s system preferences. I have scheduled my computer to wake up every day at 9 AM for about five minutes. This was the easiest work around for me. However, I am certain there are other options to achieve the same goal. One option may be to use alternative scheduling tools like cronwake or anacron.</p>
+
+
+<hr>
+<script src="https://utteranc.es/client.js" repo="brendensm/blogComments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async="">
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/brendenmsmith\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+});
+</script>
+
+
+
+
+</body></html>
