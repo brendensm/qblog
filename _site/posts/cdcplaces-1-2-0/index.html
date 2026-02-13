@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-02-12">
+<meta name="description" content="Place geography, 2025 data, and a major reliability overhaul.">
+
+<title>bs - CDCPLACES 1.2.0</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+<nav id="site-nav">
+  <a href="../../index.html" class="site-title">bs</a>
+  <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('#site-nav').classList.toggle('open')">
+    <span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="../../index.html">home</a>
+    <a href="../../projects.html">projects</a>
+    <a href="https://bsky.app/profile/beesm.bsky.social">bluesky</a>
+    <a href="https://github.com/brendensm">github</a>
+    <a href="https://linkedin.com/in/brendenmsmith">linkedin</a>
+  </div>
+</nav>
+
+<header id="title-block-header">
+<h1 class="title">CDCPLACES 1.2.0</h1>
+
+<p class="date">2026-02-12</p>
+</header>
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#place-geography" id="toc-place-geography">Place geography</a></li>
+  <li><a href="#release-data" id="toc-release-data">2025 release data</a></li>
+  <li><a href="#smarter-api-queries" id="toc-smarter-api-queries">Smarter API queries</a></li>
+  <li><a href="#breaking-changes" id="toc-breaking-changes">Breaking changes</a></li>
+  <li><a href="#reliability-improvements" id="toc-reliability-improvements">Reliability improvements</a></li>
+  <li><a href="#dataset-discovery-is-now-automated" id="toc-dataset-discovery-is-now-automated">Dataset discovery is now automated</a></li>
+  <li><a href="#other-notes" id="toc-other-notes">Other notes</a></li>
+  <li><a href="#acknowledgments" id="toc-acknowledgments">Acknowledgments</a></li>
+  </ul>
+</nav>
+<p>I’m happy to announce the release of <a href="https://brendensm.github.io/CDCPLACES/">CDCPLACES</a> 1.2.0. CDCPLACES lets you query the CDC’s Population Level Analysis and Community Estimates (PLACES) API directly from R, returning health measure estimates for counties, census tracts, ZCTAs, and—new in this release—places (cities, towns, and census-designated places).</p>
+<p>You can install it from CRAN with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"CDCPLACES"</span>)</span></code></pre></div>
+<p>Or get the development version from GitHub:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"brendensm/CDCPLACES"</span>)</span></code></pre></div>
+<p>This post walks through the highlights. The full changelog is in the <a href="https://brendensm.github.io/CDCPLACES/news/index.html">NEWS file</a>.</p>
+<h2 id="place-geography">Place geography</h2>
+<p>The biggest addition in 1.2.0 is support for <strong>place-level</strong> data. PLACES has always published estimates for incorporated places and census-designated places, but the package only supported county, tract, and ZCTA queries. Now you can pull place-level data across all release years (2020–2025):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_places</span>(<span class="at">geography =</span> <span class="st">"place"</span>, <span class="at">state =</span> <span class="st">"MI"</span>, <span class="at">measure =</span> <span class="st">"SLEEP"</span>)</span></code></pre></div>
+</div>
+<p>Place geography also supports the <code>geometry</code> and <code>age_adjust</code> arguments, so you can map city-level estimates just as easily as counties:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_places</span>(<span class="at">geography =</span> <span class="st">"place"</span>, <span class="at">state =</span> <span class="st">"MI"</span>, <span class="at">measure =</span> <span class="st">"SLEEP"</span>, <span class="at">geometry =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<h2 id="release-data">2025 release data</h2>
+<p>The package now defaults to the <strong>2025 release year</strong>, which is the latest available from CDC. All four geographies—county, tract, ZCTA, and place—are supported for 2025.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2025 is now the default</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">get_places</span>(<span class="at">geography =</span> <span class="st">"county"</span>, <span class="at">state =</span> <span class="st">"OH"</span>, <span class="at">measure =</span> <span class="st">"ACCESS2"</span>)</span></code></pre></div>
+</div>
+<p>You can still query any prior year back to 2020 by setting the <code>release</code> argument.</p>
+<h2 id="smarter-api-queries">Smarter API queries</h2>
+<p>Under the hood, the way queries are built has been rewritten. The package now constructs SQL <code>IN</code> operators instead of chaining <code>LIKE</code>/<code>OR</code> clauses, which produces shorter and more efficient API requests.</p>
+<p>More importantly, <strong>ZCTA queries are now automatically batched</strong>. Some states have thousands of ZCTAs (Texas alone has roughly 2,000), and the previous approach could exceed Socrata’s URL length limit and fail silently. The package now detects when a query would be too long and splits it into multiple smaller requests behind the scenes.</p>
+<h2 id="breaking-changes">Breaking changes</h2>
+<p>A few things to watch for when upgrading:</p>
+<ul>
+<li><strong><code>geography = "census"</code> has been removed.</strong> Use <code>"tract"</code> instead. The old value now produces a clear error message pointing you to the fix.</li>
+<li><strong>The default release year is now <code>"2025"</code>.</strong> If your code relied on the previous default, pass <code>release</code> explicitly to get the same results.</li>
+<li><strong>Minimum R version is 4.1.0</strong>, required for the base pipe (<code>|&gt;</code>).</li>
+</ul>
+<h2 id="reliability-improvements">Reliability improvements</h2>
+<p>This release fixes a number of edge-case bugs that could cause confusing errors or silently wrong results:</p>
+<ul>
+<li><code>geometry = TRUE</code> now uses the correct Census vintage. PLACES switched from 2010 to 2020 Census geographies starting with the 2024 release, so tract and ZCTA GEOIDs could silently fail to join. The package now picks the right shapefiles based on the <code>release</code> year.</li>
+<li>County filtering is no longer case-sensitive. Previously, <code>county = "ST. LOUIS"</code> wouldn’t match the API’s title-case <code>"St. Louis"</code>.</li>
+<li>Functions that prompt about overlapping counties no longer hang in non-interactive sessions (Shiny, knitr, CI). They now default to including all matches with a message.</li>
+<li>Connection-level errors (DNS failures, timeouts) no longer crash with an opaque <code>$ operator is invalid for atomic vectors</code> error.</li>
+</ul>
+<h2 id="dataset-discovery-is-now-automated">Dataset discovery is now automated</h2>
+<p>The internal table of API endpoints used to be maintained by hand. In 1.2.0, <code>data-raw/DATASET.R</code> queries the <a href="https://socratadiscovery.docs.apiary.io/">Socrata Discovery API</a> to programmatically find every PLACES dataset, making it straightforward to add new release years as CDC publishes them.</p>
+<p>In addition, the GitHub repo for this package now has a GitHub action to check monthly for URL changes. If for some reason the underlying API URLs change for a specific year or data set, a GitHub issue will automatically be opened.</p>
+<h2 id="other-notes">Other notes</h2>
+<p>The underlying <a href="https://data.cdc.gov/500-Cities-Places/PLACES-and-500-Cities-Data-Dictionary/m35w-spkz/about_data">data dictionary</a> for the full range of available PLACES data measures and variables has not yet been updated by the PLACES team. This means that there is no additional information included for the 2025 release in this data frame (this is the data frame queried when running <code>get_dictionary</code>).</p>
+<p>ZCTA-level data for the 2024 release of PLACES is currently unavailable. This is not posted as a public data set (even though it is present for other release years). I believe this may be due to a mistake during the 2025 release.</p>
+<p>For both of these issues, I have contacted PLACES to see if updates will be made. I will update the package and this blog post accordingly.</p>
+<h2 id="acknowledgments">Acknowledgments</h2>
+<p>I wanted to recognize that many of these updates were made possible by Claude Code. I would like to thank Garrick Aden-Buie from Posit specifically for <a href="https://github.com/posit-dev/skills">sharing the Claude skills</a> which helped immensely in the testing and review of this package update.</p>
+<p>If you run into problems or have other ideas, please <a href="https://github.com/brendensm/CDCPLACES/issues">open an issue</a> on GitHub. If you want to stay up to date with me and get notified when I post, consider <a href="https://n1mbmu-brenden-smith.shinyapps.io/listserv/">subscribing to my newsletter.</a></p>
+
+
+<hr>
+<script src="https://utteranc.es/client.js" repo="brendensm/blogComments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async="">
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/brendenmsmith\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+});
+</script>
+
+
+
+
+</body></html>

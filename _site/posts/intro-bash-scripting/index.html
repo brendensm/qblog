@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brenden Smith">
+<meta name="dcterms.date" content="2023-11-15">
+<meta name="description" content="Creating a simple R project set up tool.">
+
+<title>brenden smith - Intro to Bash Scripting</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+<nav id="site-nav">
+  <a href="../../index.html" class="site-title">bs</a>
+  <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('#site-nav').classList.toggle('open')">
+    <span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="../../index.html">home</a>
+    <a href="../../projects.html">projects</a>
+    <a href="https://bsky.app/profile/beesm.bsky.social">bluesky</a>
+    <a href="https://github.com/brendensm">github</a>
+    <a href="https://linkedin.com/in/brendenmsmith">linkedin</a>
+  </div>
+</nav>
+
+<header id="title-block-header">
+<h1 class="title">Intro to Bash Scripting</h1>
+<p class="author">Brenden Smith</p>
+
+<p class="date">2023-11-15</p>
+</header>
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+  <li><a href="#the-idea" id="toc-the-idea">The Idea</a></li>
+  <li><a href="#writing-the-script" id="toc-writing-the-script">Writing the Script</a></li>
+  <li><a href="#making-it-accessible" id="toc-making-it-accessible">Making it Accessible</a></li>
+  <li><a href="#full-script-code" id="toc-full-script-code">Full Script Code</a></li>
+  </ul>
+</nav>
+<p><em>And I thought R gave me super powers…</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Recently, I’ve been having fun with Linux. I really didn’t know much about Linux or how it was different from MacOS or Windows. All I really knew was that very smart people use it and many computers depend on it!</p>
+<p>By recommendation of a friend, I tried loading Pop!_OS on an old Macbook Air I had laying around. I quickly learned how lightweight many distributions of Linux are, and how customizable they can be.</p>
+<p>For anyone familiar with Linux you know that, even when you are just setting up a computer with the OS, you have to start using a bit of the command line. I had used this before learning some helpful functions with git, but nothing has exposed me to the command line and Bash more than this endeavor.</p>
+<p>I have been inspired by this exposure and want to start learning more about the functionality of Bash. As a part of this, I wanted to try creating a Bash script of my own that I could implement into my current workflows.</p>
+<h2 id="the-idea">The Idea</h2>
+<p>I work primarily in R. And I love a good R Project. One of my usual habits for creating a project include adding sub folders and a starting script. I realized Bash is really good for doing this! So with some basic commands, I wanted to create a single executable script that makes a new R project, default sub folders, and a starting script.</p>
+<h2 id="writing-the-script">Writing the Script</h2>
+<p>For the script I wanted several tasks accomplished:</p>
+<ol type="1">
+<li>Created an R project file within a contained folder</li>
+<li>Several sub-directories within that folder (data-raw, data, ref, output)</li>
+<li>A blank R script file</li>
+</ol>
+<p>To start, I had the script ask for the name of the project. This was done by using <code>echo</code> to print the prompt, then <code>read</code> takes in the name of the project.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Please enter your project title: "</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">name</span></span></code></pre></div>
+</details>
+</div>
+<p>Next, I had to make the script navigate to the folder I want my projects in (for me, this is a folder on my desktop called ‘R’). Then, I had a directory made with sub-folders using <code>mkdir -p</code>. Here we use <code>$name</code> to use the variable stored as the name of the project. Within the <code>{}</code> are the names of the sub-folder I most commonly use. This could be anything you like though! Lastly, <code>touch</code> creates the blank R script.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/R</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$name</span>/<span class="dt">{</span>data-raw<span class="op">,</span>data<span class="op">,</span>ref<span class="op">,</span>output<span class="dt">}</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$name</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> script.R</span></code></pre></div>
+</details>
+</div>
+<p>Next, we have an extra step that allows RStudio to open our new project properly. When I first tried this script out, I created a blank file with the .Rproj extension to set up the project. This immediately gave me problems when I tried to open the project. Specifically, I recall an issue with the version being unspecified.</p>
+<p>After a bit a research, I discovered that files with .Rproj are nothing really but a .txt file. I opened one of my existing R projects with a text editor and copied the contents exactly into the code chunk below. I wrote this text into the new R project. After some trial and error, I can confirm this method works!</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">'Version: 1.0</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">RestoreWorkspace: Default</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">SaveWorkspace: Default</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">AlwaysSaveHistory: Default</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">EnableCodeIndexing: Yes</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">UseSpacesForTab: Yes</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">NumSpacesForTab: 2</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">Encoding: UTF-8</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">RnwWeave: Sweave</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">LaTex: pdfLaTeX'</span> <span class="op">&gt;&gt;</span> <span class="va">$name</span>.Rproj</span></code></pre></div>
+</details>
+</div>
+<p>The last few lines of code echo some responses to the terminal and launch the new R project.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Project </span><span class="va">$name</span><span class="st"> has been created."</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"It is stored in the R directory."</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Opening project now..."</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">open</span> <span class="va">$name</span>.Rproj</span></code></pre></div>
+</details>
+</div>
+<h2 id="making-it-accessible">Making it Accessible</h2>
+<p>For me, personally, I like to be able to execute my scripts without worrying where I am in the terminal. Once my script was working properly, I moved it to the /usr/local/bin folder.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> setupr /usr/local/bin</span></code></pre></div>
+</details>
+</div>
+<p>And that’s it! You can find the full script code below. I hope this is helpful! It was certainly useful to me to learn more about bash and make a useful script to help me set up projects.</p>
+<h2 id="full-script-code">Full Script Code</h2>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Please enter your project title: "</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">name</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Desktop/R</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$name</span>/<span class="dt">{</span>data-raw<span class="op">,</span>data<span class="op">,</span>ref<span class="op">,</span>output<span class="dt">}</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$name</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> script.R</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">'Version: 1.0</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="st">RestoreWorkspace: Default</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="st">SaveWorkspace: Default</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="st">AlwaysSaveHistory: Default</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="st">EnableCodeIndexing: Yes</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="st">UseSpacesForTab: Yes</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="st">NumSpacesForTab: 2</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="st">Encoding: UTF-8</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="st">RnwWeave: Sweave</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="st">LaTex: pdfLaTeX'</span> <span class="op">&gt;&gt;</span> <span class="va">$name</span>.Rproj</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Project </span><span class="va">$name</span><span class="st"> has been created."</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"It is stored in the R directory."</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Opening project now..."</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="ex">open</span> <span class="va">$name</span>.Rproj</span></code></pre></div>
+</details>
+</div>
+
+
+<hr>
+<script src="https://utteranc.es/client.js" repo="brendensm/blogComments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async="">
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/brendenmsmith\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+});
+</script>
+
+
+
+
+</body></html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brenden Smith">
+<meta name="dcterms.date" content="2024-09-19">
+<meta name="description" content="New measures, query ZCTAs, and filter by category.">
+
+<title>bs - CDCPLACES 1.1.8: 2024 Release</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+<nav id="site-nav">
+  <a href="../../index.html" class="site-title">bs</a>
+  <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('#site-nav').classList.toggle('open')">
+    <span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="../../index.html">home</a>
+    <a href="../../projects.html">projects</a>
+    <a href="https://bsky.app/profile/beesm.bsky.social">bluesky</a>
+    <a href="https://github.com/brendensm">github</a>
+    <a href="https://linkedin.com/in/brendenmsmith">linkedin</a>
+  </div>
+</nav>
+
+<header id="title-block-header">
+<h1 class="title">CDCPLACES 1.1.8: 2024 Release</h1>
+<p class="author">Brenden Smith</p>
+
+<p class="date">2024-09-19</p>
+</header>
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+  <li><a href="#new-measures" id="toc-new-measures">New Measures</a></li>
+  <li><a href="#new-arguments-cat-and-age_adjust" id="toc-new-arguments-cat-and-age_adjust">New Arguments: cat and age_adjust</a></li>
+  <li><a href="#query-zctas" id="toc-query-zctas">Query ZCTAs</a></li>
+  <li><a href="#handle-overlapping-counties" id="toc-handle-overlapping-counties">Handle Overlapping Counties</a></li>
+  </ul>
+</nav>
+<p><em>This is part of the <code>CDCPLACES</code> blog series. To view the other posts in this series <a href="https://brendenmsmith.com/blog#category=CDCPLACES">click here.</a></em></p>
+<h2 id="introduction">Introduction</h2>
+<p>This brief blog post explains the new additions to <code>CDCPLACES</code> 1.1.8. This update provides a few new features:</p>
+<ul>
+<li><p>Updated 2024 release data, including several new measures under the health-related social needs category</p></li>
+<li><p>Two new arguments to help filter your data, <code>cat</code> and <code>age_adjust</code></p></li>
+<li><p>The ability to query Zip Code Tabulation Areas (ZCTAs)</p></li>
+<li><p>Improved functionality when querying counties with the same name across different states</p></li>
+</ul>
+<p>In addition to these features, <code>CDCPLACES</code> now depends on <code>yyjsonr</code> instead of <code>jsonlite</code>. Originally, the <code>get_places</code> function included a step to clean the returned <code>geolocation</code> variable (essentially a centroid of the geography queried). This step was removed as it was computationally intensive on larger queries and unncessary given the support for shapefiles with the <code>geometry</code> argument. These changes drastically improve the speed of the package.</p>
+<p>To begin, we will load the required packages.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("CDCPLACES")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packges("tidyverse")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CDCPLACES)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+</details>
+</div>
+<h2 id="new-measures">New Measures</h2>
+<p>With the 2024 release of the PLACES data, the default option for the release argument in <code>get_places</code> has been updated to “2024”. You can find all the details of these updated data in the release <a href="https://www.cdc.gov/places/help/data-notes/index.html">notes.</a></p>
+<p>An exciting addition to the PLACES data are the new health-related social needs variables. These include: social isolation, food stamps, food insecurity, housing insecurity, utility services threat, transportation barriers, and lack of social and emotional support. These measures are only available in 39 states and the District of Columbia (DC).</p>
+<p><img src="screenshots/HRSN.png"></p>
+<p>You can view these measures by calling <code>get_dictionary</code>. The category ID for these new measures is “SOCLNEED”.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_dictionary</span>() <span class="sc">|&gt;</span> <span class="fu">filter</span>(categoryid <span class="sc">==</span> <span class="st">"SOCLNEED"</span>) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span></code></pre></div>
+</details>
+</div>
+<h2 id="new-arguments-cat-and-age_adjust">New Arguments: cat and age_adjust</h2>
+<p>Some minor quality of life improvements are introduced with the new arguments <code>cat</code> and <code>age_adjust</code>.</p>
+<p>We can filter our results to returns a set of measures by category ID.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_places</span>(<span class="at">geography =</span> <span class="st">"county"</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">state =</span> <span class="st">"AL"</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> <span class="st">"SOCLNEED"</span>) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span></code></pre></div>
+</details>
+</div>
+<p>If a measure is provided as well as a category, the category will override it. A message is displayed in the console noting this when it occurs.</p>
+<p>To return only the age-adjusted prevalence rates, we can set the argument <code>age_adjust</code> to TRUE. Age-adjusted rates are only available at the county level.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_places</span>(<span class="at">geography =</span> <span class="st">"county"</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">state =</span> <span class="st">"AL"</span>, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">cat =</span> <span class="st">"SOCLNEED"</span>, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">age_adjust =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span></code></pre></div>
+</details>
+</div>
+<h2 id="query-zctas">Query ZCTAs</h2>
+<p>A new option has been added to query ZCTAs. To do this, simply set the <code>geography</code> argument equal to “zcta”.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>w_sleep <span class="ot">&lt;-</span> <span class="fu">get_places</span>(<span class="at">geography =</span> <span class="st">"zcta"</span>, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">state =</span> <span class="st">"MI"</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">measure =</span> <span class="st">"SLEEP"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">county =</span> <span class="st">"Barry"</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">geometry =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</details>
+</div>
+<p>Like other geographies, we can query shapefiles in the same call and easily plot the output:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>w_sleep <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> data_value, <span class="at">label =</span> locationname)) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf_label</span>(<span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"% Sleeping less than 7 hours among adults aged &gt;=18 years"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"In Barry County, Michigan ZCTAs"</span>)</span></code></pre></div>
+</details>
+</div>
+<h2 id="handle-overlapping-counties">Handle Overlapping Counties</h2>
+<p>This update provides the ability to query ZCTAs in different states and counties at the same time. This can raise issues when we want to look at counties that have the same name in multiple states.</p>
+<p>Consider the following example. If we were interested in looking at dental health access around the Michigan/Ohio border and the Toledo area, we might query Monroe and Lucas Counties. We would set the query up like this:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tol <span class="ot">&lt;-</span> <span class="fu">get_places</span>(<span class="at">geography =</span> <span class="st">"zcta"</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">state =</span> <span class="fu">c</span>(<span class="st">"MI"</span>, <span class="st">"OH"</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">measure =</span> <span class="st">"DENTAL"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">county =</span> <span class="fu">c</span>(<span class="st">"LUCAS"</span>, <span class="st">"MONROE"</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">geometry =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</details>
+</div>
+<p>The main issue here is that Ohio also has a Monroe County. <code>CDCPLACES</code> will automatically check to see if your returned data contains these overlaps. You will see output in the console that looks like this:</p>
+<p><img src="screenshots/terminal1.jpg"></p>
+<p>The package will prompt you if you want to include these overlaps. After asking this, it will ask you to specify the counties you wish to exclude from your returned data:</p>
+<p><img src="screenshots/terminal2.jpg"></p>
+<p>If you choose not to make any exclusions you will get the full data with overlaps. In this example, I excluded Ohio’s Monroe County because it is far from the area of interest.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>We can now plot our returned data:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tol <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> data_value)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>     <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>     <span class="fu">scale_fill_viridis_c</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>     <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Visited a dentist or dental clinic in the past year among adults aged &gt;=18 years"</span>, </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">subtitle =</span> <span class="st">"In Monroe County, Michigan and Lucas County, Ohio ZCTAs"</span>)</span></code></pre></div>
+</details>
+</div>
+<p><img src="screenshots/tol2.png"></p>
+
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>It is crucial to mention that using this function in an R Markdown or Quarto document will override this user input. Full data with overlaps will be returned when knitting/rendering the document. If this is your specific use case, it is recommended to disregard this functionality and filter your data once it is returned.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+<hr>
+<script src="https://utteranc.es/client.js" repo="brendensm/blogComments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async="">
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/brendenmsmith\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+});
+</script>
+
+
+
+
+</body></html>

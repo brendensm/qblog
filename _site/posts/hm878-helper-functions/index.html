@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Brenden Smith">
+<meta name="dcterms.date" content="2023-10-12">
+<meta name="description" content="A walkthrough of the helper functions in the package hm878">
+
+<title>brenden smith - HM878: Helper Functions</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body>
+
+<nav id="site-nav">
+  <a href="../../index.html" class="site-title">bs</a>
+  <button class="menu-toggle" aria-label="Menu" onclick="document.querySelector('#site-nav').classList.toggle('open')">
+    <span></span><span></span>
+  </button>
+  <div class="nav-links">
+    <a href="../../index.html">home</a>
+    <a href="../../projects.html">projects</a>
+    <a href="https://bsky.app/profile/beesm.bsky.social">bluesky</a>
+    <a href="https://github.com/brendensm">github</a>
+    <a href="https://linkedin.com/in/brendenmsmith">linkedin</a>
+  </div>
+</nav>
+
+<header id="title-block-header">
+<h1 class="title">HM878: Helper Functions</h1>
+<p class="author">Brenden Smith</p>
+
+<p class="date">2023-10-12</p>
+</header>
+
+
+<h1 id="introduction">Introduction</h1>
+<p>This vignette demonstrates how to use the functions included in this package so far. If you have not yet, install the package with the following code: <code>devtools::install_github("brendensm/hm878")</code>. If you do not have the package devtools, be sure to install that first <code>install.packages("devtools")</code>.</p>
+<p>To start, we load the package</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hm878)</span></code></pre></div>
+</div>
+<p>Let’s assume we are running a binomial logistic regression using the data from <code>mtcars</code>, a built-in data set included with R. We will use <code>vs</code> (engine type as V-shaped or straight) as the dependent variable, and <code>cyl</code> (number of cylinders) as the independent variable. We will store our models for block 1 and block 2.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mb1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vs <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> mtcars, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mb2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vs <span class="sc">~</span> cyl, <span class="at">data =</span> mtcars, <span class="at">family =</span> <span class="st">"binomial"</span>)</span></code></pre></div>
+</div>
+<h2 id="testing-goodness-of-fit-with-chi_log">Testing Goodness of Fit with <code>chi_log</code></h2>
+<p>To assess the fit of our models, we may want to use the function <code>chi_log</code>. To use it, simply type in the name of your model as the first argument, followed by the data set that the model uses. Optionally, you can provide labels for each model using the third argument. Here I will label each block.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chi_log</span>(mb1, mtcars, <span class="st">"Block 1"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chi_log</span>(mb2, mtcars, <span class="st">"Block 2"</span>)</span></code></pre></div>
+</div>
+<p>The function gives us the chi-squared statistic, degrees of freedom, and a p-value. It also reminds us of the null and alternative hypotheses. Both models appear to be a good fit.</p>
+<h2 id="accuracy-percentage-with-predict_percent">Accuracy Percentage with <code>predict_percent</code></h2>
+<p>We may want to also check the accuracy of our models. To do this, we can use <code>predict_percent</code>. To use this function, enter the name of the model in the first argument, followed by the dependent variable we used in the model. For this, we must use the data$variable format. In the example below, we use the variable <code>vs</code> from the data set <code>mtcars</code>. Once again, we can label the output with a string as the optional third argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict_percent</span>(mb1, mtcars<span class="sc">$</span>vs, <span class="st">"Block 1"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict_percent</span>(mb2, mtcars<span class="sc">$</span>vs, <span class="st">"Block 2"</span>)</span></code></pre></div>
+</div>
+<h2 id="calculating-odds-ratios-with-or">Calculating Odds Ratios with <code>or</code></h2>
+<p>To calculate odds ratios for the models, simply pass the model through the function <code>or</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">or</span>(mb1)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">or</span>(mb2)</span></code></pre></div>
+</div>
+<p>The output results in a data frame with the odds ratios, confidence intervals, and p-values.</p>
+<h2 id="upper-and-lower-fences-with-fences">Upper and Lower Fences with <code>fences</code></h2>
+<p>If you want to revise and adjust your model, it can be helpful to limit outliers. To find upper and lower fences quickly, use the function <code>fences</code>. To do this, pass the continuous variable you are interested in examining through the function. Once again, use the format data$variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fences(iris$Sepal.Length)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#fences(mtcars$cyl)$Upper</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#fences(mtcars$cyl)$Lower</span></span></code></pre></div>
+</div>
+<h2 id="comparing-model-results-with-compare_models">Comparing Model Results with <code>compare_models</code></h2>
+<p>Lastly, when you are putting together multiple models, it can be helpful to view them all at the same time, next to one another. This is particularly helpful if you have more than two models you are comparing. For this function, pass through however many models you have to compare, and optionally label each one, using a vector of strings for each model. To demonstrate, I will add on another model <code>mb3</code> that will have another continuous independent variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mb3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(vs <span class="sc">~</span> cyl <span class="sc">+</span> wt, <span class="at">data =</span> mtcars, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_models</span>(mb1, mb2, mb3, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Model 1 Block 1"</span>, <span class="st">"Model 1 Block 2"</span>, <span class="st">"Model Block 3"</span>))</span></code></pre></div>
+</div>
+<h2 id="deviance_aic-pull-the-deviances-and-aics-from-model-summarys"><code>deviance_aic</code> Pull the Deviances and AICs from model summarys</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">deviance_aic</span>(mb1, mb2, mb3)</span></code></pre></div>
+</div>
+
+
+<hr>
+<script src="https://utteranc.es/client.js" repo="brendensm/blogComments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async="">
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/brendenmsmith\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+});
+</script>
+
+
+
+
+</body></html>

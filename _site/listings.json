@@ -1,0 +1,19 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/windows-filepaths/index.html",
+      "/posts/cdcplaces-1-1-8/index.html",
+      "/posts/shiny-map-filter/index.html",
+      "/posts/r-text-messages/index.html",
+      "/posts/cdcplaces-1-1-5/index.html",
+      "/posts/intro-cdcplaces/index.html",
+      "/posts/intro-bash-scripting/index.html",
+      "/posts/survival-analysis/index.html",
+      "/posts/hm878-helper-functions/index.html",
+      "/posts/twitter-bots/index.html",
+      "/posts/michigan-covid-maps/index.html",
+      "/posts/opioid-plotting/index.html"
+    ]
+  }
+]

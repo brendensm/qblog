@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>bs</title>
+<link>https://brendenmsmith.com/</link>
+<atom:link href="https://brendenmsmith.com/index.xml" rel="self" type="application/rss+xml"/>
+<description></description>
+<generator>quarto-1.4.553</generator>
+<lastBuildDate>Thu, 31 Oct 2024 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Dealing with Windows File Paths in R</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/windows-filepaths/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>R</category>
+  <guid>https://brendenmsmith.com/posts/windows-filepaths/</guid>
+  <pubDate>Thu, 31 Oct 2024 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>CDCPLACES 1.1.8: 2024 Release</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/cdcplaces-1-1-8/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>R</category>
+  <category>packages</category>
+  <category>maps</category>
+  <category>CDCPLACES</category>
+  <guid>https://brendenmsmith.com/posts/cdcplaces-1-1-8/</guid>
+  <pubDate>Thu, 19 Sep 2024 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Interactive Map Filter in Shiny</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/shiny-map-filter/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>R</category>
+  <category>maps</category>
+  <guid>https://brendenmsmith.com/posts/shiny-map-filter/</guid>
+  <pubDate>Wed, 26 Jun 2024 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>I Made R Text For Me</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/r-text-messages/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>R</category>
+  <category>Command line</category>
+  <guid>https://brendenmsmith.com/posts/r-text-messages/</guid>
+  <pubDate>Sat, 23 Mar 2024 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>What’s New in CDCPLACES 1.1.5</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/cdcplaces-1-1-5/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>R</category>
+  <category>packages</category>
+  <category>API</category>
+  <category>vignette</category>
+  <category>maps</category>
+  <category>CDCPLACES</category>
+  <guid>https://brendenmsmith.com/posts/cdcplaces-1-1-5/</guid>
+  <pubDate>Tue, 19 Mar 2024 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Introducing the CDCPLACES Package</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/intro-cdcplaces/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>R</category>
+  <category>packages</category>
+  <category>API</category>
+  <category>vignette</category>
+  <category>CDCPLACES</category>
+  <guid>https://brendenmsmith.com/posts/intro-cdcplaces/</guid>
+  <pubDate>Wed, 10 Jan 2024 05:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Intro to Bash Scripting</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/intro-bash-scripting/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>Command line</category>
+  <category>R</category>
+  <guid>https://brendenmsmith.com/posts/intro-bash-scripting/</guid>
+  <pubDate>Wed, 15 Nov 2023 05:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Survival Analysis in R</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/survival-analysis/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>R</category>
+  <category>Epi</category>
+  <category>ggplot2</category>
+  <guid>https://brendenmsmith.com/posts/survival-analysis/</guid>
+  <pubDate>Tue, 24 Oct 2023 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>HM878: Helper Functions</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/hm878-helper-functions/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>R</category>
+  <category>packages</category>
+  <category>vignette</category>
+  <guid>https://brendenmsmith.com/posts/hm878-helper-functions/</guid>
+  <pubDate>Thu, 12 Oct 2023 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Twitter Bots</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/twitter-bots/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>R</category>
+  <category>color</category>
+  <category>web-scraping</category>
+  <guid>https://brendenmsmith.com/posts/twitter-bots/</guid>
+  <pubDate>Wed, 01 Mar 2023 05:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Michigan COVID-19 County Maps</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/michigan-covid-maps/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>R</category>
+  <category>maps</category>
+  <guid>https://brendenmsmith.com/posts/michigan-covid-maps/</guid>
+  <pubDate>Tue, 11 Oct 2022 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Opioid Plotting Practice</title>
+  <dc:creator>Brenden Smith</dc:creator>
+  <link>https://brendenmsmith.com/posts/opioid-plotting/</link>
+  <description><![CDATA[ undefined ]]></description>
+  <category>R</category>
+  <category>ggplot2</category>
+  <guid>https://brendenmsmith.com/posts/opioid-plotting/</guid>
+  <pubDate>Sun, 09 Oct 2022 04:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,9 @@
+[
+  {
+    "objectID": "posts/cdcplaces-1-1-8/index.html#footnotes",
+    "href": "posts/cdcplaces-1-1-8/index.html#footnotes",
+    "title": "CDCPLACES 1.1.8: 2024 Release",
+    "section": "",
+    "text": "It is crucial to mention that using this function in an R Markdown or Quarto document will override this user input. Full data with overlaps will be returned when knitting/rendering the document. If this is your specific use case, it is recommended to disregard this functionality and filter your data once it is returned.↩︎"
+  }
+]
