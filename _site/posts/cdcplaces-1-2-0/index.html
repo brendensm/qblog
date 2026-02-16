@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-02-12">
+<meta name="dcterms.date" content="2026-02-16">
 <meta name="description" content="Place geography, 2025 data, and a major reliability overhaul.">
 
-<title>bs - CDCPLACES 1.2.0</title>
+<title>CDCPLACES 1.2.0 – bs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,8 +24,9 @@ ul.task-list li input[type="checkbox"] {
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -84,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header">
 <h1 class="title">CDCPLACES 1.2.0</h1>
 
-<p class="date">2026-02-12</p>
+<p class="date">2026-02-16</p>
 </header>
 
 <nav id="TOC" role="doc-toc">
@@ -101,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#acknowledgments" id="toc-acknowledgments">Acknowledgments</a></li>
   </ul>
 </nav>
-<p>I’m happy to announce the release of <a href="https://brendensm.github.io/CDCPLACES/">CDCPLACES</a> 1.2.0. CDCPLACES lets you query the CDC’s Population Level Analysis and Community Estimates (PLACES) API directly from R, returning health measure estimates for counties, census tracts, ZCTAs, and—new in this release—places (cities, towns, and census-designated places).</p>
+<p>I’m happy to announce the release of <a href="https://brendensm.github.io/CDCPLACES/">CDCPLACES</a> 1.2.0. This package lets you query the CDC’s Population Level Analysis and Community Estimates (PLACES) API directly from R, returning health measure estimates for counties, census tracts, ZCTAs, and—new in this release—places (cities, towns, and census-designated places).</p>
 <p>You can install it from CRAN with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"CDCPLACES"</span>)</span></code></pre></div>
 <p>Or get the development version from GitHub:</p>
@@ -149,58 +150,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>ZCTA-level data for the 2024 release of PLACES is currently unavailable. This is not posted as a public data set (even though it is present for other release years). I believe this may be due to a mistake during the 2025 release.</p>
 <p>For both of these issues, I have contacted PLACES to see if updates will be made. I will update the package and this blog post accordingly.</p>
 <h2 id="acknowledgments">Acknowledgments</h2>
-<p>I wanted to recognize that many of these updates were made possible by Claude Code. I would like to thank Garrick Aden-Buie from Posit specifically for <a href="https://github.com/posit-dev/skills">sharing the Claude skills</a> which helped immensely in the testing and review of this package update.</p>
+<p>I wanted to recognize that many of these updates were made possible by Claude Code. I would like to thank Garrick Aden-Buie from Posit specifically for sharing these <a href="https://github.com/posit-dev/skills">Claude skills</a> which helped immensely in the testing and review of this package update.</p>
 <p>If you run into problems or have other ideas, please <a href="https://github.com/brendensm/CDCPLACES/issues">open an issue</a> on GitHub. If you want to stay up to date with me and get notified when I post, consider <a href="https://n1mbmu-brenden-smith.shinyapps.io/listserv/">subscribing to my newsletter.</a></p>
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("div.sourceCode").forEach(function (div) {
+    var btn = document.createElement("button");
+    btn.className = "code-copy-btn";
+    btn.setAttribute("aria-label", "Copy to clipboard");
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    btn.addEventListener("click", function () {
+      var code = div.querySelector("code");
+      var text = code ? code.innerText : "";
+      navigator.clipboard.writeText(text).then(function () {
+        btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+        setTimeout(function () {
+          btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+        }, 1500);
+      });
+    });
+    div.style.position = "relative";
+    div.appendChild(btn);
+  });
+});
+</script>
 <hr>
 <script src="https://utteranc.es/client.js" repo="brendensm/blogComments" issue-term="pathname" theme="preferred-color-scheme" crossorigin="anonymous" async="">
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/brendenmsmith\.com");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
-          }
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/brendenmsmith\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-});
-</script>
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+  });
+  </script>
 
 
 

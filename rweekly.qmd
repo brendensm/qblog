@@ -1,0 +1,13 @@
+---
+title: "rweekly feed"
+listing:
+  contents: posts/**/*.qmd
+  sort: "date desc"
+  type: default
+  categories: true
+  feed:
+    type: metadata
+    categories:
+      - R
+page-layout: full
+---

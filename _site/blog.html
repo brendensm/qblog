@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Hi, I’m Brenden Smith – bs</title>
+<title>Blog – bs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,20 +29,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-blog-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-blog-listing'] = new List('listing-blog-listing', options);
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -58,7 +58,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="style.css">
-<link rel="alternate" type="application/rss+xml" title="bs" href="index.xml" data-external="1"></head>
+<link rel="alternate" type="application/rss+xml" title="bs" href="blog.xml" data-external="1"></head>
 
 <body>
 
@@ -77,247 +77,11 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 
 <header id="title-block-header">
-<h1 class="title">Hi, I’m Brenden Smith</h1>
+<h1 class="title">Blog</h1>
 
 </header>
 
 
-<p>I currently work as a Substance Use Disorder Medicaid Data Analyst at the Michigan Department of Health and Human Services. I am a formally trained epidemiologist and avid R user. I am interested in open source software development and its intersection with public health.</p>
-<p>This website serves as my personal portfolio and blog. I post about anything that interests me. Posts tagged ‘R’ are cross posted to <a href="https://www.r-bloggers.com/">R-bloggers.</a></p>
-<hr>
-<h2 id="blog">blog</h2>
-<div id="listing-blog-listing" class="quarto-listing quarto-listing-container-default">
-<div class="listing-actions-group">
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ3BhY2thZ2VzJTJDcHVibGljLWhlYWx0aA==" data-listing-date-sort="1771218000000" data-listing-file-modified-sort="1771220210137" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="768">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/cdcplaces-1-2-0/index.html" class="no-external">CDCPLACES 1.2.0</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/cdcplaces-1-2-0/index.html" class="no-external">
-<p>Place geography, 2025 data, and a major reliability overhaul.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/cdcplaces-1-2-0/index.html" class="no-external">
-<div class="listing-date">
-Feb 16, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Ug==" data-listing-date-sort="1730347200000" data-listing-file-modified-sort="1770930772706" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="511">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/windows-filepaths/index.html" class="no-external">Dealing with Windows File Paths in R</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/windows-filepaths/index.html" class="no-external">
-<p>A simple function to format complicated file paths.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/windows-filepaths/index.html" class="no-external">
-<div class="listing-date">
-Oct 31, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="UiUyQ3BhY2thZ2VzJTJDbWFwcyUyQ0NEQ1BMQUNFUw==" data-listing-date-sort="1726718400000" data-listing-file-modified-sort="1770937746791" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1015">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/cdcplaces-1-1-8/index.html" class="no-external">CDCPLACES 1.1.8: 2024 Release</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/cdcplaces-1-1-8/index.html" class="no-external">
-<p>New measures, query ZCTAs, and filter by category.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/cdcplaces-1-1-8/index.html" class="no-external">
-<div class="listing-date">
-Sep 19, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="UiUyQ21hcHM=" data-listing-date-sort="1719374400000" data-listing-file-modified-sort="1770930408538" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3530">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/shiny-map-filter/index.html" class="no-external">Interactive Map Filter in Shiny</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/shiny-map-filter/index.html" class="no-external">
-<p>Create a clickable map filter similar to PowerBI</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/shiny-map-filter/index.html" class="no-external">
-<div class="listing-date">
-Jun 26, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="UiUyQ0NvbW1hbmQlMjBsaW5l" data-listing-date-sort="1711166400000" data-listing-file-modified-sort="1770912882000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1346">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/r-text-messages/index.html" class="no-external">I Made R Text For Me</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/r-text-messages/index.html" class="no-external">
-<p>Do you ever wish that text message would just send itself?</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/r-text-messages/index.html" class="no-external">
-<div class="listing-date">
-Mar 23, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="UiUyQ3BhY2thZ2VzJTJDQVBJJTJDdmlnbmV0dGUlMkNtYXBzJTJDQ0RDUExBQ0VT" data-listing-date-sort="1710820800000" data-listing-file-modified-sort="1770912882000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="627">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/cdcplaces-1-1-5/index.html" class="no-external">What’s New in CDCPLACES 1.1.5</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/cdcplaces-1-1-5/index.html" class="no-external">
-<p>Map PLACES data easily with the help of <code>tigris</code>.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/cdcplaces-1-1-5/index.html" class="no-external">
-<div class="listing-date">
-Mar 19, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="UiUyQ3BhY2thZ2VzJTJDQVBJJTJDdmlnbmV0dGUlMkNDRENQTEFDRVM=" data-listing-date-sort="1704862800000" data-listing-file-modified-sort="1770912883000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="843">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro-cdcplaces/index.html" class="no-external">Introducing the CDCPLACES Package</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/intro-cdcplaces/index.html" class="no-external">
-<p>A brief vignette demonstrating the use of the package <code>CDCPLACES</code>.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/intro-cdcplaces/index.html" class="no-external">
-<div class="listing-date">
-Jan 10, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="Q29tbWFuZCUyMGxpbmUlMkNS" data-listing-date-sort="1700024400000" data-listing-file-modified-sort="1770912701000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="682">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intro-bash-scripting/index.html" class="no-external">Intro to Bash Scripting</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/intro-bash-scripting/index.html" class="no-external">
-<p>Creating a simple R project set up tool.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/intro-bash-scripting/index.html" class="no-external">
-<div class="listing-date">
-Nov 15, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="UiUyQ0VwaSUyQ2dncGxvdDI=" data-listing-date-sort="1698120000000" data-listing-file-modified-sort="1770912688000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1978">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/survival-analysis/index.html" class="no-external">Survival Analysis in R</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/survival-analysis/index.html" class="no-external">
-<p>Exploring survival analysis with the package <code>survival</code>.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/survival-analysis/index.html" class="no-external">
-<div class="listing-date">
-Oct 24, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-categories="UiUyQ3BhY2thZ2VzJTJDdmlnbmV0dGU=" data-listing-date-sort="1697083200000" data-listing-file-modified-sort="1770912687000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="515">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/hm878-helper-functions/index.html" class="no-external">HM878: Helper Functions</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/hm878-helper-functions/index.html" class="no-external">
-<p>A walkthrough of the helper functions in the package <code>hm878</code></p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/hm878-helper-functions/index.html" class="no-external">
-<div class="listing-date">
-Oct 12, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-categories="UiUyQ2NvbG9yJTJDd2ViLXNjcmFwaW5n" data-listing-date-sort="1677646800000" data-listing-file-modified-sort="1770912688000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1421">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/twitter-bots/index.html" class="no-external">Twitter Bots</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/twitter-bots/index.html" class="no-external">
-<p>‘Suppose I were to begin by saying that I had fallen in love with a color.’</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/twitter-bots/index.html" class="no-external">
-<div class="listing-date">
-Mar 1, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-categories="UiUyQ21hcHM=" data-listing-date-sort="1665460800000" data-listing-file-modified-sort="1770912689000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1741">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/michigan-covid-maps/index.html" class="no-external">Michigan COVID-19 County Maps</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/michigan-covid-maps/index.html" class="no-external">
-<p>Two quick, interactive COVID-19 maps.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/michigan-covid-maps/index.html" class="no-external">
-<div class="listing-date">
-Oct 11, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-categories="UiUyQ2dncGxvdDI=" data-listing-date-sort="1665288000000" data-listing-file-modified-sort="1770912700000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1208">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/opioid-plotting/index.html" class="no-external">Opioid Plotting Practice</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/opioid-plotting/index.html" class="no-external">
-<p>A basic ggplot2 walkthrough and an introduction to plotly.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/opioid-plotting/index.html" class="no-external">
-<div class="listing-date">
-Oct 9, 2022
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
 
 
 
@@ -374,4 +138,445 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-</body></html>
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ3BhY2thZ2VzJTJDcHVibGljLWhlYWx0aA==" data-listing-date-sort="1771218000000" data-listing-file-modified-sort="1771220210137" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="768">
+<div class="thumbnail"><a href="./posts/cdcplaces-1-2-0/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/cdcplaces-1-2-0/index.html" class="no-external">CDCPLACES 1.2.0</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">packages</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHVibGljLWhlYWx0aA=='); return false;">public-health</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/cdcplaces-1-2-0/index.html" class="no-external">
+<p>Place geography, 2025 data, and a major reliability overhaul.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/cdcplaces-1-2-0/index.html" class="no-external">
+<div class="listing-date">
+Feb 16, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Ug==" data-listing-date-sort="1730347200000" data-listing-file-modified-sort="1770930772706" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="511">
+<div class="thumbnail"><a href="./posts/windows-filepaths/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/windows-filepaths/index.html" class="no-external">Dealing with Windows File Paths in R</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/windows-filepaths/index.html" class="no-external">
+<p>A simple function to format complicated file paths.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/windows-filepaths/index.html" class="no-external">
+<div class="listing-date">
+Oct 31, 2024
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="UiUyQ3BhY2thZ2VzJTJDbWFwcyUyQ0NEQ1BMQUNFUw==" data-listing-date-sort="1726718400000" data-listing-file-modified-sort="1770937746791" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1015">
+<div class="thumbnail"><a href="./posts/cdcplaces-1-1-8/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/cdcplaces-1-1-8/index.html" class="no-external">CDCPLACES 1.1.8: 2024 Release</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">packages</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFwcw=='); return false;">maps</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q0RDUExBQ0VT'); return false;">CDCPLACES</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/cdcplaces-1-1-8/index.html" class="no-external">
+<p>New measures, query ZCTAs, and filter by category.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/cdcplaces-1-1-8/index.html" class="no-external">
+<div class="listing-date">
+Sep 19, 2024
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="UiUyQ21hcHM=" data-listing-date-sort="1719374400000" data-listing-file-modified-sort="1770930408538" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3530">
+<div class="thumbnail"><a href="./posts/shiny-map-filter/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/shiny-map-filter/index.html" class="no-external">Interactive Map Filter in Shiny</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFwcw=='); return false;">maps</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/shiny-map-filter/index.html" class="no-external">
+<p>Create a clickable map filter similar to PowerBI</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/shiny-map-filter/index.html" class="no-external">
+<div class="listing-date">
+Jun 26, 2024
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="UiUyQ0NvbW1hbmQlMjBsaW5l" data-listing-date-sort="1711166400000" data-listing-file-modified-sort="1770912882000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1346">
+<div class="thumbnail"><a href="./posts/r-text-messages/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/r-text-messages/index.html" class="no-external">I Made R Text For Me</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q29tbWFuZCUyMGxpbmU='); return false;">Command line</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/r-text-messages/index.html" class="no-external">
+<p>Do you ever wish that text message would just send itself?</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/r-text-messages/index.html" class="no-external">
+<div class="listing-date">
+Mar 23, 2024
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="UiUyQ3BhY2thZ2VzJTJDQVBJJTJDdmlnbmV0dGUlMkNtYXBzJTJDQ0RDUExBQ0VT" data-listing-date-sort="1710820800000" data-listing-file-modified-sort="1770912882000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="627">
+<div class="thumbnail"><a href="./posts/cdcplaces-1-1-5/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/cdcplaces-1-1-5/index.html" class="no-external">What’s New in CDCPLACES 1.1.5</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">packages</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QVBJ'); return false;">API</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlnbmV0dGU='); return false;">vignette</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFwcw=='); return false;">maps</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q0RDUExBQ0VT'); return false;">CDCPLACES</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/cdcplaces-1-1-5/index.html" class="no-external">
+<p>Map PLACES data easily with the help of <code>tigris</code>.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/cdcplaces-1-1-5/index.html" class="no-external">
+<div class="listing-date">
+Mar 19, 2024
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="UiUyQ3BhY2thZ2VzJTJDQVBJJTJDdmlnbmV0dGUlMkNDRENQTEFDRVM=" data-listing-date-sort="1704862800000" data-listing-file-modified-sort="1770912883000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="843">
+<div class="thumbnail"><a href="./posts/intro-cdcplaces/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/intro-cdcplaces/index.html" class="no-external">Introducing the CDCPLACES Package</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">packages</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QVBJ'); return false;">API</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlnbmV0dGU='); return false;">vignette</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q0RDUExBQ0VT'); return false;">CDCPLACES</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/intro-cdcplaces/index.html" class="no-external">
+<p>A brief vignette demonstrating the use of the package <code>CDCPLACES</code>.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/intro-cdcplaces/index.html" class="no-external">
+<div class="listing-date">
+Jan 10, 2024
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="Q29tbWFuZCUyMGxpbmUlMkNS" data-listing-date-sort="1700024400000" data-listing-file-modified-sort="1770912701000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="682">
+<div class="thumbnail"><a href="./posts/intro-bash-scripting/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/intro-bash-scripting/index.html" class="no-external">Intro to Bash Scripting</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q29tbWFuZCUyMGxpbmU='); return false;">Command line</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/intro-bash-scripting/index.html" class="no-external">
+<p>Creating a simple R project set up tool.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/intro-bash-scripting/index.html" class="no-external">
+<div class="listing-date">
+Nov 15, 2023
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="UiUyQ0VwaSUyQ2dncGxvdDI=" data-listing-date-sort="1698120000000" data-listing-file-modified-sort="1770912688000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1978">
+<div class="thumbnail"><a href="./posts/survival-analysis/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/survival-analysis/index.html" class="no-external">Survival Analysis in R</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RXBp'); return false;">Epi</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/survival-analysis/index.html" class="no-external">
+<p>Exploring survival analysis with the package <code>survival</code>.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/survival-analysis/index.html" class="no-external">
+<div class="listing-date">
+Oct 24, 2023
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="UiUyQ3BhY2thZ2VzJTJDdmlnbmV0dGU=" data-listing-date-sort="1697083200000" data-listing-file-modified-sort="1770912687000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="515">
+<div class="thumbnail"><a href="./posts/hm878-helper-functions/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/hm878-helper-functions/index.html" class="no-external">HM878: Helper Functions</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">packages</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlnbmV0dGU='); return false;">vignette</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/hm878-helper-functions/index.html" class="no-external">
+<p>A walkthrough of the helper functions in the package <code>hm878</code></p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/hm878-helper-functions/index.html" class="no-external">
+<div class="listing-date">
+Oct 12, 2023
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="UiUyQ2NvbG9yJTJDd2ViLXNjcmFwaW5n" data-listing-date-sort="1677646800000" data-listing-file-modified-sort="1770912688000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1421">
+<div class="thumbnail"><a href="./posts/twitter-bots/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/twitter-bots/index.html" class="no-external">Twitter Bots</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29sb3I='); return false;">color</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d2ViLXNjcmFwaW5n'); return false;">web-scraping</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/twitter-bots/index.html" class="no-external">
+<p>‘Suppose I were to begin by saying that I had fallen in love with a color.’</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/twitter-bots/index.html" class="no-external">
+<div class="listing-date">
+Mar 1, 2023
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11" data-categories="UiUyQ21hcHM=" data-listing-date-sort="1665460800000" data-listing-file-modified-sort="1770912689000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1741">
+<div class="thumbnail"><a href="./posts/michigan-covid-maps/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/michigan-covid-maps/index.html" class="no-external">Michigan COVID-19 County Maps</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFwcw=='); return false;">maps</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/michigan-covid-maps/index.html" class="no-external">
+<p>Two quick, interactive COVID-19 maps.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/michigan-covid-maps/index.html" class="no-external">
+<div class="listing-date">
+Oct 11, 2022
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="12" data-categories="UiUyQ2dncGxvdDI=" data-listing-date-sort="1665288000000" data-listing-file-modified-sort="1770912700000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1208">
+<div class="thumbnail"><a href="./posts/opioid-plotting/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/opioid-plotting/index.html" class="no-external">Opioid Plotting Practice</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/opioid-plotting/index.html" class="no-external">
+<p>A basic ggplot2 walkthrough and an introduction to plotly.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/opioid-plotting/index.html" class="no-external">
+<div class="listing-date">
+Oct 9, 2022
+</div>
+<div class="listing-author">
+Brenden Smith
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></body></html>

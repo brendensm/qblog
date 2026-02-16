@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: _site
+  post-render:
+    - Rscript _fix-feed.R
 
 website:
   title: "bs"
@@ -13,3 +15,4 @@ format:
     toc: false
     link-external-newwindow: true
     include-before-body: _nav.html
+    include-after-body: _copy-code.html

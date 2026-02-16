@@ -176,44 +176,79 @@ blockquote > p:first-child > strong:only-child {
 
 /* code */
 code { font-family: var(--mono); font-size: 0.88em; background: color-mix(in srgb, var(--text) 8%, transparent); padding: 0.15em 0.35em; border-radius: 3px; }
-pre { overflow-x: auto; padding: 1rem; margin: 1rem 0; border: 1px solid var(--border); border-radius: 4px; background: color-mix(in srgb, var(--text) 4%, var(--bg)); }
+pre { overflow-x: auto; padding: 1rem; margin: 0; border: 1px solid var(--border); border-radius: 4px; background: color-mix(in srgb, var(--text) 4%, var(--bg)); }
 pre code { background: none; padding: 0; }
-div.sourceCode { margin: 1rem 0; }
+div.sourceCode { margin: 1rem 0; position: relative; overflow: hidden; border-radius: 4px; }
 
-/* syntax highlighting — light */
-code span.kw { color: #7928a1; }           /* keyword */
-code span.cf { color: #7928a1; }           /* control flow */
-code span.fu { color: #005cc5; }           /* function */
-code span.st { color: #22863a; }           /* string */
-code span.co { color: #999; font-style: italic; } /* comment */
-code span.dv, code span.fl, code span.bn { color: #d73a49; } /* numbers */
-code span.cn { color: #005cc5; }           /* constant (TRUE/FALSE/NULL) */
-code span.op { color: #666; }              /* operator */
-code span.ot { color: #005cc5; }           /* other */
-code span.sc { color: #22863a; }           /* special char */
-code span.al, code span.er { color: #d73a49; font-weight: 600; } /* alert/error */
-code span.wa { color: #e36209; font-style: italic; } /* warning */
-code span.at { color: #005cc5; }           /* attribute */
-code span.dt { color: #7928a1; }           /* data type */
+/* copy button */
+.code-copy-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  background: color-mix(in srgb, var(--text) 8%, var(--bg));
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.3rem;
+  cursor: pointer;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 0.15s;
+  line-height: 1;
+  z-index: 1;
+}
+div.sourceCode:hover .code-copy-btn { opacity: 1; }
+.code-copy-btn:hover { color: var(--text); background: color-mix(in srgb, var(--text) 14%, var(--bg)); }
+
+/* syntax highlighting — light (RStudio Textmate) */
+code span.kw { color: #264D73; font-weight: 600; } /* keyword (R: library, require) */
+code span.cf { color: #264D73; font-weight: 600; } /* control flow (if, else, for, while, function, return) */
+code span.fu { color: #264D73; }           /* function calls */
+code span.st { color: #20794D; }           /* string */
+code span.co { color: #5E5E5E; font-style: italic; } /* comment */
+code span.dv, code span.fl, code span.bn { color: #AD6800; } /* numbers */
+code span.cn { color: #8f5902; font-weight: 600; } /* constant (TRUE/FALSE/NULL/NA) */
+code span.op { color: #5E5E5E; }           /* operator (+, -, =) */
+code span.ot { color: #264D73; }           /* other (assignment <-, pipe |>) */
+code span.sc { color: #20794D; }           /* special char (\n, \t) */
+code span.al, code span.er { color: #AD1805; font-weight: 600; } /* alert/error */
+code span.wa { color: #AD6800; font-style: italic; } /* warning */
+code span.at { color: var(--text); }       /* attribute (named args) */
+code span.dt { color: #264D73; }           /* data type */
 code span.va { color: var(--text); }       /* variable */
+code span.bu { color: #264D73; font-weight: 600; } /* shell builtins (export, cd, source) */
+code span.ex { color: #264D73; }           /* shell external commands */
+code span.ss { color: #20794D; }           /* shell special string */
+code span.pp { color: #8f5902; }           /* preprocessor */
+code span.im { color: #264D73; }           /* import */
+code span.do { color: #5E5E5E; font-style: italic; } /* doc comment */
+code span.an { color: #5E5E5E; font-style: italic; } /* annotation */
+code span.in { color: #5E5E5E; font-style: italic; } /* info / roxygen */
 
-/* syntax highlighting — dark */
+/* syntax highlighting — dark (RStudio-inspired) */
 @media (prefers-color-scheme: dark) {
-  code span.kw { color: #c792ea; }
-  code span.cf { color: #c792ea; }
-  code span.fu { color: #82aaff; }
-  code span.st { color: #c3e88d; }
-  code span.co { color: #666; }
-  code span.dv, code span.fl, code span.bn { color: #f78c6c; }
-  code span.cn { color: #82aaff; }
-  code span.op { color: #89ddff; }
-  code span.ot { color: #82aaff; }
-  code span.sc { color: #c3e88d; }
-  code span.al, code span.er { color: #ff5370; }
-  code span.wa { color: #ffcb6b; }
-  code span.at { color: #82aaff; }
-  code span.dt { color: #c792ea; }
+  code span.kw { color: #CDA1E8; }
+  code span.cf { color: #CDA1E8; }
+  code span.fu { color: #90CAF9; }
+  code span.st { color: #A5D6A7; }
+  code span.co { color: #9E9E9E; }
+  code span.dv, code span.fl, code span.bn { color: #FFCC80; }
+  code span.cn { color: #FFCC80; }
+  code span.op { color: #B0B0B0; }
+  code span.ot { color: #90CAF9; }
+  code span.sc { color: #A5D6A7; }
+  code span.al, code span.er { color: #EF9A9A; font-weight: 600; }
+  code span.wa { color: #FFCC80; }
+  code span.at { color: var(--text); }
+  code span.dt { color: #CDA1E8; }
   code span.va { color: var(--text); }
+  code span.bu { color: #CDA1E8; }
+  code span.ex { color: #90CAF9; }
+  code span.ss { color: #A5D6A7; }
+  code span.pp { color: #FFCC80; }
+  code span.im { color: #CDA1E8; }
+  code span.do { color: #9E9E9E; font-style: italic; }
+  code span.an { color: #9E9E9E; font-style: italic; }
+  code span.in { color: #9E9E9E; font-style: italic; }
 }
 
 /* blog listing */
