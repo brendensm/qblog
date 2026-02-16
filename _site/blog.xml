@@ -6,8 +6,8 @@
       version="2.0">
 <channel>
 <title>bs</title>
-<link>https://brendenmsmith.com/</link>
-<atom:link href="https://brendenmsmith.com/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://brendenmsmith.com/blog.html</link>
+<atom:link href="https://brendenmsmith.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.27</generator>
 <lastBuildDate>Mon, 16 Feb 2026 05:00:00 GMT</lastBuildDate>

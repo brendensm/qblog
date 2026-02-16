@@ -176,9 +176,28 @@ blockquote > p:first-child > strong:only-child {
 
 /* code */
 code { font-family: var(--mono); font-size: 0.88em; background: color-mix(in srgb, var(--text) 8%, transparent); padding: 0.15em 0.35em; border-radius: 3px; }
-pre { overflow-x: auto; padding: 1rem; margin: 1rem 0; border: 1px solid var(--border); border-radius: 4px; background: color-mix(in srgb, var(--text) 4%, var(--bg)); }
+pre { overflow-x: auto; padding: 1rem; margin: 0; border: 1px solid var(--border); border-radius: 4px; background: color-mix(in srgb, var(--text) 4%, var(--bg)); }
 pre code { background: none; padding: 0; }
-div.sourceCode { margin: 1rem 0; }
+div.sourceCode { margin: 1rem 0; position: relative; overflow: hidden; border-radius: 4px; }
+
+/* copy button */
+.code-copy-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  background: color-mix(in srgb, var(--text) 8%, var(--bg));
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.3rem;
+  cursor: pointer;
+  color: var(--muted);
+  opacity: 0;
+  transition: opacity 0.15s;
+  line-height: 1;
+  z-index: 1;
+}
+div.sourceCode:hover .code-copy-btn { opacity: 1; }
+.code-copy-btn:hover { color: var(--text); background: color-mix(in srgb, var(--text) 14%, var(--bg)); }
 
 /* syntax highlighting — light (RStudio Textmate) */
 code span.kw { color: #264D73; font-weight: 600; } /* keyword (R: library, require) */

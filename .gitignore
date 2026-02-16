@@ -4,3 +4,5 @@
 !_site/**/*.html
 .Rproj.user
 .DS_Store
+
+**/*.quarto_ipynb

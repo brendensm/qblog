@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://brendenmsmith.com/tidy-tuesday.html</loc>
-    <lastmod>2026-02-12T16:43:04.000Z</lastmod>
+    <loc>https://brendenmsmith.com/blog.html</loc>
+    <lastmod>2026-02-13T18:19:27.708Z</lastmod>
   </url>
   <url>
-    <loc>https://brendenmsmith.com/posts/r-text-messages/index.html</loc>
-    <lastmod>2026-02-12T16:14:42.000Z</lastmod>
+    <loc>https://brendenmsmith.com/rweekly.html</loc>
+    <lastmod>2026-02-13T18:18:14.941Z</lastmod>
   </url>
   <url>
-    <loc>https://brendenmsmith.com/posts/shiny-map-filter/index.html</loc>
-    <lastmod>2026-02-12T21:06:48.538Z</lastmod>
+    <loc>https://brendenmsmith.com/projects.html</loc>
+    <lastmod>2026-02-12T17:57:52.000Z</lastmod>
   </url>
   <url>
-    <loc>https://brendenmsmith.com/posts/cdcplaces-1-1-5/index.html</loc>
-    <lastmod>2026-02-12T16:14:42.000Z</lastmod>
+    <loc>https://brendenmsmith.com/posts/michigan-covid-maps/index.html</loc>
+    <lastmod>2026-02-12T16:11:29.000Z</lastmod>
   </url>
   <url>
-    <loc>https://brendenmsmith.com/posts/intro-cdcplaces/index.html</loc>
-    <lastmod>2026-02-12T16:14:43.000Z</lastmod>
+    <loc>https://brendenmsmith.com/posts/survival-analysis/index.html</loc>
+    <lastmod>2026-02-12T16:11:28.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/posts/twitter-bots/index.html</loc>
+    <lastmod>2026-02-12T16:11:28.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/posts/cdcplaces-1-2-0/index.html</loc>
+    <lastmod>2026-02-16T05:36:50.137Z</lastmod>
   </url>
   <url>
     <loc>https://brendenmsmith.com/posts/intro-bash-scripting/index.html</loc>
@@ -45,23 +53,27 @@
     <lastmod>2026-02-12T21:12:52.706Z</lastmod>
   </url>
   <url>
-    <loc>https://brendenmsmith.com/posts/twitter-bots/index.html</loc>
-    <lastmod>2026-02-12T16:11:28.000Z</lastmod>
+    <loc>https://brendenmsmith.com/posts/intro-cdcplaces/index.html</loc>
+    <lastmod>2026-02-12T16:14:43.000Z</lastmod>
   </url>
   <url>
-    <loc>https://brendenmsmith.com/posts/survival-analysis/index.html</loc>
-    <lastmod>2026-02-12T16:11:28.000Z</lastmod>
+    <loc>https://brendenmsmith.com/posts/cdcplaces-1-1-5/index.html</loc>
+    <lastmod>2026-02-12T16:14:42.000Z</lastmod>
   </url>
   <url>
-    <loc>https://brendenmsmith.com/posts/michigan-covid-maps/index.html</loc>
-    <lastmod>2026-02-12T16:11:29.000Z</lastmod>
+    <loc>https://brendenmsmith.com/posts/shiny-map-filter/index.html</loc>
+    <lastmod>2026-02-12T21:06:48.538Z</lastmod>
   </url>
   <url>
-    <loc>https://brendenmsmith.com/projects.html</loc>
-    <lastmod>2026-02-12T17:57:52.000Z</lastmod>
+    <loc>https://brendenmsmith.com/posts/r-text-messages/index.html</loc>
+    <lastmod>2026-02-12T16:14:42.000Z</lastmod>
   </url>
   <url>
     <loc>https://brendenmsmith.com/index.html</loc>
     <lastmod>2026-02-12T23:20:05.559Z</lastmod>
+  </url>
+  <url>
+    <loc>https://brendenmsmith.com/tidy-tuesday.html</loc>
+    <lastmod>2026-02-12T16:43:04.000Z</lastmod>
   </url>
 </urlset>

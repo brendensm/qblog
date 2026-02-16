@@ -1,0 +1,13 @@
+---
+title: "Blog"
+listing:
+  contents: posts/**/*.qmd
+  sort: "date desc"
+  type: default
+  categories: true
+  feed:
+    type: full
+    categories:
+      - R
+page-layout: full
+---

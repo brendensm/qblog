@@ -6,15 +6,15 @@
       version="2.0">
 <channel>
 <title>bs</title>
-<link>https://brendenmsmith.com/</link>
-<atom:link href="https://brendenmsmith.com/index.xml" rel="self" type="application/rss+xml"/>
+<link>https://brendenmsmith.com/rweekly.html#category=R</link>
+<atom:link href="https://brendenmsmith.com/rweekly-r.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <generator>quarto-1.8.27</generator>
 <lastBuildDate>Mon, 16 Feb 2026 05:00:00 GMT</lastBuildDate>
 <item>
   <title>CDCPLACES 1.2.0</title>
   <link>https://brendenmsmith.com/posts/cdcplaces-1-2-0/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ Place geography, 2025 data, and a major reliability overhaul. ]]></description>
   <category>R</category>
   <category>packages</category>
   <category>public-health</category>
@@ -25,7 +25,7 @@
   <title>Dealing with Windows File Paths in R</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/windows-filepaths/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ A simple function to format complicated file paths. ]]></description>
   <category>R</category>
   <guid>https://brendenmsmith.com/posts/windows-filepaths/</guid>
   <pubDate>Thu, 31 Oct 2024 04:00:00 GMT</pubDate>
@@ -34,7 +34,7 @@
   <title>CDCPLACES 1.1.8: 2024 Release</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/cdcplaces-1-1-8/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ New measures, query ZCTAs, and filter by category. ]]></description>
   <category>R</category>
   <category>packages</category>
   <category>maps</category>
@@ -46,7 +46,7 @@
   <title>Interactive Map Filter in Shiny</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/shiny-map-filter/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ Create a clickable map filter similar to PowerBI ]]></description>
   <category>R</category>
   <category>maps</category>
   <guid>https://brendenmsmith.com/posts/shiny-map-filter/</guid>
@@ -56,7 +56,7 @@
   <title>I Made R Text For Me</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/r-text-messages/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ Do you ever wish that text message would just send itself? ]]></description>
   <category>R</category>
   <category>Command line</category>
   <guid>https://brendenmsmith.com/posts/r-text-messages/</guid>
@@ -66,7 +66,7 @@
   <title>What’s New in CDCPLACES 1.1.5</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/cdcplaces-1-1-5/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ Map PLACES data easily with the help of tigris. ]]></description>
   <category>R</category>
   <category>packages</category>
   <category>API</category>
@@ -80,7 +80,7 @@
   <title>Introducing the CDCPLACES Package</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/intro-cdcplaces/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ A brief vignette demonstrating the use of the package CDCPLACES. ]]></description>
   <category>R</category>
   <category>packages</category>
   <category>API</category>
@@ -93,7 +93,7 @@
   <title>Intro to Bash Scripting</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/intro-bash-scripting/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ Creating a simple R project set up tool. ]]></description>
   <category>Command line</category>
   <category>R</category>
   <guid>https://brendenmsmith.com/posts/intro-bash-scripting/</guid>
@@ -103,7 +103,7 @@
   <title>Survival Analysis in R</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/survival-analysis/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ Exploring survival analysis with the package survival. ]]></description>
   <category>R</category>
   <category>Epi</category>
   <category>ggplot2</category>
@@ -114,7 +114,7 @@
   <title>HM878: Helper Functions</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/hm878-helper-functions/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ A walkthrough of the helper functions in the package hm878 ]]></description>
   <category>R</category>
   <category>packages</category>
   <category>vignette</category>
@@ -125,7 +125,7 @@
   <title>Twitter Bots</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/twitter-bots/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ ‘Suppose I were to begin by saying that I had fallen in love with a color.’ ]]></description>
   <category>R</category>
   <category>color</category>
   <category>web-scraping</category>
@@ -136,7 +136,7 @@
   <title>Michigan COVID-19 County Maps</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/michigan-covid-maps/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ Two quick, interactive COVID-19 maps. ]]></description>
   <category>R</category>
   <category>maps</category>
   <guid>https://brendenmsmith.com/posts/michigan-covid-maps/</guid>
@@ -146,7 +146,7 @@
   <title>Opioid Plotting Practice</title>
   <dc:creator>Brenden Smith</dc:creator>
   <link>https://brendenmsmith.com/posts/opioid-plotting/</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ A basic ggplot2 walkthrough and an introduction to plotly. ]]></description>
   <category>R</category>
   <category>ggplot2</category>
   <guid>https://brendenmsmith.com/posts/opioid-plotting/</guid>
